@@ -2,13 +2,13 @@ import { Schema, model, models, Document } from 'mongoose'
 
 export interface IOrder extends Document {
   createdAt: Date
-  stripeId: string
+  intentId: string
   totalAmount: string
-  event: {
+  products: {
     _id: string
     title: string
   }
-  buyer: {
+  user: {
     _id: string
     firstName: string
     lastName: string
@@ -19,9 +19,10 @@ export type IOrderItem = {
   _id: string
   totalAmount: string
   createdAt: Date
-  eventTitle: string
-  eventId: string
-  buyer: string
+  productTitle: string
+  productId: string
+  userEmail: string
+  status: string
 }
 
 const OrderSchema = new Schema({
@@ -29,12 +30,12 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  intent_id: {
+  intentId: {
     type: String,
     required: true,
     unique: true,
   },
-  price: {
+  totalAmount: {
     type: Number,
     required: true,
   },

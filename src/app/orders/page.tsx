@@ -44,7 +44,6 @@ const OrdersPage = () => {
       return await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders/${id}`,{
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
         },
         body:JSON.stringify(status),
       })
