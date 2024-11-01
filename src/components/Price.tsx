@@ -33,7 +33,7 @@ const Price = ({ product }: {product:ProductType}) => {
 
   const handleCart = () => {
     addToCart({
-      id:product.id,
+      _id:product._id,
       title:product.title,
       price:total,
       img:product.img,
@@ -74,21 +74,21 @@ const Price = ({ product }: {product:ProductType}) => {
         ))}
       </div>
       {/* QUANTITY AND ADD BUTTON CONTAINER */}
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         {/* QUANTITY */}
         <div className="flex justify-between w-full mr-10 ring-[#f0f0f0]">
           
-          <div className="flex gap-4 items-center">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
-            className="w-11 h-11 rounded-md bg-black text-white flex items-center justify-center"
+            className="flex items-center justify-center text-white bg-black rounded-md w-11 h-11"
             >
               {"-"}
             </button>
             <span>{quantity}</span>
             <button
               onClick={() => setQuantity((prev) => (prev < 9 ? prev + 1 : 9))}
-            className="w-11 h-11 rounded-md bg-black text-white flex items-center justify-center"
+            className="flex items-center justify-center text-white bg-black rounded-md w-11 h-11"
             >
               {"+"}
             </button>
