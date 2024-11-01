@@ -19,12 +19,17 @@ export const GET = async() => {
                 return new NextResponse("ok", {status:200})
 
             }
-            const orders = await Order.find({
-                
-                    userEmail: session.user.email ?? undefined
-                
-            })
-            return new NextResponse(JSON.stringify(orders),{status:200})
+            if (session.user && 'email' in session.user) {
+                const orders = await Order.find({
+                    userEmail: session.user.email
+                });
+                return new NextResponse(JSON.stringify(orders), {status:200});
+            } else {
+                return new NextResponse(
+                    JSON.stringify("User email not found"), 
+                    {status:400}
+                );
+            }
         } catch (error) {
             return new NextResponse(
                 JSON.stringify("Somethong went wrong"), 
