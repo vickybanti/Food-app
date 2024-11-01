@@ -140,7 +140,7 @@ const Page = () => {
                 throw new Error(data.message || 'Something went wrong')
             }
             
-            router.push(`${NEXT_PUBLIC_URL}/product/${data._id}`)
+            router.push(`${process.env.NEXT_PUBLIC_URL}/product/${data._id}`)
         } catch (error) {
             console.error(error)
             alert(error instanceof Error ? error.message : "Error submitting product")
