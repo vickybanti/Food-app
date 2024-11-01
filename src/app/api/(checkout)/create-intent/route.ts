@@ -1,20 +1,20 @@
-import { prisma } from "@/lib/utils/connect";
+import Order from "@/lib/database/models/order.model";
+import { connectToDb } from "@/lib/utils/connect";
 import { NextResponse } from "next/server";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export const POST = async (req: Request) => {
   try {
-    const { id } = await req.json();  // Parsing the incoming JSON request
-    console.log("Received order ID:", id);
+    await connectToDb()
+    const { _id } = await req.json();  // Parsing the incoming JSON request
+    console.log("Received order ID:", _id);
 
-    if (!id) {
+    if (!_id) {
       return new NextResponse(JSON.stringify({ message: "Order ID is missing" }), { status: 400 });
     }
 
     // Fetch the order from Prisma
-    const order = await prisma.order.findUnique({
-      where: { id },
-    });
+    const order = await Order.findById(_id);
 
     console.log("Order fetched:", order);
 
@@ -32,10 +32,7 @@ export const POST = async (req: Request) => {
     console.log("PaymentIntent created:", paymentIntent);
 
     // Update the order with the Payment Intent ID
-    await prisma.order.update({
-      where: { id },
-      data: { intent_id: paymentIntent.id },
-    });
+    await Order.findByIdAndUpdate( _id, { intent_id: paymentIntent.id });
 
     console.log("Order updated with Payment Intent ID:", paymentIntent.id);
 

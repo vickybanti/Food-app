@@ -1,4 +1,5 @@
-import { prisma } from "@/lib/utils/connect";
+import Order from "@/lib/database/models/order.model";
+import { connectToDb } from "@/lib/utils/connect";
 import { NextResponse } from "next/server";
 
 export const PUT = async (req: Request) => {
@@ -13,12 +14,8 @@ export const PUT = async (req: Request) => {
       );
     }
 
-    const order = await prisma.order.update({
-      where: {
-        intent_id: intentId,
-      },
-      data: { status: "Being prepared" },
-    });
+    const order = await Order.updateOne({intent_id: intentId,
+      status: "Being prepared" });
 
     if (!order) {
       return new NextResponse(
