@@ -25,12 +25,13 @@ const handleCheckout = async() => {
  
   setLoading(true)
     try {
-      const res = await fetch( `/api/orders`,{
+      const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/api/orders`,{
         method:"POST",
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        },        body:JSON.stringify({
+         
+        },       
+         body:JSON.stringify({
           price:totalPrice,
           products,
           status:"Not paid",
@@ -39,7 +40,7 @@ const handleCheckout = async() => {
       })
       const getData = await res.json()
       setLoading(false)
-      router.push(`/pay/${getData.id}`)
+      router.push(`/pay/${getData._id}`)
     } catch (error) {
       console.log(error)
     }
@@ -55,7 +56,7 @@ const handleCheckout = async() => {
         {/* SINGLE ITEM */}
         {loading && (<Skeleton className="w-4 h-4"/>)}
         {products.map((item) => (
-          <div className="flex items-center justify-between mb-4" key={item.id}>
+          <div className="flex items-center justify-between mb-4" key={item._id}>
           {item.img &&
           <Image src={item.img} alt="" width={100} height={100} />
           }
