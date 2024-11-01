@@ -15,14 +15,14 @@ export const GET = async() => {
         try {
             await connectToDb();
             if(session.user.isAdmin){
-                const orders = await Order.findMany()
+                const orders = await Order.find()
                 return new NextResponse("ok", {status:200})
 
             }
-            const orders = await Order.findMany({
-                where:{
+            const orders = await Order.find({
+                
                     userEmail: session.user.email ?? undefined
-                }
+                
             })
             return new NextResponse(JSON.stringify(orders),{status:200})
         } catch (error) {
@@ -49,9 +49,7 @@ export const POST = async(req:NextRequest) => {
             const body = await req.json()
             if(session.user){
                 await connectToDb();
-                const order = await Order.create({
-                    data:body
-                })
+                const order = await Order.create(body)
                 return new NextResponse(JSON.stringify(order), {status:200});
 
             }
