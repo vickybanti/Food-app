@@ -23,6 +23,7 @@ export type CategoryType = {
     img?:string;
     desc?:string;
     slug:string;
+    color?:string;
 }
 
 export type OrderType = {
