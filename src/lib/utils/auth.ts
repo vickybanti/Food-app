@@ -5,10 +5,14 @@ import { connectToDb } from "./connect"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import User from "../database/models/user.model";
 
-declare module "next-auth"{
-  interface Session{
-    user:typeof User & {
-      isAdmin:Boolean;
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id?: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+      isAdmin: boolean;
     }
   }
 }
@@ -51,7 +55,7 @@ export const authOptions:NextAuthOptions = {
     callbacks:{
       async session({token, session}) {
         if(token){
-          session.user.isAdmin = token.isAdmin
+          session.user.isAdmin = Boolean(token.isAdmin)
         }
         return session
       },
