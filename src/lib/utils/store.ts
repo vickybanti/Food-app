@@ -17,10 +17,10 @@ export const userCartStore = create(
             totalPrice: INITIAL_STATE.totalPrice,
             addToCart(item) {
                 const products = get().products
-                const productInState = products.find(product => product.id === item.id)
+                const productInState = products.find(product => product._id === item._id)
 
                 if (productInState) {
-                    const updateProduct = products.map(product => product.id === productInState.id ? {
+                    const updateProduct = products.map(product => product._id === productInState._id ? {
                         ...item,
                         quantity: item.quantity + product.quantity,
                         price: item.price + product.price
@@ -43,7 +43,7 @@ export const userCartStore = create(
             },
             removeFromCart(item) {
                 set((state) => ({
-                    products: state.products.filter((product) => product.id !== item.id),
+                    products: state.products.filter((product) => product._id !== item._id),
                     totalItems: state.totalItems - item.quantity,
                     totalPrice: state.totalPrice - item.price
                 }))
