@@ -106,7 +106,7 @@ const Featured = () => {
 </div>
 
 
-<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 overflow-x-auto no-scrollbar'>  
+<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 mt-10overflow-x-auto no-scrollbar'>  
     {/* WRAPPER */}
       <div className="relative flex w-max">
         {/* SINGLE ITEM */}
@@ -122,7 +122,7 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="rounded-md gap-5 px-5 mx-10 my-11 h-[380px] w-[380px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
+            className="rounded-md gap-5 px-5 mx-10 my-11 h-[300px] w-[380px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
@@ -140,7 +140,7 @@ const Featured = () => {
              
             </div>
 
-            <span className="rounded-full bg-[#741102] p-4 text-white absolute mt-[300px] cursor-pointer" >
+            <span className="rounded-full bg-[#741102] p-4 text-white absolute mt-[250px] cursor-pointer" >
              <ArrowForwardIos fontSize="large"/>
 
              </span>
