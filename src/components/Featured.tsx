@@ -99,7 +99,7 @@ const Featured = () => {
   return (
     <section className='relative flex flex-col w-full h-full py-5 no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
 
-<div className="flex justify-between mx-20 " >
+<div className="flex justify-between mx-20 mb-20" >
 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Featured Products</h2>
 
 
@@ -126,7 +126,7 @@ const Featured = () => {
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-200px] bg-transparent mix-blend-multiply">
+              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-150px] bg-transparent mix-blend-multiply">
                 <Image src={item.img} alt="" width={200} height={150} className="object-cover bg-white " />
               </div>
             )}
@@ -140,7 +140,7 @@ const Featured = () => {
              
             </div>
 
-            <span className="rounded-full bg-[#741102] p-4 text-white absolute mt-[250px] cursor-pointer" >
+            <span className="rounded-full bg-[#741102] p-4 text-white absolute mt-[150px] cursor-pointer" >
              <ArrowForwardIos fontSize="large"/>
 
              </span>
