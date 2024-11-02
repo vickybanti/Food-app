@@ -2,20 +2,14 @@ import Order from "@/lib/database/models/order.model";
 import { connectToDb } from "@/lib/utils/connect";
 import { NextRequest, NextResponse } from "next/server";
 
-export const PUT = async(req:NextRequest, {params}: {params:{id:string}}) => {
-    const {id} = params;
+export const PUT = async(req:NextRequest, {params}: {params:{_id:string}}) => {
+    const {_id} = params;
 
     try {
         await connectToDb();
 
         const body = await req.json()
-        await Order.updateOne({
-            where:{
-                _id:id
-            },
-            data:{status:body}
-            
-        })
+        await Order.updateOne({ _id},{status:body})
         return new NextResponse("ORDER HAS BEEN UPDATED", {status:200})
 
     } catch (error) {

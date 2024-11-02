@@ -59,7 +59,10 @@ const OrdersPage = () => {
 
 
   return (
-    <div className="p-4 lg:px-20 xl:px-40">
+    <div className="p-4 mt-32 mb-20 lg:px-20 xl:px-40">
+      {data?.length === 0 ? (
+        <div className="text-2xl text-center">No orders found</div>
+      ) : ( 
       <table className="w-full border-separate border-spacing-3">
         <thead>
           <tr className="text-left">
@@ -100,6 +103,7 @@ const OrdersPage = () => {
           
         </tbody>
       </table>
+      )}
     </div>
   );
 };
