@@ -100,16 +100,16 @@ const Featured = () => {
     <section className='2xl:max-container relative border-t-2 border-t-[#B]
     flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20'>
 
-<div className="flex justify-between" style={{backgroundImage: "url('/bread background.png')"}}>
+<div className="flex justify-between" style={{backgroundImage: "url('/bread background.jpg')"}}>
 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Featured Products</h2>
 
-<Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
+<Link href="#products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
     View all
 </Link>
 </div>
 
 
-<div className=' flex h-[470px]
+<div className=' flex h-[370px]
 w-full items-start justify-start gap-8 overflow-x-auto px-2 no-scrollbar'>  
     {/* WRAPPER */}
       <div className="relative flex w-max">
@@ -135,7 +135,7 @@ w-full items-start justify-start gap-8 overflow-x-auto px-2 no-scrollbar'>
               </div>
             )}
             {/* TEXT CONTAINER */}
-            <div className="flex flex-col items-center justify-center flex-1 gap-2 text-center" >
+            <div className="flex flex-col items-center justify-center flex-1 gap-2 text-center mt-[-40px]" >
               <Link href={`/product/${item._id}`}>
               <h1 className="text-lg font-bold uppercase xl:text-lg 2xl:text-3xl">{item.title}</h1>
               <p className="p-2 2xl:p-4">{item.desc}</p>
