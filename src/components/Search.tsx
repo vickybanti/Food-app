@@ -55,7 +55,7 @@ export default function SearchBox() {
           ) : (
             <>
               <Image src={option.img} alt={option.title} width={50} height={50} />
-              {option.title}
+              <div className='pl-4 text-md'>{option.title}</div>
             </>
           )}
         </li>

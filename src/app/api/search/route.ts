@@ -17,17 +17,17 @@ export const GET = async (req: NextRequest) => {
     await connectToDb()
     const products = await Product.find({
       $or: [
-          { title: { contains: query, mode: 'insensitive' } },
-          { desc: { contains: query, mode: 'insensitive' } },
-          { catSlug: { contains: query, mode: 'insensitive' } },
-        ],
+        { title: { $regex: query, $options: 'i' } },
+        { desc: { $regex: query, $options: 'i' } },
+        { catSlug: { $regex: query, $options: 'i' } },
+      ],
     });
 
     const categories = await Category.find({
       $or: [
-          { title: { contains: query, mode: 'insensitive' } },
-          { desc: { contains: query, mode: 'insensitive' } },
-        ],
+        { title: { $regex: query, $options: 'i' } },
+        { desc: { $regex: query, $options: 'i' } },
+      ],
     });
 
     console.log("Found products:", products.length);
