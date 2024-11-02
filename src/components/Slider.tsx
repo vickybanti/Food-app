@@ -12,7 +12,7 @@ const data = [
   },
   {
     id: 2,
-    title: "we deliver your order wherever you are in NY",
+    title: "we deliver your order wherever you are",
     image: "/slide2.png",
   },
   {
@@ -62,7 +62,7 @@ const Slider = () => {
       {/* IMAGE CONTAINER */}
       <div className="relative flex-1 w-full mx-20 overflow-hidden">
         <div
-          className={`absolute w-full h-full transition-transform duration-500 ease-in-out ${
+          className={`absolute w-full h-[90%] transition-transform duration-500 ease-in-out ${
             isSliding ? "opacity-0 translate-x-[100%]" : "opacity-100 translate-x-0"
           }`}
         >
