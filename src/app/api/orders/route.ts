@@ -16,7 +16,7 @@ export const GET = async() => {
             await connectToDb();
             if(session.user.isAdmin){
                 const orders = await Order.find()
-                return new NextResponse("ok", {status:200})
+                return new NextResponse(JSON.stringify(orders), {status:200})
 
             }
             if (session?.user && 'email' in session.user) {
@@ -32,7 +32,7 @@ export const GET = async() => {
             }
         } catch (error) {
             return new NextResponse(
-                JSON.stringify("Somethong went wrong"), 
+                JSON.stringify("Something went wrong"), 
                 {status:500})
     
         }
@@ -51,9 +51,9 @@ export const POST = async(req:NextRequest) => {
 
     if(session) {
         try {
+            await connectToDb();
             const body = await req.json()
             if(session.user){
-                await connectToDb();
                 const order = await Order.create(body)
                 return new NextResponse(JSON.stringify(order), {status:200});
 
@@ -61,7 +61,7 @@ export const POST = async(req:NextRequest) => {
            
         } catch (error) {
             return new NextResponse(
-                JSON.stringify("Somethong went wrong"), 
+                JSON.stringify("Something went wrong"), 
                 {status:500})
     
         }

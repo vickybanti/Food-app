@@ -21,34 +21,31 @@ const [loading, setLoading] = useState(false)
 // })
 
 const handleCheckout = async() => {
-
- 
   setLoading(true)
-    try {
-      const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/api/orders`,{
-        method:"POST",
-        headers: {
-          'Content-Type': 'application/json',
-         
-        },       
-         body:JSON.stringify({
-          price:totalPrice,
-          products,
-          status:"Not paid",
-          userEmail:session?.user.email
-        })
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },       
+      body: JSON.stringify({
+        price: totalPrice,
+        products,
+        status: "Not paid",
+        userEmail: session?.user.email
       })
-      const getData = await res.json()
-      console.log(getData)
-      setLoading(false)
-      router.push(`/pay/${getData.id}`)
-    } catch (error) {
-      console.log(error)
-    }
+    })
+    const data = await res.json()
+    console.log(data)
+    setLoading(false)
+    router.push(`/pay/${data._id}`)
+  } catch (error) {
+    console.log(error)
+    setLoading(false)
   }
+}
 
-
-  const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
+const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
   
   return (
     <div className="h-[calc(100vh-6rem)] my-40 md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
