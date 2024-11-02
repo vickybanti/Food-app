@@ -97,8 +97,7 @@ const Featured = () => {
   }, []);
 
   return (
-    <section className='relative flex flex-col w-full h-screen py-5 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'
-    style={{backgroundImage: "url('/bread background.jpg')", backgroundSize: "cover"}}>
+    <section className='relative flex flex-col w-full h-full py-5 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
 
 <div className="flex justify-between mx-20 " >
 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Featured Products</h2>
@@ -152,7 +151,8 @@ w-full items-start justify-start gap-8 overflow-x-auto px-2 no-scrollbar'>
     </div>
 
 
-    <div className='flexEnd mt-10 px-6 lg:mt-20 lg:mr-6 bg-[rgba(0,0,0,0.1)]' >
+    <div className='flexEnd mt-10 px-6 lg:mt-20 lg:mr-6 bg-[rgba(0,0,0,0.1)]' 
+    style={{backgroundImage: "url('/bread background.jpg')", backgroundSize: "cover"}}>
   <div className='relative w-full p-3 mx-auto overflow-hidden xl:px-5 xl:py-5 rounded-3xl'>
     <Carousel
       plugins={[plugin.current]}
