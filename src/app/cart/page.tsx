@@ -15,6 +15,7 @@ const {data:session} = useSession()
 const router = useRouter()
 
 const [loading, setLoading] = useState(false)
+const [error, setError] = useState<string | null>(null)
 
 // useEffect(()=> {
 //   userCartStore.persist.rehydrate();
@@ -22,6 +23,7 @@ const [loading, setLoading] = useState(false)
 
 const handleCheckout = async() => {
   setLoading(true)
+  setError(null)
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders`, {
       method: "POST",
@@ -35,12 +37,21 @@ const handleCheckout = async() => {
         userEmail: session?.user.email
       })
     })
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`)
+    }
+    
     const data = await res.json()
-    console.log(data)
-    setLoading(false)
+    if (!data.id) {
+      throw new Error('Order creation failed - no order ID received')
+    }
+    
     router.push(`/pay/${data.id}`)
   } catch (error) {
-    console.log(error)
+    console.error('Checkout error:', error)
+    setError(error instanceof Error ? error.message : 'Something went wrong')
+  } finally {
     setLoading(false)
   }
 }
@@ -91,6 +102,11 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
           <span className="">TOTAL(INCL. VAT)</span>
           <span className="font-bold">${totalPrice}</span>
         </div>
+        {error && (
+          <div className="mb-2 text-sm text-red-500">
+            {error}
+          </div>
+        )}
         {session ? (
         <Button 
         type="submit" 

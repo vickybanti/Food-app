@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-const PaymentPage = ({params}:{params:{_id:string}}) => {
-  const {_id} = params;
+const PaymentPage = ({params}:{params:{id:string}}) => {
+  const {id} = params;
 
   const [clientSecret, setClientSecret] = useState("")
 
@@ -21,9 +21,8 @@ const PaymentPage = ({params}:{params:{_id:string}}) => {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/create-intent/`,{
           method:"POST",
-          body:JSON.stringify(_id),
+          body:JSON.stringify({_id:id}),
           headers: { 'Content-Type': 'application/json' },
-         
         });
         const data = await res.json()
         setClientSecret(data.clientSecret)
@@ -33,7 +32,7 @@ const PaymentPage = ({params}:{params:{_id:string}}) => {
       }
     }
     makeRequest()
-  },[_id])
+  },[id])
 
   const options:StripeElementsOptions={
     clientSecret,
