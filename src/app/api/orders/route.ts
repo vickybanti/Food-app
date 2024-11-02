@@ -19,10 +19,10 @@ export const GET = async() => {
                 return new NextResponse("ok", {status:200})
 
             }
-            if (session.user && 'email' in session.user) {
-                const orders = await Order.find({
-                    userEmail: session.user.email
-                });
+            if (session?.user && 'email' in session.user) {
+                const orders = await Order.find(
+                    {userEmail:session?.user.email}
+                );
                 return new NextResponse(JSON.stringify(orders), {status:200});
             } else {
                 return new NextResponse(
