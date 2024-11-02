@@ -97,7 +97,7 @@ const Featured = () => {
   }, []);
 
   return (
-    <section className='relative flex flex-col w-full h-full py-5 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
+    <section className='relative flex flex-col w-full h-full py-5 overflow-auto no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
 
 <div className="flex justify-between mx-20 " >
 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Featured Products</h2>
@@ -122,7 +122,7 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="rounded-md gap-14 px-5 mx-10 space-between h-[300px] w-[207px] flex flex-col items-center justify-around p-4 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] xl:w-[28vw] xl:h-[414px] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-20"
+            className="rounded-md gap-14 px-5 mx-10 space-between h-[250px] w-[170px] flex flex-col items-center justify-around p-4 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] xl:w-[28vw] xl:h-[414px] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-20"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
