@@ -45,19 +45,38 @@ export default function SearchBox() {
   return (
     <Autocomplete
       disablePortal
-      options={results.products}
-      getOptionLabel={(option) => option.title}  // Changed to return just the title string
+      loading={loading}
+      options={loading ? [] : results.products}
+      getOptionLabel={(option) => option?.title || ''}
       renderOption={(props, option) => (
-        
         <li {...props}>
-          {loading && (<Skeleton className="h-4 w-4"/>)}
-          <Image src={option.img} alt={option.title} width={50} height={50} />
-          {option.title}
+          {loading ? (
+            <Skeleton className="w-4 h-4"/>
+          ) : (
+            <>
+              <Image src={option.img} alt={option.title} width={50} height={50} />
+              {option.title}
+            </>
+          )}
         </li>
       )}
       onInputChange={(event, newValue) => setInput(newValue)}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Search for food" />}
+      renderInput={(params) => (
+        <TextField 
+          {...params} 
+          label="Search for food"
+          InputProps={{
+            ...params.InputProps,
+            endAdornment: (
+              <>
+                {loading && <Skeleton className="w-4 h-4"/>}
+                {params.InputProps.endAdornment}
+              </>
+            ),
+          }}
+        />
+      )}
     />
   );
 }
