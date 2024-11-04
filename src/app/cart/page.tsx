@@ -15,48 +15,38 @@ const {data:session} = useSession()
 const router = useRouter()
 
 const [loading, setLoading] = useState(false)
-const [error, setError] = useState<string | null>(null)
 
 // useEffect(()=> {
 //   userCartStore.persist.rehydrate();
 // })
 
 const handleCheckout = async() => {
-  setLoading(true)
-  setError(null)
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },       
-      body: JSON.stringify({
-        price: totalPrice,
-        products,
-        status: "Not paid",
-        userEmail: session?.user.email
-      })
-    })
-    
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`)
-    }
-    
-    const data = await res.json()
-    if (!data.id) {
-      throw new Error('Order creation failed - no order ID received')
-    }
-    
-    router.push(`/pay/${data.id}`)
-  } catch (error) {
-    console.error('Checkout error:', error)
-    setError(error instanceof Error ? error.message : 'Something went wrong')
-  } finally {
-    setLoading(false)
-  }
-}
 
-const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
+ 
+  setLoading(true)
+    try {
+      const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/api/orders`,{
+        method:"POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },       
+         body:JSON.stringify({
+          price:totalPrice,
+          products,
+          status:"Not paid",
+          userEmail:session?.user.email
+        })
+      })
+      const getData = await res.json()
+      setLoading(false)
+      router.push(`/pay/${getData.id}`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
   
   return (
     <div className="h-[calc(100vh-6rem)] my-40 md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
@@ -102,11 +92,6 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
           <span className="">TOTAL(INCL. VAT)</span>
           <span className="font-bold">${totalPrice}</span>
         </div>
-        {error && (
-          <div className="mb-2 text-sm text-red-500">
-            {error}
-          </div>
-        )}
         {session ? (
         <Button 
         type="submit" 

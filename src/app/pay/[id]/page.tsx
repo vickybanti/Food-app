@@ -23,6 +23,8 @@ const PaymentPage = ({params}:{params:{id:string}}) => {
           method:"POST",
           body:JSON.stringify({_id:id}),
           headers: { 'Content-Type': 'application/json' },
+          mode: "no-cors",
+         
         });
         const data = await res.json()
         setClientSecret(data.clientSecret)
