@@ -53,11 +53,16 @@ export const POST = async(req:NextRequest) => {
         try {
             await connectToDb();
             const body = await req.json()
-            if(session.user){
-                const order = await Order.create(body)
-                return new NextResponse(JSON.stringify(order), {status:200});
+            if(session.user && 'email' in session.user){
+                const orderData = {
+                    ...body,
+                    userEmail: session.user.email,
+                }
+                const order = await Order.create(orderData)
+                return new NextResponse(JSON.stringify(order), {status:201});
 
             }
+            return new NextResponse(JSON.stringify("User email not found"), {status:400});
            
         } catch (error) {
             return new NextResponse(
