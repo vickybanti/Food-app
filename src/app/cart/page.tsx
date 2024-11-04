@@ -39,7 +39,7 @@ const handleCheckout = async() => {
       })
       const getData = await res.json()
       setLoading(false)
-      router.push(`/pay/${getData.id}`)
+      router.push(`/pay/${getData._id}`)
     } catch (error) {
       console.log(error)
     }
