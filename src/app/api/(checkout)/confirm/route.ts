@@ -4,17 +4,17 @@ import { NextResponse } from "next/server";
 
 export const PUT = async (req: Request) => {
   try {
-    const { intentId } = await req.json();  // Parsing JSON from request body
-    console.log("Intent ID received:", intentId);
+    const { paymentIntent} = await req.json();  // Parsing JSON from request body
+    console.log("Intent ID received:", paymentIntent);
 
-    if (!intentId) {
+    if (!paymentIntent) {
       return new NextResponse(
         JSON.stringify({ message: "Intent ID is missing" }),
         { status: 400 }
       );
     }
 
-    const order = await Order.updateOne({intent_id: intentId,
+    const order = await Order.updateOne({intentId: paymentIntent,
       status: "Being prepared" });
 
     if (!order) {
