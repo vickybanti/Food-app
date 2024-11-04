@@ -28,6 +28,7 @@ const Success = () => {
           }
 
           await response.json(); // Handle response if needed
+          clearCart();
           router.push("/orders");
         } else {
           console.error("Payment intent is missing");
