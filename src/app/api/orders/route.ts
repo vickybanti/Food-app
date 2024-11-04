@@ -57,10 +57,10 @@ export const POST = async(req:NextRequest) => {
                 const orderData = {
                     ...body,
                     userEmail: session.user.email,
+                    _id: body._id || Date.now().toString(),
                 }
                 const order = await Order.create(orderData)
                 return new NextResponse(JSON.stringify(order), {status:201});
-
             }
             return new NextResponse(JSON.stringify("User email not found"), {status:400});
            
