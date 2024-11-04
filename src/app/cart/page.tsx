@@ -9,10 +9,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
 const CartPage = () => {
-const {data:session} = useSession()
-const router = useRouter()
+  const { data: session } = useSession()
+  const router = useRouter()
+  console.log(session)
+
+  const userEmail = session?.user?.email
+console.log(userEmail)
 
 const [loading, setLoading] = useState(false)
 
@@ -21,33 +24,33 @@ const [loading, setLoading] = useState(false)
 // })
 
 const handleCheckout = async() => {
-
- 
   setLoading(true)
-    try {
-      const res = await fetch( `${process.env.NEXT_PUBLIC_URL}/api/orders`,{
-        method:"POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },       
-         body:JSON.stringify({
-          price:totalPrice,
-          products,
-          status:"Not paid",
-          userEmail:session?.user.email
-        })
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },       
+      body: JSON.stringify({
+        price: totalPrice,
+        products, 
+        status: "Not paid",
+        userEmail: userEmail,
+        totalAmount: totalPrice,
+        intentId: "pending"
       })
-      const getData = await res.json()
-      console.log(getData)
-      setLoading(false)
-      router.push(`/pay/${getData._id}`)
-    } catch (error) {
-      console.log(error)
-    }
+    });
+    const getData = await res.json()
+    console.log(getData)
+    setLoading(false)
+    router.push(`/pay/${getData._id}`)
+  } catch (error) {
+    console.log(error)
+    setLoading(false)
   }
+}
 
-
-  const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
+const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
   
   return (
     <div className="h-[calc(100vh-6rem)] my-40 md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">

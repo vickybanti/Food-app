@@ -31,7 +31,7 @@ export type OrderType = {
     userEmail:string;
     products: CartItemType[];
     status:string;
-    price:number;
+    totalAmount:number;
     createdAt: Date;
     intent_id?:string;
 }

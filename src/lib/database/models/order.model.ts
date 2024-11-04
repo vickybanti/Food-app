@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import { Schema, model, models, Document } from 'mongoose'
 
 export interface IOrder extends Document {
@@ -5,9 +6,12 @@ export interface IOrder extends Document {
   intentId: string
   totalAmount: string
   products: {
-    _id: string
+    _id:string
     title: string
-  }
+    price: number
+    quantity: number
+    optionTitle: string
+  }[]
   user: {
     _id: string
     firstName: string
@@ -39,10 +43,13 @@ const OrderSchema = new Schema({
     type: Number,
     required: true,
   },
-  products: {
-    type: Schema.Types.ObjectId,
-    ref: 'Product',
-  },
+  products: [{
+    _id: { type: String, required: true },
+    title: { type: String, required: true },
+    price: { type: Number, required: true },
+    quantity: { type: Number, required: true },
+    optionTitle: { type: String, required: true }
+  }],
   userEmail: {
     type: String,
     required: true,

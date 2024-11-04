@@ -59,16 +59,16 @@ const OrdersPage = () => {
 
 
   return (
-    <div className="p-4 mt-32 mb-20 lg:px-20 xl:px-40">
+    <div className="p-32 mt-32 mb-20 lg:px-32 xl:px-40">
       {data?.length === 0 ? (
         <div className="text-2xl text-center">No orders found</div>
       ) : ( 
-      <table className="w-full border-separate border-spacing-3">
+      <table className="w-full border-separate border-spacing-3 bg-transparent opacity-90 border border-gray-200 rounded-lg shadow-lg">
         <thead>
           <tr className="text-left">
             <th className="hidden md:block">Order ID</th>
             <th>Date</th>
-            <th>Price</th>
+            <th>Total Amount ($)</th>
             <th className="hidden md:block">Products</th>
             <th>Status</th>
           </tr>
@@ -78,7 +78,7 @@ const OrdersPage = () => {
             <tr className={`text-sm md:text-base ${item.status==="delivered"? `bg-green-400`:`bg-red-50`}`} key={item._id}>
             <td className="hidden px-1 py-6 md:block">{item._id}</td>
             <td className="px-1 py-6">{item.createdAt.toString().slice(0,10)}</td>
-            <td className="px-1 py-6">{item.price}</td>
+            <td className="px-1 py-6">{item.totalAmount}</td>
             <td className="hidden px-1 py-6 md:block">{item.products.map((product:CartItemType)=>product.title).join(", ")}</td>
             
               {session?.user.isAdmin ? (

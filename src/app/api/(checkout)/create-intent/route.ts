@@ -6,15 +6,15 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export const POST = async (req: Request) => {
   try {
     await connectToDb()
-    const { _id } = await req.json();  // Parsing the incoming JSON request
-    console.log("Received order ID:", _id);
+    const { orderId } = await req.json();  // Parsing the incoming JSON request
+    console.log("Received order ID:", orderId);
 
-    if (!_id) {
+    if (!orderId) {
       return new NextResponse(JSON.stringify({ message: "Order ID is missing" }), { status: 400 });
     }
 
     // Fetch the order from Prisma
-    const order = await Order.findById(_id);
+    const order = await Order.findById(orderId);
 
     console.log("Order fetched:", order);
 
@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
     console.log("PaymentIntent created:", paymentIntent);
 
     // Update the order with the Payment Intent ID
-    await Order.findByIdAndUpdate( _id, { intent_id: paymentIntent.id });
+    await Order.findByIdAndUpdate( orderId, { intent_id: paymentIntent.id });
 
     console.log("Order updated with Payment Intent ID:", paymentIntent.id);
 
