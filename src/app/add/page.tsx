@@ -1,4 +1,6 @@
 "use client"
+import { Schema } from '@mui/icons-material';
+import mongoose from 'mongoose';
 import { useSession } from 'next-auth/react'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -6,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 
 
 type Inputs = {
+    _id:string;
     title:string;
     price:number;
     desc:string;
@@ -15,12 +18,13 @@ type Inputs = {
 
 
 type Option = {
+  _id?:string;
     title:string;
     additionalPrice:number 
 }
 
 type Category = {
-    _id: string | null | undefined;
+  _id?:string;
     title: string;
     slug: string;
 }
@@ -31,11 +35,12 @@ const Page = () => {
     const [file, setFile] = useState<File>()
     const [isLoading, setLoading] = useState(false)
     const [inputs, setInputs] = useState<Inputs>({
-        title:"",
-        price:0,
-        desc:"",
-        catSlug:"",
-        isFeatured:false,
+        _id:"",
+        title: "",
+        price: 0,
+        desc: "",
+        catSlug: "",
+        isFeatured: false,
     })
 
 
@@ -86,6 +91,7 @@ const Page = () => {
         const res = await fetch(`https://api.cloudinary.com/v1_1/du3vn9rkg/image/upload`, {
             method: "POST",
             body: data,
+            
           });
 
         const resData = await res.json();
@@ -115,6 +121,7 @@ const Page = () => {
         try {
             const url = await upload()
             const productData = {
+            
                 img: url,
                 title: inputs.title.trim(),
                 price: Number(inputs.price),
@@ -122,12 +129,13 @@ const Page = () => {
                 catSlug: inputs.catSlug.trim(),
                 isFeatured: inputs.isFeatured === true,
                 options: options.map(opt => ({
+                    _id:opt._id,
                     title: opt.title.trim(),
                     additionalPrice: Number(opt.additionalPrice)
                 }))
             }
 
-            const res = await fetch(`/api/products`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -136,6 +144,8 @@ const Page = () => {
             })   
 
             const data = await res.json()
+            console.log(data)
+            console.log(data._id)
             if (!res.ok) {
                 throw new Error(data.message || 'Something went wrong')
             }

@@ -1,4 +1,5 @@
 "use client"
+import DeleteButton from "@/components/DeleteButton";
 import DeletButton from "@/components/DeleteButton";
 import Price from "@/components/Price";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -19,9 +20,9 @@ const getData = async(id:string) => {
   return res.json()
 }
 
-const SingleProductPage = async({params}:{params:{_id:string}}) => {
+const SingleProductPage = async({params}:{params:{id:string}}) => {
 
-  const singleProduct:ProductType = await getData(params._id)
+  const singleProduct:ProductType = await getData(params.id)
   console.log(singleProduct._id)
 
   
@@ -44,9 +45,15 @@ const SingleProductPage = async({params}:{params:{_id:string}}) => {
         <h1 className="text-3xl font-bold text-black uppercase xl:text-5xl ">{singleProduct.title}</h1>
         <p className="text-gray-800">{singleProduct.desc}</p>
         <Price product={singleProduct}/>
+
+       
+
       </div>
-      <DeletButton id={singleProduct._id}/>
+      <div className="flex ml-24">
+        <DeleteButton id={singleProduct._id}/>
+      </div>
     </div>
+
   );
 };
 

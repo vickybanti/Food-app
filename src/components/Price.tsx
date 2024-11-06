@@ -64,8 +64,8 @@ const Price = ({ product }: {product:ProductType}) => {
             key={option.title}
             className="min-w-[6rem] p-2 ring-1 ring-gray-100 rounded-md"
             style={{
-              background: selected === index ? "#f9cc0b" : "white",
-              color: selected === index ? "black" : "#f9cc0b",
+              background: selected === index ? "#404112" : "white",
+              color: selected === index ? "white" : "#404112",
             }}
             onClick={() => setSelected(index)}
           >
@@ -99,7 +99,7 @@ const Price = ({ product }: {product:ProductType}) => {
         title="Add to cart" 
         variant='btn_white' 
         full
-        bg="bg-[#404112]" 
+        bg="bg-[#042D29]"
         onClick={()=>handleCart()} 
         hover={true}/>
       

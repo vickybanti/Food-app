@@ -1,5 +1,5 @@
 'use client'
-import { ProductType } from "@/types/types";
+import { CategoryType, ProductType } from "@/types/types";
 import { Add, AddShoppingCartRounded } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,8 +24,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import { Button } from "./ui/button";
-import Price from "./Price";
+import { Button } from "@/components/ui/button";
+import Price from "@/components/Price";
 
 
 type FontProps = {
@@ -33,10 +33,12 @@ type FontProps = {
 }
 
 import { useEffect, useState } from "react";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-const getData = async(page: number, limit: number) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
+const getData = async(page: number, limit: number, category: string) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}&category=${category}`,{
     cache:"no-store",
     headers: {
       'Content-Type': 'application/json',
@@ -48,17 +50,20 @@ const getData = async(page: number, limit: number) => {
   return res.json()
 }
 
-const Products = () => {
+const ProductsPage = () => {
+    const {data:session} = useSession()
   const [products, setProducts] = useState<ProductType[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const limit = 6;
+  const searchParams = useSearchParams();
+  const category = searchParams.get('category') || '';
 
   const loadProducts = async () => {
     try {
       setLoading(true);
-      const data = await getData(page, limit);
+      const data = await getData(page, limit, category);
       setProducts(prev => [...prev, ...data.products]);
       setHasMore(data.hasMore);
     } catch (error) {
@@ -73,13 +78,26 @@ const Products = () => {
   }, [page]);
 
   return (
-    <section className='2xl:max-container relative border-t-2 border-t-[#B78C56]
-    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20'>
+    <section className='relative flex flex-col py-5 mx-20 mt-20 border-t-2 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
       <div className="flex justify-between">
-        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">All Products</h2>
-        <Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
-          View all
-        </Link>
+        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
+        {category && (
+            <Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">View All Products</Link>
+        )}
+
+{category && session?.user.isAdmin &&  (
+            <Link href={`/add/category/${category}`} className="font-semibold font-[italics] hover:underline text-[#3b3b18]">Add new Category</Link>
+        )}
+         {session?.user.isAdmin && (
+        <Button variant="outline">
+       
+        <Link href="/add" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
+          Add new product
+        </Link> 
+        
+        </Button>
+        )}
+        
       </div>
 
       <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
@@ -93,6 +111,7 @@ const Products = () => {
                 <div className="relative w-full h-64">
                   {loading && (<Skeleton className="w-full h-full"/>)}
                   <Link href={`/product/${item._id}`}>
+                  
                   <Image 
                     src={item.img} 
                     alt="" 
@@ -164,4 +183,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

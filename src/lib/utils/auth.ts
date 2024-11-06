@@ -62,15 +62,36 @@ export const authOptions:NextAuthOptions = {
       async jwt({token}) {
         await connectToDb();
         const userInDb = await User.findOne({
-          where:{
-            email:token.email!
-          }
+          email:token.email!
         })
         token.isAdmin=userInDb?.isAdmin!
         return token
        
+        },
+      async signIn({ user, account, profile }) {
+        try {
+          await connectToDb();
+          
+          // Check if user already exists
+          const existingUser = await User.findOne({ email: user.email });
+          
+          if (!existingUser) {
+            // Create new user if doesn't exist
+            await User.create({
+              email: user.email,
+              name: user.name,
+              image: user.image,
+              isAdmin: false // Set default admin status
+            });
+          }
+          
+          return true;
+        } catch (error) {
+          console.error("Error during sign in:", error);
+          return false;
         }
       }
     }
+  }
   
   export const getAuthSession = () => getServerSession(authOptions)
