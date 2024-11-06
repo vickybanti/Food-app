@@ -3,9 +3,11 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Image from 'next/image';
 import { Skeleton } from './ui/skeleton';
+import Link from 'next/link';
 
 interface Product {
   id: string;
+  _id:string;
   title: string;
   img: string;
   // ... other product properties
@@ -54,8 +56,11 @@ export default function SearchBox() {
             <Skeleton className="w-4 h-4"/>
           ) : (
             <>
+             <Link href={`/product/${option._id}`}>
+             
               <Image src={option.img} alt={option.title} width={50} height={50} />
               <div className='pl-4 text-md'>{option.title}</div>
+              </Link>
             </>
           )}
         </li>

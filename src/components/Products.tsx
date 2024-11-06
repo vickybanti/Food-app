@@ -89,19 +89,25 @@ const Products = () => {
 
           <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80">
             <CardHeader className="p-0">
+
               {item.img && (
+                <Link href={`/product/${item._id}`}>
+
                 <div className="relative w-full h-64">
                   {loading && (<Skeleton className="w-full h-full"/>)}
-                  <Link href={`/product/${item._id}`}>
                   <Image 
                     src={item.img} 
                     alt="" 
                     fill 
                     className="object-cover"
+
                   />
-                  </Link>
                 </div>
+                
+</Link>
+
               )}
+
             </CardHeader>
             <CardContent className="flex flex-col gap-2 p-4 text-black">
               {loading && (<Skeleton className="w-4 h-4"/>)}
