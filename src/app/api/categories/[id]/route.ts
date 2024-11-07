@@ -3,12 +3,12 @@ import { connectToDb } from "@/lib/utils/connect";
 
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async(request: NextRequest, {params}: {params: {_id: string}}) => {
-    const {_id} = params;
+export const GET = async(request: NextRequest, {params}: {params: {slug: string}}) => {
+    const {slug} = params;
     try {
         await connectToDb();
         const allCategories = await Category.find({
-            parentCategory: _id
+            parentCategory: slug
         }).populate('products');
         
         return new NextResponse(JSON.stringify(allCategories))

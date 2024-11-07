@@ -1,36 +1,45 @@
 "use client"
 import DeleteButton from "@/components/DeleteButton";
-import DeletButton from "@/components/DeleteButton";
 import Price from "@/components/Price";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ProductType } from "@/types/types";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-
-const getData = async(id:string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/${id}`,{
-    cache:"no-store",
-
-  })
-  if(!res.ok){
-    throw new Error("failed")
+const getData = async (id: string) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("failed");
   }
-  console.log(res)
-  return res.json()
+  return res.json();
 }
+const SingleProductPage = ({ params }: { params: { id: string } }) => {
+  const [singleProduct, setSingleProduct] = useState<ProductType | null>(null);
+  const [loading, setLoading] = useState(true);
 
-const SingleProductPage = async({params}:{params:{id:string}}) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const product = await getData(params.id);
+        setSingleProduct(product);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const singleProduct:ProductType = await getData(params.id)
-  console.log(singleProduct._id)
+    fetchData();
+  }, [params.id]);
 
-  
+  if (loading) return <Skeleton />; // Show a loading state
+
   return (
-    <div className="relative flex flex-col justify-around h-screen p-4 text-red-500 mt-14 lg:px-20 xl:px-40 md:flex-row md:gap-8 md:items-center" key={singleProduct._id}>
+    <div className="relative flex flex-col justify-around h-screen p-4 text-red-500 mt-14 lg:px-20 xl:px-40 md:flex-row md:gap-8 md:items-center" key={singleProduct?._id}>
       {/* IMAGE CONTAINER */}
-      
-      {singleProduct.img && (
+      {singleProduct?.img && (
         <div className="relative w-full h-1/2 md:h-[70%]">
           <Image
             src={singleProduct.img}
@@ -42,18 +51,18 @@ const SingleProductPage = async({params}:{params:{id:string}}) => {
       )}
       {/* TEXT CONTAINER */}
       <div className="pr-12 h-1/2 flex flex-col gap-4 md:h-[70%] md:justify-center md:gap-6 xl:gap-8">
-        <h1 className="text-3xl font-bold text-black uppercase xl:text-5xl ">{singleProduct.title}</h1>
-        <p className="text-gray-800">{singleProduct.desc}</p>
-        <Price product={singleProduct}/>
-
-       
-
+        {singleProduct && (
+          <>
+            <h1 className="text-3xl font-bold text-black uppercase xl:text-5xl ">{singleProduct.title}</h1>
+            <p className="text-gray-800">{singleProduct.desc}</p>
+            <Price product={singleProduct} />
+          </>
+        )}
       </div>
       <div className="flex ml-24">
-        <DeleteButton id={singleProduct._id}/>
+        {singleProduct && <DeleteButton id={singleProduct._id} />}
       </div>
     </div>
-
   );
 };
 

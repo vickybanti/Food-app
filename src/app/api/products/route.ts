@@ -7,16 +7,22 @@ import { NextRequest, NextResponse } from "next/server";
 //FECTH ALL CATEGORIES
 export const GET = async(req:NextRequest) => {
     const {searchParams} = new URL(req.url)
-    const cat = searchParams.get("cat")
+    const category = searchParams.get('category') || '';
     const page = searchParams.get("page") || "1"
     const limit = searchParams.get("limit") || "6"
 
+
     try {
         await connectToDb();
-        const query = cat ? { catSlug: cat } : {};
-        const products = await Product.find(query)
-            .limit(parseInt(limit))
-            .skip((parseInt(page) - 1) * parseInt(limit));
+        const query: any = {};
+        if (category) {
+            query.catSlug = category; // Assuming 'catSlug' is the field in your product model
+        }
+        // const products = await Product.find(query)
+        //     .limit(parseInt(limit))
+        //     .skip((parseInt(page) - 1) * parseInt(limit));
+
+            const products = await Product.find(query).skip((parseInt(page) - 1) * parseInt(limit)).limit(parseInt(limit));
 
         const count = await Product.countDocuments(query);
 

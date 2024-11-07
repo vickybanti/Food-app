@@ -1,26 +1,27 @@
-import { Document, model, models, Schema } from "mongoose";
+import { Document, model, models, ObjectId, Schema } from "mongoose";
 import mongoose from "mongoose";
 import Category from './category.model';
 
 export interface IEvent extends Document {
-    _id:string;
+    _id: ObjectId;
     title: string;
     desc?: string;
     createdAt: Date;
     img: string; 
     price?: string;
-    options?:string[];
+    options?: string[];
     isFree: Boolean;
     catSlug: string;
 }
+
 const ProductSchema = new Schema({
-    _id: { type: Schema.Types.ObjectId, default: () => new mongoose.Types.ObjectId() },
+    _id: { type: Schema.Types.ObjectId }, 
     title: { type: String, required: true },
     desc: { type: String },
     createdAt: { type: Date, default: Date.now },
     img: { type: String },
     price: { type: Number, required: true },
-    options: {type: Array},
+    options: { type: Array },
     isFeatured: { type: Boolean, default: false },
     catSlug: { type: String },
 }, {

@@ -1,7 +1,7 @@
 import { ActionTypes, CartType } from "@/types/types"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import { useToast } from "@/hooks/use-toast"
+import { toast, useToast } from "@/hooks/use-toast"
 
 const INITIAL_STATE = {
     products: [],
@@ -38,8 +38,15 @@ export const userCartStore = create(
                         totalItems: state.totalItems + item.quantity,
                         totalPrice: state.totalPrice + item.price
                     }));
-                   
+                    toast({
+                        title: `${item.title} (${item.quantity})added to cart`,
+                        variant:"default",
+                        className:"bg-[#741102] text-white ",
+                        
+                  
+                      })
                 }
+
             },
             removeFromCart(item) {
                 set((state) => ({
@@ -47,6 +54,13 @@ export const userCartStore = create(
                     totalItems: state.totalItems - item.quantity,
                     totalPrice: state.totalPrice - item.price
                 }))
+                toast({
+                    title: `${item.title} (${item.quantity})added to cart`,
+                    variant:"default",
+                    className:"bg-[#741102] text-white ",
+                    
+              
+                  })
                
             },
             clearCart: () => set({ 

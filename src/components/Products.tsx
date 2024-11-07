@@ -34,6 +34,7 @@ type FontProps = {
 
 import { useEffect, useState } from "react";
 import { Skeleton } from "./ui/skeleton";
+import { useRouter } from "next/navigation";
 
 const getData = async(page: number, limit: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
@@ -54,6 +55,8 @@ const Products = () => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const limit = 6;
+
+  const router = useRouter()
 
   const loadProducts = async () => {
     try {
@@ -151,7 +154,7 @@ const Products = () => {
         <div className="flex justify-center mt-8">
           <Button 
             variant="outline" 
-            onClick={() => setPage(prev => prev + 1)}
+            onClick={()=>router.push('/products')}
             disabled={loading}
           >
             {loading ? 
@@ -160,9 +163,9 @@ const Products = () => {
             alt="loading" 
             width={50} 
             height={50} 
-            className='animate-spin bg-blend-multiply'/>
+            className='animate-spin bg-blend-multiply bg-[#741102]'/>
             
-            : 'Show More'}
+            : 'Show All'}
           </Button>
         </div>
       )}

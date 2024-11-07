@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel"
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { Skeleton } from './ui/skeleton';
 
 const getData = () => {
   return fetch(`/api/categories`, {
@@ -29,11 +30,14 @@ const getData = () => {
 const Categories = () => {
   const router = useRouter()
   const [allCategories, setAllCategories] = useState<CategoryType[]>([])
+  const [loading, setLoading] = useState(false)
   
   useEffect(() => {
+    setLoading(true)
     getData()
       .then(data => setAllCategories(data))
       .catch(error => console.error("Error fetching categories:", error))
+      setLoading(false)
   }, [])
   
   
@@ -44,9 +48,10 @@ const Categories = () => {
         <CarouselContent>
           {allCategories.map((category) => (
             <CarouselItem key={category._id} className="md:basis-1/2 lg:basis-1/3">
+              {loading && (<Skeleton className='w-20 h-20'/>)}
               <div 
                 className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
-                onClick={() => router.push(`/products?category=${category.title}`)}
+                onClick={() => router.push(`/products?category=${category.slug}`)}
               >
                 <Image 
                   src={category.img || ''} 

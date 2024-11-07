@@ -44,13 +44,7 @@ const Price = ({ product }: {product:ProductType}) => {
 
 
     })
-    toast({
-      title: `${product.title} added to cart`,
-      variant:"default",
-      className:"bg-[#404112] text-white",
-      description: `${quantity}`
-
-    })
+   
 
   }
 

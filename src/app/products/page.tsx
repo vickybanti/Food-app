@@ -1,17 +1,16 @@
 'use client'
-import { CategoryType, ProductType } from "@/types/types";
-import { Add, AddShoppingCartRounded } from "@mui/icons-material";
+import {  ProductType } from "@/types/types";
+import { Add } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
+  
 } from "@/components/ui/card"
 
 import {
@@ -24,6 +23,17 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
+
 import { Button } from "@/components/ui/button";
 import Price from "@/components/Price";
 
@@ -38,16 +48,16 @@ import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const getData = async(page: number, limit: number, category: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}&category=${category}`,{
-    cache:"no-store",
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}&category=${category}`, {
+    cache: "no-store",
     headers: {
       'Content-Type': 'application/json',
     },
-  })
-  if(!res.ok){
-    throw new Error("failed")
+  });
+  if (!res.ok) {
+    throw new Error("failed");
   }
-  return res.json()
+  return res.json();
 }
 
 const ProductsPage = () => {
@@ -75,28 +85,54 @@ const ProductsPage = () => {
 
   useEffect(() => {
     loadProducts();
-  }, [page]);
+  }, [page, category]);
 
   return (
     <section className='relative flex flex-col py-5 mx-20 mt-20 border-t-2 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
       <div className="flex justify-between">
         <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
         {category && (
-            <Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">View All Products</Link>
+            <Link href="/products" className="font-semibold hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
         )}
 
-{category && session?.user.isAdmin &&  (
-            <Link href={`/add/category/${category}`} className="font-semibold font-[italics] hover:underline text-[#3b3b18]">Add new Category</Link>
-        )}
+
          {session?.user.isAdmin && (
-        <Button variant="outline">
-       
-        <Link href="/add" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
+
+
+<Menubar>
+<MenubarMenu>
+  <MenubarTrigger className="cursor-pointer">Add New</MenubarTrigger>
+  <MenubarContent>
+    <MenubarItem>
+    <Link href="/add" className="flex font-semibold font-[italics] hover:text-[#888840] text-black">
           Add new product
+          <MenubarShortcut>⌘P</MenubarShortcut>
         </Link> 
-        
-        </Button>
+       
+    </MenubarItem>
+    
+
+    {category && session?.user.isAdmin &&  (
+        <MenubarItem>
+            <Link href={`/add/categories/`}
+             className="font-semibold font-[italics] hover:text-[#3b3b18] text-black flex">
+              Add new Category
+              <MenubarShortcut>⌘C</MenubarShortcut>
+
+              </Link>
+        </MenubarItem>
         )}
+    <MenubarSeparator />
+    
+  </MenubarContent>
+</MenubarMenu>
+</Menubar>
+
+         )}
+
+
+       
+      
         
       </div>
 
@@ -162,21 +198,27 @@ const ProductsPage = () => {
 
       {hasMore && (
         <div className="flex justify-center mt-8">
-          <Button 
-            variant="outline" 
-            onClick={() => setPage(prev => prev + 1)}
-            disabled={loading}
-          >
+         
             {loading ? 
             
             <Image src="/temporary/p2.png" 
             alt="loading" 
             width={50} 
             height={50} 
-            className='animate-spin bg-blend-multiply'/>
+            className='animate-spin bg-blend-multiply '/>
             
-            : 'Show More'}
+            : 
+
+            <Button 
+            variant="destructive" 
+            onClick={() => setPage(prev => prev + 1)}
+            disabled={loading}
+            
+                     >
+              Show More
+            
           </Button>
+          }
         </div>
       )}
     </section>
