@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
     console.log("PaymentIntent created:", paymentIntent);
 
     // Update the order with the Payment Intent ID
-    await Order.findByIdAndUpdate( orderId, { intent_id: paymentIntent.id });
+    await Order.findByIdAndUpdate( orderId, { intentId: paymentIntent.id });
 
     console.log("Order updated with Payment Intent ID:", paymentIntent.id);
 

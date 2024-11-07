@@ -16,6 +16,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { useRouter } from "next/navigation";
 
 type FontProps = {
   fontSize:string;
@@ -63,6 +64,7 @@ const CampSite = ({ backgroundImage, title, subtitle, peopleJoined }: CampProps)
 }
 
 const Featured = () => {
+  const router = useRouter()
   const [featuredProducts, setFeaturedProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(false)
   const plugin = React.useRef(
@@ -97,7 +99,7 @@ const Featured = () => {
   }, []);
 
   return (
-    <section className='relative flex flex-col w-full h-full py-5 no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
+    <section className='relative flex flex-col w-full h-full py-5 overflow-x-auto no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
 
 <div className="flex justify-between mx-20 mb-20" >
 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Featured Products</h2>
@@ -126,7 +128,7 @@ const Featured = () => {
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-200px] mix-blend-multiply">
+              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-150px] mix-blend-multiply">
                 <Image src={item.img} alt="" width={200} height={150} className="object-cover bg-white " />
               </div>
             )}
@@ -135,12 +137,12 @@ const Featured = () => {
               <Link href={`/product/${item._id}`}>
               <h1 className="text-lg font-bold uppercase xl:text-lg 2xl:text-3xl">{item.title}</h1>
               <p className="p-2 2xl:p-4">{item.desc}</p>
-              <span className="text-xl font-medium text-red-600">${item.price}</span>
+              <span className="text-xl font-medium text-white rounded-full p-2 bg-[#741102] ">${item.price}</span>
               </Link>
              
             </div>
 
-            <span className="rounded-full bg-[#741102] p-4 text-white absolute mt-[170px] cursor-pointer" >
+            <span onClick = {()=>router.push(`/product/${item._id}`)} className="rounded-full bg-[#741102] p-4 text-white absolute mt-[190px] cursor-pointer" >
              <ArrowForwardIos fontSize="large"/>
 
              </span>

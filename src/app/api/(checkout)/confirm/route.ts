@@ -1,21 +1,23 @@
 import Order from "@/lib/database/models/order.model";
 import { connectToDb } from "@/lib/utils/connect";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const PUT = async (req: Request) => {
+export const PUT = async (req: NextRequest) => {
+  // Check if params is defined
+ 
+  
   try {
-    const { paymentIntent} = await req.json();  // Parsing JSON from request body
-    console.log("Intent ID received:", paymentIntent);
+    const { intentId } = await req.json();  // Parsing JSON from request body
+    console.log("Intent ID received:", intentId);
 
-    if (!paymentIntent) {
+    if (!intentId) {
       return new NextResponse(
         JSON.stringify({ message: "Intent ID is missing" }),
         { status: 400 }
       );
     }
-
-    const order = await Order.updateOne({intentId: paymentIntent,
-      status: "Being prepared" });
+    await connectToDb();
+    const order = await Order.updateOne({ intentId }, { status: "Being prepared" });
 
     if (!order) {
       return new NextResponse(

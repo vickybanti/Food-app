@@ -55,6 +55,7 @@ export const POST = async(req: NextRequest) => {
     try {
         await connectToDb();
         const body = await req.json()
+        console.log(body)
         
         // Create the order directly with the products array
         const order = await Order.create({

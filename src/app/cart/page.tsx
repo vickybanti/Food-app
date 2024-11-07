@@ -58,7 +58,9 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
       <div className="text-black shadow-[20px_20px_50px_rgba(0,0,0,0.2)] no-scrollbar rounded-md ml-20  h-1/2 pt-32 px-4 flex flex-col justify-center overflow-scroll lg:h-full lg:w-2/3 2xl:w-1/2 lg:px-20 xl:px-40">
         {/* SINGLE ITEM */}
         {loading && (<Skeleton className="w-4 h-4"/>)}
-        {products.map((item) => (
+        {products.length === 0 ? (<h1 className="flex items-center font-bold">No items in cart</h1>)
+        :
+        products.map((item) => (
           <div className="flex items-center justify-between mb-4" key={item._id}>
           {item.img &&
           <Image src={item.img} alt="" width={100} height={100} />
