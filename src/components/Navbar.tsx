@@ -22,10 +22,10 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 z-10 w-full bg-fuchsia-50">
-    <div className={`h-1 p-4 flex items-center justify-between  uppercase md:h-24 lg:px-5 xl:px-20 ${isScrolled ? 'bg-gray-70 backdrop-blur-sm border-b-[#741102]  rounded-3xl border-b-2' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out mt-5 ml-10 mr-10 `}>
+    <div className={`h-16 flex items-center justify-between  uppercase lg:px-5 xl:px-20 ${isScrolled ? 'bg-gray-70 backdrop-blur-sm border-b-[#741102]  rounded-3xl border-b-2' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out mt-5 ml-10 mr-10 `}>
         <Link href="/">
               <div className="w-[150px] h-[80px] px-5 font-sans text-3xl font-bold">
-                 <Image src="/logo-bg.png" width={100} height={80} alt="logo" className="object-contain"/>
+                 <Image src="/logo-bg.png" width={60} height={40} alt="logo" className="object-contain"/>
               </div>
         </Link>
       {/* LEFT LINKS */}
