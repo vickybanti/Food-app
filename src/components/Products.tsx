@@ -76,22 +76,22 @@ const Products = () => {
 
   return (
     <section className='2xl:max-container relative border-t-2 border-t-[#B78C56]
-    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20'>
+    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20 md:mx-10'>
       <div className="flex justify-between">
-        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">All Products</h2>
+        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Explore our store</h2>
         <Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
           View all
         </Link>
       </div>
 
-      <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2'>
       
 
         {products.map((item) => (
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80 md:w-40">
             <CardHeader className="p-0">
             {loading && (<Skeleton className="w-36 h-36"/>)}
 
