@@ -18,14 +18,10 @@ export default function Home() {
     </Suspense>
     
       <Offer/>
-      <Suspense fallback={<Loading />} >
 
       <Featured/>
-      </Suspense>
-      <Suspense fallback={<Loading />} >
 
       <Products />
-      </Suspense>
       </main>
   )
 }

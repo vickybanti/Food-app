@@ -10,8 +10,8 @@ import Navbar from "@/components/Navbar";
 
 
 export const metadata: Metadata = {
-  title: "Banti Restaurant",
-  description: "Best restaurant in town",
+  title: "Moore pizza",
+  description: "Best pizza in town",
 };
 
 
