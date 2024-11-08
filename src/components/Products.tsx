@@ -76,9 +76,9 @@ const Products = () => {
 
   return (
     <section className='2xl:max-container relative border-t-2 border-t-[#B78C56]
-    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20 md:mx-10'>
+    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20'>
       <div className="flex justify-between">
-        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Explore our store</h2>
+        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">All Products</h2>
         <Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
           View all
         </Link>
@@ -91,21 +91,22 @@ const Products = () => {
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80 md:w-40">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80">
             <CardHeader className="p-0">
-            {loading && (<Skeleton className="w-36 h-36"/>)}
+            {}
 
               {item.img && (
                 <Link href={`/product/${item._id}`}>
 
                 <div className="relative w-full h-64">
+                  {loading ? (<Skeleton className="rounded-full w-96 h-[700px]"/>):
                   <Image 
                     src={item.img} 
                     alt="" 
                     fill 
                     className="object-cover"
 
-                  />
+                  />}
                 </div>
                 
 </Link>
@@ -114,15 +115,15 @@ const Products = () => {
 
             </CardHeader>
             <CardContent className="flex flex-col gap-2 p-4 text-black">
-              {loading && (<Skeleton className="w-20 h-20"/>)}
+              
               <CardDescription className="font-semibold text-black">{item.title}</CardDescription>
               <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>
 
               <div className="flex gap-4">
               {loading && (<Skeleton className="w-20 h-20"/>)}
-              {loading && (<Skeleton className="w-20 h-20"/>)}
-              <p className="font-bold text-[#741102]">${item.price}</p> | 
-              <p className="text-gray-500">{item.catSlug}</p>
+              <p className="font-bold text-[#741102]">${loading ?(<Skeleton className="w-20 h-20"/>):
+              item.price}</p> | 
+              <p className="text-gray-500">{loading ?(<Skeleton className="w-20 h-20"/>):item.catSlug}</p>
               </div>
              
             </CardContent>

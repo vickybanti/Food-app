@@ -46,7 +46,6 @@ const Navbar = () => {
      
       {/* MOBILE MENU */}
       <div className="md:hidden">
-        <SearchBox />
         <Menu />
       </div>
       {/* RIGHT LINKS */}

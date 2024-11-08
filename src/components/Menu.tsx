@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
+import SearchBox from "./Search";
+
 
 const links = [
   { id: 1, title: "Homepage", url: "/" },
@@ -38,6 +40,9 @@ const Menu = () => {
       )} */}
       
       {/* SHORTCUT */}
+
+      <SearchBox />
+
       <Image
         src={open ? "/close.png" : "/open.png"}
         alt=""
