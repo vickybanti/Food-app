@@ -41,7 +41,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-fuchsia-50 transition-transform duration-500 ease-in-out mx-35 my-36">
+    <div className="slide flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-fuchsia-50 transition-transform duration-500 ease-in-out mx-35 my-36">
       {/* TEXT CONTAINER */}
       <div
         className={`flex-1 flex items-center justify-center flex-col gap-15 font-bold transition-all duration-500 ease-in-out mx-10 ${
@@ -62,9 +62,9 @@ const Slider = () => {
       {/* IMAGE CONTAINER */}
       <div className="relative flex-1 w-full mx-20 overflow-hidden">
         <div
-          className={`absolute w-full h-[90%] transition-transform duration-500 ease-in-out lg:mx-0 md:mx-8 ${
+          className={`slideImg absolute w-full h-[90%] transition-transform duration-500 ease-in-out lg:mx-0 md:mx-8 ${
             isSliding ? "opacity-0 translate-x-[100%]" : "opacity-100 translate-x-0"
-          }`}
+          } `}
         >
           <Image
             src={data[currentSlide].image}

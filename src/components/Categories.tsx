@@ -1,7 +1,7 @@
 "use client";
 
 import { CategoryType } from '@/types/types'
-import React, { Suspense, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import {
   Carousel,
   CarouselContent,
@@ -42,7 +42,7 @@ const Categories = () => {
   
   
   return (
-    <div className="py-7 lg:mx-20 border-t-2 border-t-[#B78C56] mt-4 md:mx-10">
+    <div className="md py-7 mx-20 border-t-2 border-t-[#B78C56] mt-4 md:mx-10 md:text-center">
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
       <Carousel>
         <CarouselContent>
