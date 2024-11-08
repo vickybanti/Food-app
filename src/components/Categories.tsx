@@ -42,7 +42,7 @@ const Categories = () => {
   
   
   return (
-    <div className="py-7 lg:mx-20 border-t-2 border-t-[#B78C56] mt-4">
+    <div className="py-7 lg:mx-20 border-t-2 border-t-[#B78C56] mt-4 md:mx-10">
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
       <Carousel>
         <CarouselContent>

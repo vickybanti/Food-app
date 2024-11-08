@@ -62,7 +62,7 @@ const Slider = () => {
       {/* IMAGE CONTAINER */}
       <div className="relative flex-1 w-full mx-20 overflow-hidden">
         <div
-          className={`absolute w-full h-[90%] transition-transform duration-500 ease-in-out ${
+          className={`absolute w-full h-[90%] transition-transform duration-500 ease-in-out lg:mx-0 md:mx-8 ${
             isSliding ? "opacity-0 translate-x-[100%]" : "opacity-100 translate-x-0"
           }`}
         >
