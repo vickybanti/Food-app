@@ -108,7 +108,7 @@ const Featured = () => {
 </div>
 
 
-<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 mt-10overflow-x-auto no-scrollbar'>  
+<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 mt-10 overflow-x-auto no-scrollbar'>  
     {/* WRAPPER */}
       <div className="relative flex w-max">
         {/* SINGLE ITEM */}
