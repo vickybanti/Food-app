@@ -1,7 +1,7 @@
 "use client";
 
 import { CategoryType } from '@/types/types'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import {
   Carousel,
   CarouselContent,
@@ -12,6 +12,7 @@ import {
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Skeleton } from './ui/skeleton';
+import Loading from './loading';
 
 const getData = () => {
   return fetch(`/api/categories`, {
@@ -47,22 +48,25 @@ const Categories = () => {
       <Carousel>
         <CarouselContent>
           {allCategories.map((category) => (
+            
             <CarouselItem key={category._id} className="md:basis-1/2 lg:basis-1/3">
-              {loading && (<Skeleton className='w-20 h-20'/>)}
-              <div 
+              <><Suspense fallback={<Loading />} >
+
+              <div
                 className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
                 onClick={() => router.push(`/products?category=${category.slug}`)}
               >
-                <Image 
-                  src={category.img || ''} 
-                  alt={category.title} 
+                <Image
+                  src={category.img || ''}
+                  alt={category.title}
                   fill
-                  className='object-cover w-full h-full transition-all duration-300'
-                />
+                  className='object-cover w-full h-full transition-all duration-300' />
                 <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center `}>
                   <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
                 </div>
               </div>
+              </Suspense></>
+
             </CarouselItem>
           ))}
         </CarouselContent>

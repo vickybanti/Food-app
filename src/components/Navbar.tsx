@@ -24,7 +24,9 @@ const Navbar = () => {
     <div className="fixed top-0 z-10 w-full bg-fuchsia-50">
     <div className={`h-1 p-4 flex items-center justify-between  uppercase md:h-24 lg:px-5 xl:px-20 ${isScrolled ? 'bg-gray-70 backdrop-blur-sm border-b-[#741102]  rounded-3xl border-b-2' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out mt-5 ml-10 mr-10 `}>
       <div className="px-5 font-sans text-3xl font-bold">
-        <Link href="/" className="text-[#741102]">BantiBiz</Link>
+        <Link href="/">
+          <Image src="/logo-bg.png" width={100} height={80} alt="logo"/>
+        </Link>
         </div>
       {/* LEFT LINKS */}
       <div className="flex-1 hidden gap-4 pl-40 ml-20 md:flex">
@@ -44,6 +46,7 @@ const Navbar = () => {
      
       {/* MOBILE MENU */}
       <div className="md:hidden">
+        <SearchBox />
         <Menu />
       </div>
       {/* RIGHT LINKS */}

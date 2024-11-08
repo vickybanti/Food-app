@@ -26,7 +26,7 @@ const UserLinks = () => {
           <DropdownMenuTrigger>
             <div className='flex items-center gap-2'>
             <Image src={data?.user.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt='user' width={32} height={32} className='rounded-full'/>
-            <span className='hover:bg-[#f9cc0b] hover:text-black hover:p-3 first-letter:rounded-full p-3'>Hi {userName}</span>
+            <span className='hover:bg-[#042D29] hover:text-white hover:p-3 first-letter:rounded-full p-3'>Hi {userName}</span>
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent>

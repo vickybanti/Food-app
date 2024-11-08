@@ -1,10 +1,9 @@
 'use client'
 import { ProductType } from "@/types/types";
-import { Add, AddShoppingCartRounded } from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import {
   Card,
   CardContent,
@@ -33,8 +32,8 @@ type FontProps = {
 }
 
 import { useEffect, useState } from "react";
-import { Skeleton } from "./ui/skeleton";
 import { useRouter } from "next/navigation";
+import { Skeleton } from "@mui/material";
 
 const getData = async(page: number, limit: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
@@ -86,18 +85,20 @@ const Products = () => {
       </div>
 
       <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+      
+
         {products.map((item) => (
 
           
 
           <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80">
             <CardHeader className="p-0">
+            {loading && (<Skeleton className="w-36 h-36"/>)}
 
               {item.img && (
                 <Link href={`/product/${item._id}`}>
 
                 <div className="relative w-full h-64">
-                  {loading && (<Skeleton className="w-full h-full"/>)}
                   <Image 
                     src={item.img} 
                     alt="" 
@@ -113,11 +114,13 @@ const Products = () => {
 
             </CardHeader>
             <CardContent className="flex flex-col gap-2 p-4 text-black">
-              {loading && (<Skeleton className="w-4 h-4"/>)}
+              {loading && (<Skeleton className="w-20 h-20"/>)}
               <CardDescription className="font-semibold text-black">{item.title}</CardDescription>
               <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>
 
               <div className="flex gap-4">
+              {loading && (<Skeleton className="w-20 h-20"/>)}
+              {loading && (<Skeleton className="w-20 h-20"/>)}
               <p className="font-bold text-[#741102]">${item.price}</p> | 
               <p className="text-gray-500">{item.catSlug}</p>
               </div>
@@ -157,15 +160,8 @@ const Products = () => {
             onClick={()=>router.push('/products')}
             disabled={loading}
           >
-            {loading ? 
             
-            <Image src="/temporary/p2.png" 
-            alt="loading" 
-            width={50} 
-            height={50} 
-            className='animate-spin bg-blend-multiply bg-[#741102]'/>
-            
-            : 'Show All'}
+            Show all
           </Button>
         </div>
       )}

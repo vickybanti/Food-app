@@ -53,13 +53,14 @@ export default function SearchBox() {
       renderOption={(props, option) => (
         <li {...props}>
           {loading ? (
-            <Skeleton className="w-4 h-4"/>
+            <Skeleton className="w-10 h-10"/>
           ) : (
             <>
              <Link href={`/product/${option._id}`}>
-             
+             <div className="flex">
               <Image src={option.img} alt={option.title} width={50} height={50} />
               <div className='pl-4 text-md'>{option.title}</div>
+              </div>
               </Link>
             </>
           )}
