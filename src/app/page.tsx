@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 
 export default function Home() {
   return (
-    <main>
+    <main className='md:relative md:overflow-x-hidden'>
       <Slider/>
 
       <Categories />
