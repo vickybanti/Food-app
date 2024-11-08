@@ -1,7 +1,6 @@
 import Featured from '@/components/Featured'
 import Offer from '@/components/Offer'
 import Slider from '@/components/Slider'
-import CategoryPage from './menu/[category]/page'
 import Categories from '@/components/Categories'
 import Products from '@/components/Products'
 import { Suspense } from 'react'
@@ -18,10 +17,14 @@ export default function Home() {
     </Suspense>
     
       <Offer/>
+      <Suspense fallback={<Loading />} >
 
       <Featured/>
+      </Suspense>
+      <Suspense fallback={<Loading />} >
 
       <Products />
+      </Suspense>
       </main>
   )
 }

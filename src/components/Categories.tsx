@@ -12,7 +12,6 @@ import {
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Skeleton } from './ui/skeleton';
-import Loading from './loading';
 
 const getData = () => {
   return fetch(`/api/categories`, {
@@ -50,7 +49,6 @@ const Categories = () => {
           {allCategories.map((category) => (
             
             <CarouselItem key={category._id} className="md:basis-1/2 lg:basis-1/3">
-              <><Suspense fallback={<Loading />} >
 
               <div
                 className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
@@ -65,7 +63,6 @@ const Categories = () => {
                   <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
                 </div>
               </div>
-              </Suspense></>
 
             </CarouselItem>
           ))}
