@@ -4,27 +4,20 @@ import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
 import Products from '@/components/Products'
 import { Suspense } from 'react'
-import Loading from '@/components/loading'
 
 export default function Home() {
   return (
     <main>
       <Slider/>
-      <Suspense fallback={<Loading />} >
 
       <Categories />
       
-    </Suspense>
     
       <Offer/>
-      <Suspense fallback={<Loading />} >
 
       <Featured/>
-      </Suspense>
-      <Suspense fallback={<Loading />} >
 
       <Products />
-      </Suspense>
       </main>
   )
 }
