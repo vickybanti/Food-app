@@ -44,15 +44,25 @@
   }
   .offer{
     @media screen and (max-width:464px) {
-    width: 500px;
+    width: 100%;
     height:100%;
-    display: flex;
   }
 
 }
 
+.offer-bg{
+  @media screen and (max-width:464px) {
+  width: 95%;
+  height:100%;
+  display: flex;
+}
+
+}
+
 .feature{
+  @media screen and (max-width:464px){
   width:100%;
+  }
 }
 }
 
