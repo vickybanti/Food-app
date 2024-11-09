@@ -16,7 +16,7 @@
   }
   .mobile{
     @media screen and (max-width: 464px) {
-
+      overflow: hidden;
     }
   }
   .md{
@@ -68,7 +68,7 @@
 
 .feature{
   @media screen and (max-width:464px){
-  width:1200px;
+  width:100%;
   margin: 0;
   padding: 0;
   }
