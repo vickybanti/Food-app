@@ -42,7 +42,7 @@
 
   .slide{
     @media screen and (max-width:464px) {
-      margin: -50px 15px 5px 0px;
+      margin: -50px 15px 5px -20px;
      
       overflow: hidden;
     }
@@ -71,9 +71,16 @@
 .feature{
   @media screen and (max-width:464px){
   width:100%;
-  margin: 0;
   padding: 0;
   margin: 5px 0 5px 12px;
+  }
+}
+
+.featuress{
+  @media screen and (max-width:464px){
+  width:150px;
+  height: 150px;
+ 
   }
 }
 
