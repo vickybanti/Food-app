@@ -150,7 +150,7 @@ const Featured = () => {
     </div>
 
 
-    <div className='flexEnd mt-10 px-6 lg:mt-20 lg:mr-6 bg-[rgba(0,0,0,0.1)]' 
+    <div className='flexEnd secondFeature  mt-10 px-6 lg:mt-20 lg:mr-6 bg-[rgba(0,0,0,0.1)]' 
     style={{backgroundImage: "url('/bread background.jpg')", backgroundSize: "cover"}}>
   <div className='relative w-full p-3 mx-auto overflow-hidden xl:px-5 xl:py-5 rounded-3xl'>
     <Carousel
