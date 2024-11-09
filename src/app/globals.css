@@ -16,20 +16,12 @@
   }
   .md{
     @media screen and (max-width: 464px) {
-      margin-left:5px;   
       width: 100%;   
       
     }
   }
 
-  .md{
-    @media screen and (max-width: 464px) {
-         
-      width: 200px;   
-      
-    }
-  }
-
+  
 
   .slide{
     @media screen and (max-width:464px) {
