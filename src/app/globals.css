@@ -23,9 +23,14 @@
   .md{
     @media screen and (max-width: 464px) {
        
-      width: 10%;
-      overflow-x:hidden;
+      overflow-x:hidden
       
+      
+    }
+  }
+  .medium{
+    @media screen and (max-width:464px) {
+      display: none;
       
     }
   }

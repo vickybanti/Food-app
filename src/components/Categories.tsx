@@ -70,8 +70,10 @@ const Categories = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
+          <div className='medium'>
           <CarouselPrevious />
           <CarouselNext />
+          </div>
         </Carousel>
       </div></>
   )
