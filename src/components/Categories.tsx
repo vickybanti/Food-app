@@ -48,7 +48,7 @@ const Categories = () => {
         <CarouselContent>
           {allCategories.map((category) => (
             
-            <CarouselItem key={category._id} className="slideImg lg:basis-1/3">
+            <CarouselItem key={category._id} className="mdImg lg:basis-1/3">
 
               <div
                 className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
