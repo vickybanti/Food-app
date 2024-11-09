@@ -16,8 +16,16 @@
   }
   .md{
     @media screen and (max-width: 464px) {
-      margin-left:20px;   
-      width: 500px;   
+      margin-left:5px;   
+      width: 100%;   
+      
+    }
+  }
+
+  .md{
+    @media screen and (max-width: 464px) {
+         
+      width: 200px;   
       
     }
   }
