@@ -10,14 +10,14 @@ export default function Home() {
     <main className='md:relative mobile'>
       <Slider/>
 
-      <Categories />
+      {/* <Categories />
       
     
       <Offer/>
 
       <Featured/>
 
-      <Products />
+      <Products /> */}
       </main>
   )
 }
