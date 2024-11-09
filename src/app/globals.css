@@ -18,11 +18,13 @@
     @media screen and (max-width: 464px) {
       margin-left:20px;   
       width: 100%;   
+      
     }
   }
   .mdImg{
     @media screen and (max-width:464px) {
-      width: 100%;
+      width: 80%;
+      height: 80%;      
     }
   }
 
