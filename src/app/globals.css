@@ -23,7 +23,7 @@
   .md{
     @media screen and (max-width: 464px) {
        
-      width: 60%;
+      width: 10%;
       overflow-x:hidden;
       
       
@@ -32,7 +32,7 @@
 
   .mdImg{
     @media screen and (max-width: 464px) {
-      width: 80%;  
+      width: 8%;  
       padding: 0; 
       
     }
