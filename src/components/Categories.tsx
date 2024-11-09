@@ -44,8 +44,8 @@ const Categories = () => {
   return (
     <div className="md py-7 mx-20 border-t-2 border-t-[#B78C56] mt-4 md:mx-20">
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
-      <Carousel className='mdImg'>
-        <CarouselContent>
+      <Carousel>
+        <CarouselContent className='mdImg'>
           {allCategories.map((category) => (
             
             <CarouselItem key={category._id} className="lg:basis-1/3">
