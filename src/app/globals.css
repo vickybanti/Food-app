@@ -77,6 +77,33 @@
   }
 }
 
+.heroSlideImg{
+  @media screen and (max-width:464px) {
+    width:90%;
+    margin-right: 40px;
+  }
+}
+
+.pro{
+  @media screen and (max-width:464px) {
+    margin-left: -50px;
+  }
+}
+
+.proFeature{
+  @media screen and (max-width:464px) {
+    width: 40px;
+    
+  }
+}
+
+.proFeatureImg{
+  @media screen and (max-width:464px) {
+    height: 40px;
+    
+  }
+}
+
 
 
 }
