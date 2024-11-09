@@ -16,7 +16,9 @@
   }
   .md{
     @media screen and (max-width: 464px) {
-      width: 100%;   
+      width: 100%;  
+      margin: 3px;
+      padding: 0; 
       
     }
   }
