@@ -124,7 +124,7 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="featurePro rounded-md gap-5 px-5 mx-10 my-11 h-[300px] w-[380px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
+            className="rounded-md gap-5 px-5 mx-10 my-11 h-[300px] w-[380px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
