@@ -99,14 +99,14 @@ const Featured = () => {
   }, []);
 
   return (
-    <section className='relative flex flex-col w-full h-full py-5 overflow-x-auto featureImg no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
+    <section className='relative flex flex-col w-full h-full py-5 overflow-x-auto feature no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
 
 <div className="flex justify-between mx-20 mb-5" >
 <h2 className="font-sans text-3xl font-semibold text-gray-900 ">Featured Products</h2>
 
 
 </div>
-<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 mt-10 overflow-x-auto no-scrollbar feature'>
+<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 mt-10 overflow-x-auto no-scrollbar'>
     {/* WRAPPER */}
     <div className="relative flex mt-10 w-max">
         {/* SINGLE ITEM */}
