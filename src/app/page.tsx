@@ -9,8 +9,9 @@ export default function Home() {
   return (
     <main className='md:relative mobile'>
       <Slider/>
+      <Categories />
 
-      {/* <Categories />
+      {/* 
       
     
       <Offer/>
