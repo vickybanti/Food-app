@@ -33,9 +33,11 @@
 
   .slideImg{
     @media screen and (max-width:464px) {
-      width: 100%;
+      width: 80%;
       overflow-x: hidden;
-      margin-right: 50px;
+      margin-left: -150px;
+      margin-top: 30px;
+
     }
   }
 
