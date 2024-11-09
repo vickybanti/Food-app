@@ -77,12 +77,7 @@
   }
 }
 
-.heroSlideImg{
-  @media screen and (max-width:464px) {
-    width:90%;
-    margin-right: 40px;
-  }
-}
+
 
 
 
