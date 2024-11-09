@@ -21,25 +21,7 @@
       
     }
   }
-  .mdImg{
-    @media screen and (max-width:464px) {
-      width: 100%;
-      height: auto;
-      overflow-x: hidden;  
-      margin-top: 20px;
-      margin-right: auto;  
-    }
-  }
 
-  .slideImg{
-    @media screen and (max-width:464px) {
-      width: 80%;
-      overflow-x: hidden;
-      margin-left: -150px;
-      margin-top: 30px;
-
-    }
-  }
 
   .slide{
     @media screen and (max-width:464px) {
