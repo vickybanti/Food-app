@@ -124,7 +124,7 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="rounded-md gap-5 px-5 mx-10 my-11 h-[300px] w-[380px] sm:h-[150px] sm:w-[200px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 md:w-[20vw] bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
+            className="rounded-md gap-6 px-5 mx-10 my-11 h-[300px] w-[220px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
@@ -137,7 +137,7 @@ const Featured = () => {
               <Link href={`/product/${item._id}`}>
               <h1 className="text-lg font-bold uppercase xl:text-lg 2xl:text-3xl">{item.title}</h1>
               <p className="p-2 2xl:p-4">{item.desc}</p>
-              <span className="text-xl font-medium text-white rounded-full p-2 bg-[#741102] ">${item.price}</span>
+              <span className="text-xl font-medium text-white rounded-full p-2 bg-[#741102] mt-10">${item.price}</span>
               </Link>
              
             </div>
