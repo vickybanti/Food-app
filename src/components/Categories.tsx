@@ -51,7 +51,7 @@ const Categories = () => {
             <CarouselItem key={category._id} className="md:basis-1/2 lg:basis-1/3">
 
               <div
-                className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
+                className={`mdImg p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
                 onClick={() => router.push(`/products?category=${category.slug}`)}
               >
                 <Image
