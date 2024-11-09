@@ -45,10 +45,10 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mx-20 mt-4 md py-7 md:mx-20">
+    <div className="mx-20 mt-4 py-7 md:mx-20">
 
         <Carousel>
-          <CarouselContent className='mdImg'>
+          <CarouselContent>
             {allCategories.map((category) => (
 
               <CarouselItem key={category._id} className="lg:basis-1/3">
