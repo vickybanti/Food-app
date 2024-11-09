@@ -17,28 +17,34 @@
   .md{
     @media screen and (max-width: 464px) {
       margin-left:20px;   
-      width: 500px;   
+      width: 100%;   
     }
   }
 
   .slideImg{
     @media screen and (max-width:464px) {
       width: 70%;
-      margin-top: -20px;
+      margin-top: -50px;
       overflow-x: hidden;
     }
   }
 
   .slide{
     @media screen and (max-width:464px) {
+      margin-top: -50px;
      
       overflow-x: hidden;
     }
   }
   .offer{
-    width: 100%;
+    @media screen and (max-width:464px) {
+    width: 500px;
+    height:100%;
+    margin-right: 80px;
     display: flex;
   }
+
+}
 }
 
 
