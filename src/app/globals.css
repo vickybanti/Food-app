@@ -49,7 +49,7 @@
   }
   .offer{
     @media screen and (max-width:464px) {
-    width: 1000px;
+    width: 1200px;
     height:1000px;
     margin-left:250px;
     display: flex;
