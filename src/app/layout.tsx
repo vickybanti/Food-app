@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-[#fcf6ef] mobile`}>
+      <body className={`bg-[#fcf6ef]`}>
         <AuthProvider>
           <QueryProvider>
         <div className="relative">
