@@ -22,10 +22,10 @@
   }
   .md{
     @media screen and (max-width: 464px) {
-      width: 1000px;  
-      margin: 10px 0 20px 5px;
+      width: 600px;  
+      margin: 10px 0 20px -10px;
       padding: 0; 
-      margin-left: -60px;
+      
       
     }
   }
