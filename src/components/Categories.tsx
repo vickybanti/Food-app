@@ -45,7 +45,7 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mx-20 mt-4 py-7 md:mx-20 md">
+    <div className="mt-4 py-7 md:mx-40">
 
         <Carousel>
           <CarouselContent>
