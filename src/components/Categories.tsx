@@ -45,13 +45,13 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mt-4 py-7 md:mx-40">
+    <div className="mt-4 py-7 md:mx-40 px-0">
 
         <Carousel>
           <CarouselContent>
             {allCategories.map((category) => (
 
-              <CarouselItem key={category._id} className="lg:basis-1/3">
+              <CarouselItem key={category._id} className="lg:basis-1/3 md:basis-1/2 px-2">
 
                 <div
                   className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer mdImg`}
@@ -61,7 +61,7 @@ const Categories = () => {
                     src={category.img || ''}
                     alt={category.title}
                     fill
-                    className='object-cover w-full h-full transition-all duration-300 mdImg' />
+                    className='object-cover w-full h-full transition-all duration-300' />
                   <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center `}>
                     <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
                   </div>
@@ -70,7 +70,7 @@ const Categories = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className='medium'>
+          <div className='lg:visible overflow-hidden mx-0'>
           <CarouselPrevious />
           <CarouselNext />
           </div>
