@@ -24,7 +24,7 @@
     @media screen and (max-width: 464px) {
        
       overflow-x:hidden;
-      width: 30%;
+      width: 40%;
       padding: 0;
       margin:auto;
 
@@ -54,7 +54,8 @@
 
   .slide{
     @media screen and (max-width:464px) {
-      margin-top: -50px ;
+      margin-top: -50px;
+      width: 50%;
      
       overflow-x: hidden;
     }
@@ -96,7 +97,7 @@
 
 .heroSlideImg{
   @media screen and (max-width:464px) {
-    width:70%;
+    width:80%;
     padding: 0;
     margin-right: auto;
     
