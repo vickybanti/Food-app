@@ -61,7 +61,7 @@ const Categories = () => {
                     src={category.img || ''}
                     alt={category.title}
                     fill
-                    className='object-cover w-full h-full transition-all duration-300 slideImg' />
+                    className='object-cover w-full h-full transition-all duration-300 mdImg' />
                   <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center `}>
                     <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
                   </div>
