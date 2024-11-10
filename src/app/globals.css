@@ -24,9 +24,10 @@
     @media screen and (max-width: 464px) {
        
       overflow-x:hidden;
-      margin-right: 0px;
-      margin-left: 10px;
+      margin-right: 20px;
+      margin-left: 30px;
       width: 100%;
+      padding: 0;
 
       
       
@@ -35,14 +36,17 @@
   .medium{
     @media screen and (max-width:464px) {
       display: none;
+
       
     }
   }
 
   .mdImg{
     @media screen and (max-width: 464px) {
-      width: 60%;
-      margin-left: 20px;  
+      object-fit: contain;
+      width: 90%;
+      
+      
      
     }
   }
@@ -95,6 +99,14 @@
   @media screen and (max-width:464px) {
     width:100%;
     margin-left: -40px;
+    padding: 0;
+  }
+}
+
+.slideText{
+  @media screen and (max-width:464px) {
+    
+    margin-left: 30px;
     padding: 0;
   }
 }
