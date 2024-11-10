@@ -45,9 +45,9 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mt-4 py-7 md:mx-40 px-0 sm:w-auto sm:items-center sm:justify-center">
+    <div className="mt-4 py-7 md:mx-40 px-0">
 
-        <Carousel>
+        <Carousel className='md'>
           <CarouselContent>
             {allCategories.map((category) => (
 
