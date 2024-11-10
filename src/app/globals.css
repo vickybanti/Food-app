@@ -24,7 +24,7 @@
     @media screen and (max-width: 464px) {
        
       overflow-x:hidden;
-      width: 70%;
+      width: 50%;
       padding: 0;
 
       
@@ -42,7 +42,7 @@
   .mdImg{
     @media screen and (max-width: 464px) {
       object-fit: contain;
-      width: 50%;
+      width: 20%;
       
       
      
@@ -96,7 +96,6 @@
 .heroSlideImg{
   @media screen and (max-width:464px) {
     width:50%;
-    margin-left: -40px;
     padding: 0;
   }
 }
