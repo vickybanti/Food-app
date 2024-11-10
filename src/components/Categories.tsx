@@ -54,14 +54,14 @@ const Categories = () => {
               <CarouselItem key={category._id} className="lg:basis-1/3 md:basis-1/2 px-2">
 
                 <div
-                  className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer mdImg`}
+                  className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
                   onClick={() => router.push(`/products?category=${category.slug}`)}
                 >
                   <Image
                     src={category.img || ''}
                     alt={category.title}
                     fill
-                    className='object-cover w-full h-full transition-all duration-300 md:w-[80%]' />
+                    className='object-cover w-full h-full transition-all duration-300 mdImg' />
                   <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center `}>
                     <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
                   </div>
