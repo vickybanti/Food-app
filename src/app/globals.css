@@ -43,7 +43,7 @@
   .mdImg{
     @media screen and (max-width: 464px) {
       object-fit: contain;
-      width: 100%;
+      width: 50%;
       
       
      
@@ -55,7 +55,8 @@
   .slide{
     @media screen and (max-width:464px) {
       margin-top: -90px;
-      width: 80%;
+      width: 50%;
+      margin-left: -15px;
      
       overflow-x: hidden;
     }
