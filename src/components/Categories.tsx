@@ -70,7 +70,7 @@ const Categories = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className='md:hidden'>
+          <div className='hidden'>
           <CarouselPrevious />
           <CarouselNext />
           </div>
