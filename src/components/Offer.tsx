@@ -7,7 +7,7 @@ import Button from "./Button";
 const Offer = () => {
   return (
     <div className="pt-32 mt-0 bg-fuchsia-50 offer">
-    <div className=" bg-black h-screen flex flex-col md:flex-row md:justify-between md:bg-[url('/offerBg.png')] mx-20">
+    <div className="offer-bg bg-black h-screen flex flex-col md:flex-row md:justify-between md:bg-[url('/offerBg.png')] mx-20">
       {/* TEXT CONTAINER */}
       <div className="flex flex-col items-center justify-center flex-1 gap-8 p-6 text-center">
         <h1 className="text-5xl font-bold text-white xl:text-6xl">Delicious Burger & French Fry</h1>
