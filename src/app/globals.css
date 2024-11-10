@@ -23,10 +23,10 @@
   .md{
     @media screen and (max-width: 464px) {
        
-      overflow-x:hidden;
-      width: 80%;
-      padding: 0;
-      margin-left: 0;
+      overflow-x: hidden; /* Ensure no horizontal overflow */
+        width: 100%; /* Change from 90% to 100% */
+        padding: 0;
+        margin-left: 0; 
 
       
       
@@ -98,10 +98,11 @@
 
 .heroSlideImg{
   @media screen and (max-width:464px) {
-    width: 80%;
-    padding: 0;
-    margin: 0 auto;
-  }
+    height: 50%;
+    width: 100%; /* Change from auto to 100% */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /  }
 }
 
 /* .slideText{
@@ -186,21 +187,6 @@
 }
 
 /* Adjusting the hero image to ensure it doesn't overflow */
-.hero-image {
-    background-image: url(images/header.png);
-    height: 50%;
-    width: 100%; /* Change from auto to 100% */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; /* Ensure it covers the area without overflow */
-}
 
 /* Adjusting the md class for better responsiveness */
-.md {
-    @media screen and (max-width: 464px) {
-        overflow-x: hidden; /* Ensure no horizontal overflow */
-        width: 100%; /* Change from 90% to 100% */
-        padding: 0;
-        margin-left: 0; /* Remove margin to prevent overflow */
-    }
-}
+
