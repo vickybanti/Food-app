@@ -45,7 +45,7 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mt-4 py-7 md:mx-40 px-0 w-auto sm:mr-5 sm:ml-12">
+    <div className="mt-4 py-7 md:mx-40 px-0 sm:w-auto sm:items-center sm:justify-center">
 
         <Carousel>
           <CarouselContent>
@@ -70,10 +70,8 @@ const Categories = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className='lg:visible overflow-hidden mx-0'>
           <CarouselPrevious />
           <CarouselNext />
-          </div>
         </Carousel>
       </div></>
   )
