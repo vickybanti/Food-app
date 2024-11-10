@@ -24,8 +24,6 @@
     @media screen and (max-width: 464px) {
        
       overflow-x:hidden;
-      margin-right: 20px;
-      margin-left: 30px;
       width: 80%;
       padding: 0;
 
@@ -106,8 +104,7 @@
 .slideText{
   @media screen and (max-width:464px) {
     
-    margin-left: 30px;
-    padding: 0;
+    padding-left: 5px;
   }
 }
 
