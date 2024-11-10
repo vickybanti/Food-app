@@ -27,9 +27,7 @@
         width: 70%; /* Change from 90% to 100% */
         padding: 0;
         margin-left: 0; 
-
-      
-      
+     
     }
   }
   .medium{
@@ -45,9 +43,7 @@
       object-fit: contain;
       width: 50%;
       
-      
-     
-    }
+      }
   }
 
   
@@ -63,11 +59,10 @@
   }
   .offer{
     @media screen and (max-width:464px) {
-    width: 1200px;
-    height:1000px;
-    margin-left:250px;
-    display: flex;
-    padding: 0;
+      overflow-x: hidden; /* Ensure no horizontal overflow */
+      width: 70%; /* Change from 90% to 100% */
+      padding: 0;
+      margin-left: 0; 
   }
 
 }
