@@ -45,7 +45,7 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mt-4 py-7 md:mx-40 px-0 w-auto">
+    <div className="mt-4 py-7 md:mx-40 px-0 w-auto sm:mr-5 sm:ml-12">
 
         <Carousel>
           <CarouselContent>
@@ -61,7 +61,7 @@ const Categories = () => {
                     src={category.img || ''}
                     alt={category.title}
                     fill
-                    className='object-cover w-full h-full transition-all duration-300' />
+                    className='object-cover w-full h-full transition-all duration-300 md:w-[80%]' />
                   <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center `}>
                     <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
                   </div>
