@@ -70,9 +70,9 @@
 
 .offer-bg{
   @media screen and (max-width:464px) {
-    width: 50%;
+   
     margin: auto;
-    padding: 2px;
+    padding: 20px;
     height: 100%;
 
 }
