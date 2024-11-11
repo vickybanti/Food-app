@@ -46,23 +46,26 @@ const Menu = () => {
       {/* SHORTCUT */}
 
 
-      <Image
-        src={status === 'authenticated' ? `${userImage}`: open ? "/close.png" :  "/open.png"}
-        alt=""
-        width={20}
-        height={20}
-        onClick={() => setOpen(!open)}
-        className={`cursor-pointer `}
-      />
-{status === 'authenticated' && 
-<Image
+  {status === 'authenticated' ?
+    <Image
         src={ ` open ? "/close.png" :  ${userImage}`}
         alt=""
         width={20}
         height={20}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full`}
+        className={`cursor-pointer rounded-full p-32 font-bold`}
       />
+
+      :
+
+      <Image
+      src={open ? "/close.png" :  "/open.png"}
+      alt=""
+      width={20}
+      height={20}
+      onClick={() => setOpen(!open)}
+      className={`cursor-pointer `}
+    />
 }
       {open && (
         <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-24 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">

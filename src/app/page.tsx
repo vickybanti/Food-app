@@ -12,12 +12,14 @@ export default function Home() {
       <Categories />
       <Offer/>
 
+      <Featured/>
+
+
 
       {/* 
       
     
 
-      <Featured/>
 
       <Products /> */}
       </main>
