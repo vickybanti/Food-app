@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 import SearchBox from "./Search";
+import { signOut, useSession } from "next-auth/react";
 
 
 const links = [
@@ -17,7 +18,10 @@ const Menu = () => {
   const [open, setOpen] = useState(false);
 
   // TEMPORARY
-  const user = false;
+  const {data,status} = useSession()
+  const userName = data?.user.name
+  const userImage = data?.user.image
+  
   return (
     <div>
       {/* LONG WAY */}
@@ -43,7 +47,7 @@ const Menu = () => {
 
 
       <Image
-        src={open ? "/close.png" : "/open.png"}
+        src={userName ? `${userImage}`: open ? "/close.png" :  "/open.png"}
         alt=""
         width={20}
         height={20}
@@ -73,11 +77,20 @@ const Menu = () => {
 
           {/* SHORTCUT */}
           <Link
-            href={user ? "/orders" : "login"}
+            href={userName ? "/orders" : "/login"}
             onClick={() => setOpen(false)}
           >
-            {user ? "Orders" : "Login"}
+            {userName ? "Orders" : "Login"}
+            
           </Link>
+          {userName && 
+          
+      <span className="cursor-pointer  text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
+
+            
+}
+
+
           <Link href="/cart" onClick={() => setOpen(false)}>
             <CartIcon />
           </Link>
