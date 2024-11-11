@@ -69,10 +69,12 @@
 
 .offer-bg{
   @media screen and (max-width:464px) {
-    width: 100%; /* Ensure full width */
+    position: absolute;
+
+    width: 70%; /* Ensure full width */
      height: auto; /* Change from fixed height to auto for full height */
      padding: 0;
-     margin: 0 auto; /* Center the element */
+     margin: 0 0 0 -40px; /* Center the element */
 
 }
 
