@@ -31,9 +31,9 @@ const UserLinks = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuSeparator />
-            <DropdownMenuItem> <Link href="/orders" className='text-black font-bold hover:bg-[#f9cc0b] hover:text-black hover:w-full p-2'>Orders</Link></DropdownMenuItem>
+            <DropdownMenuItem> <Link href="/orders" className='text-black font-bold hover:bg-[#042D29] hover:text-white hover:w-full p-2'>Orders</Link></DropdownMenuItem>
             <DropdownMenuItem>
-              <span className="cursor-pointer  text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
+              <span className="cursor-pointer  text-black font-bold hover:bg-[#042D29] hover:text-white p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
             </DropdownMenuItem>
            
           </DropdownMenuContent>
