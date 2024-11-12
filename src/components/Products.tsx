@@ -98,13 +98,13 @@ const Products = () => {
               {item.img && (
                 <Link href={`/product/${item._id}`}>
 
-                <div className="relative w-full h-64">
+                <div className="relative w-full h-64 proImage">
                   {loading ? (<Skeleton className="rounded-full w-96 h-[700px]"/>):
                   <Image 
                     src={item.img} 
                     alt="" 
                     fill 
-                    className="object-cover sm:proImage"
+                    className="object-cover"
 
                   />}
                 </div>
