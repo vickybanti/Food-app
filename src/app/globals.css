@@ -122,8 +122,8 @@
 
 .proImage{
   @media screen and (max-width:464px) {
-    width: 150px;
-    height: 100px;
+    width: 40%;
+    height: 6rem;
     
 
   }
