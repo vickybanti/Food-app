@@ -130,14 +130,39 @@
 }
 
 
-@media (max-width: 640px) {
+@media only screen and (max-width: 768px) {
+  body {
+      padding: 10px;
+  }
+
+  h1 {
+      font-size: 1.8em; /* Smaller font size for mobile */
+  }
+
+  .container {
+      width: 100%; /* Full width on mobile */
+  }
+
+  .grid {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+  }
+
   .card {
-    width: 100%; /* Ensure cards take full width on mobile */
-    margin: 0; /* Remove margins */
-    padding: 5px; /* Adjust padding as needed */
+      margin-bottom: 15px; /* Space between cards */
+      padding: 10px; /* Padding for cards */
   }
 }
 
+/* Additional mobile styles for smaller devices */
+@media only screen and (max-width: 480px) {
+  h1 {
+      font-size: 1.5em; /* Even smaller font size for very small screens */
+  }
+
+  .card {
+      padding: 5px; /* Less padding on very small screens */
+  }
 }
 
 
