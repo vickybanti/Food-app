@@ -18,6 +18,7 @@
     @media screen and (max-width: 464px) {
       overflow: hidden;
       padding: 0;
+      position: relative;
     }
   }
   .md{
@@ -114,7 +115,6 @@
     display:grid;
     margin-left:-20px;
     width: 100%;
-    position: relative;
   }
 }
 
