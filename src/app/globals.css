@@ -127,7 +127,7 @@
     
 
   }
-}
+
 
 
 @media only screen and (max-width: 768px) {
@@ -156,16 +156,14 @@
 
 /* Additional mobile styles for smaller devices */
 @media only screen and (max-width: 480px) {
-  h1 {
-      font-size: 1.5em; /* Even smaller font size for very small screens */
-  }
+ 
 
   .card {
       padding: 5px; /* Less padding on very small screens */
   }
 }
 
-
+}
 
 @layer base {
   :root {
