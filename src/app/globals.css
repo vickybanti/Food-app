@@ -113,7 +113,7 @@
   @media screen and (max-width:464px) {
     overflow-x: hidden; /* Ensure no horizontal overflow */
     margin-left:-20px;
-    width: fit-content;
+    width:auto;
   }
 }
 
