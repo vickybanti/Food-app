@@ -136,13 +136,13 @@ const ProductsPage = () => {
         
       </div>
 
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+      <div className='grid justify-between w-full h-full gap-8 my-20 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2'>
         {products.map((item) => (
 
           
 
-          <Card key={item._id} className="card absolute overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-full md:w-[250px] sm:w-[250px] sm:overflow-hidden">
-            <CardHeader className="p-0 lg:w-full md:w-1/2 sm:w-full">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[420px] md:h-[220px] sm:h-[220px] md:w-[150px] sm:w-[120px]">
+            <CardHeader className="p-0 lg:w-full md:w-[100px] sm:w-[100px]">
               {item.img && (
                 <div className="relative h-64 lg:w-full ">
                   {loading && (<Skeleton className="w-full h-full"/>)}
