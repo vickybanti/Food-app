@@ -19,7 +19,7 @@ const Menu = () => {
 
   // TEMPORARY
   const {data,status} = useSession()
-  const userName = data?.user.name
+  const userName = data?.user.name || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   const userImage = data?.user.image
   
   return (
@@ -48,12 +48,12 @@ const Menu = () => {
 
   {userImage ?
     <Image
-        src={  open ? "/close.png" : userImage || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }
+        src={  open ? "/close.png" : userImage  }
        alt=""
         width={20}
         height={20}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full p-3 font-bold`}
+        className={`cursor-pointer`}
       />
 
       :
