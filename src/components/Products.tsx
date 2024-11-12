@@ -92,13 +92,13 @@ const Products = () => {
           
 
           <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] md:w-80 sm:w-20">
-            <CardHeader className="p-0">
+            <CardHeader className="p-0 proImage">
             {}
 
               {item.img && (
                 <Link href={`/product/${item._id}`}>
 
-                <div className="relative w-full h-64 proImage">
+                <div className="relative w-full h-64">
                   {loading ? (<Skeleton className="rounded-full w-96 h-[700px]"/>):
                   <Image 
                     src={item.img} 
