@@ -107,15 +107,13 @@
     background-size: cover; }
 }
 
-/* .slideText{
+
+.proFeature{
   @media screen and (max-width:464px) {
-    
-    padding-left: 5px;
+    margin: auto;
+    padding: 0;
   }
-} */
-
-
-
+}
 
 }
 
