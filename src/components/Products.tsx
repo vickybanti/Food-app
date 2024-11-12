@@ -84,14 +84,14 @@ const Products = () => {
         </Link>
       </div>
 
-      <div className='grid grid-cols-1 gap-8 proFeature sm:grid-cols-4 lg:grid-cols-3 md:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-8 proFeature sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2'>
       
 
         {products.map((item) => (
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] md:w-80 sm:w-40">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] md:w-80 sm:w-32">
             <CardHeader className="p-0">
             {}
 
