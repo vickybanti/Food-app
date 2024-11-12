@@ -141,8 +141,8 @@ const ProductsPage = () => {
 
           
 
-          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-60">
-            <CardHeader className="p-0 lg:w-full md:w-6">
+          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-60">
+            <CardHeader className="p-0 lg:w-full md:w-full">
               {item.img && (
                 <div className="relative h-64 lg:w-full ">
                   {loading && (<Skeleton className="w-full h-full"/>)}
