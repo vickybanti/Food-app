@@ -91,7 +91,7 @@ const Products = () => {
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] md:w-80 sm:w-32">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] md:w-80 sm:w-20">
             <CardHeader className="p-0">
             {}
 
@@ -104,7 +104,7 @@ const Products = () => {
                     src={item.img} 
                     alt="" 
                     fill 
-                    className="object-cover"
+                    className="object-cover sm:object-contain sm:w-14"
 
                   />}
                 </div>
