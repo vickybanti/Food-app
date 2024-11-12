@@ -46,14 +46,14 @@ const Menu = () => {
       {/* SHORTCUT */}
 
 
-  {status === 'authenticated' ?
+  {userImage ?
     <Image
         src={  open ? "/close.png" : userImage || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }
        alt=""
         width={20}
         height={20}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full p-32 font-bold`}
+        className={`cursor-pointer rounded-full p-3 font-bold`}
       />
 
       :

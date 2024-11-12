@@ -82,10 +82,8 @@
 
 .feature{
   @media screen and (max-width:464px){
-  width:50%;
   overflow-x: hidden;
   padding: 0;
-  margin: 5px 0 5px -50px;
   }
 }
 

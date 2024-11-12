@@ -106,9 +106,9 @@ const Featured = () => {
 
 
 </div>
-<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-20 mt-10'>
+<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-32 mt-7'>
     {/* WRAPPER */}
-    <div className="relative flex mt-10 overflow-x-auto w-max no-scrollbar">
+    <div className="relative flex w-full mt-10 overflow-x-auto no-scrollbar">
         {/* SINGLE ITEM */}
         {loading && (
           <div className="flex items-center justify-center w-screen h-screen mx-auto">
@@ -122,11 +122,11 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="rounded-md gap-6 px-5 mx-10 my-11 h-[300px] w-[220px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102] mt-10"
+            className="rounded-md gap-6 px-5 mx-10 my-14 h-[300px] w-[220px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102]"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-150px] mix-blend-multiply">
+              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-140px] mix-blend-multiply">
                 <Image src={item.img} alt="" width={200} height={150} className="object-cover bg-white " />
               </div>
             )}

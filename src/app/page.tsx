@@ -4,6 +4,7 @@ import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
 import Products from '@/components/Products'
 import { Suspense } from 'react'
+import SecondFeatured from '@/components/SecondFeatured'
 
 export default function Home() {
   return (
@@ -11,17 +12,13 @@ export default function Home() {
       <Slider/>
       <Categories />
       <Offer/>
-
       <Featured/>
-
-
-
-      {/* 
+    
       
     
 
 
-      <Products /> */}
+      
       </main>
   )
 }
