@@ -88,7 +88,7 @@ const ProductsPage = () => {
   }, [page, category]);
 
   return (
-    <section className='relative flex flex-col py-5 mx-20 mt-20 overflow-hidden border-t-2 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 md:w-full sm:w-full md:m-0 sm:m-0 md:p-0 sm:p-0 md:overflow-hidden sm:overflow-hidden'>
+    <section className='relative flex flex-col py-5 mx-20 mt-20 overflow-hidden border-t-2 2xl:max-container lg:mb-10 lg:py-20 lg:px-10 xl:mb-20 md:w-full sm:w-full md:mx-0 sm:mx-0 md:px-0 sm:px-0 md:overflow-hidden sm:overflow-hidden'>
       <div className="flex justify-between">
         <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
         {category && (
@@ -141,7 +141,7 @@ const ProductsPage = () => {
 
           
 
-          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-full md:w-full sm:w-full sm:overflow-hidden md:overflow-hidden">
+          <Card key={item._id} className="card overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-full md:w-full sm:w-full sm:overflow-hidden md:overflow-hidden">
             <CardHeader className="p-0 lg:w-full md:w-1/2 sm:w-full">
               {item.img && (
                 <div className="relative h-64 lg:w-full ">

@@ -130,6 +130,13 @@
 }
 
 
+@media (max-width: 640px) {
+  .card {
+    width: 100%; /* Ensure cards take full width on mobile */
+    margin: 0; /* Remove margins */
+    padding: 5px; /* Adjust padding as needed */
+  }
+}
 
 }
 
