@@ -88,7 +88,7 @@ const ProductsPage = () => {
   }, [page, category]);
 
   return (
-    <section className='relative flex flex-col py-5 mx-20 mt-20 border-t-2 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
+    <section className='relative flex flex-col py-5 mx-20 mt-20 overflow-hidden border-t-2 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
       <div className="flex justify-between">
         <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
         {category && (
@@ -136,15 +136,15 @@ const ProductsPage = () => {
         
       </div>
 
-      <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
         {products.map((item) => (
 
           
 
-          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-80">
-            <CardHeader className="p-0">
+          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-60">
+            <CardHeader className="p-0 lg:w-full md:w-6">
               {item.img && (
-                <div className="relative w-full h-64 proFeatureImg">
+                <div className="relative h-64 lg:w-full ">
                   {loading && (<Skeleton className="w-full h-full"/>)}
                   <Link href={`/product/${item._id}`}>
                   
