@@ -141,7 +141,7 @@ const ProductsPage = () => {
 
           
 
-          <Card key={item._id} className="card overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-full md:w-[250px] sm:w-[250px] sm:overflow-hidden">
+          <Card key={item._id} className="card absolute overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-full md:w-[250px] sm:w-[250px] sm:overflow-hidden">
             <CardHeader className="p-0 lg:w-full md:w-1/2 sm:w-full">
               {item.img && (
                 <div className="relative h-64 lg:w-full ">
