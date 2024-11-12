@@ -119,8 +119,10 @@
 
 .pro{
   @media screen and (max-width:464px) {
-    width: 40px;
+    position: absolute;
+    width: 40%;
     height: auto;
+
   }
 }
 
