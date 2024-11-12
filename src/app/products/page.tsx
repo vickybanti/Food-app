@@ -136,13 +136,13 @@ const ProductsPage = () => {
         
       </div>
 
-      <div className='grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
+      <div className='grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
         {products.map((item) => (
 
           
 
-          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-60">
-            <CardHeader className="p-0 lg:w-full md:w-full">
+          <Card key={item._id} className="proFeature overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-full">
+            <CardHeader className="p-0 lg:w-full md:w-1/2 sm:w-full">
               {item.img && (
                 <div className="relative h-64 lg:w-full ">
                   {loading && (<Skeleton className="w-full h-full"/>)}
