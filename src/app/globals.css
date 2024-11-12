@@ -120,10 +120,11 @@
   }
 }
 
-.pro{
+.proImage{
   @media screen and (max-width:464px) {
-    position: absolute;
     width: 150px;
+    height: 100px;
+    
 
   }
 }

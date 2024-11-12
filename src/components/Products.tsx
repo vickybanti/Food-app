@@ -104,7 +104,7 @@ const Products = () => {
                     src={item.img} 
                     alt="" 
                     fill 
-                    className="object-cover sm:object-contain sm:w-14"
+                    className="object-cover sm:proImage"
 
                   />}
                 </div>
