@@ -141,10 +141,10 @@ const ProductsPage = () => {
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[420px] md:h-[220px] sm:h-[220px] md:w-[150px] sm:w-[120px]">
-            <CardHeader className="p-0 lg:w-full lg:h-full md:w-[80px] md:h-[80px] sm:w-[80px] sm:h-[80px]">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[340px] md:h-[120px] sm:h-[120px] md:w-[150px] sm:w-[120px]">
+            <CardHeader className="p-0 lg:w-full md:w-[50%] sm:w-[50%] sm:h-[40%] md:h-[60%]">
               {item.img && (
-                <div className="relative h-64 lg:w-full ">
+                <div className="relative h-full lg:w-full ">
                   {loading && (<Skeleton className="w-full h-full"/>)}
                   <Link href={`/product/${item._id}`}>
                   
@@ -152,7 +152,7 @@ const ProductsPage = () => {
                     src={item.img} 
                     alt="" 
                     fill 
-                    className="object-cover"
+                    className="object-contain"
                   />
                   </Link>
                 </div>
@@ -171,7 +171,7 @@ const ProductsPage = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <div></div>
-              <span className="mt-[-20px]">
+              <span className="mt-[-30px]">
                 <Drawer>
                   <DrawerTrigger className="p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
                     <Add fontSize="large" className="text-white"/>
