@@ -91,37 +91,40 @@ const Products = () => {
 
           
 
-<Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[340px] md:h-[120px] sm:h-[120px] md:w-[150px] sm:w-[120px]">
-<CardHeader className="p-0 lg:w-full md:w-[50%] sm:w-[50%] sm:h-[40%] md:h-[60%]">
+<Card key={item._id} className="card shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[350px] mx-auto">
+<CardHeader className="cardHeader lg:w-full lg:h-[250px] ">
   {item.img && (
-    <div className="relative h-full lg:w-full ">
-      {loading && (<Skeleton className="w-full h-full"/>)}
+    <div className="relative h-60 lg:w-full cardImage">
+      {loading ? (<Skeleton className="w-full h-full rounded-full"/>):
       <Link href={`/product/${item._id}`}>
       
       <Image 
         src={item.img} 
         alt="" 
         fill 
-        className="object-contain"
+        className="object-cover"
       />
       </Link>
+    }
     </div>
   )}
 </CardHeader>
-<CardContent className="flex flex-col gap-2 p-4 text-black">
-  {loading && (<Skeleton className="w-4 h-4"/>)}
-  <CardDescription className="font-semibold text-black">{item.title}</CardDescription>
-  <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>
+<CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
+  {loading ? (<Skeleton className="w-10 h-4"/>):
+  <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
+  {loading ? (<Skeleton className="w-10 h-4"/>):
+  <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>}
 
   <div className="flex gap-4">
-  <p className="font-bold text-[#741102]">${item.price}</p> | 
-  <p className="text-gray-500">{item.catSlug}</p>
+  {loading ? (<Skeleton className="w-8 h-4"/>):
+  <p className="font-bold text-[#741102]">${item.price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
+  <p className="text-gray-500">{item.catSlug}</p>}
   </div>
  
 </CardContent>
 <CardFooter className="flex justify-between">
   <div></div>
-  <span className="mt-[-30px]">
+  <span className="mt-[-60px]">
     <Drawer>
       <DrawerTrigger className="p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
         <Add fontSize="large" className="text-white"/>
