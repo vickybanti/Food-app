@@ -68,7 +68,7 @@ const Menu = () => {
     />
 }
       {open && (
-        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-24 w-screen overflow-x-hidden h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
+        <div className="bg-white backdrop-blur-lg text-[#741102] absolute ml-[-10px] top-24 w-screen overflow-x-hidden h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
                   <SearchBox />
 
           {links.map((item) => (
