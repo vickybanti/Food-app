@@ -156,7 +156,9 @@
 
   .prod{
     margin-top:30px;
-    width:95%;
+    width:100%;
+    margin-left: -5px;
+    padding: 2px;
     
   }
   .prodHeader{
