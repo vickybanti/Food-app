@@ -76,7 +76,7 @@ const Products = () => {
   return (
     <div className='2xl:max-container relative border-t-2 border-t-[#B78C56]
     flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20 prod'>
-      <div className="flex justify-between">
+      <div className="flex justify-between prodHeader">
         <h2 className="mb-4 font-sans text-xl font-semibold text-gray-900 ">Newly cooked</h2>
         <Link href="/products" className="font-semibold hover:underline text-[#3b3b18]">
           View all
