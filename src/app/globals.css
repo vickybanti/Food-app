@@ -99,14 +99,7 @@
   }
 }
 
-.heroSlideImg{
-  @media screen and (max-width:464px) {
-    height: 50%;
-    width: 100%; /* Change from auto to 100% */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; }
-}
+
 
 
 .proFeature{
@@ -171,6 +164,10 @@
   }
   .popularFont{
     font-size: 15px;
+  }
+
+  .heroSlideImg{
+    display: none;
   }
 }
 
