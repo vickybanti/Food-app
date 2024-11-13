@@ -150,6 +150,15 @@
   .cardImage{
     background-size: contain;
   }
+  .priceFont{
+    font-size: 10px;
+  }
+  .catFont{
+    font-size: 12px;
+  }
+  .cartSize{
+    padding: 3.5px;
+  }
 }
 
 

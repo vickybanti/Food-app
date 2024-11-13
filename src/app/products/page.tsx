@@ -163,12 +163,12 @@ const ProductsPage = () => {
               {loading ? (<Skeleton className="w-10 h-4"/>):
               <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
               {loading ? (<Skeleton className="w-10 h-4"/>):
-              <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>}
+              <CardDescription className="catFont text-gray-800">{item.desc}</CardDescription>}
 
               <div className="flex gap-4">
               {loading ? (<Skeleton className="w-8 h-4"/>):
-              <p className="font-bold text-[#741102]">${item.price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
-              <p className="text-gray-500">{item.catSlug}</p>}
+              <p className="font-bold text-[#741102] priceFont">${item.price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
+              <p className="text-gray-500 priceFont">{item.catSlug}</p>}
               </div>
              
             </CardContent>
@@ -176,7 +176,7 @@ const ProductsPage = () => {
               <div></div>
               <span className="mt-[-60px]">
                 <Drawer>
-                  <DrawerTrigger className="p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
+                  <DrawerTrigger className="cartSize p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
                     <Add fontSize="large" className="text-white"/>
                   </DrawerTrigger>
                   <DrawerContent>
