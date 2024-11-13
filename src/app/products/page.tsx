@@ -136,13 +136,13 @@ const ProductsPage = () => {
         
       </div>
 
-      <div className='grid justify-between w-full h-full lg:gap-8 md:gap-2 sm:gap-2 my-20 lg:grid-cols-4 md:grid-cols-2  sm:grid-cols-2'>
+      <div className='grid w-full h-full lg:gap-8 md:gap-2 sm:gap-4 my-20 lg:grid-cols-4 md:grid-cols-2 md:w-screen sm:w-screen sm:grid-cols-2'>
         {products.map((item) => (
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[340px] md:h-[200px] sm:h-[200px] md:w-[150px] sm:w-[120px]">
-            <CardHeader className="p-0 lg:w-full md:w-[50%] sm:w-[100%] sm:h-[100%] md:h-[60%]">
+          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[340px] md:h-[200px] sm:h-[200px] md:w-[200px] sm:w-[200px]">
+            <CardHeader className="p-0 lg:w-full md:w-[100%] sm:w-[100%] sm:h-[100%] md:h-[60%]">
               {item.img && (
                 <div className="relative h-full lg:w-full ">
                   {loading && (<Skeleton className="w-full h-full"/>)}
