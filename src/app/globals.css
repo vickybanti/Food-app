@@ -53,7 +53,8 @@
     @media screen and (max-width:464px) {
       margin-top: -90px;
       width: 50%;
-      margin-left: -15px;
+      margin-left: 5px;
+      height: 30%;
      
       overflow-x: hidden;
     }
