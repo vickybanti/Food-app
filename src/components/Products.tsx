@@ -91,66 +91,58 @@ const Products = () => {
 
           
 
-          <Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] md:w-20 sm:w-10">
-            <CardHeader className="p-0 md:w-10 md:h-10">
-            
+<Card key={item._id} className="overflow-hidden shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[340px] md:h-[120px] sm:h-[120px] md:w-[150px] sm:w-[120px]">
+<CardHeader className="p-0 lg:w-full md:w-[50%] sm:w-[50%] sm:h-[40%] md:h-[60%]">
+  {item.img && (
+    <div className="relative h-full lg:w-full ">
+      {loading && (<Skeleton className="w-full h-full"/>)}
+      <Link href={`/product/${item._id}`}>
+      
+      <Image 
+        src={item.img} 
+        alt="" 
+        fill 
+        className="object-contain"
+      />
+      </Link>
+    </div>
+  )}
+</CardHeader>
+<CardContent className="flex flex-col gap-2 p-4 text-black">
+  {loading && (<Skeleton className="w-4 h-4"/>)}
+  <CardDescription className="font-semibold text-black">{item.title}</CardDescription>
+  <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>
 
-              {item.img && (
-                <Link href={`/product/${item._id}`}>
-
-                <div className="relative w-full h-64">
-                  {loading ? (<Skeleton className="rounded-full w-96 h-[700px]"/>):
-                  <Image 
-                    src={item.img} 
-                    alt="" 
-                    fill 
-                    className="object-cover"
-
-                  />}
-                </div>
-                
-</Link>
-
-              )}
-
-            </CardHeader>
-            <CardContent className="flex flex-col gap-2 p-4 text-black">
-              
-              <CardDescription className="font-semibold text-black">{item.title}</CardDescription>
-              <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>
-
-              <div className="flex gap-4">
-              {loading && (<Skeleton className="w-20 h-20"/>)}
-              <p className="font-bold text-[#741102]">${loading ?(<Skeleton className="w-20 h-20"/>):
-              item.price}</p> | 
-              <p className="text-gray-500">{loading ?(<Skeleton className="w-20 h-20"/>):item.catSlug}</p>
-              </div>
-             
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <div></div>
-              <span className="mt-[-20px]">
-                <Drawer>
-                  <DrawerTrigger className="p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
-                    <Add fontSize="large" className="text-white"/>
-                  </DrawerTrigger>
-                  <DrawerContent>
-                    <DrawerHeader className="flex flex-col gap-2 mx-auto">
-                      <DrawerTitle>
-                        <Price product={item}/>
-                      </DrawerTitle>
-                      <DrawerDescription></DrawerDescription>
-                    </DrawerHeader>
-                    <DrawerFooter>
-                      <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
-                      </DrawerClose>
-                    </DrawerFooter>
-                  </DrawerContent>
-                </Drawer>
-              </span>
-            </CardFooter>
-          </Card>
+  <div className="flex gap-4">
+  <p className="font-bold text-[#741102]">${item.price}</p> | 
+  <p className="text-gray-500">{item.catSlug}</p>
+  </div>
+ 
+</CardContent>
+<CardFooter className="flex justify-between">
+  <div></div>
+  <span className="mt-[-30px]">
+    <Drawer>
+      <DrawerTrigger className="p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
+        <Add fontSize="large" className="text-white"/>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader className="flex flex-col gap-2 mx-auto">
+          <DrawerTitle>
+            <Price product={item}/>
+          </DrawerTitle>
+          <DrawerDescription></DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter>
+          <DrawerClose>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  </span>
+</CardFooter>
+</Card>
         ))}
       </div>
 
