@@ -53,9 +53,9 @@ const handleCheckout = async() => {
 const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
   
   return (
-    <div className="h-[calc(100vh-6rem)] my-40 md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
+    <div className="cart h-[calc(100vh-6rem)] my-40 md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
       {/* PRODUCTS CONTAINER */}
-      <div className="text-black shadow-[20px_20px_50px_rgba(0,0,0,0.2)] no-scrollbar rounded-md ml-20  h-1/2 pt-32 px-4 flex flex-col justify-center overflow-scroll lg:h-full lg:w-2/3 2xl:w-1/2 lg:px-20 xl:px-40 ">
+      <div className="cartPro text-black shadow-[20px_20px_50px_rgba(0,0,0,0.2)] no-scrollbar rounded-md ml-20  h-1/2 pt-32 px-4 flex flex-col justify-center overflow-scroll lg:h-full lg:w-2/3 2xl:w-1/2 lg:px-20 xl:px-40 ">
         {/* SINGLE ITEM */}
         {loading && (<Skeleton className="w-40 h-40"/>)}
         {products.length === 0 ? (<h1 className="flex items-center font-bold p-12">No items in cart</h1>)
