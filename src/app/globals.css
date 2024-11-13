@@ -156,11 +156,12 @@
   .prod{
     margin-top:24px;
     width:100%;
-    padding: 3px;
+    padding: 2px;
+    margin-left: -15px;
   }
 
   .popular{
-    margin-left: -50px;
+    margin-left: -60px;
   }
   .popularFont{
     font-size: 15px;
