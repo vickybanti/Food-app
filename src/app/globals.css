@@ -159,6 +159,18 @@
   .cartSize{
     padding: 3.5px;
   }
+
+  .prod{
+    margin-left: -10px;
+    margin-top:10px;
+  }
+
+  .popular{
+    margin-left: -30px;
+  }
+  .popularFont{
+    font-size: 15px;
+  }
 }
 
 

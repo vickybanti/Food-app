@@ -53,7 +53,7 @@ const Products = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const limit = 6;
+  const limit = 4;
 
   const router = useRouter()
 
@@ -73,13 +73,12 @@ const Products = () => {
   useEffect(() => {
     loadProducts();
   }, [page]);
-
   return (
-    <section className='2xl:max-container relative border-t-2 border-t-[#B78C56]
-    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20'>
+    <div className='2xl:max-container relative border-t-2 border-t-[#B78C56]
+    flex flex-col py-5 lg:mb-10 lg:py-20 xl:mb-20 mx-20 prod'>
       <div className="flex justify-between">
-        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">All Products</h2>
-        <Link href="/products" className="font-semibold font-[italics] hover:underline text-[#3b3b18]">
+        <h2 className="mb-4 font-sans text-xl font-semibold text-gray-900 ">Newly cooked</h2>
+        <Link href="/products" className="font-semibold hover:underline text-[#3b3b18]">
           View all
         </Link>
       </div>
@@ -113,12 +112,12 @@ const Products = () => {
   {loading ? (<Skeleton className="w-10 h-4"/>):
   <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
   {loading ? (<Skeleton className="w-10 h-4"/>):
-  <CardDescription className="font-semibold text-gray-800">{item.desc}</CardDescription>}
+  <CardDescription className="catFont text-gray-800">{item.desc}</CardDescription>}
 
   <div className="flex gap-4">
   {loading ? (<Skeleton className="w-8 h-4"/>):
-  <p className="font-bold text-[#741102]">${item.price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
-  <p className="text-gray-500">{item.catSlug}</p>}
+  <p className="font-bold text-[#741102] priceFont">${item.price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
+  <p className="text-gray-500 priceFont">{item.catSlug}</p>}
   </div>
  
 </CardContent>
@@ -126,7 +125,7 @@ const Products = () => {
   <div></div>
   <span className="mt-[-60px]">
     <Drawer>
-      <DrawerTrigger className="p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
+      <DrawerTrigger className="cartSize p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
         <Add fontSize="large" className="text-white"/>
       </DrawerTrigger>
       <DrawerContent>
@@ -161,7 +160,7 @@ const Products = () => {
           </Button>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
