@@ -49,16 +49,7 @@
 
   
 
-  .slide{
-    @media screen and (max-width:464px) {
-      margin-top: -90px;
-      width: 50%;
-      margin-left: 15px;
-      height: 30%;
-     
-      overflow-x: hidden;
-    }
-  }
+  
   .offer{
     @media screen and (max-width:464px) {
       width: 100%; /* Ensure full width */
@@ -157,7 +148,7 @@
   .prod{
     margin-top:30px;
     width:100%;
-    margin-left: -5px;
+    margin-left: -3px;
     padding: 2px;
     
   }
@@ -175,6 +166,15 @@
 
   .heroSlideImg{
     display: none;
+  }
+
+  .slide{
+    margin-top: -120px;
+    width: 50%;
+    margin-left: 15px;
+    height: 30%;
+   
+    overflow-x: hidden;
   }
 }
 
