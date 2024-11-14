@@ -197,6 +197,7 @@
     margin: 10px auto;
     height: 60%;
     width: 320px;
+    padding-top: 8px;
   }
   .cartImage{
     width: 50px;
@@ -223,6 +224,7 @@
 
   .paypage{
     width: 100%;
+
   }
 }
 
