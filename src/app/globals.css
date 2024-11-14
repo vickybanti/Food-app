@@ -176,12 +176,12 @@
     width: 70%;
     margin-left: 15px;
     height: 90%;
-   
-    overflow-x: hidden;
+   margin-bottom:60px;
+    overflow: hidden;
   }
 
   .cart{
-    margin: auto;
+    margin: 50px aauto;
     padding: 0 30px;
   }
   .cartPro{
@@ -195,6 +195,9 @@
   
   .cartTitle{
     font-size: 15px;
+  }
+  .cartoption{
+    font-size:12px;
   }
 }
 

@@ -67,7 +67,7 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
           }
           <div className="">
             <h1 className="text-xl font-bold uppercase cartTitle">{item.title} ( {item.quantity})</h1>
-            <span>{item.optionTitle}</span>
+            <span className="cartoption">{item.optionTitle}</span>
           </div>
           <h2 className="font-bold">${item.price}</h2>
           <span className="cursor-pointer font-[red]" onClick={()=>removeFromCart(item)}>
