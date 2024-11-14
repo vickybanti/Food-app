@@ -66,7 +66,9 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
           <Image src={item.img} alt="" width={100} height={100} className="cartImage" />
           }
           <div className="">
-            <h1 className="text-xl font-bold uppercase cartTitle">{item.title} ( {item.quantity})</h1>
+            <h1 className="text-xl font-bold uppercase cartTitle">{item.title} </h1>
+            <span className="cartoption"> ({item.quantity}) </span>
+            
             <span className="cartoption">{item.optionTitle}</span>
           </div>
           <h2 className="font-bold">${item.price}</h2>

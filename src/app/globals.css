@@ -27,7 +27,8 @@
       overflow-x: hidden; /* Ensure no horizontal overflow */
         width: 70%; /* Change from 90% to 100% */
         padding: 0;
-        margin-left: 0; 
+        margin-left: 0;
+        margin-top: 60px; 
      
     }
   }
@@ -180,6 +181,10 @@
     overflow: hidden;
   }
 
+  .slideText{
+    margin-left: 8px;
+  }
+
   .cart{
     margin: 50px aauto;
     padding: 0 30px;
@@ -189,8 +194,11 @@
     height: 60%;
   }
   .cartImage{
-    width: 50%;
-    height: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .cartQuantity{
+    font-size: 12px;
   }
   
   .cartTitle{
