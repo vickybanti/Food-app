@@ -195,10 +195,9 @@
     padding: 50px 30px;
   }
   .cartPro{
-    margin: auto;
+    margin: 10px auto;
     height: 60%;
-    width: 300px;
-    margin-bottom: 15px;
+    width: 320px;
   }
   .cartImage{
     width: 50px;
@@ -217,6 +216,8 @@
 
   .checkoutPage{
     padding: 50px 30px;
+    width: 100%;
+    overflow: hidden;
 
   }
 
