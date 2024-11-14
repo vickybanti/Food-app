@@ -28,7 +28,7 @@
         width: 70%; /* Change from 90% to 100% */
         padding: 0;
         margin-left: 0;
-        margin-top: 60px; 
+        margin-top: 100px; 
      
     }
   }
@@ -182,7 +182,7 @@
   }
 
   .slideText{
-    margin-left: 8px;
+    margin-left: 20px;
   }
 
   .cart{
@@ -192,6 +192,7 @@
   .cartPro{
     margin: auto;
     height: 60%;
+    width: 70%;
   }
   .cartImage{
     width: 50px;

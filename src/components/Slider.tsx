@@ -44,7 +44,7 @@ const Slider = () => {
     <div className=" slide mr-10 flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-[#fcf6ef] transition-transform duration-500 ease-in-out mx-35 my-36">
       {/* TEXT CONTAINER */}
       <div
-        className={`flex-1 flex items-center justify-center flex-col gap-15 font-bold transition-all duration-500 ease-in-out mx-10 slideText ${
+        className={`slideText flex-1 flex items-center justify-center flex-col gap-15 font-bold transition-all duration-500 ease-in-out mx-10 ${
           isSliding ? "opacity-0 translate-x-[-100%]" : "opacity-100 translate-x-0"
         }`}
       >
