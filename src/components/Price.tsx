@@ -12,6 +12,7 @@ const Price = ({ product }: {product:ProductType}) => {
   const [total, setTotal] = useState(product.price);
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
+  const [message, setMessage] = useState(false)
 
   const {addToCart} = userCartStore()
 //to prevent hydration i.e trying to persist the cart to use client rendering on a server rendering
@@ -44,6 +45,8 @@ const Price = ({ product }: {product:ProductType}) => {
 
 
     })
+
+    setMessage(true)
    
 
   }
@@ -90,7 +93,7 @@ const Price = ({ product }: {product:ProductType}) => {
         </div>
         {/* CART BUTTON */}
         <Button type='button' 
-        title="Add to cart" 
+        title={ message ? `Added to cart`:`Add to cart`} 
         variant='btn_white' 
         full
         bg="bg-[#042D29]"
