@@ -53,7 +53,7 @@ const Menu = () => {
         width={30}
         height={30}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full overflow-hidden`}
+        className={`cursor-pointer rounded-full overflow-hidden m-auto`}
       />
 
       :

@@ -165,8 +165,9 @@
   }
 
   .heroSlideImg{
-    width: 50%;
+    background-size: contain;
     margin: auto;
+    
   }
 
   .slide{
