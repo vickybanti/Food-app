@@ -61,12 +61,12 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
         {products.length === 0 ? (<h1 className="flex items-center font-bold p-12">No items in cart</h1>)
         :
         products.map((item) => (
-          <div className="flex items-center justify-between mb-4 " key={item._id}>
+          <div className="flex items-center justify-between mb-4" key={item._id}>
           {item.img &&
-          <Image src={item.img} alt="" width={100} height={100} />
+          <Image src={item.img} alt="" width={100} height={100} className="cartImage" />
           }
           <div className="">
-            <h1 className="text-xl font-bold uppercase">{item.title} ( {item.quantity})</h1>
+            <h1 className="text-xl font-bold uppercase cartTitle">{item.title} ( {item.quantity})</h1>
             <span>{item.optionTitle}</span>
           </div>
           <h2 className="font-bold">${item.price}</h2>

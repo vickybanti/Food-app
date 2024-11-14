@@ -149,7 +149,7 @@
     margin-top:30px;
     width:100%;
     padding: 2px;
-    margin-left: 4px;
+    margin-left: 6px;
     
   }
   .prodHeader{
@@ -166,6 +166,7 @@
 
   .heroSlideImg{
     background-size: contain;
+
     margin-top: 30px;
     
 
@@ -174,9 +175,26 @@
   .slide{
     width: 70%;
     margin-left: 15px;
-    height: 50%;
+    height: 90%;
    
     overflow-x: hidden;
+  }
+
+  .cart{
+    margin: auto;
+    padding: 0 30px;
+  }
+  .cartPro{
+    margin: auto;
+    height: 60%;
+  }
+  .cartImage{
+    width: 50%;
+    height: 50%;
+  }
+  
+  .cartTitle{
+    font-size: 15px;
   }
 }
 
