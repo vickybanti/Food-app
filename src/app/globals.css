@@ -172,7 +172,6 @@
     background-size: cover;
     position: absolute;
     overflow: hidden;
-    margin: auto;
 
   }
   
@@ -215,7 +214,7 @@
   }
 
   .checkoutPage{
-    padding: 50px 30px;
+    margin: auto;
     width: 100%;
     overflow: hidden;
 
