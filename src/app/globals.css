@@ -176,13 +176,15 @@
   .slide{
     width: 70%;
     margin-left: 15px;
-    height: 90%;
+    height: 100%;
    margin-bottom:60px;
+   position: relative;
     overflow: hidden;
   }
 
   .slideText{
-    margin-left: 20px;
+    margin-left: 30px;
+    position: absolute;
   }
 
   .cart{
