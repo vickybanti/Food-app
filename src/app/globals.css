@@ -149,7 +149,7 @@
     margin-top:30px;
     width:100%;
     padding: 2px;
-    margin-right:2px;
+    margin-left: -2px;
     
   }
   .prodHeader{
@@ -164,13 +164,15 @@
     font-size: 15px;
   }
 
-  
+  .heroSlideImg{
+    display: none;
+  }
 
   .slide{
-    width: 100%;
+    width: 50%;
     margin-left: 15px;
-    height: 100%;
-   margin-bottom: 80px;
+    height: 30%;
+   
     overflow-x: hidden;
   }
 }
