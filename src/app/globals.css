@@ -166,16 +166,14 @@
   }
 
   .imgSlide{
-    height:50px;
+    height:150px;
     margin-top:30px;
     background-size: cover;
+    position: absolute;
 
   }
   
-  .heroImageSlide{
-    height: 50px;
-    margin-top: 50px;
-  }
+  
   .slide{
     width: 70%;
     margin-left: 15px;
