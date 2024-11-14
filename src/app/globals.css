@@ -214,16 +214,15 @@
   }
 
   .checkoutPage{
-    padding: 70px 0px;
+    padding: 70px 10px;
     width: 100%;
     overflow: hidden;
-    margin-left:-20px;
+    margin-left:-10px;
 
   }
 
   .paypage{
     width: 100%;
-    margin: auto;
   }
 }
 
