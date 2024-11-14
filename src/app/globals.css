@@ -149,7 +149,7 @@
     margin-top:30px;
     width:100%;
     padding: 2px;
-    margin-left: -2px;
+    margin-left: -1px;
     
   }
   .prodHeader{
@@ -165,13 +165,14 @@
   }
 
   .heroSlideImg{
-    display: none;
+    width: 50%;
+    margin: auto;
   }
 
   .slide{
-    width: 50%;
+    width: 70%;
     margin-left: 15px;
-    height: 30%;
+    height: 50%;
    
     overflow-x: hidden;
   }
