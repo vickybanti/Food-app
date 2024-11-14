@@ -28,7 +28,7 @@
         width: 70%; /* Change from 90% to 100% */
         padding: 0;
         margin-left: 0;
-        margin-top: 100px; 
+        margin-top: 200px; 
      
     }
   }
@@ -178,7 +178,6 @@
     margin-left: 15px;
     height: 100%;
    margin-bottom:60px;
-   position: relative;
     overflow: hidden;
   }
 
@@ -194,7 +193,7 @@
   .cartPro{
     margin: auto;
     height: 60%;
-    width: 500px;
+    width: 270px;
   }
   .cartImage{
     width: 50px;
