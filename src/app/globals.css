@@ -166,16 +166,12 @@
   }
 
   .imgSlide{
-    height:50%;
+    height:30%;
     margin-top:30px;
-  }
-  .heroSlideImg{
     background-size: contain;
-    
-    
-    
 
   }
+  
 
   .slide{
     width: 70%;
