@@ -165,10 +165,14 @@
     font-size: 15px;
   }
 
+  .imgSlide{
+    height:50%;
+    margin-top:30px;
+  }
   .heroSlideImg{
     background-size: contain;
-    height:50%;
-    padding-top: 100px;
+    
+    
     
 
   }
@@ -188,7 +192,7 @@
 
   .cart{
     margin: 50px auto 30px auto;
-    padding: 0 30px;
+    padding: 30px;
   }
   .cartPro{
     margin: auto;
