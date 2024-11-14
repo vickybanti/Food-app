@@ -69,7 +69,7 @@ const PaymentPage = ({params}:{params:{id:string}}) => {
     }
   }
   return (
-    <div className='px-64 py-20 mx-40 mt-40 mb-36 shadow-[10px_10px_20px_rgba(0,0,0,0.1)] border border-gray-200 rounded-lg'>
+    <div className='checkoutPage px-64 py-20 mx-40 mt-40 mb-36 shadow-[10px_10px_20px_rgba(0,0,0,0.1)] border border-gray-200 rounded-lg'>
       {error && <div className="text-red-500 text-center mb-4">{error}</div>}
       {isLoading && 
         <Image src={"/loaders.gif"} alt="loader" width={100} height={100}/>
