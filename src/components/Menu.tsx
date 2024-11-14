@@ -50,10 +50,10 @@ const Menu = () => {
     <Image
         src={  open ? "/close.png" : userImage  }
        alt=""
-        width={20}
-        height={20}
+        width={50}
+        height={50}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer`}
+        className={`cursor-pointer rounded-full`}
       />
 
       :
