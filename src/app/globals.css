@@ -166,10 +166,12 @@
   }
 
   .imgSlide{
-    height:150px;
-    margin-top:30px;
+    height:200px;
+    width:50%;
+    margin-top:60px;
     background-size: cover;
     position: absolute;
+    overflow: hidden;
 
   }
   
