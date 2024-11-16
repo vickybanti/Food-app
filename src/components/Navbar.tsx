@@ -45,7 +45,7 @@ const Navbar = () => {
       {/* LOGO */}
      
       {/* MOBILE MENU */}
-      <div className="md:hidden">
+      <div className={`md:hidden ${isScrolled && `m-auto w-auto`}`}>
         <Menu />
       </div>
       {/* RIGHT LINKS */}
