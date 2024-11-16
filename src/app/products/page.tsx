@@ -163,7 +163,10 @@ const ProductsPage = () => {
               {loading ? (<Skeleton className="w-10 h-4"/>):
               <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
               {loading ? (<Skeleton className="w-10 h-4"/>):
-              <CardDescription className="catFont text-gray-800">{item.desc}</CardDescription>}
+              <CardDescription className="catFont text-gray-800">
+              {item.desc ? (item.desc.length > 10 ? item.desc.substring(0, 10) + "..." : item.desc) : 
+              'Description not available'}
+              </CardDescription>}
 
               <div className="flex gap-4">
               {loading ? (<Skeleton className="w-8 h-4"/>):

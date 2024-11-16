@@ -1,4 +1,7 @@
 "use client"
+import {Button} from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Schema } from '@mui/icons-material';
 import mongoose from 'mongoose';
 import { useSession } from 'next-auth/react'
@@ -45,6 +48,7 @@ const Page = () => {
 
 
     const [allCat, setCat] = useState<Category[]>([])
+    const [message, setMessage] = useState("")
 
     useEffect(() => {
         const getCat = async() => {
@@ -103,17 +107,34 @@ const Page = () => {
         e.preventDefault()
         
         if (!inputs.title.trim()) {
-            alert("Title is required");
+           setMessage("product title is required");
             return;
         }
         
         if (!inputs.catSlug) {
-            alert("Please select a category");
-            return;
+          setMessage("select a category");
+          return;
+        }
+        if (!inputs.desc) {
+          setMessage("product description is required");
+          return;
+        }
+        if (inputs.desc.length < 2 ) {
+          setMessage("product title characters must be greater than two");
+          return;
+        }
+
+        if (inputs.desc.length < 2 ) {
+          setMessage("product description characters must be greater than two");
+          return;
+        }
+        if (inputs.desc.length > 1000 ) {
+          setMessage("product description characters must be less than 1000");
+          return;
         }
         
         if (!file) {
-            alert("Please upload an image");
+            setMessage("Please upload an image");
             return;
         }
 
@@ -159,32 +180,32 @@ const Page = () => {
         }
     }
   return (
-    <div className="p-32 m-20">
-      <form className='flex flex-wrap gap-4 p-8 shadow-lg' onSubmit={handleSubmit}>
+    <div className="p-32 mx-10 ">
+      <form className='flex flex-wrap gap-4 p-8 shadow-lg w-[75%] m-auto bg-white' onSubmit={handleSubmit}>
         <h1>Add new product</h1>
         <div className='flex flex-col w-full gap-2'>
-          <label>Title</label>
-          <input onChange={handleChange} type="text" name="title" className='p-2 rounded-sm ring-1 ring-red-200'/>
+          <Label>Title</Label>
+          <Input onChange={handleChange} type="text" name="title" className='p-2 rounded-sm ring-1 ring-black-200'/>
         </div>
 
         <div className='flex flex-col w-full gap-2'>
-          <label>Image</label>
-          <input onChange={handleChangeImage} type="file" className='p-2 rounded-sm ring-1 ring-red-200'/>
+          <Label>Image</Label>
+          <Input onChange={handleChangeImage} type="file" className='p-2 rounded-sm ring-1 ring-black-200'/>
         </div>
 
         <div className='flex flex-col w-full gap-2'>
-          <label>Desc</label>
-          <textarea onChange={handleChange} name="desc" className='p-2 rounded-sm ring-1 ring-red-200'/>
+          <Label>Desc</Label>
+          <textarea onChange={handleChange} name="desc" className='p-2 rounded-sm ring-1 ring-black-200'/>
         </div>
 
         <div className='flex flex-col w-full gap-2'>
-          <label>Price</label>
-          <input onChange={handleChange} type="number" name="price" className='p-2 rounded-sm ring-1 ring-red-200'/>
+          <Label>Price</Label>
+          <Input onChange={handleChange} type="number" name="price" className='p-2 rounded-sm ring-1 ring-black-200'/>
         </div>
 
         <div className='flex flex-col w-full gap-2'>
-          <label>Category</label>
-          <select onChange={handleChange} name="catSlug" className='p-2 rounded-sm ring-1 ring-red-200'>
+          <Label>Category</Label>
+          <select onChange={handleChange} name="catSlug" className='p-2 rounded-sm ring-1 ring-black-200'>
             <option value="">Select a category</option>
             {allCat.map((item: Category) => (
               <option value={item.slug} key={item._id}>{item.title}</option>
@@ -193,8 +214,8 @@ const Page = () => {
         </div>
 
         <div className='flex flex-col w-full gap-2'>
-            <label>Featured</label>
-            <select onChange={handleChange} name="isFeatured" className='p-2 rounded-sm ring-1 ring-red-200'>
+            <Label>Featured</Label>
+            <select onChange={handleChange} name="isFeatured" className='p-2 rounded-sm ring-1 ring-black-200'>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
             </select>
@@ -202,34 +223,38 @@ const Page = () => {
 
 
         <div className='flex flex-col w-full gap-2'>
-          <label>Options</label>
-          <div>
-            <input onChange={changeOptions} className='p-2 rounded-sm ring ring-red-200' type="text" name="title" placeholder='Title' />
-            <input onChange={changeOptions} className='p-2 rounded-sm ring ring-red-200' type="number" name="additionalPrice" placeholder='Additional Price' />
+          <Label>Options</Label>
+          <div className='flex gap-6'>
+            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="title" placeholder='Title' />
+            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="number" name="additionalPrice" placeholder='Additional Price' />
           </div>
-          <button
+          <Button
             type="button"
-            className='p-2 text-white bg-red-500 w-52'
+            className='p-2 text-white bg-slate-900 w-52'
             onClick={() => setOptions((prev) => [...prev, option])}
           >
             Add Options
-          </button>
+          </Button>
+
         </div>
 
         <div className='flex flex-col w-full gap-2'>
           {options.map((item) => (
-            <div className='p-2 rounded-md cursor-pointer ring-1 ring-red-500' key={item.title} onClick={() => setOptions(options.filter(opt=>opt.title !== item.title))}>
+            <div className='p-2 rounded-md cursor-pointer ring-1 ring-black-200' key={item.title} onClick={() => setOptions(options.filter(opt=>opt.title !== item.title))}>
               <span>{item.title}</span>
               <span>${item.additionalPrice}</span>
             </div>
           ))}
+
         </div>
 
-        <button className='p-2 w-full bg-[#404212] text-white flex items-center justify-center gap-2' type='submit'>
+        <Button className='p-2 w-full text-white flex items-center justify-center gap-2' type='submit' disabled={isLoading}>
           Add Product {isLoading && (
             <Image src="/temporary/p2.png" alt="loading" width={50} height={50} className='animate-spin bg-blend-multiply'/>
           )}
-        </button>
+        </Button>
+        <span className='font-italics text-red-600'> {message && message} </span>
+
       </form>
     </div>
   )

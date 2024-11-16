@@ -111,8 +111,14 @@ const Products = () => {
 <CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
   {loading ? (<Skeleton className="w-10 h-4"/>):
   <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
-  {loading ? (<Skeleton className="w-10 h-4"/>):
-  <CardDescription className="catFont text-gray-800">{item.desc}</CardDescription>}
+  {loading ? (<Skeleton className="w-10 h-4"/>) :
+  <CardDescription className="catFont text-gray-800">
+    {item.desc ? (item.desc.length > 20 ? item.desc.substring(0, 20) + "..." : item.desc) : 
+    'Description not available'}
+    </CardDescription>
+}
+
+
 
   <div className="flex gap-4">
   {loading ? (<Skeleton className="w-8 h-4"/>):
