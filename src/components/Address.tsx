@@ -143,7 +143,7 @@ console.log("users",users)
                 Enter a new delivery address
             </DialogDescription>
           </DialogHeader>
-          <ProfileForm userId={userId} />
+          <ProfileForm />
         </DialogContent>
       </Dialog>
     )
@@ -185,7 +185,7 @@ console.log("users",users)
            Enter a new delivery address here
           </DrawerDescription>
         </DrawerHeader>
-        <ProfileForm userId={userId} className="px-4" />
+        <ProfileForm className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
