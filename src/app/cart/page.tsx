@@ -1,4 +1,5 @@
 "use client"
+import { Address } from "@/components/Address";
 import Button from "@/components/Button";
 import DeletButton from "@/components/DeleteButton";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -43,8 +44,9 @@ const handleCheckout = async() => {
     const getData = await res.json()
     console.log(getData)
     setLoading(false)
-    router.push(`/pay/${getData._id}`)
-  } catch (error) {
+    router.push(`/address/${getData._id}`)
+  } catch (error) {    
+
     console.log(error)
     setLoading(false)
   }
@@ -100,8 +102,11 @@ const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
           <span className="">TOTAL(INCL. VAT)</span>
           <span className="font-bold">${totalPrice}</span>
         </div>
+        {session && (
+          <Address />
+        )}
         {session ? (
-        <Button 
+        <Button
         type="submit" 
         onClick={handleCheckout}
         title="Checkout"

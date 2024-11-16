@@ -23,7 +23,7 @@ const OrdersPage = () => {
 
 
   if(status==="unauthenticated"){
-    router.push("/")
+    router.push("/login")
   }
 
 
@@ -59,11 +59,11 @@ const OrdersPage = () => {
 
 
   return (
-    <div className="p-32 mt-32 mb-20 lg:px-32 xl:px-40">
+    <div className="cart p-32 mt-32 mb-20 lg:px-32 xl:px-40">
       {data?.length === 0 ? (
         <div className="text-2xl text-center">No orders found</div>
       ) : ( 
-      <table className="w-full border-separate border-spacing-3 bg-transparent opacity-90 border border-gray-200 rounded-lg shadow-lg">
+      <table className="cartPro w-full border-separate border-spacing-3 bg-transparent opacity-90 border border-gray-200 rounded-lg shadow-lg">
         <thead>
           <tr className="text-left">
             <th className="hidden md:block">Order ID</th>

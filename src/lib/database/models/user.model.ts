@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
   authenticator: { type: Array },
   order: { type: Array },
   intentId: { type: String },
+  city:{type: String, required:true },
+  street:{type: String, required:true },
+  country:{ type: String , required:true},
+  phoneNumber:{type: String, required:true},
+
 },
  { timestamps: true },
 

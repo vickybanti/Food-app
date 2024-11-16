@@ -11,7 +11,7 @@ export const PUT = async(req:NextRequest, {params}: {params:{id:string}}) => {
 
         const body = await req.json()
         console.log(body)
-        await Order.updateOne({intentId:body, status:"Paid,Being prepared" },{status:201})
+        await Order.updateOne({...body, status:"Paid,Being prepared" },{status:201})
         return new NextResponse("ORDER HAS BEEN UPDATED", {status:200})
 
     } catch (error) {

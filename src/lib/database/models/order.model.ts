@@ -58,6 +58,7 @@ const OrderSchema = new Schema({
     type: String,
     required: true,
   },
+  
 })
 
 const Order = models.Order || model('Order', OrderSchema)

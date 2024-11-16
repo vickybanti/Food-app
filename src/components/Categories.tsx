@@ -62,9 +62,13 @@ const Categories = () => {
                     alt={category.title}
                     fill
                     className='object-cover w-full h-full transition-all duration-300 mdImg' />
-                  <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center `}>
-                    <p className={`font-semibold  text-[50px] font-sans pt-72`}>{category.title}</p>
+                  <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
+                    <p className={`font-semibold text-[50px] font-sans pt-72 hidden md:block md:m-auto md:items-center`}>{category.title}</p>
                   </div>
+
+                  <div className='md:hidden categoryTitle'>
+  <p className={`font-semibold text-[50px] font-sans pt-16`}>{category.title}</p> {/* Visible on mobile */}
+</div>
                 </div>
 
               </CarouselItem>

@@ -81,7 +81,12 @@ export const authOptions:NextAuthOptions = {
               email: user.email,
               name: user.name,
               image: user.image,
-              isAdmin: false // Set default admin status
+              isAdmin: false,
+              city:"pending",
+              country:"pending",
+              street:"pending",
+              phoneNumber:"000 000 000" // Set default admin status
+
             });
           }
           
