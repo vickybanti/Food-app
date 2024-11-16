@@ -76,7 +76,7 @@
 
 .feature{
   @media screen and (max-width:464px){
-  overflow-x: hidden;
+  overflow-x: auto;
   padding: 0;
   margin-left: -80px;
   width: auto;
@@ -160,6 +160,7 @@
 
   .popular{
     margin-left: -80px;
+    
   }
   .popularFont{
     font-size: 26px;

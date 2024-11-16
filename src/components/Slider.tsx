@@ -8,12 +8,12 @@ const data = [
   {
     id: 1,
     title: "always fresh & always crispy & always hot",
-    image: "/slide1.png",
+    image: "/burger.jpg",
   },
   {
     id: 2,
     title: "we deliver your order wherever you are",
-    image: "/slide2.png",
+    image: "/italian pizza.jpg",
   },
   {
     id: 3,
