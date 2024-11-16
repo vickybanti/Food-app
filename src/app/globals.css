@@ -233,13 +233,10 @@
       height: auto
      }
 
-    .featureCard{
-      width: 220px;
-      height: 280px;
-    }
+    
     .popular{
       margin-left: -80px;
-      width: 100%;
+      width: auto;
       overflow-x: auto;
       
     }
