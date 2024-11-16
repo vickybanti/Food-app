@@ -150,7 +150,7 @@ console.log("users",users)
   }
 
   return (
-    <div>
+    
         
 
 
@@ -167,7 +167,7 @@ console.log("users",users)
         {users.country && <span className="px-2">{users?.country}</span>}
         
         {users.phoneNumber && <span className="px-2">Phone number: {users?.phoneNumber}</span>}
-        {!users.city || !users.street || !users.country || !users.phoneNumber && 
+        {!users.city && !users.street && !users.country && !users.phoneNumber && 
         
         <p className="text-black font-bold">No Address found...</p>}
     </AccordionContent>
@@ -193,12 +193,12 @@ console.log("users",users)
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-    </div>
   )
 }
 
 function ProfileForm({ className }: React.ComponentProps<"form"> ) {
-    
+    const isDesktop = useMediaQuery("(min-width: 768px)")
+
     
     type Inputs = {
 
@@ -271,7 +271,7 @@ function ProfileForm({ className }: React.ComponentProps<"form"> ) {
     } 
   return (
     <form className={cn("grid items-start gap-4", className)} onSubmit={handleSubmit}>
-      <div className="grid gap-2">
+      <div className={`${!isDesktop && `flex flex-col gap-4`}grid gap-2 `}>
         <Label htmlFor="street">Street</Label>
         <Input type="text" id="street" name="street" 
         onChange={(e) => handleChange(e)}

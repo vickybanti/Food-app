@@ -27,7 +27,7 @@
       overflow-x: hidden; /* Ensure no horizontal overflow */
         width: 70%; /* Change from 90% to 100% */
         padding: 0;
-        margin-left: 0;
+        margin-left: 2px;
         margin-top: 200px; 
      
     }
@@ -78,7 +78,7 @@
   @media screen and (max-width:464px){
   overflow-x: hidden;
   padding: 0;
-  margin-left: -40px;
+  margin-left: -60px;
   width: auto;
   }
 }
@@ -194,10 +194,10 @@
     padding: 50px 30px;
   }
   .cartPro{
-    margin: 10px auto;
+    margin: 10px auto 30px auto;
     height: 60%;
     width: 320px;
-    padding-top: 8px;
+    padding-top: 30px;
   }
   .cartImage{
     width: 50px;
