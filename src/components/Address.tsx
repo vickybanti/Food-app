@@ -156,6 +156,25 @@ console.log("users",users)
 
     
     <Drawer open={open} onOpenChange={setOpen}>
+
+
+    <Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Use Current Delivery Address</AccordionTrigger>
+    <AccordionContent className="px-3 flex flex-col">
+    {users.street && <span className="px-2">{users.street}</span>}
+        {users.city && <span className="px-2">{users?.city}</span>}
+        {users.country && <span className="px-2">{users?.country}</span>}
+        
+        {users.phoneNumber && <span className="px-2">Phone number: {users?.phoneNumber}</span>}
+        {!users.city || !users.street || !users.country || !users.phoneNumber && 
+        
+        <p className="text-black font-bold">No Address found...</p>}
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+
       <DrawerTrigger asChild>
         <Button variant="outline">Add Address</Button>
       </DrawerTrigger>
