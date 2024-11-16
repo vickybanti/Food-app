@@ -294,7 +294,7 @@ function ProfileForm({ className }: React.ComponentProps<"form"> ) {
         <Input id="phoneNumber" name="phoneNumber" onChange={(e) => handleChange(e)}
         defaultValue="" />
       </div>
-      <Button type="submit" disabled={isLoading}>{message ?"Saved":"Save changes"}</Button>
+      <Button type="submit" disabled={isLoading}>{isLoading?"Saving.."? message ?"Saved":"Save changes"}</Button>
     </form>
   )
 }
