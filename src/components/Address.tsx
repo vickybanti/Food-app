@@ -275,26 +275,27 @@ function ProfileForm({ className }: React.ComponentProps<"form"> ) {
         <Label htmlFor="street">Street</Label>
         <Input type="text" id="street" name="street" 
         onChange={(e) => handleChange(e)}
-        defaultValue="" />
+       required />
       </div>
       <div className="grid gap-2">
         <Label htmlFor="city">City</Label>
         <Input id="city" name="city" onChange={(e) => handleChange(e)}
-        defaultValue="" />
+        required />
       </div>
 
       <div className="grid gap-2">
         <Label htmlFor="country">Country</Label>
         <Input id="country" name="country" onChange={(e) => handleChange(e)}
-        defaultValue="" />
+        required />
       </div>
 
       <div className="grid gap-2">
         <Label htmlFor="phoneNumber">Phone number</Label>
         <Input id="phoneNumber" name="phoneNumber" onChange={(e) => handleChange(e)}
-        defaultValue="" />
+        required />
       </div>
-      <Button type="submit" disabled={isLoading}>{isLoading?"Saving.."? message ?"Saved":"Save changes"}</Button>
+      <Button type="submit" disabled={isLoading}>{isLoading ? "Saving..."  : "Save changes"}</Button>
+        {message && "Address Changed"}
     </form>
   )
 }
