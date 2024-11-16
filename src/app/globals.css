@@ -74,23 +74,7 @@
 
 }
 
-.feature{
-  @media screen and (max-width:464px){
-  overflow-x: auto;
-  padding: 0;
-  margin-left: -80px;
-  width: auto;
-  }
-}
 
-.secondFeature{
-  @media screen and (max-width:464px) {
-    margin-left: 30px;
-    overflow-x: hidden;
-    
-
-  }
-}
 
 
 
@@ -237,6 +221,23 @@
 
   .categoryTitleLarge{
     display: none;
+  }
+
+  .feature{
+  
+    overflow-x: auto;
+    padding: 0;
+    margin-left: -80px;
+    width: auto;
+    
+  }
+  
+  .secondFeature{
+      margin-left: 30px;
+      overflow-x: hidden;
+      
+  
+    
   }
 }
 
