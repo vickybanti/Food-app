@@ -270,7 +270,7 @@ function ProfileForm({ className }: React.ComponentProps<"form"> ) {
         }
     } 
   return (
-    <form className={cn("grid items-start gap-4", className)} onSubmit={handleSubmit}>
+    <form className={cn("grid items-start gap-4", className) `${!isDesktop && `flex flex-col gap-4`}`} onSubmit={handleSubmit}>
       <div className={`${!isDesktop && `flex flex-col gap-4`}grid gap-2 `}>
         <Label htmlFor="street">Street</Label>
         <Input type="text" id="street" name="street" 
