@@ -106,12 +106,12 @@ const Featured = () => {
 
 
 </div>
-<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-32 mt-7'>
+<div className='featuredPro flex items-start justify-start w-full h-full gap-8 px-2 mx-32 mt-7'>
     {/* WRAPPER */}
     <div className="relative flex w-full mt-10 overflow-x-auto no-scrollbar popular">
         {/* SINGLE ITEM */}
         {loading && (
-          <div className="flex items-center justify-center w-screen h-screen mx-auto">
+          <div className="flex items-center justify-center w-full h-full mx-auto">
     <Image src="/temporary/p10.png" 
     alt="loading" 
     width={150} 
@@ -122,7 +122,7 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="prodFeature rounded-md gap-6 px-5 mx-10 my-14 h-[300px] w-[220px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102]"
+            className="featureCard rounded-md gap-6 px-5 mx-10 my-14 h-[300px] w-[220px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102]"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (

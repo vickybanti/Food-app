@@ -142,13 +142,7 @@
     margin-right: 20px;
   }
 
-  .popular{
-    margin-left: -80px;
-    
-  }
-  .popularFont{
-    font-size: 26px;
-  }
+ 
 
   .imgSlide{
     height:200px;
@@ -225,7 +219,7 @@
 
   .feature{
   
-    overflow-x: auto;
+    overflow-x: hidden;
     padding: 0;
     margin-left: -40px;
     width: 100%;
@@ -233,15 +227,24 @@
   }
   
   .secondFeature{
-      margin-left: 60px;
+      margin-left: 70px;
       overflow-x: hidden;
       width: auto;
-      height: 50%;
+      height: auto
      }
 
-    .prodFeature{
-      width: 110px;
-      height: 150px;
+    .featureCard{
+      width: auto;
+      height: auto;
+    }
+    .popular{
+      margin-left: -80px;
+      width: 100%;
+      overflow-x: auto;
+      
+    }
+    .popularFont{
+      font-size: 26px;
     }
 }
 
