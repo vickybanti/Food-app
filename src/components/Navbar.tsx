@@ -47,7 +47,7 @@ const Navbar = () => {
       {/* LOGO */}
      
       {/* MOBILE MENU */}
-      <div className={`md:hidden ${isScrolled && `m-auto w-auto`}`}>
+      <div className={`md:hidden ${isScrolled ? 'pl-2' : 'pl-0'}`}>
         <Menu />
       </div>
       {/* RIGHT LINKS */}
