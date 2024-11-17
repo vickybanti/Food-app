@@ -235,11 +235,11 @@
   }
   
   .secondFeature{
-      margin-left: 70px;
+      margin-left: 30px;
       overflow: hidden;
       width: auto;
       margin-bottom: 50px;
-      margin-top: -100px;
+      margin-top: -130px;
       height: auto;
      }
 
@@ -249,13 +249,14 @@
       display: flex;
       margin: 10px;
       padding: 40px;
-      gap:5px;
+      gap:10px;
       
 
   
     }
     .featureImg{
-      margin-top: -25px;
+      margin-top: -70px;
+      width:100%;
     }
     .featureLink{
       padding:3px
@@ -267,7 +268,8 @@
       margin-left: -120px;
       width: 100%;
       overflow-x: auto;
-      padding: 5px;
+      margin-top: 10px;
+      padding-top: 30px;
       display: flex;
       margin-bottom: 10px;
       
