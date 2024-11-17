@@ -254,12 +254,22 @@
 
   
     }
+    .featureImg{
+      margin-top: 20px;
+    }
+    .featureLink{
+      padding:3px
+    }
+    .featureArrow{
+      font-size: small;
+    }
     .popular{
       margin-left: -120px;
       width: 100%;
       overflow-x: auto;
       padding: 0;
       display: flex;
+      
       
       gap: 25px;
 

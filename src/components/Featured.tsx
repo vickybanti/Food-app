@@ -126,7 +126,7 @@ const Featured = () => {
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-140px] mix-blend-multiply">
+              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-140px] mix-blend-multiply featureImg">
                 <Image src={item.img} alt="" width={200} height={150} className="object-cover bg-white " />
               </div>
             )}
@@ -140,8 +140,8 @@ const Featured = () => {
              
             </div>
 
-            <span onClick = {()=>router.push(`/product/${item._id}`)} className="rounded-full bg-[#741102] p-4 text-white absolute mt-[190px] cursor-pointer" >
-             <ArrowForwardIos fontSize="large"/>
+            <span onClick = {()=>router.push(`/product/${item._id}`)} className="rounded-full bg-[#741102] p-4 text-white absolute mt-[190px] cursor-pointer featureLink" >
+             <ArrowForwardIos fontSize="large" className="featureArrow"/>
 
              </span>
           </div>
