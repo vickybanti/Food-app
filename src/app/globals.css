@@ -239,12 +239,13 @@
       overflow: hidden;
       width: auto;
       margin-bottom: 50px;
-      margin-top: -80px;
+      margin-top: -100px;
+      height: auto;
      }
 
     .featureCard{
       width: 1200px;
-      height: 300px;
+      height: 250px;
       display: flex;
       margin: 10px;
       padding: 40px;
@@ -254,12 +255,12 @@
   
     }
     .popular{
-      margin-left: -100px;
-      width: 1500px;
+      margin-left: -120px;
+      width: 100%;
       overflow-x: auto;
       padding: 0;
       display: flex;
-      flex: 3;
+      
       gap: 25px;
 
       
