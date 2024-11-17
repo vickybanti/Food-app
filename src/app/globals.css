@@ -110,17 +110,18 @@
     gap: 10px; /* Adjust the gap between items as needed */
   }
   .card{
-    width:85%;
+    width:90%;
   }
 
   .cardHeader{
-    width: 80%;
-    height:200px;
+    width: 90%;
+    height:150px;
     padding: 0;
     background-size: contain;
   }
   .cardImage{
-    background-size: contain;
+    width: 100%;
+    height: 150px;
   }
   .priceFont{
     font-size: 10px;
@@ -232,20 +233,24 @@
       margin-left: 70px;
       overflow-x: hidden;
       width: auto;
-      margin-top:-50px;
+      margin-top:-120px;
+      margin-bottom: 20px;
      }
 
     .featureCard{
       width: 350px;
       height: 300px;
       gap: 18px;
-      padding-left: 30px;
-      padding-right: 30px;
+      
     }
     .popular{
       margin-left: -80px;
-      width: 100%;
+      width:max-content;
       overflow-x: auto;
+      display: flex;
+      flex: 1 1 0;
+      min-width: 0;
+
       
     }
     .popularFont{
