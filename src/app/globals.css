@@ -108,9 +108,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* This sets two equal columns */
     gap: 10px; /* Adjust the gap between items as needed */
+    padding: 0 7px;
   }
   .card{
-    width:90%;
+    width:88%;
   }
 
   .cardHeader{
@@ -135,9 +136,9 @@
   }
 
   .prod{
-    margin-top:40px 3px 20px 3px;
+    margin:40px 3px 20px 3px;
     width:100%;
-    padding: 2px 20px;
+    padding: 2px 8px;
     
     
   }
