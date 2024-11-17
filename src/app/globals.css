@@ -225,6 +225,7 @@
   
     overflow-x: hidden;
     padding: 0;
+    height: 100%;
     margin-left: -40px;
     width: 100%;
     
@@ -235,7 +236,6 @@
       margin-left: 70px;
       overflow-x: hidden;
       width: auto;
-      margin-top:-220px;
       margin-bottom: 50px;
      }
 
@@ -253,9 +253,7 @@
       width:max-content;
       overflow-x: auto;
       padding: 0;
-      display: flex;
-      flex: 1 1 0;
-      min-width: 0;
+      
      
 
       
