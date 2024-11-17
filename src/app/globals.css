@@ -110,11 +110,11 @@
     gap: 10px; /* Adjust the gap between items as needed */
   }
   .card{
-    width:95%;
+    width:85%;
   }
 
   .cardHeader{
-    width: 100%;
+    width: 80%;
     height:200px;
     padding: 0;
     background-size: contain;
@@ -232,12 +232,11 @@
       margin-left: 70px;
       overflow-x: hidden;
       width: auto;
-      height: auto;
       margin-top:-50px;
      }
 
     .featureCard{
-      width: 35px;
+      width: 350px;
       height: 300px;
       gap: 18px;
       padding-left: 30px;
@@ -245,7 +244,7 @@
     }
     .popular{
       margin-left: -80px;
-      width: 1200px;
+      width: 100%;
       overflow-x: auto;
       
     }
