@@ -129,7 +129,7 @@ const Products = () => {
 </CardContent>
 <CardFooter className="flex justify-between">
   <div></div>
-  <span className="mt-[-60px]">
+  <span className="mt-[-60px] cartAddSpan">
     <Drawer>
       <DrawerTrigger className="cartSize p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
         <Add fontSize="large" className="text-white"/>

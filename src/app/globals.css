@@ -133,7 +133,9 @@
   }
   .cartSize{
     padding: 3.5px;
-    margin-top:15px;
+  }
+  .cartAddSpan{
+    margin-top:8px;
   }
 
   .prod{
@@ -239,15 +241,15 @@
       overflow: hidden;
       width: auto;
       margin-bottom: 50px;
-      margin-top: -70px;
+      margin-top: -80px;
      }
 
     .featureCard{
       width: 900px;
       height: 300px;
-      gap: 18px;
       display: flex;
-      flex: 1 1 0;
+      flex: 3;
+
   
     }
     .popular{
