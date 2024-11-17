@@ -110,12 +110,14 @@
     gap: 10px; /* Adjust the gap between items as needed */
   }
   .card{
-    width:98%;
+    width:95%;
   }
 
   .cardHeader{
     width: 100%;
     height:200px;
+    padding: 0;
+    background-size: contain;
   }
   .cardImage{
     background-size: contain;
@@ -133,7 +135,7 @@
   .prod{
     margin-top:50px;
     width:100%;
-    padding: 2px;
+    padding: 2px 5px;
     margin-left: 7px;
     
   }
@@ -230,11 +232,12 @@
       margin-left: 70px;
       overflow-x: hidden;
       width: auto;
-      height: auto
+      height: auto;
+      margin-top:-50px;
      }
 
     .featureCard{
-      width: 220px;
+      width: 35px;
       height: 300px;
       gap: 18px;
       padding-left: 30px;
@@ -242,7 +245,7 @@
     }
     .popular{
       margin-left: -80px;
-      width: 100%;
+      width: 1200px;
       overflow-x: auto;
       
     }
