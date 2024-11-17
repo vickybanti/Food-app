@@ -31,7 +31,7 @@ const Navbar = () => {
           </Link>
         </div>
       {/* LEFT LINKS */}
-      <div className="flex-1 hidden gap-4 pl-40 ml-20 md:flex sm:pl-20 sm:w-10">
+      <div className="flex-1 hidden gap-4 md:flex sm:pl-20 sm:w-10">
       {/* {NAV_LINKS.map((link) => (
                     <Link href={link.href} key={link.key}
                     className={`regular-16 text-center flexCenter cursor-pointer
