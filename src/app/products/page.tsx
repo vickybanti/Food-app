@@ -89,51 +89,51 @@ const ProductsPage = () => {
 
   return (
     <section className='relative flex flex-col py-5 mt-20 overflow-hidden border-t-2 2xl:max-container lg:mb-10 lg:py-20 lg:px-10 xl:mb-20 md:w-full sm:w-full md:mx-0 md:px-0'>
-      <div className="flex justify-between">
-        <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
-        {category && (
-            <Link href="/products" className="font-semibold hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
-        )}
+      <div className="proHeader flex justify-between">
+                <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
+                {category && (
+                    <Link href="/products" className="font-semibold hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
+                )}
 
 
-         {session?.user.isAdmin && (
+                {session?.user.isAdmin && (
 
 
-<Menubar>
-<MenubarMenu>
-  <MenubarTrigger className="cursor-pointer">Add New</MenubarTrigger>
-  <MenubarContent>
-    <MenubarItem>
-    <Link href="/add" className="flex font-semibold font-[italics] hover:text-[#888840] text-black">
-          Add new product
-          <MenubarShortcut>⌘P</MenubarShortcut>
-        </Link> 
-       
-    </MenubarItem>
-    
+        <Menubar>
+        <MenubarMenu>
+          <MenubarTrigger className="cursor-pointer">Add New</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>
+            <Link href="/add" className="flex font-semibold font-[italics] hover:text-[#888840] text-black">
+                  Add new product
+                  <MenubarShortcut>⌘P</MenubarShortcut>
+                </Link> 
+              
+            </MenubarItem>
+            
 
-    {category && session?.user.isAdmin &&  (
-        <MenubarItem>
-            <Link href={`/add/categories/`}
-             className="font-semibold font-[italics] hover:text-[#3b3b18] text-black flex">
-              Add new Category
-              <MenubarShortcut>⌘C</MenubarShortcut>
+            {category && session?.user.isAdmin &&  (
+                <MenubarItem>
+                    <Link href={`/add/categories/`}
+                    className="font-semibold font-[italics] hover:text-[#3b3b18] text-black flex">
+                      Add new Category
+                      <MenubarShortcut>⌘C</MenubarShortcut>
 
-              </Link>
-        </MenubarItem>
-        )}
-    <MenubarSeparator />
-    
-  </MenubarContent>
-</MenubarMenu>
-</Menubar>
+                      </Link>
+                </MenubarItem>
+                )}
+            <MenubarSeparator />
+            
+          </MenubarContent>
+        </MenubarMenu>
+        </Menubar>
 
-         )}
+                )}
 
 
-       
-      
-        
+              
+              
+                
       </div>
 
       <div className='grid w-full h-full gap-8 my-20 lg:grid-cols-4 sm:grid-cols-3 md:grid-cols-3'>
