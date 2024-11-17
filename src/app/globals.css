@@ -255,7 +255,7 @@
   
     }
     .featureImg{
-      margin-top: 20px;
+      margin-top: 5px;
     }
     .featureLink{
       padding:3px
@@ -267,8 +267,9 @@
       margin-left: -120px;
       width: 100%;
       overflow-x: auto;
-      padding: 0;
+      padding: 5px;
       display: flex;
+      margin-bottom: 5px;
       
       
       gap: 25px;
