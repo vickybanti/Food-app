@@ -135,7 +135,7 @@
     padding: 3.5px;
   }
   .cartAddSpan{
-    margin-top:2px;
+    margin-top:4px;
   }
 
   .prod{
@@ -243,24 +243,25 @@
      }
 
     .featureCard{
-      width: 300px;
+      width: 1200px;
       height: 300px;
       display: flex;
+      margin: 10px;
+      padding: 40px;
       gap:5px;
-      position: relative;
-      margin: 2px;
-      padding: 2px;
-
+      
 
   
     }
     .popular{
-      position: relative;
-      margin-left: -70px;
-      width: 100%;
+      margin-left: -100px;
+      width: 1500px;
       overflow-x: auto;
       padding: 0;
-      gap:30px;
+      display: flex;
+      flex: 3;
+      gap: 25px;
+
       
      
 
