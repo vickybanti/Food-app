@@ -81,14 +81,14 @@ const SignupPage = () => {
             First name
           </Label>
           
-          <Input className="border-gray-200 bg-gray-200 h-16 w-60" name="firstName" type="text" onChange={handleChange} />
+          <Input className="border-gray-200 bg-gray-200 h-16 w-60" name="firstName" type="text" onChange={()=>handleChange} />
           </div>
 
           <div className="ml-28">
           <Label>
             Last name
           </Label>
-          <Input className="border-gray-200 bg-gray-200 h-16 w-60" name="lastName" type="text" onChange={handleChange} />
+          <Input className="border-gray-200 bg-gray-200 h-16 w-60" name="lastName" type="text" onChange={()=>handleChange} />
           </div>
 
           <div>
@@ -101,7 +101,7 @@ const SignupPage = () => {
               className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" 
               name="email" 
               type="email" 
-              onChange={(e) => handleChange(e)} 
+              onChange={(e) => handleChange} 
             />
           </div>
           </div>
@@ -112,7 +112,7 @@ const SignupPage = () => {
             </Label>
 
             <div className="relative">
-            <div onClick={handleClickShowPassword} onMouseOut={handleMouseDownPassword}>
+            <div onClick={handleClickShowPassword}>
 
             
                     {showPassword ? <VisibilityOff className="absolute left-3 top-1/2 transform -translate-y-1/2"/> 
