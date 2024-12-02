@@ -132,7 +132,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           </button>
           </div>
           <p className="text-sm mt-[-30px]">
-            Don't have an account?<Link className="hover:underline text-lg text-green" href="/signup"> Sign up</Link>
+            <Link className="hover:underline text-lg text-green" href="/signup"> Sign up</Link>
           </p>
         </div>
       </div>
