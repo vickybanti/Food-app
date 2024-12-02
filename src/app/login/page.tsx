@@ -73,7 +73,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
               className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" 
               name="email" 
               type="email" 
-              onChange={(e) => handleChange(e)} 
+              onChange={() => handleChange} 
             />
 
             
