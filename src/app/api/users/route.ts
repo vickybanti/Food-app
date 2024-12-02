@@ -2,8 +2,11 @@ import { NextRequest } from "next/server";
 
 import User from "@/lib/database/models/user.model";
 import { connectToDb } from "@/lib/utils/connect";
+const bcrypt = require("bcrypt");
+
 
 import { NextResponse } from "next/server";
+import mongoose from "mongoose";
 
 export const GET = async(req:NextRequest) => {
     try {
@@ -21,6 +24,8 @@ export const GET = async(req:NextRequest) => {
     return new NextResponse("Hello", {status:200})
   
   }
+
+
 
 
   export const PUT = async (req: Request) => {
@@ -66,5 +71,45 @@ export const GET = async(req:NextRequest) => {
     } catch (error) {
       console.error("Error processing request:", error);
       return new NextResponse(JSON.stringify({ message: "Internal Server Error" }), { status: 500 });
+    }
+  }
+
+  export const POST = async(req:NextRequest) => {
+    const body = await req.json();
+    console.log(body);
+    const email = body.email;
+    const firstName = body.firstName;
+    const lastName = body.lastName;
+    const password = body.password;
+    try {
+      await connectToDb();
+      const user = await User.findOne({ email: email });
+      if (user){
+        return new NextResponse(
+          JSON.stringify({message:"User already exists"}),
+          { status: 200 }
+        )
+      }
+      const saltRounds = 10;
+            const salt = await bcrypt.genSalt(saltRounds);
+    
+            const bcryptPassword = await bcrypt.hash(password, salt);
+      const res = await User.create({_id: new mongoose.Types.ObjectId(),
+        email:email, 
+        firstName:firstName, 
+        lastName:lastName,
+        password:bcryptPassword
+      })
+
+      if(res){
+        return new NextResponse(
+          JSON.stringify(res),
+          { status: 200 }
+        )
+      }
+
+
+    } catch (error) {
+      console.error(error)
     }
   }

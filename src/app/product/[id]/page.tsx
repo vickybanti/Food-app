@@ -9,12 +9,16 @@ import React, { useState, useEffect } from "react";
 const getData = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/${id}`, {
     cache: "no-store",
+    headers:{"Content-Type":"application/json"}
   });
+  console.log("res=",res)
   if (!res.ok) {
     throw new Error("failed");
   }
   return res.json();
 }
+
+
 const SingleProductPage = ({ params }: { params: { id: string } }) => {
   const [singleProduct, setSingleProduct] = useState<ProductType | null>(null);
   const [loading, setLoading] = useState(true);
@@ -22,7 +26,7 @@ const SingleProductPage = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const product = await getData(params.id);
+        const product = await getData(params.id) ;
         setSingleProduct(product);
       } catch (error) {
         console.error(error);
@@ -33,6 +37,8 @@ const SingleProductPage = ({ params }: { params: { id: string } }) => {
 
     fetchData();
   }, [params.id]);
+
+  console.log(singleProduct)
 
   if (loading) return <Skeleton />; // Show a loading state
 

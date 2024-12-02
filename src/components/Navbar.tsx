@@ -7,31 +7,45 @@ import Image from "next/image";
 import UserLinks from "./UserLinks";
 import { NAV_LINKS } from "@/constants";
 import SearchBox from "./Search";
+import { Address } from "./Address";
+import { NavAddress } from "./NavAddress";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 570);
+      setIsScrolled(window.scrollY > 170);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isDesktop = useMediaQuery("(min-width: 768px)")
+
+
   return (
-    <div className="fixed top-0 z-10 w-full bg-fuchsia-50">
-    <div className={`h-16 flex items-center justify-between  uppercase lg:px-5 xl:px-20 ${isScrolled ? 'bg-gray-70 backdrop-blur-sm border-b-[#741102]  rounded-3xl border-b-2' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out mt-5 ml-10 mr-10 `}>
+    <div className={`fixed top-0 z-10 w-full bg-white ${isScrolled ? 'backdrop-blur-lg bg-white/70 sticky' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out `}>
+    <div className={`h-16 flex items-center justify-between  uppercase lg:px-5 xl:px-20 mt-5 ml-10 mr-10 `}>
         <div>
           <Link href="/">
-            <div className="w-[150px] h-[80px] px-5 font-sans text-3xl font-bold">
+            <div className="w-[150px] h-[90px] mt-6 px-5 font-sans text-3xl font-bold">
               <Image src="/logo-bg.png" width={60} height={40} alt="logo" className="object-contain" />
             </div>
           </Link>
         </div>
       {/* LEFT LINKS */}
-      <div className="flex-1 hidden gap-4 ml-20 pl-24 md:flex sm:pl-20 sm:w-10">
+      <div className="flex w-[280px] gap-4 ml-9 text-sm">
+
+        < NavAddress />
+
+      </div>
+
+
+      <div className="gap-4 ml-[80px] w-full text-sm font-extralight flex">
+
       {/* {NAV_LINKS.map((link) => (
                     <Link href={link.href} key={link.key}
                     className={`regular-16 text-center flexCenter cursor-pointer
@@ -51,7 +65,7 @@ const Navbar = () => {
         <Menu />
       </div>
       {/* RIGHT LINKS */}
-      <div className="items-center justify-end flex-1 hidden gap-4 md:flex">
+      <div className="items-center justify-end flex gap-4 md:flex">
         {/* <div className="flex items-center gap-2 px-1 bg-orange-300 rounded-md cursor-pointer md:absolute top-3 r-2 lg:static">
           <Image src="/phone.png" alt="" width={20} height={20} />
           <span>123 456 78</span>

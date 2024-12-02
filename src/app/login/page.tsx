@@ -1,26 +1,114 @@
 "use client"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { EmailRounded } from "@mui/icons-material";
+import { VisibilityOff } from "@mui/icons-material";
+import { Visibility } from "@mui/icons-material";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const LoginPage = () => {
+
+  const [showPassword, setShowPassword] = useState(false)
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  event.preventDefault();
+};
+  const [message, setMessage] = useState(false)
+
+  const [inputs, setInputs] = useState({
+    email:""
+    
+  })
+
+  const handleChange = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const target = e.target as HTMLInputElement;
+    setInputs(prev => {
+      return { ...prev, [target.name]: target.value }
+    })
+  } 
+
+  
+
+
   const {data,status} = useSession();
   console.log('data',data)
   console.log('status',status)
   return (
-    <div className="flex items-center justify-center h-full p-4 mt-40 mb-24"
-    style={{backgroundImage: "url('/bread background.jpg')", backgroundSize: "cover"}}>
+    <div className="flex items-center justify-center h-full px-4 pt-32 pb-14"
+    style={{backgroundImage: "url('/bread background.jpg')", backgroundSize: "cover", backgroundBlendMode:"color-dodge"}}>
       {/* BOX */}
-      <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row md:w-full lg:w-[80%] 2xl:w-1/2">
+      <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row w-[80%] backdrop-blur-lg bg-white/70">
+          <Link href="/">
+            <div className="w-[350px] h-[250px] mt-6 px-5 font-sans text-3xl font-bold">
+              <Image src="/logo-bg.png" width={500} height={770} alt="logo" className="object-contain" />
+              <h1 className="p-12">Login Here</h1>
+            </div>
+          </Link>
         {/* IMAGE CONTAINER */}
-        <div className="relative w-full md:w-1/2 bg-[#042D29] flex justify-center items-center flex-col gap-4">
-        <h1 className="text-5xl font-bold text-white xl:text-3xl text-bold font-[italic]">Welcome to BantiBiz</h1>
+        {/* <div className="relative w-full md:w-1/2 bg-[#042D29] flex justify-center items-center flex-col gap-4">
+       
           <p className="text-lg text-gray-400 font-[italic] px-16 text-center">Log into your account using social buttons</p>
           
-        </div>
+        </div> */}
         {/* FORM CONTAINER */}
-        <div className="p-10 flex flex-col gap-8 md:w-1/2 h-[100%]">
+        <div className="p-10 m-auto flex flex-col gap-10 w-[100%] md:w-1/2 h-[100%] backdrop-blur-md bg-white/30 rounded-md">
+        <h2>Login with email</h2>
+        
+          <div className="flex justify-between">
+          
+
+          <div>
+          <Label>
+            Email
+          </Label>
+          <div className="relative">
+            <EmailRounded className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+            <Input 
+              className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" 
+              name="email" 
+              type="email" 
+              onChange={(e) => handleChange(e)} 
+            />
+
+            
+          
+          
+          
+          </div>
+
+          </div>
+          <Button type="submit" onClick={()=>signIn('email')} className="mt-6 mr-24 p-8">
+            Login
+          </Button>
+          
+
+          {/* <div>
+          <Label>
+            Password
+            </Label>
+            <div className="relative">
+              <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                {showPassword ? <VisibilityOff className="absolute left-3 top-1/2 transform -translate-y-1/2" /> 
+                : <Visibility className="absolute left-3 top-1/2 transform -translate-y-1/2"/>}
+              </div>
+          <Input className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" name="password" type={showPassword?"text":"password"} onChange={(e) => handleChange}/>
+            </div>
+</div> */}
+
+
+          </div>
+         
+
+          
+        
+        <span className="mt-[-20px] mx-auto">Or sign in with your social accounts</span>
+        <div className="flex gap-3 mt-[-20px]">
           <button className="flex gap-4 p-4 rounded-md ring-1 ring-orange-100" onClick={()=>signIn("google")}>
             <Image
               src="/google.png"
@@ -42,8 +130,9 @@ const LoginPage = () => {
             />
             <span>Sign in with Facebook</span>
           </button>
-          <p className="text-sm">
-            Have a problem?<Link className="underline" href="/"> Contact us</Link>
+          </div>
+          <p className="text-sm mt-[-30px]">
+            Don't have an account?<Link className="hover:underline text-lg text-green" href="/signup"> Sign up</Link>
           </p>
         </div>
       </div>

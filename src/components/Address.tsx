@@ -32,6 +32,7 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "@/components/ui/accordion"
+import { EditLocationAltRounded, LocationOnRounded } from "@mui/icons-material"
   
 
 
@@ -113,7 +114,9 @@ console.log("users",users)
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
-    <AccordionTrigger>Use Current Delivery Address</AccordionTrigger>
+    <AccordionTrigger className="flex">
+      <LocationOnRounded sx={{color:"green"}}/>
+      Use Current Delivery Address</AccordionTrigger>
     <AccordionContent className="px-3 flex flex-col">
     {users.street && <span className="px-2">{users.street}</span>}
         {users.city && <span className="px-2">{users?.city}</span>}
@@ -123,18 +126,12 @@ console.log("users",users)
         {!users.city || !users.street || !users.country || !users.phoneNumber && 
         
         <p className="text-black font-bold">No Address found...</p>}
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
 
-
-
-       
-
-
-
-        <DialogTrigger asChild>
-         <Button variant="outline">or Enter New address</Button>
+<DialogTrigger asChild>
+         <Button variant="ghost" className="text-green-800 flex">
+          <EditLocationAltRounded sx={{color:"green"}}/>
+          Change
+          </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -145,6 +142,17 @@ console.log("users",users)
           </DialogHeader>
           <ProfileForm />
         </DialogContent>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+
+
+       
+
+
+
+       
       </Dialog>
     )
   }

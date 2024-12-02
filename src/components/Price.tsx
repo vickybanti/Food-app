@@ -24,7 +24,7 @@ const Price = ({ product }: {product:ProductType}) => {
     if(product.options?.length){
       
         setTotal(
-          quantity * Number(product.price) + Number(product.options[selected].additionalPrice)
+          quantity * (Number(product.price) + Number(product.options[selected].additionalPrice))
         );
       }
       
@@ -53,7 +53,7 @@ const Price = ({ product }: {product:ProductType}) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">${total}</h2>
+      <h2 className="text-2xl text-[#741102] font-normal">${total}</h2>
       {/* OPTIONS CONTAINER */}
       <div className="flex gap-4">
         {product.options?.length  && product.options?.map((option, index) => (
@@ -61,8 +61,8 @@ const Price = ({ product }: {product:ProductType}) => {
             key={option.title}
             className="min-w-[6rem] p-2 ring-1 ring-gray-100 rounded-md"
             style={{
-              background: selected === index ? "#404112" : "white",
-              color: selected === index ? "white" : "#404112",
+              background: selected === index ? "grey" : "white",
+              color: selected === index ? "white" : "grey",
             }}
             onClick={() => setSelected(index)}
           >
@@ -82,7 +82,7 @@ const Price = ({ product }: {product:ProductType}) => {
             >
               {"-"}
             </button>
-            <span>{quantity}</span>
+            <span className="text-[#741102]">{quantity}</span>
             <button
               onClick={() => setQuantity((prev) => (prev < 9 ? prev + 1 : 9))}
             className="flex items-center justify-center text-white bg-black rounded-md w-11 h-11"

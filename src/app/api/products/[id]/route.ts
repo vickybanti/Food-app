@@ -1,7 +1,7 @@
-import Product from "@/lib/database/models/products.model";
 import { getAuthSession } from "@/lib/utils/auth";
 import { connectToDb } from "@/lib/utils/connect";
 import { NextRequest, NextResponse } from "next/server";
+import Product from "@/lib/database/models/products.model"
 
 export const GET = async(req:NextRequest, {params}: {params:{id:string}}) => {
     const {id} = params;
@@ -9,6 +9,7 @@ export const GET = async(req:NextRequest, {params}: {params:{id:string}}) => {
     try {
         await connectToDb();
         const product = await Product.findById({_id:id})
+        console.log(product)
         return new NextResponse(JSON.stringify(product), {status:200})
 
     } catch (error) {

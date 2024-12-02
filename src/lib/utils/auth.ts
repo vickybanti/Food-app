@@ -4,6 +4,9 @@ import FacebookProvider from "next-auth/providers/facebook";
 import { connectToDb } from "./connect"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import User from "../database/models/user.model";
+import EmailProvider from "next-auth/providers/email";
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
+import client from '../db'
 
 declare module "next-auth" {
   interface Session {
@@ -24,9 +27,13 @@ declare module "next-auth/jwt"{
     
   }
 }
+var nodemailer = require('nodemailer');
+var xoauth2 = require('xoauth2');
+
 
 export const authOptions:NextAuthOptions = {
     // Configure one or more authentication providers
+    
    
     session:{
     strategy:"jwt"
@@ -48,10 +55,43 @@ export const authOptions:NextAuthOptions = {
         httpOptions: {
           timeout: 10000, // 10 seconds
         },
-      })
+      }),
+
+      EmailProvider({
+        server: {
+          host: process.env.EMAIL_SERVER_HOST,
+          auth: {
+            user: process.env.EMAIL_SERVER_USER,
+            pass: process.env.EMAIL_SERVER_PASSWORD
+          }
+        },
+        from: process.env.EMAIL_FROM,
+        sendVerificationRequest({
+          identifier: email,
+          url,
+          provider: { server, from },
+        }) {
+          const { host } = new URL(url);
+          const message = `
+            <p>Sign in to your account</p>
+            <p><a href="${url}">Click here to sign in</a></p>
+          `;
+          // Use a mail sending function here, e.g., nodemailer
+          // mailer.sendMail({ to: email, subject: 'Sign in', html: message });
+        },
+
+        normalizeIdentifier(identifier: string): string {
+          let [local, domain] = identifier.toLowerCase().trim().split("@");
+          domain = domain.split(",")[0];
+          return `${local}@${domain}`;
+        },
+      }),
+    
+      
       
       // ...add more providers here
     ],
+    adapter: MongoDBAdapter(client),
     callbacks:{
       async session({token, session}) {
         if(token){
@@ -80,7 +120,6 @@ export const authOptions:NextAuthOptions = {
             await User.create({
               email: user.email,
               name: user.name,
-              image: user.image,
               isAdmin: false,
               city:"pending",
               country:"pending",

@@ -10,6 +10,7 @@ export type MenuType = {
 export type ProductType = {
     _id: string;
     id:string;
+    restaurantId:string;
     title:string;
     desc?: string;
     img?:string;

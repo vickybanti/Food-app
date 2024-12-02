@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
     }
 
     // Fetch the order from Prisma
-    const order = await Order.findById(orderId);
+    const order = await Order.findById({_id:orderId});
 
     console.log("Order fetched:", order);
 

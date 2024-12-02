@@ -34,6 +34,7 @@ type FontProps = {
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@mui/material";
+import ProCard from "./ProCard";
 
 const getData = async(page: number, limit: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
@@ -54,6 +55,8 @@ const Products = () => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const limit = 4;
+  
+  const [res,setRes] = useState("")
 
   const router = useRouter()
 
@@ -70,6 +73,7 @@ const Products = () => {
     }
   };
 
+  
   useEffect(() => {
     loadProducts();
   }, [page]);
@@ -85,72 +89,18 @@ const Products = () => {
 
       <div className='grid grid-cols-1 gap-8 proFeature sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2'>
       
-
-        {products.map((item) => (
-
-          
-
-<Card key={item._id} className="card shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[250px] lg:h-[350px] mx-auto">
-<CardHeader className="cardHeader lg:w-full lg:h-[250px] ">
-  {item.img && (
-    <div className="relative h-60 lg:w-full cardImage">
-      {loading ? (<Skeleton className="w-full h-full rounded-full"/>):
-      <Link href={`/product/${item._id}`}>
-      
-      <Image 
-        src={item.img} 
-        alt="" 
-        fill 
-        className="object-cover"
-      />
-      </Link>
-    }
-    </div>
-  )}
-</CardHeader>
-<CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
-  {loading ? (<Skeleton className="w-10 h-4"/>):
-  <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
-  {loading ? (<Skeleton className="w-10 h-4"/>) :
-  <CardDescription className="catFont text-gray-800">
-    {item.desc ? (item.desc.length > 20 ? item.desc.substring(0, 20) + "..." : item.desc) : 
-    'Description not available'}
-    </CardDescription>
-}
-
-
-
-  <div className="flex gap-4">
-  {loading ? (<Skeleton className="w-8 h-4"/>):
-  <p className="font-bold text-[#741102] priceFont">${item.price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
-  <p className="text-gray-500 priceFont">{item.catSlug}</p>}
-  </div>
- 
-</CardContent>
-<CardFooter className="flex justify-between">
-  <div></div>
-  <span className="mt-[-60px] cartAddSpan">
-    <Drawer>
-      <DrawerTrigger className="cartSize p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
-        <Add fontSize="large" className="text-white"/>
-      </DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader className="flex flex-col gap-2 mx-auto">
-          <DrawerTitle>
-            <Price product={item}/>
-          </DrawerTitle>
-          <DrawerDescription></DrawerDescription>
-        </DrawerHeader>
-        <DrawerFooter>
-          <DrawerClose>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
-  </span>
-</CardFooter>
-</Card>
+        {products.map((pro: ProductType) => (
+          <ProCard 
+            key={pro._id} 
+            item={pro} 
+            loading={false} 
+            href={`/product/${pro._id}`} 
+            img={pro.img || ''} 
+            title={pro.title || ''} 
+            desc={pro.desc || ''} 
+            price={pro.price.toString()} 
+            catSlug={pro.restaurant?.name }
+          />
         ))}
       </div>
 

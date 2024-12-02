@@ -45,40 +45,34 @@ const Categories = () => {
     <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mt-4 py-7 md:mx-40 px-0">
+    <div className="mt-4 py-7 md:mx-40 px-0 flex flex-wrap justify-between gap-4">
 
-        <Carousel className='md'>
-          <CarouselContent>
-            {allCategories.map((category) => (
 
-              <CarouselItem key={category._id} className="lg:basis-1/3 px-2">
+        {allCategories.map((category) => (
 
-                <div
-                  className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-[300px] cursor-pointer`}
-                  onClick={() => router.push(`/products?category=${category.slug}`)}
-                >
-                  <Image
-                    src={category.img || ''}
-                    alt={category.title}
-                    fill
-                    className='object-cover w-full h-full transition-all duration-300 mdImg' />
-                  <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
-                    <p className={`font-semibold text-[50px] font-sans pt-72 hidden md:block md:m-auto md:items-center`}>{category.title}</p>
-                  </div>
+          <div key={category._id} className="w-56 h-52 px-2">
 
-                  <div className='md:hidden categoryTitle'>
-  <p className={`font-semibold text-[50px] font-sans pt-16`}>{category.title}</p> {/* Visible on mobile */}
-</div>
-                </div>
+            <div
+              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer`}
+              onClick={() => router.push(`/products?category=${category.slug}`)}
+            >
+              <Image
+                src={category.img || ''}
+                alt={category.title}
+                fill
+                className='object-cover w-full h-full transition-all duration-300 mdImg' />
+              <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
+                <p className={`font-semibold text-[40px] font-sans pt-96 hidden md:block md:m-auto md:items-center`}>{category.title}</p>
+              </div>
 
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className='hidden'>
-          <CarouselPrevious />
-          <CarouselNext />
+              <div className='md:hidden categoryTitle'>
+                <p className={`font-semibold text-[40px] font-sans pt-16`}>{category.title}</p> {/* Visible on mobile */}
+              </div>
+            </div>
           </div>
-        </Carousel>
+
+        ))}
+
       </div></>
   )
 }
