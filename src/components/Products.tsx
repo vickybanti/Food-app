@@ -99,7 +99,7 @@ const Products = () => {
             title={pro.title || ''} 
             desc={pro.desc || ''} 
             price={pro.price.toString()} 
-            catSlug={pro.restaurant?.name }
+            catSlug={pro.catSlug || ''}
           />
         ))}
       </div>
