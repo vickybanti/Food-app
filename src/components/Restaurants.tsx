@@ -85,13 +85,14 @@ const Restaurants = () => {
                         key={restaurant._id}
                     >
                         <div className="lg:w-[384px] lg:h-[160px] relative rounded-lg shadow-lg mb-5 m-auto">
-                           
+                           {loading ?<Skeleton className="w-full h-full"/>:
                             <Image
-                                src={loading ?<Skeleton className="w-full h-full"/>: restaurant.img}
+                                src={ restaurant.img}
                                 fill
                                 alt={restaurant.name}
                                 className="object-cover rounded-lg"
                             />
+                           }
                             
                            </div>
                         <div className="mt-5 border-none text-xl">
