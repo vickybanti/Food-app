@@ -21,7 +21,7 @@ type Product = {
     title: string;
     desc: string;
     img: string;
-    options?: { title: string, additionalPrice: number }[];
+    options?: { _id: string; title: string; additionalPrice: number }[];
     catSlug: string;
     isFeatured: boolean;
     price: number;
