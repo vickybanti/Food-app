@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 
 
-const page = ({params}:{params:{id:string}}) => {
+const Page = ({params}:{params:{id:string}}) => {
   const {products, totalItems, totalPrice, removeFromCart} = userCartStore()
 
 
@@ -242,4 +242,4 @@ const page = ({params}:{params:{id:string}}) => {
   )
 }
 
-export default page
+export default Page
