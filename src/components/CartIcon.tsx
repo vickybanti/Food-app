@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
    import Box from '@mui/material/Box';
     import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-    import Button from '@mui/material/Button';
     import List from '@mui/material/List';
     import Divider from '@mui/material/Divider';
     import ListItem from '@mui/material/ListItem';
@@ -22,6 +21,7 @@ import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCh
     import { DeleteSweepSharp } from "@mui/icons-material";
     import { signIn, useSession } from "next-auth/react";
     import { useRouter } from "next/navigation";
+import { Button } from "./ui/button";
     
     type Anchor = 'top' | 'left' | 'bottom' | 'right';
     
@@ -120,14 +120,14 @@ import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCh
           {item.img &&
           <Image src={item.img} alt="" width={80} height={80} className="cartImage" />
           }
-          <div className="">
+          <div className="ml-8">
             <h1 className="text-sm font-semibold uppercase cartTitle">{item.title} </h1>
             <span className="cartoption text-gray-400"> {item.quantity} </span>
             
             <span className="cartoption text-gray-400">{item.optionTitle}</span>
           </div>
-          <h2 className="font-bold">${item.price}</h2>
-          <span className="cursor-pointer font-[red]" onClick={()=>removeFromCart(item)}>
+          <h2 className="font-bold ml-8">${item.price}</h2>
+          <span className="cursor-pointer font-[red] ml-3" onClick={()=>removeFromCart(item)}>
             <DeleteSweepSharp sx={{color:"red"}}/>
           </span>
         </ListItem>

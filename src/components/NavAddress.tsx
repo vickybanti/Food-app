@@ -125,8 +125,11 @@ console.log("users",users)
         <DialogTrigger asChild>
          <Button variant="ghost" className="flex border-none w-full text-black hover:text-[green]">
          <EditLocation sx={{color:"green", fontSize:"35px"}}/>
-        {users.city && <span className="text-sm font-extralight">{users?.city}</span>}
-        {users.country && <span className="text-sm font-light">{users?.country}</span>}
+        {users.city ==='pending'? (<span className="text-sm font-extralight">Add address</span>) :
+         (<span className="text-sm font-extralight">{users?.city}</span>)
+        }
+        {users.country === 'pending' ? "" : 
+        (<span className="text-sm font-light">{users?.country}</span>)}
         
         
          </Button>
