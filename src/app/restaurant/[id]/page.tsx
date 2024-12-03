@@ -165,14 +165,14 @@ const Page = ({params}:{params:{id:string}}) => {
           {item.img &&
           <Image src={item.img} alt="" width={80} height={80} className="cartImage" />
           }
-          <div className="">
+          <div className="ml-5">
             <h1 className="text-sm font-semibold uppercase cartTitle">{item.title} </h1>
             <span className="cartoption text-gray-400"> {item.quantity} </span>
             
             <span className="cartoption text-gray-400">{item.optionTitle}</span>
           </div>
-          <h2 className="font-bold">${item.price}</h2>
-          <span className="cursor-pointer font-[red]" onClick={()=>removeFromCart(item)}>
+          <h2 className="font-bold ml-3">${item.price}</h2>
+          <span className="cursor-pointer font-[red] ml-3" onClick={()=>removeFromCart(item)}>
             <DeleteSweepSharp sx={{color:"red"}}/>
           </span>
         </ListItem>

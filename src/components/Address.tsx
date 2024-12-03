@@ -170,12 +170,12 @@ console.log("users",users)
   <AccordionItem value="item-1">
     <AccordionTrigger>Use Current Delivery Address</AccordionTrigger>
     <AccordionContent className="px-3 flex flex-col">
-    {users.street && <span className="px-2">{users.street}</span>}
-        {users.city && <span className="px-2">{users?.city}</span>}
-        {users.country && <span className="px-2">{users?.country}</span>}
+    {users.street==='pending'? "" : <span className="px-2">{users.street}</span>}
+        {users.city==='pending' ? "": <span className="px-2">{users?.city}</span>}
+        {users.country ==='pending'? "" : <span className="px-2">{users?.country}</span>}
         
-        {users.phoneNumber && <span className="px-2">Phone number: {users?.phoneNumber}</span>}
-        {!users.city && users.city=== 'pending' && !users.street && users.street ==='pending' && !users.country && users.country === 'pending' && !users.phoneNumber && users.phoneNumber==='pending' && 
+        {users.phoneNumber ==='pending'? "" : <span className="px-2">Phone number: {users?.phoneNumber}</span>}
+        {!users.city && !users.street  && !users.country && !users.phoneNumber && 
         
         <p className="text-black font-bold">No Address found...</p>}
     </AccordionContent>
