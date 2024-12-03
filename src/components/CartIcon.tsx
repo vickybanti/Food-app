@@ -199,7 +199,7 @@ import { Button } from "./ui/button";
         <div>
           {(['right'] as const).map((anchor) => (
             <React.Fragment key={anchor}>
-              <Button onClick={toggleDrawer(anchor, true)}>
+              <Button onClick={toggleDrawer(anchor, true)} className="bg-none">
 
                 <div className="relative flex w-8 h-8 p-5 items-center justify-center rounded-full bg-[#042D29] mr-10 md:w-5 md:h-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none">
                   <ShoppingCartCheckoutOutlinedIcon className="text-white font-light"/>

@@ -175,7 +175,7 @@ console.log("users",users)
         {users.country && <span className="px-2">{users?.country}</span>}
         
         {users.phoneNumber && <span className="px-2">Phone number: {users?.phoneNumber}</span>}
-        {!users.city || users.city=== 'pending' && !users.street || users.street ==='pending' && !users.country || users.country === 'pending' && !users.phoneNumber || users.phoneNumber==='pending' && 
+        {!users.city && users.city=== 'pending' && !users.street && users.street ==='pending' && !users.country && users.country === 'pending' && !users.phoneNumber && users.phoneNumber==='pending' && 
         
         <p className="text-black font-bold">No Address found...</p>}
     </AccordionContent>

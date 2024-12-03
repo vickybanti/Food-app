@@ -32,7 +32,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
     
     
 <Card key={item._id} className="card shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] lg:w-[350px] lg:h-[350px] mx-auto">
-<CardHeader className="cardHeader w-[85%] h-[200px] p-0 ">
+<CardHeader className="cardHeader w-[85%] h-[200px] p-4 ">
  
     <div className="relative h-[200px] w-full cardImage">
       {loading ? (<Skeleton className="w-full h-full rounded-full"/>):
