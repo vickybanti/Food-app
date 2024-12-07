@@ -14,14 +14,24 @@ interface Product {
   // ... other product properties
 }
 
+interface Restaurant {
+  id: string;
+  _id:string;
+  name: string;
+  img: string;
+  // ... other product properties
+}
+
+
 interface SearchResult {
   products: Product[];  // Changed from string[] to Product[]
   categories: string[];
+  restaurants: Restaurant[];
 }
 
 export default function SearchBox() {
   const [input, setInput] = useState("");
-  const [results, setResults] = useState<SearchResult>({ products: [], categories: [] });
+  const [results, setResults] = useState<SearchResult>({ products: [], categories: [], restaurants:[] });
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -33,7 +43,7 @@ export default function SearchBox() {
         setResults(data);
       } catch (error) {
         console.error('Error:', error);
-        setResults({ products: [], categories: [] });
+        setResults({ products: [], categories: [], restaurants:[] });
 
       }
       setLoading(false)
@@ -41,7 +51,7 @@ export default function SearchBox() {
     if (input) {
       handleSearch();
     } else {
-      setResults({ products: [], categories: [] });
+      setResults({ products: [], categories: [], restaurants:[] });
     }
   }, [input]);
 
@@ -87,7 +97,7 @@ export default function SearchBox() {
                 {params.InputProps.endAdornment}
               </>
             ),
-            style: {width:"100%", boxShadow: "0px 0px 0px 1px rgba(0,0,0,0.06),0px 1px 1px -0.5px rgba(0,0,0,0.06),0px_3px 3px -1.5px rgba(0,0,0,0.06), 0px 6px 6px -3px rgba(0,0,0,0.06),0px 12px 12px -6px rgba(0,0,0,0.06),0px 24px 24px -12px rgba(0,0,0,0.06)", borderColor:"gray", borderRadius: "10px", padding:"0 90px", color:"white", height:"40px", backgroundColor:"#e5e7eb" }
+            style: {width:"100%", boxShadow: "0px 0px 0px 1px rgba(0,0,0,0.06),0px 1px 1px -0.5px rgba(0,0,0,0.06),0px_3px 3px -1.5px rgba(0,0,0,0.06), 0px 6px 6px -3px rgba(0,0,0,0.06),0px 12px 12px -6px rgba(0,0,0,0.06),0px 24px 24px -12px rgba(0,0,0,0.06)", borderColor:"gray", borderRadius: "10px", padding:"0 90px", color:"black", height:"40px", backgroundColor:"#e5e7eb" }
           }}
         />
       )}

@@ -8,6 +8,7 @@ export type MenuType = {
 }[];
 
 export type ProductType = {
+    [x: string]: any;
     _id: string;
     id:string;
     restaurantId:string;
@@ -47,10 +48,23 @@ export type CartItemType = {
     quantity:number;
 }
 
+export type SavedProductType = {
+    savedProducts:[];
+    _id: string;
+    title:string;
+    img?: string;
+    price:number;
+    optionTitle?: string;
+    quantity:number;
+    resProducts?:[]
+}
+
 export type CartType = {
     products: CartItemType[];
     totalItems: number;
     totalPrice: number;
+    totalSavedItem:number;
+    savedProducts: SavedProductType[];
 }
 
 export type ShowMoreProps = {
@@ -63,4 +77,7 @@ export type ActionTypes = {
     addToCart:(item: CartItemType) => void;
     removeFromCart : (item:CartItemType) => void;
     clearCart: () => void;
+    saveProduct:(item: SavedProductType) => void;
+    removeSavedProduct : (item: SavedProductType) => void;
+    clearSavedProduct: () => void;
 }

@@ -44,10 +44,10 @@ const UserLinks = () => {
            
 
           </div></>
-      ) : (
+      ) : ( 
         <Link href={"/login"} className=''>
-      <div className="relative w-10 h-10 p-2 rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none transition-shadow">
-        <Image src="/user.svg" width={30} height={30} alt="login" className="text-white items-center justify-center"/>
+      <div className="relative w-12 h-12 p-3 rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none transition-shadow">
+        <Image src="/user.svg" width={40} height={40} alt="login" className="text-white items-center justify-center"/>
       </div>
       
         </Link>

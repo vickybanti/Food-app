@@ -5,8 +5,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-import { TimerRounded } from "@mui/icons-material";
+import { Delete, Favorite, FavoriteBorderOutlined, FavoriteOutlined, TimerRounded } from "@mui/icons-material";
 import { Skeleton } from "./ui/skeleton";
+import { userCartStore } from "@/lib/utils/store";
 
 // Define the type for a restaurant
 type Restaurant = {
@@ -14,6 +15,7 @@ type Restaurant = {
     name: string;
     img: string;
     products?: Product[];
+    resProducts:[]
 };
 
 type Product = {
@@ -27,6 +29,12 @@ type Product = {
     price: number;
 };
 
+// Assuming this is your SavedProductType definition
+type SavedProductType = {
+    savedProducts: { _id: string; name: string; img: string; optionTitle?: string; quantity: number,products:[] }[];
+    // Add any other properties you need here
+};
+
 const Restaurants = () => {
     const [hasMore, setHasMore] = useState(true);
     const limit = 6;
@@ -34,6 +42,62 @@ const Restaurants = () => {
     const [loading, setLoading] = useState(false);
     const { data: session } = useSession();
     const [allRestaurants, setRestaurants] = useState<Restaurant[]>([]);
+    const {saveProduct,savedProducts, removeSavedProduct,clearSavedProduct} = userCartStore()
+
+    useEffect(() => {
+        userCartStore.persist.rehydrate()
+      },[])
+
+     
+          
+       const [fav, setFav] = useState(false);
+
+       
+         const checkIsFav = (item:Restaurant) => {
+           const foundFav = savedProducts.find((fave) => fave._id === item._id);
+           setFav(foundFav !== undefined);
+         }
+         // Removed the direct call to checkIsFav(item) as it's not needed in this context
+    
+       
+       const isFav = fav;
+        
+     
+    
+       const handleSaved = (restaurant: Restaurant, quantity: number) => {
+
+        const isAlreadySaved = savedProducts.some((product) => product._id === restaurant._id);
+        
+        if (isAlreadySaved) {
+            setFav(true)
+            removeSavedProduct({
+                _id: restaurant._id,
+                title: restaurant.name,
+                img: restaurant.img,
+                optionTitle: '',
+                quantity: 1,
+                products: []
+            });
+        } else {
+            saveProduct({
+                _id: restaurant._id,
+                title: restaurant.name,
+                img: restaurant.img,
+                quantity: quantity,
+                savedProducts: [],
+                products: restaurant.products || [],
+                price: 0
+            });
+
+        }
+        // checkIsFav(restaurant);
+
+    }
+    console.log("saved", savedProducts)
+    
+    
+      
+
 
     useEffect(() => {
         const fetchRestaurants = async (page: number, limit: number) => {
@@ -81,7 +145,7 @@ const Restaurants = () => {
                 {allRestaurants.map((restaurant) => (
                     <div
                         className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10"
-                        onClick={() => router.push(`/restaurant/${restaurant._id}`)}
+                       
                         key={restaurant._id}
                     >
                         <div className="lg:w-[384px] lg:h-[160px] relative rounded-lg shadow-lg mb-5 m-auto">
@@ -91,9 +155,17 @@ const Restaurants = () => {
                                 fill
                                 alt={restaurant.name}
                                 className="object-cover rounded-lg"
+                                onClick={() => router.push(`/restaurant/${restaurant._id}`)}
                             />
                            }
-                            
+                            <div className="absolute rounded-full p-1.5 bg-green-600 top-0 my-2 left-3">
+                            {savedProducts.some((fave) => fave._id === restaurant._id) ? 
+        <Favorite sx={{color:"white", fontSize:"20px"}} onClick={() => handleSaved(restaurant,1)} />
+    :
+        <FavoriteBorderOutlined sx={{color:"white", fontSize:"20px"}} onClick={() => handleSaved(restaurant, 1)} />
+    }
+                            </div>
+
                            </div>
                         <div className="mt-5 border-none text-xl">
                             <p>{loading? <Skeleton /> : restaurant.name}</p>
@@ -101,7 +173,7 @@ const Restaurants = () => {
                                 <><div className="mt-2 flex px-2">
                                     <TimerRounded sx={{ color: "green" }} />
 
-                                    <span className="text-[15px]">{loading ? <Skeleton className="w-20 h-8"/> : `11-12 mins`}</span>
+                                    <span className="text-[15px] font-thin text-gray-500">{loading ? <Skeleton className="w-20 h-8"/> : `11-12 mins`}</span>
                                 </div>
                                 <div className="flex justify-between gap-2">
                                     
@@ -110,10 +182,13 @@ const Restaurants = () => {
                                         {restaurant?.products[0]?.options?.map((pro) => (
                                             <div key={pro._id} className="text-sm text-green-400">
                                                 
-                                                <span className="text-green flex">{loading ? <Skeleton className="w-20 h-8"/> : pro.title}</span>
+                                                <span className="text-green">{loading ? <Skeleton className="w-20 h-8"/> : pro.title}</span>
                                             </div>
                                         ))}
-                                    </div></>
+                                    </div>
+
+                                    </>
+                                    
                             )}
                         </div>
                     </div>
@@ -163,7 +238,7 @@ const Restaurants = () => {
                 }
             </div>
         </>
-    );
-};
+    )
+}
 
 export default Restaurants;

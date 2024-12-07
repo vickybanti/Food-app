@@ -1,5 +1,6 @@
 import Category from "@/lib/database/models/category.model";
 import Product from "@/lib/database/models/products.model";
+import Restaurant from "@/lib/database/models/restaurants.model";
 import { connectToDb } from "@/lib/utils/connect";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -30,6 +31,13 @@ export const GET = async (req: NextRequest) => {
       ],
     });
 
+    const restaurants = await Restaurant.find({
+      $or: [
+        { name: { $regex: query, $options: 'i' } },
+        { desc: { $regex: query, $options: 'i' } },
+      ],
+    })
+
     console.log("Found products:", products.length);
     console.log("Found categories:", categories.length);
 
@@ -39,7 +47,7 @@ export const GET = async (req: NextRequest) => {
       console.log("Prisma query for categories:", Category.find.toString());
     }
 
-    return new NextResponse(JSON.stringify({ products, categories }), { status: 200 });
+    return new NextResponse(JSON.stringify({ products, categories, restaurants }), { status: 200 });
   } catch (error) {
     console.error("Error in search:", error);
     return new NextResponse(JSON.stringify({ error: "Something went wrong" }), { status: 500 });
