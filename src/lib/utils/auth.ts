@@ -57,34 +57,16 @@ export const authOptions:NextAuthOptions = {
         },
       }),
 
-      EmailProvider({
-        server: {
-          host: process.env.EMAIL_SERVER_HOST,
-          auth: {
-            user: process.env.EMAIL_SERVER_USER,
-            pass: process.env.EMAIL_SERVER_PASSWORD
-          }
-        },
-        from: process.env.EMAIL_FROM,
-        sendVerificationRequest({
-          identifier: email,
-          url,
-          provider: { server, from },
-        }) {
-          const { host } = new URL(url);
-          const message = `
-            <p>Sign in to your account</p>
-            <p><a href="${url}">Click here to sign in</a></p>
-          `;
-          // Use a mail sending function here, e.g., nodemailer
-          // mailer.sendMail({ to: email, subject: 'Sign in', html: message });
-        },
-
-        normalizeIdentifier(identifier: string): string {
-          let [local, domain] = identifier.toLowerCase().trim().split("@");
-          domain = domain.split(",")[0];
-          return `${local}@${domain}`;
-        },
+        EmailProvider({
+          server: process.env.EMAIL_SERVER,
+          from: process.env.EMAIL_FROM,
+          sendVerificationRequest({
+            identifier: email,
+            url,
+            provider: { server, from },
+          }) {
+            /* your function */
+          },
       }),
     
       

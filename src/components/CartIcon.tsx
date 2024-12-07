@@ -201,7 +201,7 @@ import { Button } from "./ui/button";
             <React.Fragment key={anchor}>
               <Button onClick={toggleDrawer(anchor, true)} className="p-0 shadow-none h-0 w-0">
 
-                <div className="relative my-auto mr-20 flex p-3 items-center justify-center rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none">
+                <div className="relative my-auto mr-20 flex p-2 items-center justify-center rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none">
                   <ShoppingCartCheckoutOutlinedIcon className="text-white font-light"/>
                   {totalItems > 0 && (<span className="text-white">{totalItems}</span>)}
                 </div>

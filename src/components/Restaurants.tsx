@@ -43,7 +43,6 @@ const Restaurants = () => {
     const { data: session } = useSession();
     const [allRestaurants, setRestaurants] = useState<Restaurant[]>([]);
     const {saveProduct,savedProducts, removeSavedProduct,clearSavedProduct} = userCartStore()
-    const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
         userCartStore.persist.rehydrate()
@@ -136,11 +135,6 @@ const Restaurants = () => {
     }, [page]);
 
     const router = useRouter();
-
-    const toggleShowMore = () => {
-        setShowMore((prev) => !prev);
-    };
-
     return (
         <>
             <div className="flex justify-between px-10">
@@ -152,7 +146,7 @@ const Restaurants = () => {
             <div className="w-full h-full grid grid-cols-3 px-10 my-10 gap-6">
                 {allRestaurants.map((restaurant) => (
                     <div
-                        className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10"
+                        className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
                        
                         key={restaurant._id}
                     >
@@ -179,18 +173,18 @@ const Restaurants = () => {
                             <p>{loading? <Skeleton /> : restaurant.name}</p>
                             {restaurant.products && restaurant.products.length > 0 && (
                                 <><div className="mt-2 flex px-2">
-                                    <TimerRounded sx={{ color: "green" }} />
+                                    <TimerRounded sx={{ color: "green", fontSize:"small"}} />
 
-                                    <span className="text-[15px] font-thin text-gray-500">{loading ? <Skeleton className="w-20 h-8"/> : `11-12 mins`}</span>
+                                    <span className="text-[15px] font-thin text-gray-300">{loading ? <Skeleton className="w-20 h-5"/> : `11-12 mins`}</span>
                                 </div>
-                                <div className="flex justify-between gap-2">
+                                <div className="flex gap-2">
                                     
-                                        <span className="text-[12px] text-green-400">{loading ? <Skeleton className="w-20 h-8"/> :restaurant.products[0].catSlug}</span>
+                                        <span className="text-sm text-green-400">{loading ? <Skeleton className="w-20 h-8"/> :restaurant.products[0].catSlug}</span>
                                 
                                         {restaurant?.products[0]?.options?.map((pro) => (
-                                            <div key={pro._id} className="text-sm text-green-400">
+                                            <div key={pro._id} className="text-sm text-green-300">
                                                 
-                                                <span className="text-green">{loading ? <Skeleton className="w-20 h-8"/> : pro.title}</span>
+                                                <span className="text-green-300">{loading ? <Skeleton className="w-20 h-8"/> : pro.title}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -205,7 +199,7 @@ const Restaurants = () => {
                 
             </div>
             {hasMore ? (
-                    <div className="flex justify-center mt-8">
+                    <div className="flex justify-center my-8">
                         {loading ? (
                             <Image
                                 src="/temporary/p2.png"
@@ -217,10 +211,10 @@ const Restaurants = () => {
                         ) : (
                             <Button
                                 variant="destructive"
-                                onClick={toggleShowMore}
+                                onClick={() => setPage((prev) => prev + 1)}
                                 disabled={loading}
                             >
-                                {showMore ? "Show Less" : "Show More"}
+                                Show More
                             </Button>
                         )}
                     </div>
@@ -238,10 +232,10 @@ const Restaurants = () => {
                 ) : (
                     <Button
                         variant="destructive"
-                        onClick={toggleShowMore}
+                        onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                         disabled={loading}
                     >
-                        {showMore ? "Show Less" : "Show More"}
+                        Show Less
                     </Button>
                 )}
             </div>
