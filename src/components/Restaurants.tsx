@@ -43,6 +43,7 @@ const Restaurants = () => {
     const { data: session } = useSession();
     const [allRestaurants, setRestaurants] = useState<Restaurant[]>([]);
     const {saveProduct,savedProducts, removeSavedProduct,clearSavedProduct} = userCartStore()
+    const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
         userCartStore.persist.rehydrate()
@@ -135,6 +136,11 @@ const Restaurants = () => {
     }, [page]);
 
     const router = useRouter();
+
+    const toggleShowMore = () => {
+        setShowMore((prev) => !prev);
+    };
+
     return (
         <>
             <div className="flex justify-between px-10">
@@ -196,7 +202,9 @@ const Restaurants = () => {
                     </div>
                 ))}
 
-                {hasMore ? (
+                
+            </div>
+            {hasMore ? (
                     <div className="flex justify-center mt-8">
                         {loading ? (
                             <Image
@@ -209,10 +217,10 @@ const Restaurants = () => {
                         ) : (
                             <Button
                                 variant="destructive"
-                                onClick={() => setPage((prev) => prev + 1)}
+                                onClick={toggleShowMore}
                                 disabled={loading}
                             >
-                                Show More
+                                {showMore ? "Show Less" : "Show More"}
                             </Button>
                         )}
                     </div>
@@ -230,15 +238,14 @@ const Restaurants = () => {
                 ) : (
                     <Button
                         variant="destructive"
-                        onClick={() => setPage((prev) => prev - 1)}
+                        onClick={toggleShowMore}
                         disabled={loading}
                     >
-                        Show Less
+                        {showMore ? "Show Less" : "Show More"}
                     </Button>
                 )}
             </div>
                 }
-            </div>
         </>
     )
 }
