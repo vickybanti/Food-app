@@ -56,7 +56,7 @@ export type SavedProductType = {
     price:number;
     optionTitle?: string;
     quantity:number;
-    resProducts?:[]
+    products?:ProductType[]
 }
 
 export type CartType = {

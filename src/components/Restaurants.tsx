@@ -69,14 +69,16 @@ const Restaurants = () => {
         const isAlreadySaved = savedProducts.some((product) => product._id === restaurant._id);
         
         if (isAlreadySaved) {
-            setFav(true)
+            setFav(true);
             removeSavedProduct({
                 _id: restaurant._id,
                 title: restaurant.name,
                 img: restaurant.img,
                 optionTitle: '',
                 quantity: 1,
-                products: []
+                products: [],
+                savedProducts: [],
+                price: 0
             });
         } else {
             saveProduct({
@@ -85,7 +87,7 @@ const Restaurants = () => {
                 img: restaurant.img,
                 quantity: quantity,
                 savedProducts: [],
-                products: restaurant.products || [],
+                products: [],
                 price: 0
             });
 
