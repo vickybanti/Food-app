@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Address } from '@/components/Address';
@@ -63,8 +62,16 @@ const Page = ({params}:{params:{id:string}}) => {
       setLoading(false)
     }
   }
-  
 
+  const [options, setOptions] = useState("")
+
+  const handleOptionChange = (catSlug: string) => {
+    setOptions(catSlug);
+  }
+
+  console.log(options)
+  
+  
 
     const [allProduct,setProduct] = useState<any>({})
 
@@ -74,21 +81,34 @@ const Page = ({params}:{params:{id:string}}) => {
                 method:"GET",
                 cache:"no-store"
             })
-            const data = await res.json()
+            let data = await res.json();
+
+            // Filter products by catSlug if options are set
+            if (options) {
+                // Filter products based on the selected category slug
+                data = data.filter((product: any) => product.catSlug === options);
+                
+                // Sort by createdAt (newest first)
+                data.sort((a:any, b:any) => b.catSlug - a.catSlug);
+            }
+                
             console.log("data,",data)
             setProduct(data)
         }
         getProduct()
 
-    },[id])
+    },[id, options])
     console.log(allProduct)
 
+  const uniqueCategories = Array.from(new Set(allProduct.products?.map((pro: any) => pro.catSlug)));
+
+
   return (
-    <div key={allProduct._id} className='relative my-36 mx-10 flex justify-between px-5'>
+    <div key={allProduct._id} className='relative flex justify-between px-5 mx-10 my-36'>
 
        
                     <div className='h-full relative w-[70%] mt-3 mr-10'>
-                    <div className="h-60 flex flex-col rounded-xl relative">
+                    <div className="relative flex flex-col h-60 rounded-xl">
 
          <Image src= {allProduct.img} fill alt={allProduct.name} className='object-cover rounded-xl'/>
 
@@ -100,7 +120,7 @@ const Page = ({params}:{params:{id:string}}) => {
         <div className="justify-between w-[1200px] flex">
             <h1 className='py-5 text-[30px]'>{allProduct.name}</h1>
 
-           <div className='border-black border-2 bg-gray-100 h-14 ml-40 mt-3 p-3 justify-between rounded-lg right-0'>
+           <div className='right-0 justify-between p-3 mt-3 ml-40 bg-gray-100 border-2 border-black rounded-lg h-14'>
 
             <span className='p-2 bg-green-500 text-[14px] mr-2 rounded-md border-1'>Pickup</span>
             <span className='p-2 text-[14px] ml-2'>Delivery now</span>
@@ -120,17 +140,17 @@ const Page = ({params}:{params:{id:string}}) => {
                 2pm to 11pm
            </p>
            </div>
-              <span className='text-green-500 font-medium right-0'>
+              <span className='right-0 font-medium text-green-500'>
                 Min.Order- ${allProduct.lowestPrice}
               </span>
            </div>
 
            <div className='flex w-full mt-6'>
-                <div className='flex overflow-x-scroll w-full h-16 flex-wrap text-md text-green-500'>
-                    {allProduct.products?.map((pro:any) => (
-                        pro.options?.map((p:any) => (
-                            <p key={p._id} className='p-2 bg-gray-100 rounded-md'>{p.title}</p>
-                        ))
+                <div className='flex flex-wrap w-full h-16 overflow-x-scroll text-green-500 text-md'>
+                    {uniqueCategories.map((catSlug) => (
+                        <p key={catSlug} className='p-2 bg-gray-100 rounded-md cursor-pointer' onChange={() => handleOptionChange(catSlug)}>
+                            {catSlug}
+                        </p>
                     ))}
                 </div>
 
@@ -148,7 +168,7 @@ const Page = ({params}:{params:{id:string}}) => {
               </div>
             </div>
 
-         <div className='w-96 h-full right-0 sticky overflow-y-scroll flex flex-col border-l-2 top-0'>
+         <div className='sticky top-0 right-0 flex flex-col h-full overflow-y-scroll border-l-2 w-96'>
           <div className='flex justify-between border-b-2'>
           <h2 className='text-green-600'>{allProduct.name}</h2>
           </div>
@@ -157,7 +177,7 @@ const Page = ({params}:{params:{id:string}}) => {
          <List>
             
             {loading && (<Skeleton className="w-40 h-40"/>)}
-        {products.length === 0 ? (<h1 className="flex items-center font-bold p-12">No items in cart</h1>)
+        {products.length === 0 ? (<h1 className="flex items-center p-12 font-bold">No items in cart</h1>)
         :
         products.map((item) => (
           <ListItem className="flex items-center justify-between mb-4" key={item._id}>
@@ -167,11 +187,11 @@ const Page = ({params}:{params:{id:string}}) => {
           }
           <div className="ml-5">
             <h1 className="text-sm font-semibold uppercase cartTitle">{item.title} </h1>
-            <span className="cartoption text-gray-400"> {item.quantity} </span>
+            <span className="text-gray-400 cartoption"> {item.quantity} </span>
             
-            <span className="cartoption text-gray-400">{item.optionTitle}</span>
+            <span className="text-gray-400 cartoption">{item.optionTitle}</span>
           </div>
-          <h2 className="font-bold ml-3">${item.price}</h2>
+          <h2 className="ml-3 font-bold">${item.price}</h2>
           <span className="cursor-pointer font-[red] ml-3" onClick={()=>removeFromCart(item)}>
             <DeleteSweepSharp sx={{color:"red"}}/>
           </span>

@@ -136,79 +136,65 @@ const Restaurants = () => {
 
     const router = useRouter();
     return (
-        <>
-            <div className="flex justify-between px-10">
-                <h1>Best restaurants</h1>
-                {session && session?.user.isAdmin && (
-                    <Link href="/add/restaurants">Add new restaurants</Link>
-                )}
-            </div>
-            <div className="w-full h-full grid grid-cols-3 px-10 my-10 gap-6">
+        
+            <><div className="flex justify-between px-10">
+            <h1>Best restaurants</h1>
+            {session && session?.user.isAdmin && (
+                <Link href="/add/restaurants">Add new restaurants</Link>
+            )}
+        </div><div className="w-full h-full grid grid-cols-3 px-10 my-10 gap-6">
                 {allRestaurants.map((restaurant) => (
                     <div
                         className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
-                       
+
                         key={restaurant._id}
                     >
-                        <div className="lg:w-[384px] lg:h-[160px] relative rounded-lg shadow-lg mb-5 m-auto">
-                           {loading ?<Skeleton className="w-full h-full"/>:
-                            <Image
-                                src={ restaurant.img}
-                                fill
-                                alt={restaurant.name}
-                                className="object-cover rounded-lg"
-                                onClick={() => router.push(`/restaurant/${restaurant._id}`)}
-                            />
-                           }
+                        <div className="lg:w-[370px] lg:h-[160px] relative rounded-lg shadow-lg mb-5 m-auto">
+                            {loading ? <Skeleton className="w-full h-full" /> :
+                                <Image
+                                    src={restaurant.img}
+                                    fill
+                                    alt={restaurant.name}
+                                    className="object-cover rounded-lg"
+                                    onClick={() => router.push(`/restaurant/${restaurant._id}`)} />}
                             <div className="absolute rounded-full p-1.5 bg-green-600 top-0 my-2 left-3">
-                            {savedProducts.some((fave) => fave._id === restaurant._id) ? 
-        <Favorite sx={{color:"white", fontSize:"20px"}} onClick={() => handleSaved(restaurant,1)} />
-    :
-        <FavoriteBorderOutlined sx={{color:"white", fontSize:"20px"}} onClick={() => handleSaved(restaurant, 1)} />
-    }
+                                {savedProducts.some((fave) => fave._id === restaurant._id) ?
+                                    <Favorite sx={{ color: "white", fontSize: "20px" }} onClick={() => handleSaved(restaurant, 1)} />
+                                    :
+                                    <FavoriteBorderOutlined sx={{ color: "white", fontSize: "20px" }} onClick={() => handleSaved(restaurant, 1)} />}
                             </div>
 
-                           </div>
+                        </div>
                         <div className="mt-5 border-none text-xl">
-                            <p>{loading? <Skeleton /> : restaurant.name}</p>
+                            <p>{loading ? <Skeleton /> : restaurant.name}</p>
                             {restaurant.products && restaurant.products.length > 0 && (
                                 <><div className="mt-2 flex px-2">
-                                    <TimerRounded sx={{ color: "green", fontSize:"small"}} />
+                                    <TimerRounded sx={{ color: "green" }} />
 
-                                    <span className="text-[15px] font-thin text-gray-300">{loading ? <Skeleton className="w-20 h-5"/> : `11-12 mins`}</span>
+                                    <span className="text-[15px] font-thin text-gray-700">{loading ? <Skeleton className="w-20 h-5" /> : `11-12 mins`}</span>
                                 </div>
-                                <div className="flex gap-2">
-                                    
-                                        <span className="text-sm text-green-400">{loading ? <Skeleton className="w-20 h-8"/> :restaurant.products[0].catSlug}</span>
-                                
+                                    <div className="flex gap-2">
+
+                                        <span className="text-sm text-green-400">{loading ? <Skeleton className="w-20 h-8" /> : restaurant.products[0].catSlug}</span>
+
                                         {restaurant?.products[0]?.options?.map((pro) => (
                                             <div key={pro._id} className="text-sm text-green-300">
-                                                
-                                                <span className="text-green-300">{loading ? <Skeleton className="w-20 h-8"/> : pro.title}</span>
+
+                                                <span className="text-green-300">{loading ? <Skeleton className="w-20 h-8" /> : pro.title}</span>
                                             </div>
                                         ))}
                                     </div>
 
-                                    </>
-                                    
+                                </>
+
                             )}
                         </div>
                     </div>
                 ))}
 
-                
-            </div>
-            {hasMore ? (
-                    <div className="flex justify-center my-8">
-                        {loading ? (
-                            <Image
-                                src="/temporary/p2.png"
-                                alt="loading"
-                                width={50}
-                                height={50}
-                                className="animate-spin bg-blend-multiply"
-                            />
-                        ) : (
+{hasMore && 
+                    <div className="flex justify-center my-8 mx-36">
+                        
                             <Button
                                 variant="destructive"
                                 onClick={() => setPage((prev) => prev + 1)}
@@ -216,31 +202,14 @@ const Restaurants = () => {
                             >
                                 Show More
                             </Button>
-                        )}
+            
                     </div>
-                ) : 
+}
+
+            </div></>
+           
                 
-                <div className="flex justify-center mt-8 px-auto">
-                {loading ? (
-                    <Image
-                        src="/temporary/p1.png"
-                        alt="loading"
-                        width={50}
-                        height={50}
-                        className="animate-spin bg-blend-multiply"
-                    />
-                ) : (
-                    <Button
-                        variant="destructive"
-                        onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                        disabled={loading}
-                    >
-                        Show Less
-                    </Button>
-                )}
-            </div>
-                }
-        </>
+        
     )
 }
 
