@@ -35,7 +35,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
 <CardHeader className="cardHeader w-[100%] h-[200px] p-4 ">
  
     <div className="relative h-[200px] w-full cardImage">
-      {loading ? (<Skeleton className="w-full h-full rounded-full"/>):
+      {loading ? (<Skeleton className="w-56 h-40 rounded-full"/>):
       <Link href={href}>
       
       <Image 
@@ -53,10 +53,10 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
 
 </CardHeader>
 <CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
-  {loading ? (<Skeleton className="w-10 h-4"/>):
-  <CardDescription className="font-semibold text-black text-xl cardTitle">{title}</CardDescription>}
-  {loading ? (<Skeleton className="w-10 h-4"/>) :
-  <CardDescription className="catFont text-gray-800">
+  {loading ? (<Skeleton className="w-10 h-8"/>):
+  <CardDescription className="text-xl font-semibold text-black cardTitle">{title}</CardDescription>}
+  {loading ? (<Skeleton className="w-10 h-8"/>) :
+  <CardDescription className="text-gray-800 catFont">
     {desc ? (desc.length > 50 ? desc.substring(0, 45) + "..." : desc) : 
     'Description not available'}
     </CardDescription>
@@ -65,7 +65,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
 
 
   <div className="flex gap-4">
-  {loading ? (<Skeleton className="w-8 h-4"/>):
+  {loading ? (<Skeleton className="w-10 h-4"/>):
   <p className="font-bold text-[#741102] priceFont">${price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
   <p className="text-gray-500 catFont">{catSlug}</p>}
   </div>

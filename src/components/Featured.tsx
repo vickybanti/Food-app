@@ -66,7 +66,7 @@ const Featured = () => {
 
 
 </div>
-<div className='featuredPro flex items-start justify-start w-full h-full gap-8 px-2 mx-32 mt-7'>
+<div className='flex items-start justify-start w-full h-full gap-8 px-2 mx-32 featuredPro mt-7'>
     {/* WRAPPER */}
     <div className="relative flex w-full mt-10 overflow-x-auto no-scrollbar popular">
         {/* SINGLE ITEM */}
@@ -86,16 +86,16 @@ const Featured = () => {
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="hover:rotate-[60deg] transition-all duration-500 mt-[-140px] mix-blend-multiply w-52 h-11 mb-8 featureImg">
-                <Image src={item.img} alt="" width={200} height={150} className="object-cover bg-white " />
+              <div className="hover:scale-x-105 transition-all duration-500 mt-[-160px] mix-blend-multiply w-52 h-8 mb-10 mx-auto featureImg">
+                <Image src={item.img} alt="" width={170} height={100} className="object-cover bg-white " />
               </div>
             )}
             {/* TEXT CONTAINER */}
             <div className="flex flex-col items-center justify-center flex-1 gap-2 text-center" >
               <Link href={`/product/${item._id}`}>
-              <h1 className="text-md pt-28 pb-8 font-bold uppercase">{item.title}</h1>
+              <h1 className="pt-32 pb-8 font-bold text-white uppercase text-md">{item.title}</h1>
               <span className="text-xl font-medium text-white rounded-full p-2 bg-[#741102]">
-                <FavoriteBorderRounded sx={{color:"greenyellow"}}/>
+                {item.price}
               </span>
               </Link>
              

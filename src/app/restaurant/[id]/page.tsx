@@ -4,7 +4,7 @@ import { Address } from '@/components/Address';
 import CartIcon from '@/components/CartIcon';
 import ProCard from '@/components/ProCard';
 import { userCartStore } from '@/lib/utils/store';
-import { DeleteSweepSharp, Timelapse } from '@mui/icons-material';
+import { DeleteSweepSharp, NightsStay, Timelapse } from '@mui/icons-material';
 import { Divider, Skeleton, ListItem, Box, List } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image'
@@ -63,11 +63,12 @@ const Page = ({params}:{params:{id:string}}) => {
     }
   }
 
-  const [options, setOptions] = useState("")
+  const [options, setOptions] = useState("");
 
   const handleOptionChange = (catSlug: string) => {
+    // Set the selected category as the only option
     setOptions(catSlug);
-  }
+  };
 
   console.log(options)
   
@@ -77,27 +78,34 @@ const Page = ({params}:{params:{id:string}}) => {
 
     useEffect(() => {
         const getProduct = async() => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/restaurants/${id}`,{
-                method:"GET",
-                cache:"no-store"
-            })
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/restaurants/${id}`, {
+                method: "GET",
+                cache: "no-store"
+            });
             let data = await res.json();
 
-            // Filter products by catSlug if options are set
-            if (options) {
-                // Filter products based on the selected category slug
-                data = data.filter((product: any) => product.catSlug === options);
-                
-                // Sort by createdAt (newest first)
-                data.sort((a:any, b:any) => b.catSlug - a.catSlug);
-            }
-                
-            console.log("data,",data)
-            setProduct(data)
-        }
-        getProduct()
+            // Check if data is an object and contains products
+            if (data && Array.isArray(data.products)) {
+                // Sort products based on category
+                if (options.length > 0) {
+                  data.products.sort((a: { catSlug: string }, b: { catSlug: string }) => {
+                    return a.catSlug.localeCompare(b.catSlug);
+                  });
+                } else {
+                  setProduct(data)
 
-    },[id, options])
+                }
+               
+                
+
+                console.log("Sorted data:", data);
+                setProduct(data); // Set the entire data object if needed
+            } else {
+                console.error("Expected data to be an object with a products array, but got:", data);
+            }
+        }
+        getProduct();
+    }, [id]);
     console.log(allProduct)
 
   const uniqueCategories = Array.from(new Set(allProduct.products?.map((pro: any) => pro.catSlug)));
@@ -147,8 +155,12 @@ const Page = ({params}:{params:{id:string}}) => {
 
            <div className='flex w-full mt-6'>
                 <div className='flex flex-wrap w-full h-16 overflow-x-scroll text-green-500 text-md'>
-                    {uniqueCategories.map((catSlug) => (
-                        <p key={catSlug} className='p-2 bg-gray-100 rounded-md cursor-pointer' onChange={() => handleOptionChange(catSlug)}>
+                  <p className={`p-2 rounded-md cursor-pointer #`} onClick={() => handleOptionChange("")}>
+                  All
+                  </p>
+                    {uniqueCategories.map((catSlug: any) => (
+                      
+                        <p key={catSlug} className={`p-2 rounded-md cursor-pointer ${options.includes(catSlug) ? 'bg-green-200' : 'bg-gray-100'}`} onClick={() => handleOptionChange(catSlug)}>
                             {catSlug}
                         </p>
                     ))}
@@ -157,16 +169,15 @@ const Page = ({params}:{params:{id:string}}) => {
            </div>
 
            <div className='grid grid-cols-2 gap-4 mt-10'>
-            {allProduct.products?.map((pro:any) => (
+            {allProduct.products?.filter((pro: any) => options.length === 0 || options.includes(pro.catSlug)).map((pro: any) => (
                 <ProCard key={pro._id} item={pro} loading={false} href={`/product/${pro._id}`} img={pro.img} title={pro.title} desc={pro.desc} price={pro.price} catSlug={pro.catSlug}/>
-              ))
-              
-              }
-              <Link href={`/add/${allProduct._id}`}>
+            ))}
+            <Link href={`/add/${allProduct._id}`}>
                 Add more products
-              </Link>
-              </div>
+            </Link>
             </div>
+            </div>
+       
 
          <div className='sticky top-0 right-0 flex flex-col h-full overflow-y-scroll border-l-2 w-96'>
           <div className='flex justify-between border-b-2'>
@@ -255,6 +266,7 @@ const Page = ({params}:{params:{id:string}}) => {
           </List>
             </div>
          </div>
+
 
 
     

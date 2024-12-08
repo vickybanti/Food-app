@@ -142,7 +142,7 @@ const Restaurants = () => {
             {session && session?.user.isAdmin && (
                 <Link href="/add/restaurants">Add new restaurants</Link>
             )}
-        </div><div className="w-full h-full grid grid-cols-3 px-10 my-10 gap-6">
+        </div><div className="grid w-full h-full grid-cols-3 gap-6 px-10 my-10">
                 {allRestaurants.map((restaurant) => (
                     <div
                         className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
@@ -165,22 +165,22 @@ const Restaurants = () => {
                             </div>
 
                         </div>
-                        <div className="mt-5 border-none text-xl">
+                        <div className="mt-5 text-xl border-none">
                             <p>{loading ? <Skeleton /> : restaurant.name}</p>
                             {restaurant.products && restaurant.products.length > 0 && (
-                                <><div className="mt-2 flex px-2">
+                                <><div className="flex px-2 mt-2">
                                     <TimerRounded sx={{ color: "green" }} />
 
                                     <span className="text-[15px] font-thin text-gray-700">{loading ? <Skeleton className="w-20 h-5" /> : `11-12 mins`}</span>
                                 </div>
                                     <div className="flex gap-2">
 
-                                        <span className="text-sm text-green-400">{loading ? <Skeleton className="w-20 h-8" /> : restaurant.products[0].catSlug}</span>
+                                        <span className="text-sm text-green-400">{loading ? <Skeleton className="w-20 h-5" /> : restaurant.products[0].catSlug}</span>
 
                                         {restaurant?.products[0]?.options?.map((pro) => (
                                             <div key={pro._id} className="text-sm text-green-300">
 
-                                                <span className="text-green-300">{loading ? <Skeleton className="w-20 h-8" /> : pro.title}</span>
+                                                <span className="text-green-300">{loading ? <Skeleton className="w-20 h-5" /> : pro.title}</span>
                                             </div>
                                         ))}
                                     </div>
