@@ -138,11 +138,12 @@ const Restaurants = () => {
     return (
         
             <><div className="flex justify-between px-10">
-            <h1>Best restaurants</h1>
+            <h1 className="text-xl">Best restaurants</h1>
             {session && session?.user.isAdmin && (
                 <Link href="/add/restaurants">Add new restaurants</Link>
             )}
-        </div><div className="grid w-full h-full grid-cols-3 gap-6 px-10 my-10">
+        </div>
+        <div className="grid w-full h-full grid-cols-3 gap-6 px-10 my-10">
                 {allRestaurants.map((restaurant) => (
                     <div
                         className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
@@ -166,7 +167,7 @@ const Restaurants = () => {
 
                         </div>
                         <div className="mt-5 text-xl border-none">
-                            <p>{loading ? <Skeleton /> : restaurant.name}</p>
+                            <p className="text-lg">{loading ? <Skeleton /> : restaurant.name}</p>
                             {restaurant.products && restaurant.products.length > 0 && (
                                 <><div className="flex px-2 mt-2">
                                     <TimerRounded sx={{ color: "green" }} />
@@ -175,7 +176,7 @@ const Restaurants = () => {
                                 </div>
                                     <div className="flex gap-2">
 
-                                        <span className="text-sm text-green-400">{loading ? <Skeleton className="w-20 h-5" /> : restaurant.products[0].catSlug}</span>
+                                        <span className="text-sm text-green-400 uppercase">{loading ? <Skeleton className="w-20 h-5" /> : restaurant.products[0].catSlug}</span>
 
                                         {restaurant?.products[0]?.options?.map((pro) => (
                                             <div key={pro._id} className="text-sm text-green-300">

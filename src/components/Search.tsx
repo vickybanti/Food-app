@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Skeleton } from './ui/skeleton';
 import Link from 'next/link';
 import { Search } from '@mui/icons-material';
+import { Input } from './ui/input';
 
 interface Product {
   id: string;
@@ -82,11 +83,12 @@ export default function SearchBox() {
       sx={{ width: 400, border: "none", fontSize:"12px"}}
       renderInput={(params) => (
         <TextField 
+         className='bg-gray-100 border-gray-300 rounded-md'
           {...params} 
           label={<>
           <div className="flex pr-24 mt-[-3px]">
           <Search sx={{ fontSize: "20px" ,color:"green", marginRight:"2px" }} />
-          <span className='text-xs font-extralight text-black'>Search for good food</span>
+          <span className='text-xs text-black font-extralight'>Search for good food</span>
           </div>
           </>}
           InputProps={{
@@ -97,7 +99,7 @@ export default function SearchBox() {
                 {params.InputProps.endAdornment}
               </>
             ),
-            style: {width:"100%", boxShadow: "0px 0px 0px 1px rgba(0,0,0,0.06),0px 1px 1px -0.5px rgba(0,0,0,0.06),0px_3px 3px -1.5px rgba(0,0,0,0.06), 0px 6px 6px -3px rgba(0,0,0,0.06),0px 12px 12px -6px rgba(0,0,0,0.06),0px 24px 24px -12px rgba(0,0,0,0.06)", borderColor:"gray", borderRadius: "10px", padding:"0 90px", color:"black", height:"40px", backgroundColor:"#e5e7eb" }
+            style: {width:"100%", border:"none",padding:"0 90px", color:"black", height:"40px", backgroundColor:"#e5e7eb" }
           }}
         />
       )}

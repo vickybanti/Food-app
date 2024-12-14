@@ -79,6 +79,7 @@ export const POST = async(req:NextRequest) => {
             lowestPrice: restaurantData.lowestPrice, 
             highestPrice: restaurantData.highestPrice,
             img: restaurantData.img, 
+            locaton: restaurantData.location,
             // products: productData.map((prod: any) => ({
             //     _id: new mongoose.Types.ObjectId(),
             //     title: prod.title,

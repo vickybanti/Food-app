@@ -128,7 +128,7 @@ const Page = ({params}:{params:{id:string}}) => {
         <div className="justify-between w-[1200px] flex">
             <h1 className='py-5 text-[30px]'>{allProduct.name}</h1>
 
-           <div className='right-0 justify-between p-3 mt-3 ml-40 bg-gray-100 border-2 border-black rounded-lg h-14'>
+           <div className='justify-between p-3 mt-3 ml-16 bg-gray-100 border-2 border-black rounded-lg right-9 h-14'>
 
             <span className='p-2 bg-green-500 text-[14px] mr-2 rounded-md border-1'>Pickup</span>
             <span className='p-2 text-[14px] ml-2'>Delivery now</span>
@@ -143,13 +143,13 @@ const Page = ({params}:{params:{id:string}}) => {
          <div className='flex justify-between'>
         <div className="flex flex-col">
          <h1>Opening hours</h1>
-           <p className='text-gray-300'>
+           <p className='font-thin text-gray-600'>
                 <Timelapse sx={{color:"greenyellow"}}/>
                 2pm to 11pm
            </p>
            </div>
               <span className='right-0 font-medium text-green-500'>
-                Min.Order- ${allProduct.lowestPrice}
+                Min.Order- ${loading ? <Skeleton className="w-8 h-5"/> : allProduct.lowestPrice}
               </span>
            </div>
 
@@ -161,7 +161,7 @@ const Page = ({params}:{params:{id:string}}) => {
                     {uniqueCategories.map((catSlug: any) => (
                       
                         <p key={catSlug} className={`p-2 rounded-md cursor-pointer ${options.includes(catSlug) ? 'bg-green-200' : 'bg-gray-100'}`} onClick={() => handleOptionChange(catSlug)}>
-                            {catSlug}
+                            {loading ? <Skeleton className="w-8 h-5" /> : catSlug}
                         </p>
                     ))}
                 </div>
@@ -181,7 +181,7 @@ const Page = ({params}:{params:{id:string}}) => {
 
          <div className='sticky top-0 right-0 flex flex-col h-full overflow-y-scroll border-l-2 w-96'>
           <div className='flex justify-between border-b-2'>
-          <h2 className='text-green-600'>{allProduct.name}</h2>
+          <h2 className='text-green-600'>{loading? <Skeleton className="w-8 h-5" /> : allProduct.name}</h2>
           </div>
 
         

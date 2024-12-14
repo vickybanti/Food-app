@@ -6,6 +6,9 @@ import AuthProvider from "@/components/AuthProvider";
 import QueryProvider from "@/components/QueryProvider";
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
+import './styles.css'
+import { Roboto } from 'next/font/google'
+
 
 
 
@@ -14,6 +17,10 @@ export const metadata: Metadata = {
   description: "Best pizza in town",
 };
 
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 
 export default function RootLayout({
@@ -23,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-[#fcf6ef]`}>
+      <body className={`bg-[#fcf6ef] ${roboto.className}`}>
         <AuthProvider>
           <QueryProvider>
         <div className="relative">

@@ -37,6 +37,7 @@ type Inputs = {
     lowestPrice:number;
     highestPrice:number;
     isFeatured:boolean;
+    location:string;
 }
 type Product = {
   title:string;
@@ -78,6 +79,7 @@ const Page = () => {
         lowestPrice: 0,
         highestPrice: 0,
         isFeatured: false,
+        location:""
     })
 
  
@@ -189,7 +191,7 @@ const Page = () => {
                 name: inputs.name.trim(),
                 lowestPrice: Number(inputs.lowestPrice),
                 highestPrice: Number(inputs.highestPrice),
-
+                location:inputs.location,
                 
                 
             }
@@ -391,7 +393,13 @@ console.log("allProduct=", allProduct)
           <Label>Highest Price</Label>
           <Input onChange={handleChange} type="number" name="highestPrice" className='p-2 rounded-sm ring-1 ring-black-200' disabled={resId ? true : false}/>
         </div>
-        <Button className='p-2 w-full text-white flex items-center justify-center gap-2' type='submit' disabled={isLoading || resId ? true : false}>
+
+        <div className='flex flex-col w-full gap-2'>
+          <Label>Location</Label>
+          <Input onChange={handleChange} type="text" name="location" className='p-2 rounded-sm ring-1 ring-black-200' disabled={resId ? true : false}/>
+        </div>
+
+        <Button className='flex items-center justify-center w-full gap-2 p-2 text-white' type='submit' disabled={isLoading || resId ? true : false}>
            {isLoading? `Adding...`:
             `Add Restaurant`
             
@@ -401,15 +409,15 @@ console.log("allProduct=", allProduct)
 
       </form>
         <hr />
-        {success && <span className='text-green-600 px-8'>Restaurant added successfully</span>}
+        {success && <span className='px-8 text-green-600'>Restaurant added successfully</span>}
         
         {resId && (
           <form className='flex flex-wrap gap-4 p-8 shadow-lg w-[75%] m-auto bg-white' onSubmit={handleProductSubmit}>
-        <span className='tetx-sm text-gray-600'>Add atleast one product</span>
+        <span className='text-gray-600 tetx-sm'>Add atleast one product</span>
 
         <div className='flex flex-col w-full gap-2'>
           <Label>Product title</Label>
-          <Input onChange={handleProductChange} className='p-2 rounded-sm w-full ring-black-200' type="text" name="title" placeholder='Title' />
+          <Input onChange={handleProductChange} className='w-full p-2 rounded-sm ring-black-200' type="text" name="title" placeholder='Title' />
 
           
         </div>
@@ -422,13 +430,13 @@ console.log("allProduct=", allProduct)
 
         <div className='flex flex-col w-full gap-2'>
           <Label>Product Description</Label>
-          <textarea onChange={handleProductChange} className='p-2 rounded-sm w-full ring-black-200'  name="desc" placeholder='Description' />
+          <textarea onChange={handleProductChange} className='w-full p-2 rounded-sm ring-black-200'  name="desc" placeholder='Description' />
 
           
         </div>
         <div className='flex flex-col w-full gap-2'>
           <Label>Product price</Label>
-          <Input onChange={handleProductChange} className='p-2 rounded-sm w-full ring-black-200' type="number" name="price" placeholder='price' />
+          <Input onChange={handleProductChange} className='w-full p-2 rounded-sm ring-black-200' type="number" name="price" placeholder='price' />
 
           
         </div>
@@ -509,13 +517,13 @@ console.log("allProduct=", allProduct)
 
 
 
-        <Button className='p-2 w-full text-white flex items-center justify-center gap-2' type='submit' disabled={isLoading}>
+        <Button className='flex items-center justify-center w-full gap-2 p-2 text-white' type='submit' disabled={isLoading}>
            {isLoading? `Adding Product...`:
             `Add Product`
             
           }
         </Button>
-        <span className='font-italics text-red-600'> {message && message} </span>
+        <span className='text-red-600 font-italics'> {message && message} </span>
         
 
     </form>

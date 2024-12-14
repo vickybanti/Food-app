@@ -6,6 +6,7 @@ import Products from '@/components/Products'
 import { Suspense } from 'react'
 import SecondFeatured from '@/components/SecondFeatured'
 import Restaurants from '@/components/Restaurants'
+import Location from '@/components/Location'
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
 
 
       <Products />
-
+      <Location />
       <Restaurants />
       </main>
   )
