@@ -8,6 +8,7 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 const SignupPage = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -18,11 +19,13 @@ const SignupPage = () => {
   };
   const [message, setMessage] = useState(false)
 
+  const router = useRouter();
+
   const [inputs, setInputs] = useState({
-    email:"",
-    password:"",
-    firstName:"",
-    lastName:""
+    email: "",
+    password:  "",
+    firstName:  "",
+    lastName: ""
   })
 
   const handleChange = (e:React.FormEvent<HTMLFormElement>) => {
@@ -74,21 +77,21 @@ const SignupPage = () => {
         </div> */}
         {/* FORM CONTAINER */}
         <div className="p-10 flex flex-col gap-8 w-[100%] md:w-1/2 h-[100%] backdrop-blur-md bg-white/30 rounded-md">
-        <form onSubmit={()=>handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
           <div className="">
           <Label>
             First name
           </Label>
           
-          <Input className="border-gray-200 bg-gray-200 h-16 w-60" name="firstName" type="text" onChange={()=>handleChange} />
+          <Input className="h-16 bg-gray-200 border-gray-200 w-60" name="firstName" type="text" value={inputs.firstName} onChange={handleChange} />
           </div>
 
           <div className="ml-28">
           <Label>
             Last name
           </Label>
-          <Input className="border-gray-200 bg-gray-200 h-16 w-60" name="lastName" type="text" onChange={()=>handleChange} />
+          <Input className="h-16 bg-gray-200 border-gray-200 w-60" name="lastName" type="text" value={inputs.lastName} onChange={handleChange} />
           </div>
 
           <div>
@@ -96,12 +99,13 @@ const SignupPage = () => {
             Email
           </Label>
           <div className="relative">
-            <EmailRounded className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+            <EmailRounded className="absolute transform -translate-y-1/2 left-3 top-1/2" />
             <Input 
-              className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" 
+              className="h-16 pl-10 bg-gray-200 border-gray-200 w-60" 
               name="email" 
               type="email" 
-              onChange={(e) => handleChange} 
+              value={inputs.email} 
+              onChange={handleChange} 
             />
           </div>
           </div>
@@ -115,16 +119,16 @@ const SignupPage = () => {
             <div onClick={handleClickShowPassword}>
 
             
-                    {showPassword ? <VisibilityOff className="absolute left-3 top-1/2 transform -translate-y-1/2"/> 
-                    : <Visibility className="absolute left-3 top-1/2 transform -translate-y-1/2"/>}
+                    {showPassword ? <VisibilityOff className="absolute transform -translate-y-1/2 left-3 top-1/2"/> 
+                    : <Visibility className="absolute transform -translate-y-1/2 left-3 top-1/2"/>}
                 </div>
           
-          <Input className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" name="password" type={showPassword?"text":"password"} onChange={(e) => handleChange}/>
+          <Input className="h-16 pl-10 bg-gray-200 border-gray-200 w-60" name="password" type={showPassword?"text":"password"} value={inputs.password} onChange={handleChange}/>
             </div>
 </div>
 
           </div>
-            <Button type="submit" className="my-10 mx-36 w-20 px-32 py-7 text-lg">
+            <Button type="submit" className="w-20 px-32 my-10 text-lg mx-36 py-7">
                 Sign up
             </Button>
           
@@ -154,7 +158,7 @@ const SignupPage = () => {
           </button>
           </div>
           <p className="text-sm mt-[-30px]">
-             Have an account?<Link className="hover:underline text-lg text-green" href="/login"> Login</Link>
+             Have an account?<Link className="text-lg hover:underline text-green" href="/login"> Login</Link>
           </p>
         </div>
       </div>

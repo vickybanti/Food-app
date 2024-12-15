@@ -65,7 +65,23 @@ export const authOptions:NextAuthOptions = {
             url,
             provider: { server, from },
           }) {
-            /* your function */
+            const transporter = nodemailer.createTransport(server);
+            const mailOptions = {
+              to: email,
+              from,
+              subject: 'Verify your email',
+              text: `Please click the following link to verify your email: ${url}`,
+              html: `<a href="${url}">Verify your email</a>`,
+            };
+
+            return transporter.sendMail(mailOptions)
+              .then(() => {
+                console.log('Verification email sent successfully');
+              })
+              .catch((error) => {
+                console.error('Error sending verification email:', error);
+                throw new Error('Error sending verification email');
+              });
           },
       }),
     

@@ -75,41 +75,54 @@ export const GET = async(req:NextRequest) => {
   }
 
   export const POST = async(req:NextRequest) => {
-    const body = await req.json();
-    console.log(body);
-    const email = body.email;
-    const firstName = body.firstName;
-    const lastName = body.lastName;
-    const password = body.password;
     try {
-      await connectToDb();
-      const user = await User.findOne({ email: email });
-      if (user){
-        return new NextResponse(
-          JSON.stringify({message:"User already exists"}),
-          { status: 200 }
-        )
-      }
-      const saltRounds = 10;
-            const salt = await bcrypt.genSalt(saltRounds);
-    
-            const bcryptPassword = await bcrypt.hash(password, salt);
-      const res = await User.create({_id: new mongoose.Types.ObjectId(),
-        email:email, 
-        firstName:firstName, 
-        lastName:lastName,
-        password:bcryptPassword
-      })
+        const body = await req.json();
+        console.log("Request body:", body); // Log the request body for debugging
 
-      if(res){
-        return new NextResponse(
-          JSON.stringify(res),
-          { status: 200 }
-        )
-      }
+        const { email, firstName, lastName, password } = body; // Destructure the body
 
+        // Validate required fields
+        if (!email || !firstName || !lastName || !password) {
+            return new NextResponse(
+                JSON.stringify({ message: "All fields are required" }),
+                { status: 400 } // Bad Request
+            );
+        }
+
+        await connectToDb();
+        const user = await User.findOne({ email: email });
+
+        if (user) {
+            return new NextResponse(
+                JSON.stringify({ message: "User already exists" }),
+                { status: 409 } // Conflict
+            );
+        }
+
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const bcryptPassword = await bcrypt.hash(password, salt);
+
+        const res = await User.create({
+            _id: new mongoose.Types.ObjectId(),
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            password: bcryptPassword
+        });
+
+        if (res) {
+            return new NextResponse(
+                JSON.stringify(res),
+                { status: 201 } // Created
+            );
+        }
 
     } catch (error) {
-      console.error(error)
+        console.error("Error adding user:", error);
+        return new NextResponse(
+            JSON.stringify({ message: "Internal Server Error" }),
+            { status: 500 } // Internal Server Error
+        );
     }
   }
