@@ -78,7 +78,7 @@ export const authOptions:NextAuthOptions = {
               .then(() => {
                 console.log('Verification email sent successfully');
               })
-              .catch((error) => {
+              .catch((error:any) => {
                 console.error('Error sending verification email:', error);
                 throw new Error('Error sending verification email');
               });
