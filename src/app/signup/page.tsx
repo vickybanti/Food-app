@@ -9,8 +9,7 @@
 // import Link from "next/link";
 // import React, { useState } from "react";
 // import { useRouter } from 'next/navigation';
-
-// const SignupPage = () => {
+ //const SignupPage = () => {
 //     const [showPassword, setShowPassword] = useState(false)
 //     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -57,8 +56,8 @@
 //   const {data,status} = useSession();
 //   console.log('data',data)
 //   console.log('status',status)
-//   return (
-//     <div className="flex items-center justify-center h-full px-4 pt-32 pb-14"
+//  return (
+    // <div className="flex items-center justify-center h-full px-4 pt-32 pb-14"
 //     style={{backgroundImage: "url('/bread background.jpg')", backgroundSize: "cover", backgroundBlendMode:"color-dodge"}}>
 //       {/* BOX */}
 //       <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row w-[80%] backdrop-blur-lg bg-white/70">
@@ -162,8 +161,8 @@
 //           </p>
 //         </div>
 //       </div>
-//     </div>
-//   );
-// };
+    // </div>
+ // );
+//};
 
-// export default SignupPage;
+

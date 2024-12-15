@@ -68,9 +68,9 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
             Email
           </Label>
           <div className="relative">
-            <EmailRounded className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+            <EmailRounded className="absolute transform -translate-y-1/2 left-3 top-1/2" />
             <Input 
-              className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" 
+              className="h-16 pl-10 bg-gray-200 border-gray-200 w-60" 
               name="email" 
               type="email" 
               onChange={() => handleChange} 
@@ -83,7 +83,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           </div>
 
           </div>
-          <Button type="submit" onClick={()=>signIn(`email=${inputs}`)} className="mt-6 mr-24 p-8">
+          <Button type="submit" onClick={()=>signIn(`email=${inputs}`)} className="p-8 mt-6 mr-24">
             Login
           </Button>
           
@@ -94,10 +94,10 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
             </Label>
             <div className="relative">
               <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                {showPassword ? <VisibilityOff className="absolute left-3 top-1/2 transform -translate-y-1/2" /> 
-                : <Visibility className="absolute left-3 top-1/2 transform -translate-y-1/2"/>}
+                {showPassword ? <VisibilityOff className="absolute transform -translate-y-1/2 left-3 top-1/2" /> 
+                : <Visibility className="absolute transform -translate-y-1/2 left-3 top-1/2"/>}
               </div>
-          <Input className="border-gray-200 bg-gray-200 h-16 w-60 pl-10" name="password" type={showPassword?"text":"password"} onChange={(e) => handleChange}/>
+          <Input className="h-16 pl-10 bg-gray-200 border-gray-200 w-60" name="password" type={showPassword?"text":"password"} onChange={(e) => handleChange}/>
             </div>
 </div> */}
 
@@ -132,7 +132,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           </button>
           </div>
           <p className="text-sm mt-[-30px]">
-            <Link className="hover:underline text-lg text-green" href="/signup"> Sign up</Link>
+            <Link className="text-lg hover:underline text-green" href="/"> Sign up</Link>
           </p>
         </div>
       </div>
