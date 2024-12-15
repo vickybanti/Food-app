@@ -83,7 +83,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           </div>
 
           </div>
-          <Button type="submit" onClick={()=>signIn(`email=${inputs}`)} className="p-8 mt-6 mr-24">
+          <Button type="submit" onClick={()=>signIn(`email`)} className="p-8 mt-6 mr-24">
             Login
           </Button>
           
