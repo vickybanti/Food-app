@@ -7,7 +7,7 @@ import QueryProvider from "@/components/QueryProvider";
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
 import './styles.css'
-import { Paytone_One, Poppins, Roboto, Tenor_Sans } from 'next/font/google'
+import { Fjalla_One, Paytone_One, Poppins, Roboto, Tenor_Sans } from 'next/font/google'
 
 
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Best pizza in town",
 };
 
-const tenor_sans = Paytone_One({
+const tenor_sans = Tenor_Sans({
   weight:['400'],
   subsets:['latin']
 })
