@@ -112,7 +112,7 @@ import { Button } from "./ui/button";
           <List>
             
             {loading && (<Skeleton className="w-40 h-40"/>)}
-        {products.length === 0 ? (<h1 className="flex items-center p-12 font-bold">No items in cart</h1>)
+        {products.length === 0 ? (<h1 className="flex items-center p-12 font-thin">No items in cart</h1>)
         :
         products.map((item) => (
           <ListItem className="flex items-center justify-between mb-4" key={item._id}>
@@ -121,10 +121,10 @@ import { Button } from "./ui/button";
           <Image src={item.img} alt="" width={80} height={80} className="cartImage" />
           }
           <div className="ml-8">
-            <h1 className="text-sm font-semibold uppercase cartTitle">{item.title} </h1>
-            <span className="text-gray-400 cartoption"> {item.quantity} </span>
+            <h1 className="text-sm font-thin uppercase cartTitle">{item.title} </h1>
+            <span className="font-thin text-gray-400 cartoption"> {item.quantity} </span>
             
-            <span className="text-gray-400 cartoption">{item.optionTitle}</span>
+            <span className="font-thin text-gray-400 cartoption">{item.optionTitle}</span>
           </div>
           <h2 className="ml-8 font-bold">${item.price}</h2>
           <span className="cursor-pointer font-[red] ml-3" onClick={()=>removeFromCart(item)}>
@@ -137,7 +137,7 @@ import { Button } from "./ui/button";
           <Divider />
 
           <List>
-            <ListItem>
+            <ListItem className="font-thin">
               <div className="h-1/2 bg-[#400212]-50 flex flex-col gap-4 justify-between px-5 lg:h-full  2xl:w-1/2 2xl:gap-6">
             <div className="flex justify-between gap-14">
           <span className="">Subtotal {totalItems}</span>

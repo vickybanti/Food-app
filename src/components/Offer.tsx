@@ -4,7 +4,9 @@ import React from "react";
 import CountDown from "./CountDown";
 import Button from "./Button";
 import MostOrdered from "./MostOrdered";
+import { useRouter } from "next/navigation";
 const Offer = () => {
+  const router = useRouter()
   const dates = new Date();
   return (
     <div className="flex justify-between w-full gap-2 pt-10 mt-0">
@@ -23,6 +25,7 @@ const Offer = () => {
           variant="btn_white"
           bg="bg-[#042D29]"
           hover={true}
+          onClick={()=>router.push('/products?category=Burgers')}
         />
                 
 

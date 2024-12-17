@@ -54,9 +54,9 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
 </CardHeader>
 <CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
   {loading ? (<Skeleton className="w-10 h-8"/>):
-  <CardDescription className="text-xl font-semibold text-black cardTitle">{title}</CardDescription>}
+  <CardDescription className="text-xl text-black cardTitle">{title}</CardDescription>}
   {loading ? (<Skeleton className="w-10 h-8"/>) :
-  <CardDescription className="text-gray-800 catFont">
+  <CardDescription className="font-thin text-gray-800 catFont">
     {desc ? (desc.length > 50 ? desc.substring(0, 45) + "..." : desc) : 
     'Description not available'}
     </CardDescription>
@@ -66,7 +66,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
 
   <div className="flex gap-4">
   {loading ? (<Skeleton className="w-10 h-4"/>):
-  <p className="font-bold text-[#741102] priceFont">${price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
+  <p className="font-thin text-[#741102] priceFont">${price}</p> } | {loading ? (<Skeleton className="w-10 h-4"/>): 
   <p className="text-gray-500 catFont">{catSlug}</p>}
   </div>
  
@@ -80,7 +80,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="flex flex-col gap-2 mx-auto">
-          <DrawerTitle>
+          <DrawerTitle className='font-thin'>
             <Price product={item}/>
           </DrawerTitle>
           <DrawerDescription></DrawerDescription>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const tenor_sans = Paytone_One({
-  weight:'400',
+  weight:['400'],
   subsets:['latin']
 })
 

@@ -145,7 +145,7 @@ const Restaurants = () => {
     const router = useRouter();
     return (
         
-            <><div className="flex justify-between px-10">
+            <><div className="flex justify-between px-10 font-thin">
             {session && session?.user.isAdmin && (
                 <Link href="/add/restaurants">Add new restaurants</Link>
             )}

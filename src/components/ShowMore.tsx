@@ -19,7 +19,7 @@ const ShowMore = ({ pageNumber, isNext, setLimit}:ShowMoreProps) => {
             <Button 
                 type='button'
                 title="Show More"
-                variant="text-white bg-primary-blue rounded-full"
+                variant="text-white bg-primary-blue rounded-full font-thin"
                 onClick={handleNavigation}
 
             />
