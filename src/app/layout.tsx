@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
 import './styles.css'
 import { Fjalla_One, Paytone_One, Poppins, Roboto, Tenor_Sans } from 'next/font/google'
+import { motion } from "framer-motion";
 
 
 
@@ -29,14 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+   
     <html lang="en">
       <body className={`bg-[#fcf6ef] ${tenor_sans.className}`}>
         <AuthProvider>
           <QueryProvider>
         <div className="relative">
+       
           {/* <Notification /> */}
           <Navbar />
+         
+  
           {children}
+
           <div className="z-50">
           <Toaster />
           </div>
@@ -46,5 +52,6 @@ export default function RootLayout({
         </AuthProvider>
       </body>
     </html>
+
   );
 }

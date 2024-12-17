@@ -12,6 +12,7 @@ import {
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Skeleton } from './ui/skeleton';
+import {motion} from 'framer-motion'
 
 const getData = () => {
   return fetch(`/api/categories`, {
@@ -42,25 +43,33 @@ const Categories = () => {
   
   
   return (
-    <><div className='mx-20 border-t-2 border-t-[#B78C56] '>
+    <>
+     <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+    >
+    <div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="mt-4 py-7 md:mx-40 px-0 flex flex-wrap justify-between gap-4">
+    <div className="flex flex-wrap justify-between gap-4 px-0 mt-4 py-7 md:mx-40">
 
 
         {allCategories.map((category) => (
 
-          <div key={category._id} className="w-56 h-52 px-2">
+          <div key={category._id} className="w-56 px-2 h-52">
 
             <div
               className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer`}
               onClick={() => router.push(`/products?category=${category.slug}`)}
             >
-              <Image
-                src={category.img || ''}
-                alt={category.title}
-                fill
-                className='object-cover w-full h-full transition-all duration-300 mdImg' />
+              {loading ? <Skeleton className='w-20 h-20'/> : (
+                <Image
+                  src={category.img || ''}
+                  alt={category.title}
+                  fill
+                  className='object-cover w-full h-full transition-all duration-300 mdImg' />
+              )}
               <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
                 <p className={`font-semibold text-[40px] font-sans pt-96 hidden md:block md:m-auto md:items-center`}>{category.title}</p>
               </div>
@@ -73,7 +82,10 @@ const Categories = () => {
 
         ))}
 
-      </div></>
+      </div>
+      </motion.div>
+      </>
+      
   )
 }
 

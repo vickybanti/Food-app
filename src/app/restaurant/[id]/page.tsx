@@ -130,8 +130,8 @@ const Page = ({params}:{params:{id:string}}) => {
          {allProduct.open ? ""
          :
 
-         <div className={`rounded-xl absolute bottom-0 left-0 right-0 ${allProduct.open? 'bg-black bg-opacity-70 text-white' : 'bg-none'} p-2  h-full flex items-center justify-center`}>
-                    <p className={`font-semibold text-[20px] font-sans hidden md:block md:m-auto md:items-center`}>Opens {allProduct.openTime} sundays-saturdays</p>
+         <div className={`rounded-xl absolute bottom-0 left-0 right-0 ${allProduct.open? 'bg-none': 'bg-black bg-opacity-70 text-white'} p-2  h-full flex items-center justify-center`}>
+                    <p className={`font-semibold text-[20px] hidden md:block md:m-auto md:items-center`}>Opens {allProduct.openTime} sundays-saturdays</p>
                   </div>
 }
          </div>

@@ -6,6 +6,7 @@ import { userCartStore } from "@/lib/utils/store";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 
 
@@ -53,6 +54,12 @@ const Price = ({ product }: {product:ProductType}) => {
   }
 
   return (
+    <>
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+    >
     <div className="flex justify-between w-full">
       <div className="relative mr-16 h-44 w-60">
       <Image 
@@ -118,6 +125,8 @@ const Price = ({ product }: {product:ProductType}) => {
       </div>
     </div>
     </div>
+    </motion.div>
+    </>
   );
 };
 

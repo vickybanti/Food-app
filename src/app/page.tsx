@@ -7,9 +7,11 @@ import { Suspense } from 'react'
 import SecondFeatured from '@/components/SecondFeatured'
 import Restaurants from '@/components/Restaurants'
 import Location from '@/components/Location'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
+   
     <main className='md:relative mobile'>
       <Slider/>
       <Categories />
@@ -17,12 +19,12 @@ export default function Home() {
 
       <Offer/>
       <Location />
-      <Restaurants />
       
     
-
-
       <Products />
+      <Restaurants />
+
+      
       
       </main>
   )

@@ -35,6 +35,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@mui/material";
 import ProCard from "./ProCard";
+import { motion } from "framer-motion";
 
 const getData = async(page: number, limit: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
@@ -78,6 +79,12 @@ const Products = () => {
     loadProducts();
   }, [page]);
   return (
+    <>
+     <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+    >
     <div className='relative flex flex-col py-5 mx-20 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 prod'>
       <div className="flex justify-between prodHeader">
         <h2 className="mb-4 font-sans text-xl font-semibold text-gray-900 ">Newly cooked</h2>
@@ -116,6 +123,8 @@ const Products = () => {
         </div>
       )}
     </div>
+    </motion.div>
+    </>
   );
 };
 
