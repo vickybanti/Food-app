@@ -14,8 +14,8 @@ type Restaurant = {
     _id: string;
     name: string;
     img: string;
-    products?: Product[];
-    resProducts:[]
+    resProducts:[];
+    products:[];
 };
 
 type Product = {
@@ -76,8 +76,8 @@ const Restaurants = () => {
                 img: restaurant.img,
                 optionTitle: '',
                 quantity: 1,
-                products: [],
-                savedProducts: [],
+                products: restaurant.products,
+                savedProducts:[],
                 price: 0
             });
         } else {
@@ -87,7 +87,7 @@ const Restaurants = () => {
                 img: restaurant.img,
                 quantity: quantity,
                 savedProducts: [],
-                products: [],
+                products: restaurant.products,
                 price: 0
             });
 
@@ -138,7 +138,6 @@ const Restaurants = () => {
     return (
         
             <><div className="flex justify-between px-10">
-            <h1 className="text-xl">Best restaurants</h1>
             {session && session?.user.isAdmin && (
                 <Link href="/add/restaurants">Add new restaurants</Link>
             )}
@@ -158,7 +157,7 @@ const Restaurants = () => {
                                     alt={restaurant.name}
                                     className="object-cover rounded-lg"
                                     onClick={() => router.push(`/restaurant/${restaurant._id}`)} />}
-                            <div className="absolute rounded-full p-1.5 bg-green-600 top-0 my-2 left-3">
+                            <div className="absolute rounded-full p-1.5 bg-[#820000] top-0 my-2 left-3">
                                 {savedProducts.some((fave) => fave._id === restaurant._id) ?
                                     <Favorite sx={{ color: "white", fontSize: "20px" }} onClick={() => handleSaved(restaurant, 1)} />
                                     :
@@ -176,12 +175,12 @@ const Restaurants = () => {
                                 </div>
                                     <div className="flex gap-2">
 
-                                        <span className="text-sm text-green-400 uppercase">{loading ? <Skeleton className="w-20 h-5" /> : restaurant.products[0].catSlug}</span>
+                                        <span className="text-sm text-green-500 uppercase">{loading ? <Skeleton className="w-20 h-5" /> : restaurant.products[0].catSlug}</span>
 
                                         {restaurant?.products[0]?.options?.map((pro) => (
                                             <div key={pro._id} className="text-sm text-green-300">
 
-                                                <span className="text-green-300">{loading ? <Skeleton className="w-20 h-5" /> : pro.title}</span>
+                                                <span className="text-green-500">{loading ? <Skeleton className="w-20 h-5" /> : pro.title}</span>
                                             </div>
                                         ))}
                                     </div>

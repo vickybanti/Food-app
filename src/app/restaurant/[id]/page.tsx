@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
-import Button from '@mui/material/Button';
+import {Button} from '../../../components/ui/button';
 import Link from 'next/link';
 
 
@@ -76,6 +76,14 @@ const Page = ({params}:{params:{id:string}}) => {
 
     const [allProduct,setProduct] = useState<any>({})
 
+    const [pickup, setPickup] = useState("")
+
+    const handleChange = (e: any) => {
+      setPickup(e.target.value);
+    }
+
+    
+
     useEffect(() => {
         const getProduct = async() => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/restaurants/${id}`, {
@@ -119,22 +127,22 @@ const Page = ({params}:{params:{id:string}}) => {
                     <div className="relative flex flex-col h-60 rounded-xl">
 
          <Image src= {allProduct.img} fill alt={allProduct.name} className='object-cover rounded-xl'/>
+         {allProduct.open ? ""
+         :
 
-         <div className={`rounded-xl absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-2  h-full flex items-center justify-center`}>
-                    <p className={`font-semibold text-[20px] font-sans hidden md:block md:m-auto md:items-center`}>Opens at 2pm sundays-saturdays</p>
+         <div className={`rounded-xl absolute bottom-0 left-0 right-0 ${allProduct.open? 'bg-black bg-opacity-70 text-white' : 'bg-none'} p-2  h-full flex items-center justify-center`}>
+                    <p className={`font-semibold text-[20px] font-sans hidden md:block md:m-auto md:items-center`}>Opens {allProduct.openTime} sundays-saturdays</p>
                   </div>
+}
          </div>
+         
+
+
 
         <div className="justify-between w-[1200px] flex">
             <h1 className='py-5 text-[30px]'>{allProduct.name}</h1>
 
-           <div className='justify-between p-3 mt-3 ml-16 bg-gray-100 border-2 border-black rounded-lg right-9 h-14'>
-
-            <span className='p-2 bg-green-500 text-[14px] mr-2 rounded-md border-1'>Pickup</span>
-            <span className='p-2 text-[14px] ml-2'>Delivery now</span>
-
-
-           </div>
+           
 
            <Divider />
 
@@ -142,13 +150,21 @@ const Page = ({params}:{params:{id:string}}) => {
          </div>
          <div className='flex justify-between'>
         <div className="flex flex-col">
-         <h1>Opening hours</h1>
-           <p className='font-thin text-gray-600'>
-                <Timelapse sx={{color:"greenyellow"}}/>
-                2pm to 11pm
-           </p>
+        {allProduct.open ?
+         <><h1>Opening hours</h1><p className='font-thin text-gray-600'>
+
+                <Timelapse sx={{ color: "greenyellow" }} />
+                {allProduct.openTime} to {allProduct.closingTime}
+
+
+
+              </p></>
+
+           :
+           <h1>Closed</h1>
+        }
            </div>
-              <span className='right-0 font-medium text-green-500'>
+              <span className='right-0 font-medium text-black font-extrathin'>
                 Min.Order- ${loading ? <Skeleton className="w-8 h-5"/> : allProduct.lowestPrice}
               </span>
            </div>

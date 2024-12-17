@@ -5,6 +5,7 @@ import { ProductType } from "@/types/types";
 import { userCartStore } from "@/lib/utils/store";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
+import Image from "next/image";
 
 
 
@@ -52,7 +53,20 @@ const Price = ({ product }: {product:ProductType}) => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex justify-between w-full">
+      <div className="relative mr-16 h-44 w-60">
+      <Image 
+        src={product.img || ''}
+        alt=""
+        fill
+        className="object-contain"
+      
+      />
+
+      </div>
+     
+
+     <div className="flex flex-col justify-between gap-4">
       <h2 className="text-2xl text-[#741102] font-normal">${total}</h2>
       {/* OPTIONS CONTAINER */}
       <div className="flex gap-4">
@@ -102,6 +116,7 @@ const Price = ({ product }: {product:ProductType}) => {
       
         
       </div>
+    </div>
     </div>
   );
 };

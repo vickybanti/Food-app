@@ -17,6 +17,7 @@ export type ProductType = {
     img?:string;
     price:number;
     catSlug:string;
+    isFeatured:boolean;
     options?: {title:string, additionalPrice:number}[];
 }
 
@@ -56,7 +57,7 @@ export type SavedProductType = {
     price:number;
     optionTitle?: string;
     quantity:number;
-    products?:ProductType[]
+    products:ProductType[];
 }
 
 export type CartType = {

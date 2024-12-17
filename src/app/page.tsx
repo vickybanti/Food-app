@@ -16,14 +16,14 @@ export default function Home() {
       <Featured/>
 
       <Offer/>
-    
+      <Location />
+      <Restaurants />
       
     
 
 
       <Products />
-      <Location />
-      <Restaurants />
+      
       </main>
   )
 }

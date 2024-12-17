@@ -42,7 +42,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
         src={`${img}`} 
         alt="" 
         fill 
-        className="object-contain rounded-sm"
+        className="object-cover rounded-sm"
         />
       
       </Link>

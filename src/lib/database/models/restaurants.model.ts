@@ -10,7 +10,9 @@ export interface IEvent extends Document {
     lowestprice: number;
     highestPrice: number;
     products: any[];
-    locatoin:string;
+    location:string;
+    open:boolean;
+    openTime:string;
 }
 
 const RestaurantSchema = new Schema({
@@ -22,6 +24,8 @@ const RestaurantSchema = new Schema({
     products: {type: Array, ref: 'Product'},
     highestPrice:{type: Number},
     location:{type:String},
+    open:{type: Boolean},
+    openTime: {type: String}
 }, {
     timestamps: true, /// <reference path="Product" />
     

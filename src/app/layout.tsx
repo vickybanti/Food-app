@@ -7,7 +7,7 @@ import QueryProvider from "@/components/QueryProvider";
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
 import './styles.css'
-import { Roboto } from 'next/font/google'
+import { Paytone_One, Poppins, Roboto, Tenor_Sans } from 'next/font/google'
 
 
 
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   description: "Best pizza in town",
 };
 
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
+const tenor_sans = Paytone_One({
+  weight:'400',
+  subsets:['latin']
 })
 
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-[#fcf6ef] ${roboto.className}`}>
+      <body className={`bg-[#fcf6ef] ${tenor_sans.className}`}>
         <AuthProvider>
           <QueryProvider>
         <div className="relative">

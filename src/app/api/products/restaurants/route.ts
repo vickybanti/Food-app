@@ -80,6 +80,10 @@ export const POST = async(req:NextRequest) => {
             highestPrice: restaurantData.highestPrice,
             img: restaurantData.img, 
             locaton: restaurantData.location,
+            open:restaurantData.opened,
+            openTime:restaurantData.openTime,
+            closingTime:restaurantData.closingTime
+
             // products: productData.map((prod: any) => ({
             //     _id: new mongoose.Types.ObjectId(),
             //     title: prod.title,

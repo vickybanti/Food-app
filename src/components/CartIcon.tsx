@@ -112,7 +112,7 @@ import { Button } from "./ui/button";
           <List>
             
             {loading && (<Skeleton className="w-40 h-40"/>)}
-        {products.length === 0 ? (<h1 className="flex items-center font-bold p-12">No items in cart</h1>)
+        {products.length === 0 ? (<h1 className="flex items-center p-12 font-bold">No items in cart</h1>)
         :
         products.map((item) => (
           <ListItem className="flex items-center justify-between mb-4" key={item._id}>
@@ -122,11 +122,11 @@ import { Button } from "./ui/button";
           }
           <div className="ml-8">
             <h1 className="text-sm font-semibold uppercase cartTitle">{item.title} </h1>
-            <span className="cartoption text-gray-400"> {item.quantity} </span>
+            <span className="text-gray-400 cartoption"> {item.quantity} </span>
             
-            <span className="cartoption text-gray-400">{item.optionTitle}</span>
+            <span className="text-gray-400 cartoption">{item.optionTitle}</span>
           </div>
-          <h2 className="font-bold ml-8">${item.price}</h2>
+          <h2 className="ml-8 font-bold">${item.price}</h2>
           <span className="cursor-pointer font-[red] ml-3" onClick={()=>removeFromCart(item)}>
             <DeleteSweepSharp sx={{color:"red"}}/>
           </span>
@@ -199,11 +199,11 @@ import { Button } from "./ui/button";
         <div className="bg-none drop-shadow-none">
           {(['right'] as const).map((anchor) => (
             <React.Fragment key={anchor}>
-              <Button onClick={toggleDrawer(anchor, true)} className="p-0 shadow-none h-0 w-0">
+              <Button onClick={toggleDrawer(anchor, true)} className="w-0 h-0 p-0 shadow-none">
 
                 <div className="relative my-auto mr-20 flex p-3 items-center justify-center rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none">
-                  <ShoppingCartCheckoutOutlinedIcon className="text-white font-light"/>
-                  {totalItems > 0 && (<span className="text-white">{totalItems}</span>)}
+                  <ShoppingCartCheckoutOutlinedIcon className="font-light text-white"/>
+                  {totalItems > 0 && (<span className="text-xs font-thin text-white">{totalItems}</span>)}
                 </div>
                 
                 </Button>

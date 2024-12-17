@@ -38,6 +38,9 @@ type Inputs = {
     highestPrice:number;
     isFeatured:boolean;
     location:string;
+    opened:boolean;
+    openTime:string;
+    closingTime:string;
 }
 type Product = {
   title:string;
@@ -79,7 +82,10 @@ const Page = () => {
         lowestPrice: 0,
         highestPrice: 0,
         isFeatured: false,
-        location:""
+        location:"",
+        opened:true,
+        openTime:"",
+        closingTime:""
     })
 
  
@@ -192,7 +198,9 @@ const Page = () => {
                 lowestPrice: Number(inputs.lowestPrice),
                 highestPrice: Number(inputs.highestPrice),
                 location:inputs.location,
-                
+                opened:inputs.opened,
+                openTime:inputs.openTime,
+                closingTime:inputs.closingTime               
                 
             }
            
@@ -398,6 +406,24 @@ console.log("allProduct=", allProduct)
           <Label>Location</Label>
           <Input onChange={handleChange} type="text" name="location" className='p-2 rounded-sm ring-1 ring-black-200' disabled={resId ? true : false}/>
         </div>
+        <div className='flex flex-col w-full gap-2'>
+            <Label>Opened</Label>
+            <select onChange={handleChange} name="opened" className='p-2 rounded-sm ring-1 ring-black-200'>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+        </div>
+        <div className='flex flex-col w-full gap-2'>
+          <Label>Opening time</Label>
+          <Input onChange={handleChange} type="text" name="openTime" className='p-2 rounded-sm ring-1 ring-black-200' disabled={resId ? true : false}/>
+        </div>
+
+        <div className='flex flex-col w-full gap-2'>
+          <Label>Closing time</Label>
+          <Input onChange={handleChange} type="text" name="closingTime" className='p-2 rounded-sm ring-1 ring-black-200' disabled={resId ? true : false}/>
+        </div>
+
+
 
         <Button className='flex items-center justify-center w-full gap-2 p-2 text-white' type='submit' disabled={isLoading || resId ? true : false}>
            {isLoading? `Adding...`:

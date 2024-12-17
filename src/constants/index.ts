@@ -7,18 +7,19 @@
  // FOOTER SECTION
  export const FOOTER_LINKS = [
         {
-          title: 'Learn More',
+          title: 'Legal',
           links: [
-            'About Banti biz',
-            'Our Culture',
-            'Environment',
-            'Privacy Policy',
-            'Contact Us',
+            
+            {label:'Privacy Policy', value:""},
+            {label:'Contact Us', value:'https://portfolio-tau-ten-30.vercel.app/'}
           ],
         },
         {
-          title: 'Our Community',
-          links: ['Kilimajor', 'Genesis', 'Mercys hub'],
+          title: 'Featured Restaurants',
+          links: [{label:'Kilimajaro', value:'/restaurant/6748305debc2f5f2781d72c0'}, 
+            {label:'Meal kitchen', value:'/restaurant/6749cfa87d3a3d98134bed59'},
+             {label:'Meal boss', value:'/restaurant/674862a37d3a3d98134becf6'}
+            ],
         },
       ];
       

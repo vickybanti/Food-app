@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { useRouter } from "next/navigation";
+import { userCartStore } from "@/lib/utils/store";
 
 type FontProps = {
   fontSize:string;
@@ -30,33 +31,37 @@ const Featured = () => {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
+  const {savedProducts} = userCartStore()
+  const[message, setMessage] = useState(false)
+
+  
+  useEffect(() => {
+    userCartStore.persist.rehydrate()
+  },[])
 
   useEffect(() => {
-    const fetchData = () => {
-      setLoading(true)
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/featuredProduct`, {
-        cache: "no-store",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("failed to fetch data");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setFeaturedProducts(data);
-          setLoading(false)
-        })
-        .catch((error) => {
-          console.error("Error fetching featured products:", error);
-        });
+    const fetchData = async () => {
+      console.log("savedProducts=", savedProducts);
+      setLoading(true);
+
+      const featured = savedProducts.flatMap(pro => 
+        pro.products?.filter((product: ProductType) => product.isFeatured) || []
+      );
+
+      if (featured.length > 0) {
+        setFeaturedProducts(featured);
+      } else {
+        setMessage(true);
+      }
+
+      setLoading(false);
+      console.log("featuredProducts after fetch=", featuredProducts);
     };
 
     fetchData();
-  }, []);
+  }, [savedProducts]);
+
+  console.log("featuredProducts=",featuredProducts)
 
   return (
     <section className='relative flex flex-col w-full h-full py-5 overflow-x-auto feature no-scrollbar 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-14'>
@@ -107,6 +112,8 @@ const Featured = () => {
              </span>
           </div>
         ))}
+                {message && <span>Add more restaurants to favourites so see their featured products</span>}
+
       </div>
     </div>
 
