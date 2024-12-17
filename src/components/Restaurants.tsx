@@ -15,7 +15,7 @@ type Restaurant = {
     name: string;
     img: string;
     resProducts:[];
-    products:[];
+    products:Product[];
 };
 
 type Product = {
@@ -76,7 +76,11 @@ const Restaurants = () => {
                 img: restaurant.img,
                 optionTitle: '',
                 quantity: 1,
-                products: restaurant.products,
+                products: restaurant.products.map(product => ({
+                    ...product,
+                    id: product._id,
+                    restaurantId: restaurant._id
+                })),
                 savedProducts:[],
                 price: 0
             });
@@ -87,8 +91,12 @@ const Restaurants = () => {
                 img: restaurant.img,
                 quantity: quantity,
                 savedProducts: [],
-                products: restaurant.products,
-                price: 0
+                products: restaurant.products.map(product => ({
+                    ...product,
+                    id: product._id,
+                    restaurantId: restaurant._id,
+                })),  
+            price: 0
             });
 
         }
