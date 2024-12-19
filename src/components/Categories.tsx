@@ -61,6 +61,8 @@ const Categories = () => {
           initial={{ x: -30, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 1.5 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false }}
           key={category._id} className="w-56 px-2 h-52">
 
             <div

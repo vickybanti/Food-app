@@ -64,7 +64,6 @@ const Location = () => {
             } catch (error) {
                 console.error("Error fetching restaurants:", error);
             } finally {
-                setLoading(false)
             }
         };
 
@@ -90,9 +89,14 @@ const Location = () => {
                 initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ ease: "easeInOut", duration: 1.5 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: false }}
+                
+
                 className='flex gap-5'>
-                    {uniqueCategories.length > 0 && allRestaurants.map((loc: Restaurant) => (
-                        loading ? (<Skeleton className="w-16 h-5"/>) :
+                    {loading ? (<Skeleton className="w-16 h-5"/>) :
+                    uniqueCategories.length > 0 && allRestaurants.map((loc: Restaurant) => (
+                        
                         <Button className={`mr-6 text-white rounded-2xl hover:text-white hover:bg-black `} key={loc._id} onClick={() => router.push(`/location/${loc.location}`)}>
                             {loc.location}
                         </Button>
