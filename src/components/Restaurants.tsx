@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Delete, Favorite, FavoriteBorderOutlined, FavoriteOutlined, TimerRounded } from "@mui/icons-material";
 import { Skeleton } from "./ui/skeleton";
 import { userCartStore } from "@/lib/utils/store";
+import { motion } from "framer-motion";
 
 // Define the type for a restaurant
 type Restaurant = {
@@ -152,7 +153,13 @@ const Restaurants = () => {
                 <Link href="/add/restaurants">Add new restaurants</Link>
             )}
         </div>
-        <div className="grid w-full h-full grid-cols-3 gap-6 px-10 my-10">
+        <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 1.5 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        className="grid w-full h-full grid-cols-3 gap-6 px-10 my-10">
                 {allRestaurants.map((restaurant) => (
                     <div
                         className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
@@ -217,7 +224,7 @@ const Restaurants = () => {
                     </div>
 }
 
-            </div></>
+            </motion.div></>
            
                 
         
