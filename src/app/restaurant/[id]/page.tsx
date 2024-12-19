@@ -212,9 +212,9 @@ const Page = ({params}:{params:{id:string}}) => {
         products.map((item) => (
           <ListItem className="flex items-center justify-between mb-4" key={item._id}>
         
-          {item.img &&
-          loading ? 
-          <Skeleton className="w-10 h-8"/> :
+          {loading ? 
+          <Skeleton className="w-10 h-8"/> :item.img &&
+          
           <Image src={item.img} alt="" width={80} height={80} className="cartImage" />
           }
           <div className="ml-5">
