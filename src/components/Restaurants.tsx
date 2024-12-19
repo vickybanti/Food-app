@@ -206,7 +206,8 @@ const Restaurants = () => {
                     <div className="flex justify-center my-8 mx-36">
                         
                             <Button
-                                variant="destructive"
+                                variant="ghost"
+                                
                                 onClick={() => setPage((prev) => prev + 1)}
                                 disabled={loading}
                             >
