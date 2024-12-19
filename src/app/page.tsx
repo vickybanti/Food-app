@@ -16,16 +16,10 @@ export default function Home() {
       <Slider/>
       <Categories />
       <Featured/>
-
       <Offer/>
-      <Location />
-      
-    
       <Products />
-      <Restaurants />
-
-      
-      
+      <Location />
+      <Restaurants />    
       </main>
   )
 }

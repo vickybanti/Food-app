@@ -10,9 +10,18 @@ import SearchBox from "./Search";
 import { Address } from "./Address";
 import { NavAddress } from "./NavAddress";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { useScroll } from "framer-motion";
+import { useMotionValueEvent } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll()
+  const [scrollDirection, setScrollDirection] = useState("down")
+  
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const diff = current - 170
+    setScrollDirection(diff > 0 ? "down" : "up")
+  })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +36,7 @@ const Navbar = () => {
 
 
   return (
-    <div className={`fixed top-0 z-10 w-full bg-white ${isScrolled ? 'backdrop-blur-lg bg-white/70 sticky' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out `}>
+    <div className={`fixed top-0 z-10 w-full bg-white ${ scrollDirection? 'backdrop-blur-lg bg-white/70 sticky' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out `}>
     <div className={`h-16 flex items-center justify-between  uppercase lg:px-5 xl:px-20 mt-5 ml-10 mr-10 `}>
         <div>
           <Link href="/">

@@ -3,6 +3,8 @@ import { userCartStore } from '@/lib/utils/store';
 import { useRouter } from 'next/navigation';
 import React, { useState , useEffect } from 'react'
 import { Button } from './ui/button';
+import { motion } from 'framer-motion';
+import { Skeleton } from './ui/skeleton';
 
 type Restaurant = {
     _id: string;
@@ -34,9 +36,13 @@ const Location = () => {
         userCartStore.persist.rehydrate()
       },[])
 
+      const [loading, setLoading] = useState(false)
+
  useEffect(() => {
         const fetchRestaurants = async (page: number, limit: number) => {
+            setLoading(true)
             try {
+                
                 const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/restaurants?page=${page}&limit=${limit}`, {
                     method: "GET",
                     headers: {
@@ -51,12 +57,14 @@ const Location = () => {
 
                 
                 setRestaurants(data.restaurants)
+                setLoading(false)
 
                 // Check if the data structure is as expected
               
             } catch (error) {
                 console.error("Error fetching restaurants:", error);
             } finally {
+                setLoading(false)
             }
         };
 
@@ -75,14 +83,23 @@ const Location = () => {
                 <div>
                    <p className="text-sm text-gray-500"> By Location </p>
                 </div>
-                <div className='flex gap-5'>
+                
+          
+
+                <motion.div 
+                initial={{ x: -30, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ ease: "easeInOut", duration: 1.5 }}
+                className='flex gap-5'>
                     {uniqueCategories.length > 0 && allRestaurants.map((loc: Restaurant) => (
+                        loading ? (<Skeleton className="w-16 h-5"/>) :
                         <Button className={`mr-6 text-white rounded-2xl hover:text-white hover:bg-black `} key={loc._id} onClick={() => router.push(`/location/${loc.location}`)}>
                             {loc.location}
                         </Button>
                     ))}
-                </div>
-            </div></>
+                </motion.div>
+            </div>
+            </>
     )
 }
 

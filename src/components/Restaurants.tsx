@@ -1,14 +1,13 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Delete, Favorite, FavoriteBorderOutlined, FavoriteOutlined, TimerRounded } from "@mui/icons-material";
 import { Skeleton } from "./ui/skeleton";
 import { userCartStore } from "@/lib/utils/store";
-import { motion } from "framer-motion";
 
 // Define the type for a restaurant
 type Restaurant = {
@@ -48,9 +47,6 @@ const Restaurants = () => {
     useEffect(() => {
         userCartStore.persist.rehydrate()
       },[])
-
-      const scrollRef = useRef(null)
-
 
      
           
@@ -150,28 +146,18 @@ const Restaurants = () => {
     return (
         
             <>
-             
-    
+            
             <div className="flex justify-between px-10 font-thin">
             {session && session?.user.isAdmin && (
                 <Link href="/add/restaurants">Add new restaurants</Link>
             )}
         </div>
-        <div className="grid grid-cols-3 gap-6 px-10 my-10" ref={scrollRef} style={{ overflow: "hidden" }} >
-
-        <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="grid w-screen grid-cols-3 gap-10 overflow-hidden overflow-x-hidden pr-36"
-    >
+        <div className="grid w-full h-full grid-cols-3 gap-6 px-10 my-10">
                 {allRestaurants.map((restaurant) => (
-                    <motion.div
-                        className="w-full gap-10 px-3 border-none shadow-none cursor-pointer mt-9 hover:shadow-lg hover:rounded-md"
+                    <div
+                        className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
+
                         key={restaurant._id}
-                        initial={{ scale: 0.9 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.3 }}
                     >
                         <div className="lg:w-[370px] lg:h-[160px] relative rounded-lg shadow-lg mb-5 m-auto">
                             {loading ? <Skeleton className="w-full h-full" /> :
@@ -212,11 +198,8 @@ const Restaurants = () => {
                                 </>
 
                             )}
-                            
                         </div>
-
-                    </motion.div>
-
+                    </div>
                 ))}
 
 {hasMore && 
@@ -230,16 +213,10 @@ const Restaurants = () => {
                                 Show More
                             </Button>
             
-            
                     </div>
-                    
-                    
 }
-</motion.div>
 
-            </div>
-            
-            </>
+            </div></>
            
                 
         

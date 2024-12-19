@@ -57,7 +57,11 @@ const Categories = () => {
 
         {allCategories.map((category) => (
 
-          <div key={category._id} className="w-56 px-2 h-52">
+          <motion.div
+          initial={{ x: -30, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 1.5 }}
+          key={category._id} className="w-56 px-2 h-52">
 
             <div
               className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer`}
@@ -70,15 +74,21 @@ const Categories = () => {
                   fill
                   className='object-cover w-full h-full transition-all duration-300 mdImg' />
               )}
-              <div className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
+              <motion.div
+              whileHover={{
+                scale: 1,
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 1.3 }} 
+              className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
                 <p className={`font-semibold text-[40px] font-sans pt-96 hidden md:block md:m-auto md:items-center`}>{category.title}</p>
-              </div>
+              </motion.div>
 
               <div className='md:hidden categoryTitle'>
                 <p className={`font-semibold text-[40px] font-sans pt-16`}>{category.title}</p> {/* Visible on mobile */}
               </div>
             </div>
-          </div>
+          </motion.div>
 
         ))}
 

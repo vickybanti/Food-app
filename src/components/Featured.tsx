@@ -44,18 +44,15 @@ const Featured = () => {
       console.log("savedProducts=", savedProducts);
       setLoading(true);
 
-      const featured = savedProducts.flatMap(pro => 
-        pro.products?.filter((product: ProductType) => product.isFeatured) || []
+       savedProducts.map(pro => 
+        pro.products?.map((product: ProductType) => product.isFeatured? 
+        setFeaturedProducts(prevState => [...prevState, product]) : setFeaturedProducts([])
+      )
+
       );
 
-      if (featured.length > 0) {
-        setFeaturedProducts(featured);
-      } else {
-        setMessage(true);
-      }
 
       setLoading(false);
-      console.log("featuredProducts after fetch=", featuredProducts);
     };
 
     fetchData();

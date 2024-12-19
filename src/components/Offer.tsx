@@ -33,7 +33,7 @@ const Offer = () => {
       {/* IMAGE CONTAINER */}
       <div className="relative flex-col flex-1 w-full md:h-full">
         
-        <Image src="/offerproduct.png" alt="" fill className="object-contain" />
+        <Image src="/offerproduct.png" alt="offer" fill className="object-contain" />
 
         <div className="absolute bottom-0 mb-10">
           <CountDown />

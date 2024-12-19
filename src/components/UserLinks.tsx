@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Image from 'next/image'
+import {motion} from 'framer-motion'
 
 
 const UserLinks = () => {
@@ -32,13 +33,18 @@ const UserLinks = () => {
             
           </DropdownMenuTrigger>
           <DropdownMenuContent>
+          <motion.div
+          initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 1 }}
+      >
             <span className=' first-letter:rounded-full p-3 text-sm'>Hi {userName}</span>
             <DropdownMenuSeparator />
             <DropdownMenuItem> <Link href="/orders" className='text-black font-bold hover:bg-[#042D29] hover:text-white hover:w-full p-2'>Orders</Link></DropdownMenuItem>
             <DropdownMenuItem>
               <span className="cursor-pointer  text-black font-bold hover:bg-[#042D29] hover:text-white p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
             </DropdownMenuItem>
-           
+            </motion.div>
           </DropdownMenuContent>
         </DropdownMenu><div>
            

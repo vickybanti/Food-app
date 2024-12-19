@@ -88,7 +88,7 @@ export default function SearchBox() {
           label={<>
           <div className="flex pr-24 mt-[-3px]">
           <Search sx={{ fontSize: "20px" ,color:"green", marginRight:"2px" }} />
-          <span className='font-sans text-xs text-black font-extralight'>Search for good food</span>
+          <span className='text-xs text-black font-thin'>Search for good food</span>
           </div>
           </>}
           InputProps={{
