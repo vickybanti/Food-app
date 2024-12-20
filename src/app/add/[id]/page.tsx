@@ -21,8 +21,7 @@ type Inputs = {
 
 
 type Option = {
-  _id?:string;
-    title:string;
+  optionTitle:string;
     additionalPrice:number 
 }
 
@@ -70,7 +69,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     },[])
 
     const [option, setOption] = useState<Option>({
-        title: "",
+      optionTitle: "",
         additionalPrice:0
 
     })
@@ -176,8 +175,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   isFeatured: pro.isFeatured,
                   restaurantId: id,
                   options: options.map(opt => ({
-                      _id: opt._id,
-                      title: opt.title.trim(),
+                      title: opt.optionTitle.trim(),
                       additionalPrice: Number(opt.additionalPrice)
                   }))
               };
@@ -198,7 +196,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                 throw new Error(data.message || 'Something went wrong')
             }
             
-            router.push(`${process.env.NEXT_PUBLIC_URL}/product/${data._id}`)
+            router.push(`$/product/${data._id}`)
         } catch (error) {
             console.error(error)
             alert(error instanceof Error ? error.message : "Error submitting product")
@@ -252,7 +250,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className='flex flex-col w-full gap-2'>
           <Label>Options</Label>
           <div className='flex gap-6'>
-            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="title" placeholder='Title' />
+            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="optionTitle" placeholder='Title' />
             <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="number" name="additionalPrice" placeholder='Additional Price' />
           </div>
           <Button
@@ -267,8 +265,8 @@ const Page = ({ params }: { params: { id: string } }) => {
 
         <div className='flex flex-col w-full gap-2'>
           {options.map((item) => (
-            <div className='p-2 rounded-md cursor-pointer ring-1 ring-black-200' key={item.title} onClick={() => setOptions(options.filter(opt=>opt.title !== item.title))}>
-              <span>{item.title}</span>
+            <div className='p-2 rounded-md cursor-pointer ring-1 ring-black-200' key={item.optionTitle} onClick={() => setOptions(options.filter(opt=>opt.optionTitle !== item.optionTitle))}>
+              <span>{item.optionTitle}</span>
               <span>${item.additionalPrice}</span>
             </div>
           ))}

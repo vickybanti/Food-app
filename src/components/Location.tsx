@@ -1,7 +1,7 @@
 "use client";
 import { userCartStore } from "@/lib/utils/store";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { Skeleton } from "./ui/skeleton";
@@ -11,8 +11,7 @@ type Restaurant = {
   name: string;
   img: string;
   products?: Product[];
-  resProducts: [];
-  location: string; // Ensure this is properly typed
+  location: string;
 };
 
 type Product = {
@@ -29,7 +28,7 @@ type Product = {
 const Location = () => {
   const [allRestaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [loading, setLoading] = useState(false);
-  const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const limit = 6;
@@ -42,6 +41,7 @@ const Location = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       setLoading(true);
+      setError(null);
 
       try {
         const res = await fetch(
@@ -55,18 +55,9 @@ const Location = () => {
         );
 
         const data = await res.json();
-
-        // Log fetched data
-        console.log("Fetched restaurants data:", data);
-
         setRestaurants(data.restaurants || []);
-
-        // Extract unique locations
-        const locations = Array.from(
-          new Set(data.restaurants?.map((restaurant: Restaurant) => restaurant.location))
-        );
-        setUniqueCategories(locations);
       } catch (error) {
+        setError("Failed to fetch restaurants. Please try again.");
         console.error("Error fetching restaurants:", error);
       } finally {
         setLoading(false);
@@ -75,6 +66,10 @@ const Location = () => {
 
     fetchRestaurants();
   }, [page, limit]);
+
+  const uniqueCategories = useMemo(() => {
+    return Array.from(new Set(allRestaurants.map((restaurant) => restaurant.location)));
+  }, [allRestaurants]);
 
   return (
     <>
@@ -93,9 +88,11 @@ const Location = () => {
           className="flex gap-5"
         >
           {loading ? (
-            Array.from({ length: 5 }).map((_, index) => (
+            Array.from({ length: limit }).map((_, index) => (
               <Skeleton key={index} className="w-20 h-8" />
             ))
+          ) : error ? (
+            <p className="text-red-500">{error}</p>
           ) : uniqueCategories.length > 0 ? (
             uniqueCategories.map((location) => (
               <Button

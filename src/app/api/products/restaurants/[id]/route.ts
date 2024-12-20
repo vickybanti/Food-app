@@ -40,8 +40,7 @@ export const PUT = async(req:NextRequest, {params}: {params:{id:string}}) => {
                catSlug: prod.catSlug,
                isFeatured: prod.isFeatured,
                options: prod.options.map((opt: any) => ({
-                   _id: opt._id ? new mongoose.Types.ObjectId(opt._id) : new mongoose.Types.ObjectId(),
-                   title: opt.title,
+                   title: opt.optionTitle,
                    additionalPrice: opt.additionalPrice
                })) || []
            }));
