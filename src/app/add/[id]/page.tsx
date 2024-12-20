@@ -106,11 +106,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                 return {...prev, [e.target.name]: value}
             })
 
-            setOption({
-              optionTitle: "",
-              additionalPrice: 0,
-            });
-
+           
     }
 
     const handleChangeImage = (e:React.ChangeEvent<HTMLInputElement>) => {
