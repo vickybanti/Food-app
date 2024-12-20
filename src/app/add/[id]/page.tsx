@@ -217,25 +217,13 @@ const Page = ({ params }: { params: { id: string } }) => {
       setOptions((prev) => [...prev, option]); // Add the new option to the options array
 
   // Clear only the option state, leaving the inputs state intact
-  setOption({
-    optionTitle: "",
-    additionalPrice: 0,
-
-
-    })
+  
   }
 
     const handleAddProduct = () => {
      setAllProduct((prev) => [...prev, inputs])
 
-              setInputs({
-                _id:"",
-              title: "",
-              price: 0,
-              desc: "",
-              catSlug: "",
-              isFeatured: false,
-              })
+             
     }
   return (
     <div className="p-32 mx-10 ">
