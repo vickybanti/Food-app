@@ -82,6 +82,8 @@ const Page = ({ params }: { params: { id: string } }) => {
 
             
         })
+
+        
     }
 
     const handleAllProducts = () => {
@@ -103,6 +105,11 @@ const Page = ({ params }: { params: { id: string } }) => {
                 const value = e.target.name === "additionalPrice" ? Number(e.target.value) : e.target.value;
                 return {...prev, [e.target.name]: value}
             })
+
+            setOption({
+              optionTitle: "",
+              additionalPrice: 0,
+            });
 
     }
 
@@ -204,6 +211,32 @@ const Page = ({ params }: { params: { id: string } }) => {
             setLoading(false)
         }
     }
+
+    const handleAddOptions = () => {
+
+      setOptions((prev) => [...prev, option]); // Add the new option to the options array
+
+  // Clear only the option state, leaving the inputs state intact
+  setOption({
+    optionTitle: "",
+    additionalPrice: 0,
+
+
+    })
+  }
+
+    const handleAddProduct = () => {
+     setAllProduct((prev) => [...prev, inputs])
+
+              setInputs({
+                _id:"",
+              title: "",
+              price: 0,
+              desc: "",
+              catSlug: "",
+              isFeatured: false,
+              })
+    }
   return (
     <div className="p-32 mx-10 ">
       <form className='flex flex-wrap gap-4 p-8 shadow-lg w-[75%] m-auto bg-white' onSubmit={handleSubmit}>
@@ -250,13 +283,13 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className='flex flex-col w-full gap-2'>
           <Label>Options</Label>
           <div className='flex gap-6'>
-            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="optionTitle" placeholder='Title' />
-            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="number" name="additionalPrice" placeholder='Additional Price' />
+            <Input   value={option.optionTitle} onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="optionTitle" placeholder='Title' />
+            <Input   value={option.additionalPrice || ""} onChange={changeOptions} className='p-2 rounded-sm w-36' type="number" name="additionalPrice" placeholder='Additional Price' />
           </div>
           <Button
             type="button"
             className='p-2 text-white bg-slate-900 w-52'
-            onClick={handleAllProducts}
+            onClick={handleAddOptions}
           >
             Add Options
           </Button>
@@ -276,7 +309,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Button
             type="button"
             className='p-2 text-white bg-slate-900 w-52'
-            onClick={() => setAllProduct((prev) => [...prev, inputs])}
+            onClick={handleAddProduct}
           >
             Add product
           </Button>
@@ -284,7 +317,8 @@ const Page = ({ params }: { params: { id: string } }) => {
 
           <div className='flex flex-col w-full gap-2'>
           {allProduct.map((item) => (
-            <div className='p-2 rounded-md cursor-pointer ring-1 ring-black-200' key={item.title} onClick={
+            <div className='p-2 rounded-md cursor-pointer ring-1 ring-black-200' key={item.title} 
+            onClick={
               () => setAllProduct(allProduct.filter(opt=>opt.title !== item.title))}>
               <span>{item.title}</span>
               <span>${item.price}</span>
