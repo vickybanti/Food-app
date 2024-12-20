@@ -203,7 +203,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                 throw new Error(data.message || 'Something went wrong')
             }
             
-            router.push(`$/product/${data._id}`)
+            router.push(`${process.env.NEXT_PUBLIC_URL}/product/${data._id}`)
         } catch (error) {
             console.error(error)
             alert(error instanceof Error ? error.message : "Error submitting product")
@@ -283,8 +283,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         <div className='flex flex-col w-full gap-2'>
           <Label>Options</Label>
           <div className='flex gap-6'>
-            <Input   value={option.optionTitle} onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="optionTitle" placeholder='Title' />
-            <Input   value={option.additionalPrice || ""} onChange={changeOptions} className='p-2 rounded-sm w-36' type="number" name="additionalPrice" placeholder='Additional Price' />
+            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="text" name="optionTitle" placeholder='Title' />
+            <Input onChange={changeOptions} className='p-2 rounded-sm w-36' type="number" name="additionalPrice" placeholder='Additional Price' />
           </div>
           <Button
             type="button"
