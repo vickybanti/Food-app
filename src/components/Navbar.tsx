@@ -36,7 +36,7 @@ const Navbar = () => {
 
 
   return (
-    <div className={`fixed top-0 z-10 w-full bg-white ${ scrollDirection? 'backdrop-blur-lg bg-white/70 sticky' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out `}>
+    <div className={`fixed top-0 z-10 w-full ${!isDesktop && 'w-2/4'} bg-white ${ scrollDirection? 'backdrop-blur-lg bg-white/70 sticky' : 'bg-inherit text-black'} transition-colors duration-300 ease-in-out `}>
     <div className={`h-16 flex items-center justify-between  uppercase lg:px-5 xl:px-20 mt-5 ml-10 mr-10 `}>
         <div>
           <Link href="/">
@@ -46,7 +46,7 @@ const Navbar = () => {
           </Link>
         </div>
       {/* LEFT LINKS */}
-      <div className="flex w-[280px] gap-4 ml-9 text-sm">
+      <div className="flex w-[280px] gap-4 ml-9 text-sm md:hidden">
 
         < NavAddress />
 
@@ -74,7 +74,7 @@ const Navbar = () => {
         <Menu />
       </div>
       {/* RIGHT LINKS */}
-      <div className="items-center justify-end flex gap-4 md:flex">
+      <div className="items-center justify-end flex gap-4 md:flex lg:hidden">
         {/* <div className="flex items-center gap-2 px-1 bg-orange-300 rounded-md cursor-pointer md:absolute top-3 r-2 lg:static">
           <Image src="/phone.png" alt="" width={20} height={20} />
           <span>123 456 78</span>

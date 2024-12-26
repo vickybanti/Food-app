@@ -6,6 +6,8 @@ import Link from "next/link";
 import CartIcon from "./CartIcon";
 import SearchBox from "./Search";
 import { signOut, useSession } from "next-auth/react";
+import { NavAddress } from "./NavAddress";
+
 
 
 const links = [
@@ -107,6 +109,8 @@ const Menu = () => {
           <Link href="/cart" onClick={() => setOpen(false)}>
             <CartIcon />
           </Link>
+
+          <NavAddress />
         </div>
       )}
     </div>

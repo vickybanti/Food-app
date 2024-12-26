@@ -113,6 +113,10 @@
   .card{
     width:88%;
   }
+  .navAdd{
+    margin-left: 12px;
+    width: 120px;
+  }
 
   .cardHeader{
     width: 100%;
