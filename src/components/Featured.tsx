@@ -59,62 +59,55 @@ const Featured = () => {
         <h1 className="text-3xl font-sans font-semibold text-gray-900">
           Popular Orders
         </h1>
-        <span className="text-sm text-gray-500">
-          Add more restaurants to favorites to see their featured products
+        <span className="text-sm text-gray-500 text-center mt-2">
+          Add more restaurants to favorites to see their featured products.
         </span>
       </section>
     );
   }
 
   return (
-    <section className="relative flex flex-col w-full h-full py-5 overflow-x-auto feature no-scrollbar mt-14">
-      <div className="flex justify-between mx-20 mb-5">
-        <h2 className="font-sans text-3xl font-semibold text-gray-900">
-          Popular orders
+    <section className="relative flex flex-col w-full h-full py-5 overflow-x-auto mt-14 no-scrollbar">
+      <div className="flex justify-between mx-5 md:mx-20 mb-5">
+        <h2 className="font-sans text-2xl md:text-3xl font-semibold text-gray-900">
+          Popular Orders
         </h2>
       </div>
 
-      <div className="flex items-start justify-start w-full h-full gap-8 px-2 mx-32 mt-7">
-        <div className="relative flex w-full mt-10 overflow-x-auto no-scrollbar">
-          {savedProducts.map((product) => (
-            product.products?.map((item) => (
-              item.isFeatured && (
-            <div
-              key={item._id}
-              className="featureCard rounded-md px-5 mx-10 my-14 h-[300px] w-[220px] flex flex-col items-center py-20 hover:bg-fuchsia-50 transition-all duration-300 bg-[#B78C56] shadow-[-10px_7px_0px_0px_#741102]"
-            >
-              {item.img && (
-                <div className="hover:scale-x-105 transition-all duration-500 mt-[-130px] w-52 h-8 mb-10 mx-auto">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    width={170}
-                    height={100}
-                    className="object-cover mix-blend-multiply"
-                  />
-                </div>
-              )}
-              <div className="flex flex-col items-center justify-center flex-1 gap-2 text-center">
-                <Link href={`/product/${item._id}`}>
-                  <h1 className="pt-32 pb-8 font-bold text-white uppercase text-md">
-                    {item.title}
-                  </h1>
-                  <span className="text-xl font-medium text-white rounded-full p-2 bg-[#741102]">
-                    {item.price}
-                  </span>
-                </Link>
+      <div className="flex items-start justify-start w-full gap-4 px-5 md:px-20 mt-7 overflow-x-auto no-scrollbar">
+        {featuredProducts.map((item) => (
+          <div
+            key={item._id}
+            className="featureCard rounded-md px-5 h-[320px] w-[200px] flex flex-col items-center py-5 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
+          >
+            {item.img && (
+              <div className="relative w-32 h-32 mb-4">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="object-cover rounded-md"
+                />
               </div>
-              <button
-                onClick={() => router.push(`/product/${item._id}`)}
-                className="rounded-full bg-[#741102] p-4 text-white absolute mt-[190px] cursor-pointer"
-              >
-                <ArrowForwardIos fontSize="large" />
-              </button>
+            )}
+            <div className="flex flex-col items-center text-center">
+              <Link href={`/product/${item._id}`}>
+                <h1 className="font-bold text-white uppercase text-md mb-3">
+                  {item.title}
+                </h1>
+                <span className="text-xl font-medium text-white p-2 rounded-full bg-[#741102]">
+                  ${item.price}
+                </span>
+              </Link>
             </div>
-            )
-            ))
-          ))}
-        </div>
+            <button
+              onClick={() => router.push(`/product/${item._id}`)}
+              className="absolute bottom-4 rounded-full bg-[#741102] p-3 text-white"
+            >
+              <ArrowForwardIos fontSize="small" />
+            </button>
+          </div>
+        ))}
       </div>
     </section>
   );

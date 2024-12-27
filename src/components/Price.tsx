@@ -8,125 +8,120 @@ import Button from "./Button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-
-
-const Price = ({ product }: {product:ProductType}) => {
+const Price = ({ product }: { product: ProductType }) => {
   const [total, setTotal] = useState(product.price);
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
-  const [message, setMessage] = useState(false)
+  const [message, setMessage] = useState(false);
 
-  const {addToCart} = userCartStore()
-//to prevent hydration i.e trying to persist the cart to use client rendering on a server rendering
-  useEffect(() => {
-    userCartStore.persist.rehydrate()
-  },[])
+  const { addToCart } = userCartStore();
 
+  // Prevent hydration issues
   useEffect(() => {
-    if(product.options?.length){
-      
-        setTotal(
-          quantity * (Number(product.price) + Number(product.options[selected].additionalPrice))
-        );
-      }
-      
-    
-    
+    userCartStore.persist.rehydrate();
+  }, []);
+
+  // Calculate total price based on quantity and selected options
+  useEffect(() => {
+    if (product.options?.length) {
+      const additionalPrice = product.options[selected]?.additionalPrice || 0;
+      setTotal(quantity * (Number(product.price) + Number(additionalPrice)));
+    } else {
+      setTotal(quantity * product.price);
+    }
   }, [quantity, selected, product]);
 
   const handleCart = () => {
     addToCart({
-      _id:product._id,
-      title:product.title,
-      price:total,
-      img:product.img,
-      ...(product.options?.length && {
-        optionTitle:product.options[selected].title
-    }),
-      quantity:quantity
+      _id: product._id,
+      title: product.title,
+      price: total,
+      img: product.img,
+      ...(product.options?.length && { optionTitle: product.options[selected].title }),
+      quantity,
+    });
 
-
-    })
-
-    setMessage(true)
-   
-
-  }
+    setMessage(true);
+    toast({ title: "Added to cart!", description: `${product.title} has been added to your cart.` });
+  };
 
   return (
-    <>
     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className="flex justify-between w-full">
-      <div className="relative mr-16 h-44 w-60">
-      <Image 
-        src={product.img || ''}
-        alt=""
-        fill
-        className="object-contain"
-      
-      />
+      <div className="flex flex-col md:flex-row gap-8 w-full">
+        {/* Product Image */}
+        <div className="relative w-full h-44 md:w-60">
+          <Image
+            src={product.img || ""}
+            alt={product.title}
+            fill
+            className="object-contain"
+          />
+        </div>
 
-      </div>
-     
+        {/* Price and Options */}
+        <div className="flex flex-col justify-between flex-1 gap-6">
+          {/* Total Price */}
+          <h2 className="text-2xl font-semibold text-[#741102]">${total.toFixed(2)}</h2>
 
-     <div className="flex flex-col justify-between gap-4">
-      <h2 className="text-2xl text-[#741102] font-normal">${total}</h2>
-      {/* OPTIONS CONTAINER */}
-      <div className="flex gap-4">
-        {product.options?.length  && product.options?.map((option, index) => (
-          <button
-            key={option.title}
-            className="min-w-[6rem] p-2 ring-1 ring-gray-100 rounded-md"
-            style={{
-              background: selected === index ? "grey" : "white",
-              color: selected === index ? "white" : "grey",
-            }}
-            onClick={() => setSelected(index)}
-          >
-            {option.title}
-          </button>
-        ))}
-      </div>
-      {/* QUANTITY AND ADD BUTTON CONTAINER */}
-      <div className="flex items-center justify-between">
-        {/* QUANTITY */}
-        <div className="flex justify-between w-full mr-10 ring-[#f0f0f0]">
-          
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
-            className="flex items-center justify-center text-white bg-black rounded-md w-11 h-11"
-            >
-              {"-"}
-            </button>
-            <span className="text-[#741102]">{quantity}</span>
-            <button
-              onClick={() => setQuantity((prev) => (prev < 9 ? prev + 1 : 9))}
-            className="flex items-center justify-center text-white bg-black rounded-md w-11 h-11"
-            >
-              {"+"}
-            </button>
+          {/* Options */}
+          {product.options?.length > 0 && (
+            <div className="flex flex-wrap gap-4">
+              {product.options.map((option, index) => (
+                <button
+                  key={option.title}
+                  className={`min-w-[6rem] px-4 py-2 border rounded-md ${
+                    selected === index
+                      ? "bg-gray-800 text-white border-gray-800"
+                      : "bg-white text-gray-800 border-gray-200"
+                  } transition-all duration-300`}
+                  onClick={() => setSelected(index)}
+                  aria-pressed={selected === index}
+                >
+                  {option.title}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Quantity and Cart Button */}
+          <div className="flex items-center gap-6">
+            {/* Quantity Controls */}
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-md"
+                aria-label="Decrease quantity"
+              >
+                -
+              </button>
+              <span className="text-lg font-medium text-[#741102]">{quantity}</span>
+              <button
+                onClick={() => setQuantity((prev) => Math.min(9, prev + 1))}
+                className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-md"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+
+            {/* Add to Cart Button */}
+            <Button
+              type="button"
+              title={message ? "Added to Cart" : "Add to Cart"}
+              variant="btn_white"
+              full
+              bg="bg-[#042D29]"
+              hover
+              onClick={handleCart}
+            />
           </div>
         </div>
-        {/* CART BUTTON */}
-        <Button type='button' 
-        title={ message ? `Added to cart`:`Add to cart`} 
-        variant='btn_white' 
-        full
-        bg="bg-[#042D29]"
-        onClick={()=>handleCart()} 
-        hover={true}/>
-      
-        
       </div>
-    </div>
-    </div>
     </motion.div>
-    </>
   );
 };
 
