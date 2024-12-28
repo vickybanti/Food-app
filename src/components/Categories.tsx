@@ -53,7 +53,7 @@ const Categories = () => {
         <div className="mx-5 md:mx-20 border-t-2 border-t-[#B78C56]">
           <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">Categories</h2>
         </div>
-        <div className="grid grid-cols-2 gap-4 px-5 mt-4 md:grid-cols-3 lg:grid-cols-4 md:px-40">
+        <div className="grid grid-cols-2 gap-4 px-5 mt-4 md:grid-cols-2 lg:grid-cols-4 md:px-40 cats">
           {allCategories.map((category) => (
             <motion.div
               key={category._id}
@@ -65,7 +65,7 @@ const Categories = () => {
               className="relative w-full h-48 md:w-56 md:h-52"
             >
               <div
-                className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer cats`}
+                className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer grid grid-cols-2`}
                 onClick={() => router.push(`/products?category=${category.slug}`)}
               >
                 {loading ? (
