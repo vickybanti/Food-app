@@ -56,10 +56,10 @@ const Featured = () => {
   if (message) {
     return (
       <section className="relative flex flex-col items-center w-full h-full py-5">
-        <h1 className="text-3xl font-sans font-semibold text-gray-900">
+        <h1 className="text-xl md:text-3xl font-sans font-semibold text-gray-900">
           Popular Orders
         </h1>
-        <span className="text-sm text-gray-500 text-center mt-2">
+        <span className="text-sm md:text-base text-gray-500 text-center mt-2">
           Add more restaurants to favorites to see their featured products.
         </span>
       </section>
@@ -68,8 +68,8 @@ const Featured = () => {
 
   return (
     <section className="relative flex flex-col w-full h-full py-5 overflow-x-auto mt-14 no-scrollbar">
-      <div className="flex justify-between mx-5 md:mx-20 mb-5">
-        <h2 className="font-sans text-2xl md:text-3xl font-semibold text-gray-900">
+      <div className="flex justify-between px-5 md:px-20 mb-5">
+        <h2 className="font-sans text-xl md:text-3xl font-semibold text-gray-900">
           Popular Orders
         </h2>
       </div>
@@ -78,10 +78,10 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="featureCard rounded-md px-5 h-[320px] w-[200px] flex flex-col items-center py-5 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
+            className="featureCard rounded-md px-4 h-[280px] sm:h-[320px] w-[160px] sm:w-[200px] flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
           >
             {item.img && (
-              <div className="relative w-32 h-32 mb-4">
+              <div className="relative w-28 sm:w-32 h-28 sm:h-32 mb-3">
                 <Image
                   src={item.img}
                   alt={item.title}
@@ -92,17 +92,17 @@ const Featured = () => {
             )}
             <div className="flex flex-col items-center text-center">
               <Link href={`/product/${item._id}`}>
-                <h1 className="font-bold text-white uppercase text-md mb-3">
+                <h1 className="font-bold text-white uppercase text-sm sm:text-md mb-2">
                   {item.title}
                 </h1>
-                <span className="text-xl font-medium text-white p-2 rounded-full bg-[#741102]">
+                <span className="text-lg sm:text-xl font-medium text-white p-2 rounded-full bg-[#741102]">
                   ${item.price}
                 </span>
               </Link>
             </div>
             <button
               onClick={() => router.push(`/product/${item._id}`)}
-              className="absolute bottom-4 rounded-full bg-[#741102] p-3 text-white"
+              className="absolute bottom-3 sm:bottom-4 rounded-full bg-[#741102] p-2 sm:p-3 text-white"
             >
               <ArrowForwardIos fontSize="small" />
             </button>

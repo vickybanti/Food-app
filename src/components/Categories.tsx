@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Skeleton } from './ui/skeleton';
 import { motion } from 'framer-motion';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 const getData = () => {
   return fetch(`/api/categories`, {
@@ -31,6 +32,8 @@ const Categories = () => {
   const router = useRouter();
   const [allCategories, setAllCategories] = useState<CategoryType[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     setLoading(true);
@@ -72,7 +75,7 @@ const Categories = () => {
                     src={category.img || ''}
                     alt={category.title}
                     fill
-                    className="object-cover w-full h-full transition-all duration-300"
+                    className={`object-cover ${isDesktop ? 'w-full h-full' :'w-20 h-20'} transition-all duration-300`}
                   />
                 )}
                 <motion.div
