@@ -68,24 +68,24 @@ const Price = ({ product }: { product: ProductType }) => {
           <h2 className="text-2xl font-semibold text-[#741102]">${total.toFixed(2)}</h2>
 
           {/* Options */}
-          {product.options?.length > 0 && (
-            <div className="flex flex-wrap gap-4">
-              {product.options.map((option, index) => (
-                <button
-                  key={option.title}
-                  className={`min-w-[6rem] px-4 py-2 border rounded-md ${
-                    selected === index
-                      ? "bg-gray-800 text-white border-gray-800"
-                      : "bg-white text-gray-800 border-gray-200"
-                  } transition-all duration-300`}
-                  onClick={() => setSelected(index)}
-                  aria-pressed={selected === index}
-                >
-                  {option.title}
-                </button>
-              ))}
-            </div>
-          )}
+          {Array.isArray(product.options) && product.options.length > 0 && (
+  <div className="flex flex-wrap gap-4">
+    {product.options.map((option, index) => (
+      <button
+        key={option.title}
+        className={`min-w-[6rem] px-4 py-2 border rounded-md ${
+          selected === index
+            ? "bg-gray-800 text-white border-gray-800"
+            : "bg-white text-gray-800 border-gray-200"
+        } transition-all duration-300`}
+        onClick={() => setSelected(index)}
+        aria-pressed={selected === index}
+      >
+        {option.title}
+      </button>
+    ))}
+  </div>
+)}
 
           {/* Quantity and Cart Button */}
           <div className="flex items-center gap-6">
