@@ -203,13 +203,13 @@ const Page = ({ params }: { params: { id: string } }) => {
                 key={item._id}
                 className="flex justify-between items-center"
               >
-                <Image
-                  src={item.img}
-                  alt=""
-                  width={50}
-                  height={50}
-                  className="rounded-md"
-                />
+               <Image
+  src={item.img || "/placeholder-image.jpg"} // Replace with your placeholder image path
+  alt={item.title || "Product Image"}
+  width={50}
+  height={50}
+  className="rounded-md"
+/>
                 <div className="flex-1 ml-4">
                   <h1 className="font-semibold">{item.title}</h1>
                   <p className="text-gray-500 text-sm">{item.optionTitle}</p>
