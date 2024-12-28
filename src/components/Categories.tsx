@@ -65,7 +65,7 @@ const Categories = () => {
               className="relative w-full h-48 md:w-56 md:h-52"
             >
               <div
-                className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer ${!isDesktop && 'grid grid-cols-2 w-10 h-10 ml-7 mr-4'}`}
+                className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer cats`}
                 onClick={() => router.push(`/products?category=${category.slug}`)}
               >
                 {loading ? (

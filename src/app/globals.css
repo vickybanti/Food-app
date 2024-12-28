@@ -113,6 +113,12 @@
   .card{
     width:88%;
   }
+  .cats{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* This sets two equal columns */
+    gap: 10px; /* Adjust the gap between items as needed */
+    padding: 0 7px;
+  }
   .navAdd{
     margin-left: 12px;
     width: 120px;
