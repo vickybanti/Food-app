@@ -63,10 +63,10 @@ const Categories = () => {
       transition={{ ease: "easeInOut", duration: 1.5 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
-          key={category._id} className="w-56 px-2 h-52">
+          key={category._id} className="lg:w-56 md:w-24 lg:px-2 md:px-1 lg:h-52 md:h-24">
 
             <div
-              className={`lg:p-4 md:p-1 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full lg:h-full md:w-24 md:h-full cursor-pointer`}
+              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full lg:h-full md:w-16 md:h-full cursor-pointer `}
               onClick={() => router.push(`/products?category=${category.slug}`)}
             >
               {loading ? <Skeleton className='w-20 h-20'/> : (
