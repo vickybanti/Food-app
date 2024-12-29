@@ -66,7 +66,7 @@ const Categories = () => {
           key={category._id} className="px-2 h-52">
 
             <div
-              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full md:w-10 h-full cursor-pointer`}
+              className={`p-4  rounded-sm bg-${category.color}-100 relative overflow-hidden group h-full cursor-pointer`}
               onClick={() => router.push(`/products?category=${category.slug}`)}
             >
               {loading ? <Skeleton className='w-20 h-20'/> : (
@@ -74,7 +74,7 @@ const Categories = () => {
                   src={category.img || ''}
                   alt={category.title}
                   fill
-                  className='object-cover w-full h-full transition-all duration-300 mdImg' />
+                  className='object-cover transition-all duration-300 mdImg' />
               )}
               <motion.div
               whileHover={{
