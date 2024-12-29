@@ -1,92 +1,104 @@
 "use client";
 
-import { CategoryType } from "@/types/types";
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { Skeleton } from "./ui/skeleton";
+import { CategoryType } from '@/types/types'
+import React, {  useEffect, useState } from 'react'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { Skeleton } from './ui/skeleton';
+import {motion} from 'framer-motion'
 
 const getData = () => {
   return fetch(`/api/categories`, {
     method: "GET",
     cache: "no-store",
+   
   })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Failed to fetch categories");
-      }
-      return res.json();
-    });
-};
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("Failed to fetch categories")
+    }
+    return res.json()
+  })
+}
 
 const Categories = () => {
-  const router = useRouter();
-  const [allCategories, setAllCategories] = useState<CategoryType[]>([]);
-  const [loading, setLoading] = useState(false);
-
+  const router = useRouter()
+  const [allCategories, setAllCategories] = useState<CategoryType[]>([])
+  const [loading, setLoading] = useState(false)
+  
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getData()
-      .then((data) => setAllCategories(data))
-      .catch((error) => console.error("Error fetching categories:", error))
-      .finally(() => setLoading(false));
-  }, []);
-
+      .then(data => setAllCategories(data))
+      .catch(error => console.error("Error fetching categories:", error))
+      setLoading(false)
+  }, [])
+  
+  
   return (
-    <motion.div
+    <>
+     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-      <div className="mx-4 md:mx-20 border-t-2 border-t-[#B78C56]">
-        <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">
-          Categories
-        </h2>
-      </div>
-      <div className="grid grid-cols-2 gap-4 px-4 mt-4 md:grid-cols-3 lg:grid-cols-4 md:px-20">
+    <div className='mx-20 border-t-2 border-t-[#B78C56] '>
+      <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
+    </div>
+    <div className="grid lg:grid-cols-4 md:grid-cols-2 px-0 mt-4 py-7 md:mx-40">
+
+
         {allCategories.map((category) => (
+
           <motion.div
-            key={category._id}
-            initial={{ x: -30, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ ease: "easeInOut", duration: 1.5 }}
-            className="relative w-full"
-          >
+          initial={{ x: -30, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 1.5 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false }}
+          key={category._id} className="lg:w-56 md:w-20 px-2 h-52">
+
             <div
-              className={`aspect-w-1 aspect-h-1 rounded-sm bg-${category.color}-100 relative overflow-hidden group cursor-pointer`}
+              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full md:w-10 h-full cursor-pointer`}
               onClick={() => router.push(`/products?category=${category.slug}`)}
             >
-              {loading ? (
-                <Skeleton className="w-full h-full" />
-              ) : (
+              {loading ? <Skeleton className='w-20 h-20'/> : (
                 <Image
-                  src={category.img || ""}
+                  src={category.img || ''}
                   alt={category.title}
                   fill
-                  className="object-cover w-full h-full transition-all duration-300"
-                />
+                  className='object-cover w-full h-full transition-all duration-300 mdImg' />
               )}
               <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  transition: { duration: 0.3 },
-                }}
-                className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 flex items-center justify-center"
-              >
-                <p className="text-lg font-semibold md:text-xl lg:text-2xl">
-                  {category.title}
-                </p>
+              whileHover={{
+                scale: 1,
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 1.3 }} 
+              className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-screen flex items-center justify-center categoryTitleLarge `}>
+                <p className={`font-semibold text-[40px] font-sans pt-96 hidden md:block md:m-auto md:items-center`}>{category.title}</p>
               </motion.div>
-              <div className="md:hidden text-center mt-2">
-                <p className="text-sm font-semibold">{category.title}</p>
+
+              <div className='md:hidden'>
+                <p className={`font-semibold text-[40px] font-sans pt-16 categoryTitle`}>{category.title}</p> {/* Visible on mobile */}
               </div>
             </div>
           </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
 
-export default Categories;
+        ))}
+
+      </div>
+      </motion.div>
+      </>
+      
+  )
+}
+
+export default Categories
