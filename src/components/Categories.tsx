@@ -66,7 +66,7 @@ const Categories = () => {
           key={category._id} className="w-56 px-2 h-52">
 
             <div
-              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full lg:h-full md:w-32 md:h-40 cursor-pointer`}
+              className={`lg:p-4 md:p-1 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full lg:h-full md:w-24 md:h-full cursor-pointer`}
               onClick={() => router.push(`/products?category=${category.slug}`)}
             >
               {loading ? <Skeleton className='w-20 h-20'/> : (
