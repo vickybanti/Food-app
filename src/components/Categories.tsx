@@ -52,7 +52,7 @@ const Categories = () => {
     <div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="flex flex-wrap justify-between gap-4 px-0 mt-4 py-7 md:mx-40">
+    <div className="grid lg:grid-cols-4 md:grid-cols-2 justify-between gap-4 px-0 mt-4 py-7 md:mx-40">
 
 
         {allCategories.map((category) => (
@@ -66,7 +66,7 @@ const Categories = () => {
           key={category._id} className="w-56 px-2 h-52">
 
             <div
-              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group w-full h-full cursor-pointer`}
+              className={`p-4 rounded-sm bg-${category.color}-100 relative overflow-hidden group lg:w-full lg:h-full md:w-32 md:h-40 cursor-pointer`}
               onClick={() => router.push(`/products?category=${category.slug}`)}
             >
               {loading ? <Skeleton className='w-20 h-20'/> : (
