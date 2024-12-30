@@ -119,7 +119,7 @@ const Products = () => {
        
 
           :
-          <div className='items-start w-full gap-4 flex overflow-x-auto no-scrollbar'>
+          <div className='items-start justify-start w-full gap-4 flex overflow-x-auto no-scrollbar'>
       
       {products.map((pro: ProductType) => (
         

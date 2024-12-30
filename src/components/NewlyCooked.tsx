@@ -32,10 +32,10 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
   return (
     
     
-<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[380px] h-full">
+<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[580px] h-full">
 <CardHeader className="w-[100%] h-[200px] p-4 ">
  
-    <div className="relative h-[200px] w-full cardImage">
+    <div className="relative h-[200px] w-full">
       {loading ? (<Skeleton className="w-56 h-40 rounded-full"/>):
       <Link href={href}>
       
@@ -53,7 +53,7 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
     </div>
 
 </CardHeader>
-<CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
+<CardContent className="flex flex-col gap-2 p-4 text-black mt-[-30px]">
   {loading ? (<Skeleton className="w-10 h-8"/>):
   <CardDescription className="text-xl text-black cardTitle">{title}</CardDescription>}
   {loading ? (<Skeleton className="w-10 h-8"/>) :
@@ -74,7 +74,7 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
 </CardContent>
 <CardFooter className="flex justify-between">
   <div></div>
-  <span className="mt-[-60px] cartAddSpan">
+  <span className="mt-[-130px] ">
     <Drawer>
       <DrawerTrigger className="mt-[-860px] p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
         <Add fontSize="large" className="text-white"/>
