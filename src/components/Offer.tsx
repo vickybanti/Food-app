@@ -18,7 +18,7 @@ const Offer = () => {
         <p className="text-gray-400 lg:text-xs md:text-xs">
           Enjoy <span className="text-green-300">20%</span> discount on burger orders this festive period
         </p>
-    <div className="md:right-0">
+    <div className="offerButton">
         <Button
           type="button"
           title="Order Now"

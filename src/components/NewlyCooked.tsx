@@ -32,8 +32,8 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
   return (
     
     
-<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[350px]  mx-auto md:h-[120px]">
-<CardHeader className="cardHeader w-[100%] h-[200px] p-4 ">
+<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[350px] h-[120px]">
+<CardHeader className="w-[100%] h-[200px] p-4 ">
  
     <div className="relative h-[200px] w-full cardImage">
       {loading ? (<Skeleton className="w-56 h-40 rounded-full"/>):
@@ -76,7 +76,7 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
   <div></div>
   <span className="mt-[-60px] cartAddSpan">
     <Drawer>
-      <DrawerTrigger className="mt-[-160px] p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
+      <DrawerTrigger className="mt-[-860px] p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
         <Add fontSize="large" className="text-white"/>
       </DrawerTrigger>
       <DrawerContent>
