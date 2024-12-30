@@ -124,11 +124,11 @@ const Restaurants = () => {
         transition={{ ease: "easeInOut", duration: 1.5 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
-        className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10"
+        className="grid md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10"
       >
         {allRestaurants.map((restaurant) => (
           <div
-            className="w-full sm:w-[300px] lg:w-[390px] hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none px-3"
+            className="sm:w-[250px] lg:w-[390px] hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none px-3"
             key={restaurant._id}
           >
             <div className="relative w-full h-40 lg:h-48 rounded-lg shadow-lg mb-5">
