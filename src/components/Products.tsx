@@ -99,7 +99,7 @@ const Products = () => {
       </div>
     {
        isDesktop ?
-      <div className='items-start justify-start w-full gap-4 flex overflow-x-auto no-scrollbar'>
+      <div className='grid grid-cols-3 gap-8 w-full h-full'>
       
         {products.map((pro: ProductType) => (
           
