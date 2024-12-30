@@ -40,14 +40,7 @@
     }
   }
 
-  .mdImg{
-    @media screen and (max-width: 464px) {
-      object-fit: contain;
-      width: 50%;
-      
-      }
-  }
-
+  
   
 
   
@@ -119,6 +112,11 @@
     gap: 10px; /* Adjust the gap between items as needed */
     padding: 0 7px;
 
+  }
+
+  .catsImg{
+    height: 60%;
+    width: 80%;
   }
   .navAdd{
     margin-left: 12px;
@@ -236,7 +234,7 @@
     font-size:18px;
     bottom: 0;
     background: rgba(0,0,0,0.2);
-    padding: 15px 50px;
+    padding: 15px 60px;
 
   }
 

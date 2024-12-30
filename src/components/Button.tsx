@@ -35,7 +35,7 @@ const Button = ({bg,type,title,icon,variant,full,onClick}:ButtonProps) => {
     onMouseEnter={handleMouseEnter}
     onMouseLeave={handleMouseLeave}
     // Dynamically apply classes
-    className={`text-white py-4 px-8 rounded-md 
+    className={`text-white py-4 px-8 rounded-md
       ${hover && `hover:relative p-6 shadow-[5px_2px_0px_0px_rgba(255,255,255,0.7)]`} 
       ${variant} ${full && `w-full`} ${bg} transition-all`}    type={type} onClick={onClick}
       

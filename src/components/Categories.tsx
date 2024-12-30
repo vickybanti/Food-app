@@ -74,7 +74,7 @@ const Categories = () => {
                   src={category.img || ''}
                   alt={category.title}
                   fill
-                  className='object-cover transition-all duration-300 mdImg' />
+                  className='object-cover transition-all duration-300 catsImg' />
               )}
               <motion.div
               whileHover={{
