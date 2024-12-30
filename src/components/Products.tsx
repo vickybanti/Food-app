@@ -93,7 +93,7 @@ const Products = () => {
         </Link>
       </div>
 
-      <div className='lg:grid sm:grid md:grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:px-4 lg:px-10 my-10'>
+      <div className='grid cats lg:grid-cols-3 gap-6 lg:px-10 my-10'>
       
         {products.map((pro: ProductType) => (
           <ProCard 
