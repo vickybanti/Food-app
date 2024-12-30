@@ -77,7 +77,7 @@ const Location = () => {
         <h1 className="text-3xl">Best Restaurants</h1>
       </div>
       <div className="w-full p-10 flex w-full mt-10 overflow-x-auto no-scrollbar">
-        <div className="px-7 py-2">
+        <div className="lg:px-7 lg:py-2 md:px-2 md:py-1">
           <p className="text-sm text-gray-500">By Location</p>
         </div>
 
