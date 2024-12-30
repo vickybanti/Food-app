@@ -124,7 +124,7 @@ const Restaurants = () => {
         transition={{ ease: "easeInOut", duration: 1.5 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10"
+        className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10"
       >
         {allRestaurants.map((restaurant) => (
           <div
