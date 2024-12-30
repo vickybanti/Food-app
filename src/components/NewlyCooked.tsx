@@ -32,7 +32,7 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
   return (
     
     
-<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[580px] h-full">
+<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[580px] h-[80%]">
 <CardHeader className="w-[100%] h-[200px] p-4 ">
  
     <div className="relative h-[200px] w-full">
@@ -43,7 +43,7 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
         src={`${img}`} 
         alt="" 
         fill 
-        className="object-cover rounded-sm"
+        className="object-cover rounded-sm md:object-contain"
         />
       
       </Link>

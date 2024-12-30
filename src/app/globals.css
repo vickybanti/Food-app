@@ -148,8 +148,9 @@
     padding: 3.5px;
   }
   .newSize{
-    padding:3.5px;
+    padding:2.5px;
     margin-top:-120px;
+    margin-left:3px;
   }
 
   .count{
@@ -275,7 +276,7 @@
      }
 
     .featureCard{
-      width: 1200px;
+      width: 1000px;
       height: 250px;
       display: flex;
       margin: 10px;

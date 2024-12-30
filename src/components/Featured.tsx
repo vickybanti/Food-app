@@ -78,7 +78,7 @@ const Featured = () => {
         {featuredProducts.map((item) => (
           <div
             key={item._id}
-            className="featureCard rounded-md px-4 h-[280px] sm:h-[320px] w-[160px] sm:w-[200px] flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
+            className="featureCard rounded-md px-4 h-[280px] sm:h-[320px] w-[160px] sm:w-[170px] flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
           >
             {item.img && (
               <div className="relative w-36 sm:w-36 h-28 sm:h-36 mb-3">

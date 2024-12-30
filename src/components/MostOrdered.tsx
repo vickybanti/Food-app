@@ -87,7 +87,7 @@ return (
           { image: "/slide3.jpg", title: "Have pets?", subtitle: "Eat with pets", joined: "60+ just ordered" }
         ].map((slide, index) => (
           <CarouselItem key={index}>
-            <div className="w-full p-1">
+            <div className="w-full p-1 md:h-1/2 sm:h-1/2">
               <Card className="border-none shadow-none">
                 <CardContent className="p-0 w-full h-[270px]">
                   <CampSite

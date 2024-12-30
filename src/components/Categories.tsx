@@ -49,13 +49,13 @@ const Categories = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className='mx-20'>
+    <div className='mx-20 border-t-2 border-t-[#ccc] mt-5'>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
     <div className="flex flex-wrap cats px-0 mt-4 py-7">
 
 
-        {allCategories.map((category) => (
+        {allCategories.map((category:any) => (
 
           <motion.div
           initial={{ x: -30, opacity: 0 }}
