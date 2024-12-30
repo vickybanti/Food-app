@@ -63,7 +63,7 @@ const Categories = () => {
       transition={{ ease: "easeInOut", duration: 1.5 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
-          key={category._id} className="px-2 h-52 md:w-7 md:h-36 sm:h-36">
+          key={category._id} className="px-2 h-52 md:w-7 md:h-28 sm:h-28">
 
             <div
               className={`lg:p-4 md:p-1 rounded-sm bg-${category.color}-100 relative overflow-hidden group h-full cursor-pointer`}
