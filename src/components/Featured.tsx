@@ -81,7 +81,7 @@ const Featured = () => {
             className="featureCard rounded-md px-4 h-[280px] sm:h-[320px] w-[160px] sm:w-[200px] flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
           >
             {item.img && (
-              <div className="relative w-28 sm:w-32 h-28 sm:h-32 mb-3">
+              <div className="relative w-36 sm:w-36 h-28 sm:h-36 mb-3">
                 <Image
                   src={item.img}
                   alt={item.title}
@@ -100,12 +100,7 @@ const Featured = () => {
                 </span>
               </Link>
             </div>
-            <button
-              onClick={() => router.push(`/product/${item._id}`)}
-              className="absolute bottom-3 sm:bottom-4 rounded-full bg-[#741102] p-2 sm:p-3 text-white"
-            >
-              <ArrowForwardIos fontSize="small" />
-            </button>
+           
           </div>
         ))}
       </div>

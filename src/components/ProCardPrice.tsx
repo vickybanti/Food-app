@@ -8,7 +8,7 @@ import Button from "./Button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const Price = ({ product }: { product: ProductType }) => {
+const ProCardPrice = ({ product }: { product: ProductType }) => {
   const [total, setTotal] = useState(product.price);
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
@@ -53,7 +53,14 @@ const Price = ({ product }: { product: ProductType }) => {
     >
       <div className="flex flex-col md:flex-row gap-8 w-full">
         {/* Product Image */}
-        
+        <div className="relative w-full h-44 md:w-60">
+          <Image
+            src={product.img || ""}
+            alt={product.title}
+            fill
+            className="object-contain"
+          />
+        </div>
 
         {/* Price and Options */}
         <div className="flex flex-col justify-between flex-1 gap-6">
@@ -118,4 +125,4 @@ const Price = ({ product }: { product: ProductType }) => {
   );
 };
 
-export default Price;
+export default ProCardPrice;

@@ -26,12 +26,13 @@ import Price from "./Price";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@mui/material";
+import ProCardPrice from './ProCardPrice';
 
 const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,loading:boolean,href:string,img:string,title:string,desc:string,price:string,catSlug:string}) => {
   return (
     
     
-<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[300px]  mx-auto md:h-[120px]">
+<Card key={item._id} className="shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] w-[350px]  mx-auto md:h-[120px]">
 <CardHeader className="cardHeader w-[100%] h-[200px] p-4 ">
  
     <div className="relative h-[200px] w-full cardImage">
@@ -75,13 +76,13 @@ const NewCooked = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,lo
   <div></div>
   <span className="mt-[-60px] cartAddSpan">
     <Drawer>
-      <DrawerTrigger className="newSize p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
+      <DrawerTrigger className="mt-[-160px] p-2 bg-[#042d29] rounded-full hover:bg-[#042d29]/90 transition-colors">
         <Add fontSize="large" className="text-white"/>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="flex flex-col gap-2 mx-auto">
           <DrawerTitle className='font-thin'>
-            <Price product={item}/>
+            <ProCardPrice product={item}/>
           </DrawerTitle>
           <DrawerDescription></DrawerDescription>
         </DrawerHeader>
