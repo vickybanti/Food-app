@@ -104,7 +104,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .grid {
+  .gridss {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* This sets two equal columns */
     gap: 10px; /* Adjust the gap between items as needed */

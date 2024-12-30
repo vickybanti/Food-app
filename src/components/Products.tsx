@@ -85,15 +85,15 @@ const Products = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className='relative flex flex-col py-5 mx-20 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
+    <div className='relative flex flex-col py-5 lg:mx-20 md:mx-4 sm:mx-4 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
       <div className="flex justify-between">
-        <h2 className="mb-4 font-sans text-xl font-semibold text-gray-900 ">Newly cooked</h2>
+        <h2 className="mb-4 font-sans lg:text-xl md:text-sm sm:text-sm font-semibold text-gray-900 ">Newly cooked</h2>
         <Link href="/products" className="font-semibold hover:underline text-[#3b3b18]">
           View all
         </Link>
       </div>
 
-      <div className='grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10'>
+      <div className='grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:px-4 lg:px-10 my-10'>
       
         {products.map((pro: ProductType) => (
           <ProCard 
