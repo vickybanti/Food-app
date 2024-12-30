@@ -148,9 +148,12 @@
     padding: 3.5px;
   }
   .newSize{
-    padding:2.5px;
+    padding:1.5px;
     margin-top:-120px;
-    margin-left:3px;
+    margin-left:5px;
+  }
+  .newcookedcard{
+    width:350px;
   }
 
   .count{

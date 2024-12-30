@@ -70,7 +70,7 @@ const Menu = () => {
     />
 }
       {open && (
-        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-24 w-[80%] h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
+        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-24 w-[40%] h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
                   <SearchBox />
 
           
@@ -102,9 +102,7 @@ const Menu = () => {
 }
 
 
-          <Link href="#" onClick={() => setOpen(false)}>
             <CartIcon />
-          </Link>
 
           <NavAddress />
         </div>

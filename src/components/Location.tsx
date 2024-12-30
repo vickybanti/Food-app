@@ -76,9 +76,9 @@ const Location = () => {
       <div className="px-10 mt-20 font-extralight">
         <h1 className="text-3xl">Best Restaurants</h1>
       </div>
-      <div className="w-full p-10 flex w-full mt-10 overflow-x-auto no-scrollbar">
+      <div className="w-full p-10 flex mt-4 overflow-x-auto no-scrollbar">
         <div className="lg:px-7 lg:py-2 md:px-2 md:py-1">
-          <p className="text-sm text-gray-500">By Location</p>
+          <p className="text-xs text-gray-500">By Location</p>
         </div>
 
         <motion.div
