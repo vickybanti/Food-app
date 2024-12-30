@@ -118,6 +118,7 @@
     height: 60%;
     width: 80%;
   }
+  
   .navAdd{
     margin-left: 12px;
     width: 120px;
@@ -145,6 +146,11 @@
   }
   .cartSize{
     padding: 3.5px;
+  }
+  .newSize{
+    padding:3.5px;
+    margin-top:-50px;
+    position: absolute;
   }
   .cartAddSpan{
     margin-top:-20px;

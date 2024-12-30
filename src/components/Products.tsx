@@ -36,6 +36,7 @@ import { useRouter } from "next/navigation";
 import { Skeleton } from "@mui/material";
 import ProCard from "./ProCard";
 import { motion } from "framer-motion";
+import NewCooked from "./NewlyCooked";
 
 const getData = async(page: number, limit: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
@@ -93,10 +94,10 @@ const Products = () => {
         </Link>
       </div>
 
-      <div className='grid cats lg:grid-cols-3 gap-6 lg:px-10 my-10'>
+      <div className='md:flex md:overflow-x-auto md:items-start md:justify-start md:w-full  lg:grid lg:grid-cols-3 gap-6 lg:px-10 my-10'>
       
         {products.map((pro: ProductType) => (
-          <ProCard 
+          <NewCooked 
             key={pro._id} 
             item={pro} 
             loading={false} 
