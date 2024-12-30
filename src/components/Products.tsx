@@ -37,6 +37,7 @@ import { Skeleton } from "@mui/material";
 import ProCard from "./ProCard";
 import { motion } from "framer-motion";
 import NewCooked from "./NewlyCooked";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const getData = async(page: number, limit: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}`,{
@@ -79,6 +80,9 @@ const Products = () => {
   useEffect(() => {
     loadProducts();
   }, [page]);
+
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
     <>
      <motion.div
@@ -93,10 +97,32 @@ const Products = () => {
           View all
         </Link>
       </div>
-
-      <div className='md:flex md:overflow-x-auto md:items-start md:justify-start md:w-full  lg:grid lg:grid-cols-3 gap-6 lg:px-10 my-10'>
+    {
+       isDesktop ?
+      <div className='items-start justify-start w-full gap-4 flex overflow-x-auto no-scrollbar'>
       
         {products.map((pro: ProductType) => (
+          
+           <ProCard 
+            key={pro._id} 
+            item={pro} 
+            loading={false} 
+            href={`/product/${pro._id}`} 
+            img={pro.img || ''} 
+            title={pro.title || ''} 
+            desc={pro.desc || ''} 
+            price={pro.price.toString()} 
+            catSlug={pro.catSlug || ''}
+          /> 
+        ))}
+          </div>
+       
+
+          :
+          <div className='items-start justify-start w-full gap-4 flex overflow-x-auto no-scrollbar'>
+      
+      {products.map((pro: ProductType) => (
+        
           <NewCooked 
             key={pro._id} 
             item={pro} 
@@ -108,8 +134,12 @@ const Products = () => {
             price={pro.price.toString()} 
             catSlug={pro.catSlug || ''}
           />
+        
         ))}
       </div>
+      }
+
+      
 
       {hasMore && (
         <div className="flex justify-center mt-8">
