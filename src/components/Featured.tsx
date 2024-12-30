@@ -55,7 +55,7 @@ const Featured = () => {
 
   if (message) {
     return (
-      <section className="relative flex flex-col items-center w-full h-full py-5">
+      <section className="relative flex flex-col items-center lg:w-full h-full py-5 md:w-1/2">
         <h1 className="text-xl md:text-3xl font-sans font-semibold text-gray-900">
           Popular Orders
         </h1>
@@ -67,7 +67,7 @@ const Featured = () => {
   }
 
   return (
-    <section className="relative flex flex-col w-full h-full py-5 overflow-x-auto mt-14 no-scrollbar">
+    <section className="relative flex flex-col lg:w-full md:w-1/2 h-full py-5 overflow-x-auto mt-14">
       <div className="flex justify-between px-5 md:px-20 mb-5">
         <h2 className="font-sans text-xl md:text-3xl font-semibold text-gray-900">
           Popular Orders

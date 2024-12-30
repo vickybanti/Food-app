@@ -52,7 +52,7 @@ const Categories = () => {
     <div className='mx-20 border-t-2 border-t-[#B78C56] '>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="grid lg:grid-cols-4 md:grid-cols-2 px-0 mt-4 py-7 md:mx-40">
+    <div className="lg:grid lg:grid-cols-4 md:flex md:flex-col  px-0 mt-4 py-7">
 
 
         {allCategories.map((category) => (
