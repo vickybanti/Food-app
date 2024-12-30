@@ -151,6 +151,11 @@
     padding:3.5px;
     margin-top:-120px;
   }
+
+  .count{
+    margin-left: 20px;
+    font-size:17px;
+  }
   .cartAddSpan{
     margin-top:-20px;
   }

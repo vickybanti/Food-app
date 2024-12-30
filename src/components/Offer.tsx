@@ -18,7 +18,7 @@ const Offer = () => {
         <p className="text-gray-400 lg:text-xs md:text-xs">
           Enjoy <span className="text-green-300">20%</span> discount on burger orders this festive period
         </p>
-    <div className="md:ml-20 ">
+    <div className="md:right-0">
         <Button
           type="button"
           title="Order Now"
@@ -38,7 +38,7 @@ const Offer = () => {
         
         <Image src="/offerproduct.png" alt="offer" fill className="object-contain" />
 
-        <div className="absolute bottom-0 mb-10 md:ml-20 lg:ml-1">
+        <div className="absolute bottom-0 mb-10 count">
           <CountDown />
        </div>
         
