@@ -118,6 +118,7 @@
     grid-template-columns: repeat(2, 1fr); /* This sets two equal columns */
     gap: 10px; /* Adjust the gap between items as needed */
     padding: 0 7px;
+
   }
   .navAdd{
     margin-left: 12px;
@@ -232,7 +233,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size:13px;
+    font-size:18px;
+    bottom: 0;
+    background: rgba(0,0,0,0.2);
+    padding: 30px;
+
   }
 
   .categoryTitleLarge{

@@ -86,14 +86,14 @@ const Products = () => {
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
     <div className='relative flex flex-col py-5 mx-20 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
-      <div className="flex justify-between prodHeader">
+      <div className="flex justify-between">
         <h2 className="mb-4 font-sans text-xl font-semibold text-gray-900 ">Newly cooked</h2>
         <Link href="/products" className="font-semibold hover:underline text-[#3b3b18]">
           View all
         </Link>
       </div>
 
-      <div className='grid w-full h-full gap-8 my-20 lg:grid-cols-4 sm:grid-cols-3 md:grid-cols-3'>
+      <div className='grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10'>
       
         {products.map((pro: ProductType) => (
           <ProCard 
