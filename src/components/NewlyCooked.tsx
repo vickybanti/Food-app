@@ -68,12 +68,20 @@ const NewCooked = ({
       </CardHeader>
 
       {/* Content Section */}
-      <CardContent className="flex flex-col gap-2 p-4">
+      <CardContent className="flex flex-col gap-2 p-1">
+        <div className="flex justify-between">
         {loading ? (
           <Skeleton className="w-3/4 h-6" />
         ) : (
           <CardTitle className="text-lg font-semibold">{title}</CardTitle>
         )}
+   <span>|</span>
+{loading ? (
+            <Skeleton className="w-10 h-4" />
+          ) : (
+            <p className="text-primary font-semibold">${price}</p>
+          )}
+         </div>
         {loading ? (
           <Skeleton className="w-full h-4" />
         ) : (
@@ -81,23 +89,11 @@ const NewCooked = ({
             {desc && desc.length > 50 ? `${desc.substring(0, 50)}...` : desc}
           </CardDescription>
         )}
-        <div className="flex items-center gap-2 text-sm">
-          {loading ? (
-            <Skeleton className="w-10 h-4" />
-          ) : (
-            <p className="text-primary font-semibold">${price}</p>
-          )}
-          <span>|</span>
-          {loading ? (
-            <Skeleton className="w-10 h-4" />
-          ) : (
-            <p className="text-gray-500">{catSlug}</p>
-          )}
-        </div>
+       
       </CardContent>
 
       {/* Footer Section with Drawer */}
-      <CardFooter className="flex justify-end mt-[-100px]">
+      <CardFooter className="flex justify-end mt-[-140px]">
         <Drawer>
           <DrawerTrigger className="p-2 bg-primary rounded-full hover:bg-primary/90 transition-all">
             <Add fontSize="large" className="text-white" />

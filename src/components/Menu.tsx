@@ -49,29 +49,34 @@ const Menu = () => {
 
 
   {userImage ?
+  <div className="ml-14">
     <Image
         src={  open ? "/close.png" : userImage  }
        alt=""
         width={30}
         height={30}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full overflow-hidden mx-5 mt-5`}
+        className={`cursor-pointer rounded-full overflow-hidden`}
       />
+      </div>
 
       :
-
+<div className="ml-14">
       <Image
       src={open ? "/close.png" :  "/open.png"}
       alt=""
       width={20}
       height={20}
       onClick={() => setOpen(!open)}
-      className={`cursor-pointer mx-5 mt-5`}
+      className={`cursor-pointer`}
     />
+    </div>
 }
       {open && (
-        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
+        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-4 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
+          <div className="top-2">
                   <SearchBox />
+                  </div>
 
           
 
