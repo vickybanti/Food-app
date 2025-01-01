@@ -55,7 +55,7 @@ const Menu = () => {
         width={30}
         height={30}
         onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full overflow-hidden m-auto`}
+        className={`cursor-pointer rounded-full overflow-hidden mx-5 mt-5`}
       />
 
       :
@@ -66,11 +66,11 @@ const Menu = () => {
       width={20}
       height={20}
       onClick={() => setOpen(!open)}
-      className={`cursor-pointer `}
+      className={`cursor-pointer mx-5 mt-5`}
     />
 }
       {open && (
-        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-24 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
+        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
                   <SearchBox />
 
           

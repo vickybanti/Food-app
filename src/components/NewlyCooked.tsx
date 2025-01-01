@@ -97,7 +97,7 @@ const NewCooked = ({
       </CardContent>
 
       {/* Footer Section with Drawer */}
-      <CardFooter className="flex justify-end">
+      <CardFooter className="flex justify-end mt-[-100px]">
         <Drawer>
           <DrawerTrigger className="p-2 bg-primary rounded-full hover:bg-primary/90 transition-all">
             <Add fontSize="large" className="text-white" />
