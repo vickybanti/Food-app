@@ -49,7 +49,7 @@ const Menu = () => {
 
 
   {userImage ?
-  <div className="ml-14">
+  <div className="ml-16">
     <Image
         src={  open ? "/close.png" : userImage  }
        alt=""
@@ -61,7 +61,7 @@ const Menu = () => {
       </div>
 
       :
-<div className="ml-14">
+<div className="ml-16">
       <Image
       src={open ? "/close.png" :  "/open.png"}
       alt=""
@@ -73,10 +73,13 @@ const Menu = () => {
     </div>
 }
       {open && (
-        <div className="bg-white backdrop-blur-lg text-[#741102] absolute left-0 top-4 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10">
-          <div className="top-2">
+        <div className="backdrop-blur-lg bg-white/70 text-[#741102] absolute left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10 py-2">
+          <div className="">
                   <SearchBox />
                   </div>
+
+                  <NavAddress />
+
 
           
 
@@ -99,17 +102,18 @@ const Menu = () => {
             {userName ? "Orders" : "Login"}
             
           </Link>
+         
+
+<div className="ml-4">
+            <CartIcon />
+            </div>
+
           {userName && 
           
-      <span className="cursor-pointer  text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
-
-            
-}
-
-
-            <CartIcon />
-
-          <NavAddress />
+          <span className="cursor-pointer  text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
+    
+                
+    }
         </div>
       )}
     </div>
