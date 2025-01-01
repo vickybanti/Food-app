@@ -119,24 +119,22 @@ const Products = () => {
        
 
           :
-          <div className='w-full gap-4 flex  overflow-x-auto no-scrollbar'>
-      
-      {products.map((pro: ProductType) => (
-        
-          <NewCooked 
-            key={pro._id} 
-            item={pro} 
-            loading={false} 
-            href={`/product/${pro._id}`} 
-            img={pro.img || ''} 
-            title={pro.title || ''} 
-            desc={pro.desc || ''} 
-            price={pro.price.toString()} 
-            catSlug={pro.catSlug || ''}
-          />
-        
-        ))}
-      </div>
+          <div className="w-full gap-4 flex flex-1 overflow-x-auto no-scrollbar">
+  {products.map((pro: ProductType) => (
+    <NewCooked
+      key={pro._id}
+      item={pro}
+      loading={false}
+      href={`/product/${pro._id}`}
+      img={pro.img || ""}
+      title={pro.title || ""}
+      desc={pro.desc || ""}
+      price={pro.price.toString()}
+      catSlug={pro.catSlug || ""}
+    />
+  ))}
+</div>
+
       }
 
       

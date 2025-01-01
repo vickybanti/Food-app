@@ -26,6 +26,7 @@ import Price from "./Price";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@mui/material";
+import ProCardPrice from './ProCardPrice';
 
 const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,loading:boolean,href:string,img:string,title:string,desc:string,price:string,catSlug:string}) => {
   return (
@@ -81,7 +82,7 @@ const ProCard = ({item,loading,href,img,title,desc,price,catSlug}:{item:any,load
       <DrawerContent>
         <DrawerHeader className="flex flex-col gap-2 mx-auto">
           <DrawerTitle className='font-thin'>
-            <Price product={item}/>
+            <ProCardPrice product={item}/>
           </DrawerTitle>
           <DrawerDescription></DrawerDescription>
         </DrawerHeader>

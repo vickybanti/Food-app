@@ -13,6 +13,8 @@ const Price = ({ product }: { product: ProductType }) => {
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
   const [message, setMessage] = useState(false);
+  const {removeFromCart } = userCartStore();
+
 
   const { addToCart } = userCartStore();
 
@@ -44,6 +46,13 @@ const Price = ({ product }: { product: ProductType }) => {
     setMessage(true);
     toast({ title: "Added to cart!", description: `${product.title} has been added to your cart.` });
   };
+
+  
+
+  const removeCart = () => {
+    removeFromCart(product.filter((pro:any) => (pro.id !==product.id)))
+    setMessage(false)
+  }
 
   return (
     <motion.div
@@ -102,15 +111,26 @@ const Price = ({ product }: { product: ProductType }) => {
             </div>
 
             {/* Add to Cart Button */}
+            {message ? <Button
+              type="button"
+              title="remove from cart"
+              variant="btn_white"
+              full
+              bg="bg-[#042D29]"
+              hover
+              onClick={()=>removeCart()}
+            />
+            :
             <Button
               type="button"
-              title={message ? "Added to Cart" : "Add to Cart"}
+              title={"Add to Cart"}
               variant="btn_white"
               full
               bg="bg-[#042D29]"
               hover
               onClick={handleCart}
             />
+}
           </div>
         </div>
       </div>

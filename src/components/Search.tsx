@@ -6,6 +6,7 @@ import { Skeleton } from './ui/skeleton';
 import Link from 'next/link';
 import { Search } from '@mui/icons-material';
 import { Input } from './ui/input';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 interface Product {
   id: string;
@@ -34,6 +35,9 @@ export default function SearchBox() {
   const [input, setInput] = useState("");
   const [results, setResults] = useState<SearchResult>({ products: [], categories: [], restaurants:[] });
   const [loading, setLoading] = useState(false)
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -80,7 +84,7 @@ export default function SearchBox() {
         </li>
       )}
       onInputChange={(event, newValue) => setInput(newValue)}
-      sx={{ width: 400, border: "none", fontSize:"12px"}}
+      sx={{ width: isDesktop ? 400:200, border: "none", fontSize:"12px"}}
       renderInput={(params) => (
         <TextField 
          className='bg-gray-100 border-gray-300 rounded-md'
