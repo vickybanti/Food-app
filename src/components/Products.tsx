@@ -119,7 +119,7 @@ const Products = () => {
        
 
           :
-          <div className="w-[1500px] gap-2 flex flex-auto overflow-x-auto no-scrollbar">
+          <div className="w-full gap-4 flex flex-1 overflow-x-auto no-scrollbar">
   {products.map((pro: ProductType) => (
     <NewCooked
       key={pro._id}
@@ -131,9 +131,11 @@ const Products = () => {
       desc={pro.desc || ""}
       price={pro.price.toString()}
       catSlug={pro.catSlug || ""}
+      className="min-w-[75%] sm:min-w-[50%] md:min-w-[33.33%] lg:min-w-[25%]" // Adjust width as needed
     />
   ))}
 </div>
+
 
       }
 
