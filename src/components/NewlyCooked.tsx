@@ -32,6 +32,7 @@ const NewCooked = ({
   desc,
   price,
   catSlug,
+  className = "", // Accept className prop for external styling
 }: {
   item: any;
   loading: boolean;
@@ -41,14 +42,15 @@ const NewCooked = ({
   desc: string;
   price: string;
   catSlug: string;
+  className?: string;
 }) => {
   return (
     <Card
       key={item._id}
-      className="relative shadow-lg w-full rounded-lg overflow-hidden"
+      className={`relative shadow-lg rounded-lg overflow-hidden newcookedcard ${className}`}
     >
       {/* Header with Image */}
-      <CardHeader className="w-[450px] h-[200px] p-4">
+      <CardHeader className="w-full h-[200px] p-4">
         <div className="relative h-full w-full">
           {loading ? (
             <Skeleton className="w-full h-full rounded-lg" />
