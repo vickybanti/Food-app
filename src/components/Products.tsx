@@ -119,7 +119,7 @@ const Products = () => {
        
 
           :
-          <div className="w-full gap-4 flex flex-1 overflow-x-auto no-scrollbar">
+          <div className="w-full gap-4 flex flex-auto overflow-x-auto no-scrollbar">
   {products.map((pro: ProductType) => (
     <NewCooked
       key={pro._id}

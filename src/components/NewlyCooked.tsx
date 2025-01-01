@@ -45,10 +45,10 @@ const NewCooked = ({
   return (
     <Card
       key={item._id}
-      className="relative shadow-lg newcookedcard rounded-lg overflow-hidden"
+      className="relative shadow-lg w-full rounded-lg overflow-hidden"
     >
       {/* Header with Image */}
-      <CardHeader className="w-full h-[200px] p-4">
+      <CardHeader className="w-[450px] h-[200px] p-4">
         <div className="relative h-full w-full">
           {loading ? (
             <Skeleton className="w-full h-full rounded-lg" />
