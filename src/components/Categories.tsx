@@ -52,7 +52,7 @@ const Categories = () => {
     <div className='mx-20 border-t-2 border-t-[#ccc] mt-12'>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
     </div>
-    <div className="flex flex-wrap cats px-0 mt-4 py-7">
+    <div className="flex flex-wrap cats px-52 mx-auto mt-4 py-7">
 
 
         {allCategories.map((category:any) => (
@@ -63,7 +63,7 @@ const Categories = () => {
       transition={{ ease: "easeInOut", duration: 1.5 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
-          key={category._id} className="px-2 h-52 md:w-7 md:h-28 sm:h-28">
+          key={category._id} className="px-2 h-52 w-52 allCats">
 
             <div
               className={`lg:p-4 md:p-1 rounded-sm bg-${category.color}-100 relative overflow-hidden group h-full cursor-pointer`}

@@ -168,24 +168,29 @@ import { Button } from "./ui/button";
         
         )}
         {session ? (
-        <Button
-        type="submit" 
-        onClick={handleCheckout}
-        title="Checkout"
-        className="bg-[#042D29] text-white">
-          Checkout
-        </Button>
-        ) : (
-          <Link href="/login">
-          <Button 
-        type="submit" 
-        
-        className="bg-[#042D29] text-white">
-          Login to checkout
-          </Button>
-        </Link>
-        )
-      }
+  <Button
+    type="button"
+    onClick={handleCheckout}
+    title={totalPrice > 0 ? "Proceed to Checkout" : "Add at least one product to the cart"}
+    disabled={totalItems <= 0} // Corrected condition for logical accuracy
+    className="bg-teal-700 hover:bg-teal-600 text-white py-2 px-4 rounded transition duration-300 ease-in-out disabled:opacity-50"
+  >
+    Checkout
+  </Button>
+) : (
+  <Link href={`${totalItems>0 &&`/login`}`}>
+    <Button
+      type="button"
+      disabled={totalItems <= 0}
+      className="bg-teal-700 hover:bg-teal-600 text-white py-2 px-4 rounded transition duration-300 ease-in-out disabled:opacity-50"
+    >
+      {totalPrice > 0 ? "Login to Checkout" : "Add at least one product to the cart"}
+    </Button>
+  </Link>
+)}
+
+
+      
 </div>
         
         
@@ -201,7 +206,7 @@ import { Button } from "./ui/button";
             <React.Fragment key={anchor}>
               <Button onClick={toggleDrawer(anchor, true)} className="w-0 h-0 p-0 shadow-none">
 
-                <div className="relative my-auto mr-20 flex p-3 items-center justify-center rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none">
+                <div className="relative mt-10 mr-20 flex p-3 items-center justify-center rounded-full bg-[#042D29] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-none">
                   <ShoppingCartCheckoutOutlinedIcon className="font-light text-white"/>
                   {totalItems > 0 && (<span className="text-xs font-thin text-white">{totalItems}</span>)}
                 </div>

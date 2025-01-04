@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { EmailRounded } from "@mui/icons-material";
 import { VisibilityOff } from "@mui/icons-material";
 import { Visibility } from "@mui/icons-material";
+import { Divider } from "@mui/material";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -106,9 +107,12 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
          
 
           
-        
-        <span className="mt-[-20px] mx-auto">Or sign in with your social accounts</span>
-        <div className="flex gap-3 mt-[-20px]">
+        <div className="flex">
+        <Divider />
+        <span className="mt-[-20px] mx-auto">or</span>
+        <Divider />
+        </div>
+        <div className="flex gap-3 mt-[-20px] mx-auto">
           <button className="flex gap-4 p-4 rounded-md ring-1 ring-orange-100" onClick={()=>signIn("google")}>
             <Image
               src="/google.png"
@@ -118,18 +122,9 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
               className="object-contain"
               
             />
-            <span>Sign in with Google</span>
+            <span className="text-sm">Sign in with Google</span>
           </button>
-          <button className="flex gap-4 p-4 rounded-md ring-1 ring-blue-100" onClick={()=>signIn("facebook")}>
-            <Image
-              src="/facebook.png"
-              alt=""
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            <span>Sign in with Facebook</span>
-          </button>
+          
           </div>
           <p className="text-sm mt-[-30px]">
             <Link className="text-lg hover:underline text-green" href="/"> Sign up</Link>

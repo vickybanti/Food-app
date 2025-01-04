@@ -10,7 +10,8 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 
 const PaymentPage = ({params}:{params:{id:string}}) => {
   const {id} = params;
-  
+  console.log(id)
+
   const [clientSecret, setClientSecret] = useState("")
   const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)

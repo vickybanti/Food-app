@@ -92,7 +92,7 @@ const ProductsPage = () => {
       <div className="proHeader flex justify-between">
                 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
                 {category && (
-                    <Link href="/products" className="font-semibold hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
+                    <Link href="/products" className="lg:font-semibold md:text-xs pl-5 hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
                 )}
 
 

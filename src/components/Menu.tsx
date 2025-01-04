@@ -73,7 +73,7 @@ const Menu = () => {
     </div>
 }
       {open && (
-        <div className="backdrop-blur-lg bg-white/90 text-[#741102] absolute left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10 pt-[-50px]">
+        <div className="backdrop-blur-xl text-[#741102] absolute left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-10 pt-[-50px]">
           <div className="">
                   <SearchBox />
                   </div>

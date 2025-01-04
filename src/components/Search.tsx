@@ -84,7 +84,7 @@ export default function SearchBox() {
         </li>
       )}
       onInputChange={(event, newValue) => setInput(newValue)}
-      sx={{ width: isDesktop ? 400:270, border: "none", fontSize:"12px"}}
+      sx={{ width: isDesktop ? 350:270, border: "none", fontSize:"12px"}}
       renderInput={(params) => (
         <TextField 
          className='bg-gray-100 border-gray-300 rounded-md'
