@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { userCartStore } from '@/lib/utils/store';
 import { Favorite, FavoriteBorderOutlined, TimerRounded } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
@@ -169,11 +170,11 @@ const Page = ({params}: {params: {location: string}}) => {
     return (
         <div className="w-full my-20">
             <div className="px-20 mt-20 bg-green-950">
-                <h1 className='flex justify-center py-10 text-3xl font-semibold text-white'>
+                <h1 className='flex justify-center py-10 lg:text-3xl md:text-md sm:text-md font-semibold text-white'>
                 Order your delicious meals from restaurants in {decodedLocation}
                 </h1>
 
-                <p className="flex justify-center py-5 text-2xl text-gray-300">
+                <p className="flex justify-center py-5 lg:text-2xl md:text-sm sm:text-sm text-gray-300">
                 Choose from the top categories
 
                 </p>
@@ -213,15 +214,19 @@ const Page = ({params}: {params: {location: string}}) => {
 
             </div>
 
-            <div className="mt-10 ml-[1100px]">
-                <Input className='h-16 bg-gray-300 border-gray-300 w-52' placeholder="Search..."/>
-            </div>
-
-            <div className="relative grid w-full h-full grid-cols-3 gap-6 px-10 mb-44">
             
+
+            <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 1.5 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        className="grid md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10"
+      >
             {filteredRestaurants.map((restaurant) => (
                 <div
-                    className="w-[390px] mt-9 hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none gap-10 px-3"
+                    className="sm:w-[250px] lg:w-[390px] hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none px-3"
                     key={restaurant._id}
                 >
                     {message && message}
@@ -270,7 +275,7 @@ const Page = ({params}: {params: {location: string}}) => {
 
 
 
-        </div>
+        </motion.div>
         </div>
     )
 

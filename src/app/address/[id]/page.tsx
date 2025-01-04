@@ -69,7 +69,7 @@ const Address = ({params}:{params:{id:string}}) => {
     } 
 
     return (
-        <div className="p-32 m-20 ">
+        <div className="lg:p-32 lg:m-20 md:p-3 md:m-auto ">
             <form className='flex flex-wrap gap-4 p-8 shadow-lg' onSubmit={handleSubmit} >
                 <h1>Add new category</h1>
                 <div className='flex flex-col w-full gap-2'>
