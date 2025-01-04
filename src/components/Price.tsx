@@ -65,7 +65,7 @@ const Price = ({ product }: { product: ProductType }) => {
       <div className="flex flex-col md:flex-row gap-8 w-full">
         {/* Product Image */}
         <div className="flex justify-center md:w-1/2">
-          <Image src={product.img} alt={product.title} width={300} height={300} className="rounded-md" />
+          <Image src={product.img || "/placeholder.jpg"} alt={product.title} width={300} height={300} className="rounded-md" />
         </div>
 
         {/* Price and Options */}
