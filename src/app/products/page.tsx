@@ -93,7 +93,7 @@ const ProductsPage = () => {
       <div className="proHeader flex justify-between">
                 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
                 {category && (
-                    <Link href="/products" className="lg:font-semibold lg:text-md md:text-[13px] pl-5 hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
+                    <Link href="/products" className="lg:font-semibold lg:text-md md:text-[10px] sm:text-[10px] pl-5 hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
                 )}
 
 
@@ -102,7 +102,7 @@ const ProductsPage = () => {
 
         <Menubar>
         <MenubarMenu>
-          <MenubarTrigger className="cursor-pointer lg:text-md md:text-xs sm:text-xs">Add New</MenubarTrigger>
+          <MenubarTrigger className="cursor-pointer lg:text-md md:text-[12px] sm:text-[12px]">Add New</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
             <Link href="/add" className="flex font-semibold font-[italics] hover:text-[#888840] text-black">

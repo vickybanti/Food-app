@@ -165,8 +165,12 @@ const Page = ({ params }: { params: { id: string } }) => {
               }`}
             >
               {loading ? <Skeleton className="w-16 h-5" /> : catSlug}
+
             </button>
           ))}
+           <Link href={`/add/${id}`}>
+              Add new product
+            </Link>
         </div>
 
         {/* Product Grid */}
@@ -188,6 +192,8 @@ const Page = ({ params }: { params: { id: string } }) => {
                 catSlug={pro.catSlug}
               />
             ))}
+
+           
         </div>
       </div>
 
