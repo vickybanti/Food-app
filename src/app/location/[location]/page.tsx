@@ -230,7 +230,7 @@ const Page = ({params}: {params: {location: string}}) => {
                     key={restaurant._id}
                 >
                     {message && message}
-                    <div className="lg:w-[370px] lg:h-[160px] relative rounded-lg shadow-lg mb-5 m-auto">
+                    <div className="relative w-full h-40 lg:h-48 rounded-lg shadow-lg mb-5">
                         {loading ? <Skeleton className="w-full h-full" /> :
                             <Image
                                 src={restaurant.img}
