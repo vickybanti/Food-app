@@ -13,6 +13,9 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Skeleton } from './ui/skeleton';
 import {motion} from 'framer-motion'
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+
 
 const getData = () => {
   return fetch(`/api/categories`, {
@@ -32,6 +35,8 @@ const Categories = () => {
   const router = useRouter()
   const [allCategories, setAllCategories] = useState<CategoryType[]>([])
   const [loading, setLoading] = useState(false)
+
+  const { data: session } = useSession();
   
   useEffect(() => {
     setLoading(true)
@@ -49,8 +54,11 @@ const Categories = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className='mx-20 border-t-2 border-t-[#ccc] mt-12'>
+    <div className='mx-20 border-t-2 border-t-[#ccc] mt-12 flex justify-between'>
       <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">Categories</h2>
+      { session?.user.isAdmin &&
+        <Link href="/add/categories">Add new category</Link>
+        }
     </div>
     <div className="flex flex-wrap cats px-52 mx-auto mt-4 py-7">
 

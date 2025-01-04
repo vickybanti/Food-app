@@ -2,12 +2,15 @@
 import {Button} from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useMediaQuery } from '@/hooks/use-media-query';
 import { Schema } from '@mui/icons-material';
 import mongoose from 'mongoose';
 import { useSession } from 'next-auth/react'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import { cn } from "@/lib/utils"
+
 
 
 type Inputs = {
@@ -40,7 +43,7 @@ type Product = {
 
 }
 
-const Page = ({ params }: { params: { id: string } }) => {
+const Page = ({ className }: React.ComponentProps<"form">, { params }: { params: { id: string } }) => {
   const {id} = params;
     const router = useRouter()
     const {data:session, status} =  useSession()
@@ -58,6 +61,8 @@ const Page = ({ params }: { params: { id: string } }) => {
     const [allProduct, setAllProduct] = useState<Product[]>([])
     const [allCat, setCat] = useState<Category[]>([])
     const [message, setMessage] = useState("")
+
+    const isDesktop = useMediaQuery("(min-width: 768px)")
 
     useEffect(() => {
         const getCat = async() => {
@@ -222,10 +227,9 @@ const Page = ({ params }: { params: { id: string } }) => {
              
     }
   return (
-    <div className="p-32 mx-10 ">
-      <form className='flex flex-wrap gap-4 p-8 shadow-lg w-[75%] m-auto bg-white' onSubmit={handleSubmit}>
+    <form className={cn("grid items-start gap-4", className) } onSubmit={handleSubmit}>
         <h1>Add new product</h1>
-        <div className='flex flex-col w-full gap-2'>
+        <div className={`${!isDesktop && `flex flex-col gap-10`}grid gap-2 `}>
           <Label>Title</Label>
           <Input onChange={handleChange} type="text" name="title" className='p-2 rounded-sm ring-1 ring-black-200'/>
         </div>
@@ -320,7 +324,6 @@ const Page = ({ params }: { params: { id: string } }) => {
         <span className='font-italics text-red-600'> {message && message} </span>
 
       </form>
-    </div>
   )
 }
 

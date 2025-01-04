@@ -97,39 +97,7 @@ const ProductsPage = () => {
                 )}
 
 
-                {session?.user.isAdmin && (
-
-
-        <Menubar>
-        <MenubarMenu>
-          <MenubarTrigger className="cursor-pointer lg:text-md md:text-[12px] sm:text-[12px]">Add New</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>
-            <Link href="/add" className="flex font-semibold font-[italics] hover:text-[#888840] text-black">
-                  Add new product
-                  <MenubarShortcut>⌘P</MenubarShortcut>
-                </Link> 
-              
-            </MenubarItem>
-            
-
-            {category && session?.user.isAdmin &&  (
-                <MenubarItem>
-                    <Link href={`/add/categories/`}
-                    className="font-semibold font-[italics] hover:text-[#3b3b18] text-black flex">
-                      Add new Category
-                      <MenubarShortcut>⌘C</MenubarShortcut>
-
-                      </Link>
-                </MenubarItem>
-                )}
-            <MenubarSeparator />
-            
-          </MenubarContent>
-        </MenubarMenu>
-        </Menubar>
-
-                )}
+                
 
 
               
