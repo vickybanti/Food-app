@@ -46,6 +46,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
+import ProCardPrice from "@/components/ProCardPrice";
 
 const getData = async(page: number, limit: number, category: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products?page=${page}&limit=${limit}&category=${category}`, {
@@ -92,7 +93,7 @@ const ProductsPage = () => {
       <div className="proHeader flex justify-between">
                 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
                 {category && (
-                    <Link href="/products" className="lg:font-semibold md:text-xs pl-5 hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
+                    <Link href="/products" className="lg:font-semibold lg:text-md md:text-[13px] pl-5 hover:text-[#3b3b18] cursor-pointer">View All Products</Link>
                 )}
 
 
@@ -101,7 +102,7 @@ const ProductsPage = () => {
 
         <Menubar>
         <MenubarMenu>
-          <MenubarTrigger className="cursor-pointer">Add New</MenubarTrigger>
+          <MenubarTrigger className="cursor-pointer lg:text-md md:text-xs sm:text-xs">Add New</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
             <Link href="/add" className="flex font-semibold font-[italics] hover:text-[#888840] text-black">
@@ -161,7 +162,7 @@ const ProductsPage = () => {
             </CardHeader>
             <CardContent className="flex flex-col gap-2 p-4 text-black mt-[-20px]">
               {loading ? (<Skeleton className="w-10 h-4"/>):
-              <CardDescription className="font-semibold text-black">{item.title}</CardDescription>}
+              <CardDescription className="font-semibold text-black pt-3">{item.title}</CardDescription>}
               {loading ? (<Skeleton className="w-10 h-4"/>):
               <CardDescription className="catFont text-gray-800">
               {item.desc ? (item.desc.length > 10 ? item.desc.substring(0, 10) + "..." : item.desc) : 
@@ -185,7 +186,7 @@ const ProductsPage = () => {
                   <DrawerContent>
                     <DrawerHeader className="flex flex-col gap-2 mx-auto">
                       <DrawerTitle>
-                        <Price product={item}/>
+                        <ProCardPrice product={item}/>
                       </DrawerTitle>
                       <DrawerDescription></DrawerDescription>
                     </DrawerHeader>

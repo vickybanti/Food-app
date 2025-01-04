@@ -139,11 +139,16 @@
     font-size:19px;
   }
   .priceFont{
-    font-size: 19px;
+    font-size: 14px;
   }
   .catFont{
     font-size: 12px;
   }
+  .carts{
+    padding-left:20px;
+
+  }
+  
   .cartSize{
     padding: 3.5px;
   }
@@ -159,7 +164,7 @@
     margin-left:110px;
   }
   .allCats{
-    width:28px;
+    width:100px;
     height:112px;
   }
 

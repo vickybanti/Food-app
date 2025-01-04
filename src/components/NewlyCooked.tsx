@@ -69,7 +69,7 @@ const NewCooked = ({
 
       {/* Content Section */}
       <CardContent className="flex flex-col gap-2 p-1">
-        <div className="flex justify-between">
+        <div className="flex justify-between w-1/2 mt-1">
         {loading ? (
           <Skeleton className="w-3/4 h-6" />
         ) : (
@@ -93,7 +93,7 @@ const NewCooked = ({
       </CardContent>
 
       {/* Footer Section with Drawer */}
-      <CardFooter className="flex justify-end mt-[-110px]">
+      <CardFooter className="flex justify-end mt-[-100px] z-10">
         <Drawer>
           <DrawerTrigger className="p-2 bg-primary rounded-full hover:bg-primary/90 transition-all">
             <Add fontSize="large" className="text-white" />

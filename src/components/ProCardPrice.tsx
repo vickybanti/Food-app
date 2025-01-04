@@ -14,14 +14,14 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
   const [selected, setSelected] = useState(0);
   const [message, setMessage] = useState(false);
 
-  const { addToCart } = userCartStore();
+  const { addToCart, products, removeFromCart } = userCartStore();
 
-  // Prevent hydration issues
+  // Rehydrate store on mount
   useEffect(() => {
     userCartStore.persist.rehydrate();
   }, []);
 
-  // Calculate total price based on quantity and selected options
+  // Update total price when quantity or selected options change
   useEffect(() => {
     if (product.options?.length) {
       const additionalPrice = product.options[selected]?.additionalPrice || 0;
@@ -31,6 +31,7 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
     }
   }, [quantity, selected, product]);
 
+  // Add product to cart
   const handleCart = () => {
     addToCart({
       _id: product._id,
@@ -41,8 +42,25 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
       quantity,
     });
 
+    
+
     setMessage(true);
-    toast({ title: "Added to cart!", description: `${product.title} has been added to your cart.` });
+    toast({
+      title: "Added to cart!",
+      description: `${product.title} has been added to your cart.`,
+    });
+
+    // Reset message after 3 seconds
+  };
+
+  const removeCart = () => {
+    const productInCart = products.find((pro: any) => pro._id === product._id);
+    if (productInCart) {
+      removeFromCart(productInCart);
+      setMessage(false);
+      toast({ title: "Removed from cart!", description: `${product.title} has been removed from your cart.` });
+    }
+
   };
 
   return (
@@ -55,10 +73,10 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
         {/* Product Image */}
         <div className="relative w-full h-44 md:w-60">
           <Image
-            src={product.img || ""}
-            alt={product.title}
+            src={product.img || "/placeholder.jpg"}
+            alt={product.title || "Product Image"}
             fill
-            className="object-contain"
+            className="object-contain rounded-md"
           />
         </div>
 
@@ -69,23 +87,23 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
 
           {/* Options */}
           {Array.isArray(product.options) && product.options.length > 0 && (
-  <div className="flex flex-wrap gap-4">
-    {product.options.map((option, index) => (
-      <button
-        key={option.title}
-        className={`min-w-[6rem] px-4 py-2 border rounded-md ${
-          selected === index
-            ? "bg-gray-800 text-white border-gray-800"
-            : "bg-white text-gray-800 border-gray-200"
-        } transition-all duration-300`}
-        onClick={() => setSelected(index)}
-        aria-pressed={selected === index}
-      >
-        {option.title}
-      </button>
-    ))}
-  </div>
-)}
+            <div className="flex flex-wrap gap-4">
+              {product.options.map((option, index) => (
+                <button
+                  key={option.title}
+                  className={`min-w-[6rem] px-4 py-2 border rounded-md ${
+                    selected === index
+                      ? "bg-gray-800 text-white border-gray-800"
+                      : "bg-white text-gray-800 border-gray-200"
+                  } transition-all duration-300`}
+                  onClick={() => setSelected(index)}
+                  aria-pressed={selected === index}
+                >
+                  {option.title}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Quantity and Cart Button */}
           <div className="flex items-center gap-6">
@@ -109,15 +127,27 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
             </div>
 
             {/* Add to Cart Button */}
-            <Button
-              type="button"
-              title={message ? "Added to Cart" : "Add to Cart"}
-              variant="btn_white"
-              full
-              bg="bg-[#042D29]"
-              hover
-              onClick={handleCart}
-            />
+            {message ? (
+              <Button
+                type="button"
+                title="Remove from Cart"
+                variant="btn_white"
+                full
+                bg="bg-[#042D29]"
+                hover
+                onClick={removeCart}
+              />
+            ) : (
+              <Button
+                type="button"
+                title="Add to Cart"
+                variant="btn_white"
+                full
+                bg="bg-[#042D29]"
+                hover
+                onClick={handleCart}
+              />
+            )}
           </div>
         </div>
       </div>

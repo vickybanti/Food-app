@@ -13,10 +13,8 @@ const Price = ({ product }: { product: ProductType }) => {
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
   const [message, setMessage] = useState(false);
-  const {removeFromCart } = userCartStore();
 
-
-  const { addToCart } = userCartStore();
+  const { addToCart, removeFromCart, products } = userCartStore();
 
   // Prevent hydration issues
   useEffect(() => {
@@ -33,6 +31,7 @@ const Price = ({ product }: { product: ProductType }) => {
     }
   }, [quantity, selected, product]);
 
+  // Handle adding product to the cart
   const handleCart = () => {
     addToCart({
       _id: product._id,
@@ -47,12 +46,15 @@ const Price = ({ product }: { product: ProductType }) => {
     toast({ title: "Added to cart!", description: `${product.title} has been added to your cart.` });
   };
 
-  
-
+  // Handle removing product from the cart
   const removeCart = () => {
-    removeFromCart(product.filter((pro:any) => (pro.id !==product.id)))
-    setMessage(false)
-  }
+    const productInCart = products.find((pro: any) => pro._id === product._id);
+    if (productInCart) {
+      removeFromCart(productInCart);
+      setMessage(false);
+      toast({ title: "Removed from cart!", description: `${product.title} has been removed from your cart.` });
+    }
+  };
 
   return (
     <motion.div
@@ -62,7 +64,9 @@ const Price = ({ product }: { product: ProductType }) => {
     >
       <div className="flex flex-col md:flex-row gap-8 w-full">
         {/* Product Image */}
-        
+        <div className="flex justify-center md:w-1/2">
+          <Image src={product.img} alt={product.title} width={300} height={300} className="rounded-md" />
+        </div>
 
         {/* Price and Options */}
         <div className="flex flex-col justify-between flex-1 gap-6">
@@ -71,23 +75,23 @@ const Price = ({ product }: { product: ProductType }) => {
 
           {/* Options */}
           {Array.isArray(product.options) && product.options.length > 0 && (
-  <div className="flex flex-wrap gap-4">
-    {product.options.map((option, index) => (
-      <button
-        key={option.title}
-        className={`min-w-[6rem] px-4 py-2 border rounded-md ${
-          selected === index
-            ? "bg-gray-800 text-white border-gray-800"
-            : "bg-white text-gray-800 border-gray-200"
-        } transition-all duration-300`}
-        onClick={() => setSelected(index)}
-        aria-pressed={selected === index}
-      >
-        {option.title}
-      </button>
-    ))}
-  </div>
-)}
+            <div className="flex flex-wrap gap-4">
+              {product.options.map((option, index) => (
+                <button
+                  key={option.title}
+                  className={`min-w-[6rem] px-4 py-2 border rounded-md ${
+                    selected === index
+                      ? "bg-gray-800 text-white border-gray-800"
+                      : "bg-white text-gray-800 border-gray-200"
+                  } transition-all duration-300`}
+                  onClick={() => setSelected(index)}
+                  aria-pressed={selected === index}
+                >
+                  {option.title}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Quantity and Cart Button */}
           <div className="flex items-center gap-6">
@@ -111,26 +115,27 @@ const Price = ({ product }: { product: ProductType }) => {
             </div>
 
             {/* Add to Cart Button */}
-            {message ? <Button
-              type="button"
-              title="remove from cart"
-              variant="btn_white"
-              full
-              bg="bg-[#042D29]"
-              hover
-              onClick={()=>removeCart()}
-            />
-            :
-            <Button
-              type="button"
-              title={"Add to Cart"}
-              variant="btn_white"
-              full
-              bg="bg-[#042D29]"
-              hover
-              onClick={handleCart}
-            />
-}
+            {message ? (
+              <Button
+                type="button"
+                title="Remove from Cart"
+                variant="btn_white"
+                full
+                bg="bg-[#042D29]"
+                hover
+                onClick={removeCart}
+              />
+            ) : (
+              <Button
+                type="button"
+                title="Add to Cart"
+                variant="btn_white"
+                full
+                bg="bg-[#042D29]"
+                hover
+                onClick={handleCart}
+              />
+            )}
           </div>
         </div>
       </div>
