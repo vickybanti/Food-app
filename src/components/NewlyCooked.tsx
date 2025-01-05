@@ -51,7 +51,7 @@ const NewCooked = ({
     >
       {/* Header with Image */}
       <CardHeader className="w-full h-[200px] p-4">
-        <div className="relative h-full w-full">
+        <div className="relative w-full h-full">
           {loading ? (
             <Skeleton className="w-full h-full rounded-lg" />
           ) : (
@@ -79,7 +79,7 @@ const NewCooked = ({
 {loading ? (
             <Skeleton className="w-10 h-4" />
           ) : (
-            <p className="text-primary font-semibold mt-1">${price}</p>
+            <p className="mt-1 font-semibold text-primary">${price}</p>
           )}
          </div>
         {loading ? (
@@ -93,9 +93,9 @@ const NewCooked = ({
       </CardContent>
 
       {/* Footer Section with Drawer */}
-      <CardFooter className="flex justify-end mt-[-100px] z-10">
+      <CardFooter className="flex justify-end mt-[-95px]">
         <Drawer>
-          <DrawerTrigger className="p-2 bg-primary rounded-full hover:bg-primary/90 transition-all z-10">
+          <DrawerTrigger className="p-2 transition-all rounded-full bg-primary hover:bg-primary/90">
             <Add fontSize="large" className="text-white" />
           </DrawerTrigger>
           <DrawerContent>

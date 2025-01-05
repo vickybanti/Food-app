@@ -55,11 +55,11 @@ const Featured = () => {
 
   if (message) {
     return (
-      <section className="relative flex flex-col items-center lg:w-full h-full py-5 md:w-1/2">
-        <h1 className="text-xl md:text-3xl font-sans font-semibold text-gray-900">
+      <section className="relative flex flex-col items-center h-full py-5 lg:w-full md:w-1/2">
+        <h1 className="font-sans text-xl font-semibold text-gray-900 md:text-3xl">
           Popular Orders
         </h1>
-        <span className="text-sm md:text-base text-gray-500 text-center mt-2">
+        <span className="mt-2 text-sm text-center text-gray-500 md:text-base">
           Add more restaurants to favorites to see their featured products.
         </span>
       </section>
@@ -67,21 +67,22 @@ const Featured = () => {
   }
 
   return (
-    <section className="relative flex flex-col lg:w-full md:w-1/2 h-full py-5 overflow-x-auto mt-14">
-      <div className="flex justify-between px-5 md:px-20 mb-5">
-        <h2 className="font-sans text-xl md:text-3xl font-semibold text-gray-900">
-          Popular Orders
+    <section className="relative flex flex-col h-full py-5 overflow-x-auto lg:w-full md:w-1/2 mt-14">
+      <div className="flex justify-between px-5 mb-5 md:px-20">
+        <h2 className="font-sans text-xl font-semibold text-gray-900 md:text-3xl">
+          Featured Restaurant Orders
         </h2>
       </div>
 
-      <div className="flex items-start justify-start w-full gap-4 px-5 md:px-20 mt-7 overflow-x-auto no-scrollbar">
+      <div className="flex items-start justify-start w-full gap-4 px-5 overflow-x-auto md:px-20 mt-7 no-scrollbar">
         {featuredProducts.map((item) => (
+          <Link href={`/product/${item._id}`}>
           <div
             key={item._id}
             className="featureCard rounded-md px-4 h-[280px] sm:h-[320px] w-[160px] sm:w-[170px] flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
           >
             {item.img && (
-              <div className="relative w-36 sm:w-36 h-28 sm:h-36 mb-3">
+              <div className="relative mb-3 w-36 sm:w-36 h-28 sm:h-36">
                 <Image
                   src={item.img}
                   alt={item.title}
@@ -91,17 +92,17 @@ const Featured = () => {
               </div>
             )}
             <div className="flex flex-col items-center text-center">
-              <Link href={`/product/${item._id}`}>
-                <h1 className="font-bold text-white uppercase text-sm sm:text-md mb-2">
+              
+                <h1 className="mb-2 text-sm font-bold text-white uppercase sm:text-md">
                   {item.title}
                 </h1>
                 <span className="text-lg sm:text-xl font-medium text-white p-2 rounded-full bg-[#741102]">
                   ${item.price}
                 </span>
-              </Link>
             </div>
            
           </div>
+          </Link>
         ))}
       </div>
     </section>
