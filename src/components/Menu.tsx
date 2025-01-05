@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
@@ -8,63 +6,28 @@ import SearchBox from "./Search";
 import { signOut, useSession } from "next-auth/react";
 import { NavAddress } from "./NavAddress";
 
-const links = [
-  { id: 1, title: "Homepage", url: "/" },
-  { id: 2, title: "view foods", url: "/products" },
-  { id: 4, title: "cart", url: "/cart" },
-];
-
 const Menu = () => {
   const [open, setOpen] = useState(false);
-
-  // TEMPORARY
   const { data, status } = useSession();
-  const userName =
-    data?.user.name ||
-    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
-  const userImage = data?.user.image;
-
-  // Prevent scrolling when menu is open
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    // Clean up when the component unmounts
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
+  const userImage = data?.user.image || "/open.png";
 
   return (
     <div>
-      {userImage ? (
-        <div className="ml-16">
-          <Image
-            src={open ? "/close.png" : userImage}
-            alt=""
-            width={30}
-            height={30}
-            onClick={() => setOpen(!open)}
-            className="overflow-hidden rounded-full cursor-pointer"
-          />
-        </div>
-      ) : (
-        <div className="ml-16">
-          <Image
-            src={open ? "/close.png" : "/open.png"}
-            alt=""
-            width={20}
-            height={20}
-            onClick={() => setOpen(!open)}
-            className="cursor-pointer"
-          />
-        </div>
-      )}
+      {/* Toggle Menu Icon */}
+      <div className="ml-16">
+        <Image
+          src={open ? "/close.png" : userImage}
+          alt="Toggle Menu"
+          width={30}
+          height={30}
+          onClick={() => setOpen(!open)}
+          className="overflow-hidden rounded-full cursor-pointer"
+        />
+      </div>
+
+      {/* Menu Overlay */}
       {open && (
-        <div className="backdrop-blur-xl text-[#741102] fixed left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-50">
+        <div className="fixed inset-0 z-50 backdrop-blur-xl text-[#741102] flex flex-col gap-8 items-center justify-center text-xl">
           <div>
             <SearchBox />
           </div>
