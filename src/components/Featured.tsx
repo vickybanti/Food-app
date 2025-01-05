@@ -105,6 +105,7 @@ const Featured = () => {
           </Link>
         ))}
       </div>
+      <p className="text-[12px]">Add more restaurants to favorites to see their featured products</p>
     </section>
   );
 };
