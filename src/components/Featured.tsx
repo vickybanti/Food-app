@@ -76,11 +76,12 @@ const Featured = () => {
 
       <div className="flex items-start justify-start w-full gap-4 px-5 overflow-x-auto md:px-20 mt-7 no-scrollbar">
         {featuredProducts.map((item) => (
-          <Link href={`/product/${item._id}`}>
+         
           <div
             key={item._id}
             className="featureCard rounded-md px-4 h-[280px] sm:h-[320px] w-[160px] sm:w-[170px] flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 bg-[#B78C56] shadow-lg"
           >
+             <Link href={`/product/${item._id}`}>
             {item.img && (
               <div className="relative mb-3 w-36 sm:w-36 h-28 sm:h-36">
                 <Image
@@ -100,9 +101,9 @@ const Featured = () => {
                   ${item.price}
                 </span>
             </div>
-           
+            </Link>
+
           </div>
-          </Link>
         ))}
       </div>
       <p className="text-[12px]">Add more restaurants to favorites to see their featured products</p>
