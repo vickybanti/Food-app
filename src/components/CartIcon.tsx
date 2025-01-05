@@ -112,7 +112,7 @@ export default function CartIcon() {
       <Divider />
       <List>
         <ListItem>
-          <div className="flex flex-col gap-4 px-5">
+          <div className="flex flex-col gap-4 px-5 cartsImage">
             <div className="flex justify-between">
               <span>Subtotal ({totalItems})</span>
               <span className="text-green-700">${totalPrice}</span>
