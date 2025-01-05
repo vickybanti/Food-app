@@ -58,7 +58,7 @@ const Menu = () => {
 
       {open && (
         <div
-          className="backdrop-blur-xl text-[#741102] fixed left-0 top-14 w-full h-full flex flex-col gap-8 items-center justify-center text-xl z-50"
+          className=" inset-0 backdrop-blur-xl text-[#741102] fixed left-0 top-14 w-full h-full flex flex-col gap-8 items-center justify-center text-xl z-50"
           style={{ backdropFilter: "blur(20px)" }}
         >
           <div>
