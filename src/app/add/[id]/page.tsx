@@ -230,7 +230,7 @@ const Page = ({
              
     }
   return (
-    <div className="lg:px-48 lg:py-20">
+    <div className="px-48 py-20">
               <h1>Add new product</h1>
 
     <form className={cn("grid items-start gap-4") } onSubmit={handleSubmit}>

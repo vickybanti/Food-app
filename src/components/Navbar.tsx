@@ -57,7 +57,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Icon */}
         {!isDesktop && (
-          <div className={`md:hidden md:fixed md:bg-fixed ${!isScrolled && `backdrop-blur-xl`}`}>
+          <div className={`md:hidden ${isScrolled && `backdrop-blur-xl`}`}>
             <Menu />
           </div>
         )}
