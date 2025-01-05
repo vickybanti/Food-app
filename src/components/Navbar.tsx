@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <div
       className={`fixed top-0 z-10 w-full bg-white ${
-        scrollDirection === "down" ? "backdrop-blur-lg bg-white/70" : "bg-inherit"
+        isDesktop && scrollDirection === "down" ? "backdrop-blur-lg bg-white/70" : "bg-inherit"
       } transition-colors duration-300 ease-in-out`}
     >
       <div className="h-16 flex items-center justify-between px-4 lg:px-10">
