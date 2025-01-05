@@ -99,7 +99,7 @@ const Menu = () => {
             href={status === 'authenticated' ? "/orders" : "/login"}
             onClick={() => setOpen(false)}
           >
-            {userName ? "Orders" : "Login"}
+            {status === 'authenticated' ? "Orders" : "Login"}
             
           </Link>
          
