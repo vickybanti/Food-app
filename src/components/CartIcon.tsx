@@ -83,7 +83,7 @@ export default function CartIcon() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <div onClick={toggleDrawer(anchor, false)} className="cursor-pointer">
+        <div onClick={toggleDrawer(anchor, false)} className="cursor-pointer cartsArrow">
           <ArrowBackIos sx={{ marginLeft: "10px" }} />
         </div>
         {loading && <Skeleton className="w-40 h-40" />}
@@ -112,7 +112,7 @@ export default function CartIcon() {
       <Divider />
       <List>
         <ListItem>
-          <div className="flex flex-col gap-4 px-5 cartsImage">
+          <div className="flex flex-col gap-4 px-5 cartsCheckout">
             <div className="flex justify-between">
               <span>Subtotal ({totalItems})</span>
               <span className="text-green-700">${totalPrice}</span>

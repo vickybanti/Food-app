@@ -150,6 +150,12 @@
 
   }
   .cartsImage{
+    margin-left: 30px;
+  }
+  .cartsArrow{
+    margin-left: 40px;
+  }
+  .cartsCheckout{
     margin-left: 20px;
   }
   .cartsFont{
