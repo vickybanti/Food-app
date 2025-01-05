@@ -43,8 +43,13 @@ type Product = {
 
 }
 
-const Page = ({ className }: React.ComponentProps<"form">, { params }: { params: { id: string } }) => {
-  const {id} = params;
+const Page = ({
+  params,
+  className,
+}: {
+  params: { id: string };
+  className?: React.ComponentProps<"form">["className"];
+}) => {  const {id} = params;
     const router = useRouter()
     const {data:session, status} =  useSession()
     const [file, setFile] = useState<File>()
@@ -227,8 +232,10 @@ const Page = ({ className }: React.ComponentProps<"form">, { params }: { params:
              
     }
   return (
+    <div className="lg:px-48 lg:py-20">
+              <h1>Add new product</h1>
+
     <form className={cn("grid items-start gap-4", className) } onSubmit={handleSubmit}>
-        <h1>Add new product</h1>
         <div className={`${!isDesktop && `flex flex-col gap-10`}grid gap-2 `}>
           <Label>Title</Label>
           <Input onChange={handleChange} type="text" name="title" className='p-2 rounded-sm ring-1 ring-black-200'/>
@@ -324,6 +331,7 @@ const Page = ({ className }: React.ComponentProps<"form">, { params }: { params:
         <span className='font-italics text-red-600'> {message && message} </span>
 
       </form>
+      </div>
   )
 }
 
