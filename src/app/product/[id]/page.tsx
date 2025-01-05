@@ -1,6 +1,7 @@
 "use client"
 import DeleteButton from "@/components/DeleteButton";
 import Price from "@/components/Price";
+import ProCardPrice from "@/components/ProCardPrice";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ProductType } from "@/types/types";
 import Image from "next/image";
@@ -63,7 +64,7 @@ const SingleProductPage = ({ params }: { params: { id: string } }) => {
           <>
             <h1 className="text-3xl font-bold text-black uppercase xl:text-5xl ">{loading ? (<Skeleton className="w-10 h-7"/>) : singleProduct.title}</h1>
             <p className="text-gray-800">{ loading ? (<Skeleton className="w-5 h-5"/>) : singleProduct.desc}</p>
-            <Price product={singleProduct} />
+            <ProCardPrice product={singleProduct} />
           </>
         )}
       </div>
