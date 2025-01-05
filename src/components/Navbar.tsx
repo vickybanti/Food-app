@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <div
       className={`fixed top-0 z-10 w-full bg-white ${
-        isDesktop && scrollDirection === "down" ? "backdrop-blur-lg bg-white/70" : "bg-inherit"
+        scrollDirection === "down" ? "backdrop-blur-lg bg-white/70" : "bg-inherit"
       } transition-colors duration-300 ease-in-out`}
     >
       <div className="h-16 flex items-center justify-between px-4 lg:px-10">
@@ -57,7 +57,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Icon */}
         {!isDesktop && (
-          <div className="md:hidden">
+          <div className={`md:hidden ${isScrolled && `backdrop-blur-xl`}`}>
             <Menu />
           </div>
         )}
