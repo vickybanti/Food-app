@@ -44,11 +44,9 @@ type Product = {
 }
 
 const Page = ({
-  params,
-  className,
+  params
 }: {
   params: { id: string };
-  className?: React.ComponentProps<"form">["className"];
 }) => {  const {id} = params;
     const router = useRouter()
     const {data:session, status} =  useSession()
@@ -235,7 +233,7 @@ const Page = ({
     <div className="lg:px-48 lg:py-20">
               <h1>Add new product</h1>
 
-    <form className={cn("grid items-start gap-4", className) } onSubmit={handleSubmit}>
+    <form className={cn("grid items-start gap-4") } onSubmit={handleSubmit}>
         <div className={`${!isDesktop && `flex flex-col gap-10`}grid gap-2 `}>
           <Label>Title</Label>
           <Input onChange={handleChange} type="text" name="title" className='p-2 rounded-sm ring-1 ring-black-200'/>
@@ -323,12 +321,12 @@ const Page = ({
 
         </div>
 
-        <Button className='p-2 w-full text-white flex items-center justify-center gap-2' type='submit' disabled={isLoading}>
+        <Button className='flex items-center justify-center w-full gap-2 p-2 text-white' type='submit' disabled={isLoading}>
           Add Product {isLoading && (
             <Image src="/temporary/p2.png" alt="loading" width={50} height={50} className='animate-spin bg-blend-multiply'/>
           )}
         </Button>
-        <span className='font-italics text-red-600'> {message && message} </span>
+        <span className='text-red-600 font-italics'> {message && message} </span>
 
       </form>
       </div>
