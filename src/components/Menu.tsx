@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 import SearchBox from "./Search";
 import { signOut, useSession } from "next-auth/react";
 import { NavAddress } from "./NavAddress";
-
-
 
 const links = [
   { id: 1, title: "Homepage", url: "/" },
@@ -20,100 +18,78 @@ const Menu = () => {
   const [open, setOpen] = useState(false);
 
   // TEMPORARY
-  const {data,status} = useSession()
-  const userName = data?.user.name || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-  const userImage = data?.user.image
-  
+  const { data, status } = useSession();
+  const userName =
+    data?.user.name ||
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+  const userImage = data?.user.image;
+
+  // Prevent scrolling when menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Clean up when the component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
   return (
     <div>
-      {/* LONG WAY */}
-      {/* {!open ? (
-        <Image
-          src="/open.png"
-          alt=""
-          width={20}
-          height={20}
-          onClick={() => setOpen(true)}
-        />
+      {userImage ? (
+        <div className="ml-16">
+          <Image
+            src={open ? "/close.png" : userImage}
+            alt=""
+            width={30}
+            height={30}
+            onClick={() => setOpen(!open)}
+            className="overflow-hidden rounded-full cursor-pointer"
+          />
+        </div>
       ) : (
-        <Image
-          src="/close.png"
-          alt=""
-          width={20}
-          height={20}
-          onClick={() => setOpen(false)}
-        />
-      )} */}
-      
-      {/* SHORTCUT */}
-
-
-  {userImage ?
-  <div className="ml-16">
-    <Image
-        src={  open ? "/close.png" : userImage  }
-       alt=""
-        width={30}
-        height={30}
-        onClick={() => setOpen(!open)}
-        className={`cursor-pointer rounded-full overflow-hidden`}
-      />
-      </div>
-
-      :
-<div className="ml-16">
-      <Image
-      src={open ? "/close.png" :  "/open.png"}
-      alt=""
-      width={20}
-      height={20}
-      onClick={() => setOpen(!open)}
-      className={`cursor-pointer`}
-    />
-    </div>
-}
+        <div className="ml-16">
+          <Image
+            src={open ? "/close.png" : "/open.png"}
+            alt=""
+            width={20}
+            height={20}
+            onClick={() => setOpen(!open)}
+            className="cursor-pointer"
+          />
+        </div>
+      )}
       {open && (
-        <div className="bg-white/95 text-[#741102] fixed left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-50 pt-[-50px]">
-          <div className="">
-                  <SearchBox />
-                  </div>
+        <div className="backdrop-blur-xl text-[#741102] fixed left-0 top-14 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-xl z-50">
+          <div>
+            <SearchBox />
+          </div>
 
-                  <NavAddress />
+          <NavAddress />
 
-
-          
-
-          {/* LONG WAY */}
-          {/* {!user ? (
-            <Link href="/login" onClick={() => setOpen(false)}>
-              Login
-            </Link>
-          ) : (
-            <Link href="/orders" onClick={() => setOpen(false)}>
-              Orders
-            </Link>
-          )} */}
-
-          {/* SHORTCUT */}
           <Link
-            href={status === 'authenticated' ? "/orders" : "/login"}
+            href={status === "authenticated" ? "/orders" : "/login"}
             onClick={() => setOpen(false)}
           >
-            {status === 'authenticated' ? "Orders" : "Login"}
-            
+            {status === "authenticated" ? "Orders" : "Login"}
           </Link>
-         
 
-<div className="ml-8">
+          <div className="ml-8">
             <CartIcon />
-            </div>
+          </div>
 
-          {status === 'authenticated' && 
-          
-          <span className="cursor-pointer  text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
-    
-                
-    }
+          {status === "authenticated" && (
+            <span
+              className="cursor-pointer text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2 hover:w-full"
+              onClick={() => signOut()}
+            >
+              Logout
+            </span>
+          )}
         </div>
       )}
     </div>
