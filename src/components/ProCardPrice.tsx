@@ -1,12 +1,13 @@
 "use client";
 
-import { toast } from "@/hooks/use-toast";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { ProductType } from "@/types/types";
 import { userCartStore } from "@/lib/utils/store";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Terminal } from "@mui/icons-material";
 
 const ProCardPrice = ({ product }: { product: ProductType }) => {
   const [total, setTotal] = useState(product.price);
@@ -45,10 +46,12 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
     
 
     setMessage(true);
-    toast({
-      title: "Added to cart!",
-      description: `${product.title} has been added to your cart.`,
-    });
+    <Alert>
+    <Terminal className="w-4 h-4" />
+    <AlertTitle>{product.title} added to cart</AlertTitle>
+    
+  </Alert>
+  
 
     // Reset message after 3 seconds
   };
@@ -58,8 +61,11 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
     if (productInCart) {
       removeFromCart(productInCart);
       setMessage(false);
-      toast({ title: "Removed from cart!", description: `${product.title} has been removed from your cart.` });
-    }
+<Alert>
+    <Terminal className="w-4 h-4" />
+    <AlertTitle>{product.title} removed from cart</AlertTitle>
+    
+  </Alert>    }
 
   };
 
@@ -69,7 +75,7 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-      <div className="flex flex-col md:flex-row gap-8 w-full">
+      <div className="flex flex-col w-full gap-8 md:flex-row">
         {/* Product Image */}
         <div className="relative w-full h-44 md:w-60">
           <Image
@@ -111,7 +117,7 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-md"
+                className="flex items-center justify-center w-10 h-10 text-white bg-gray-800 rounded-md"
                 aria-label="Decrease quantity"
               >
                 -
@@ -119,7 +125,7 @@ const ProCardPrice = ({ product }: { product: ProductType }) => {
               <span className="text-lg font-medium text-[#741102]">{quantity}</span>
               <button
                 onClick={() => setQuantity((prev) => Math.min(9, prev + 1))}
-                className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-md"
+                className="flex items-center justify-center w-10 h-10 text-white bg-gray-800 rounded-md"
                 aria-label="Increase quantity"
               >
                 +

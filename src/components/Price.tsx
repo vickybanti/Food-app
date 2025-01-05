@@ -1,12 +1,13 @@
 "use client";
 
-import { toast } from "@/hooks/use-toast";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { ProductType } from "@/types/types";
 import { userCartStore } from "@/lib/utils/store";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Terminal } from "@mui/icons-material";
 
 const Price = ({ product }: { product: ProductType }) => {
   const [total, setTotal] = useState(product.price);
@@ -43,8 +44,11 @@ const Price = ({ product }: { product: ProductType }) => {
     });
 
     setMessage(true);
-    toast({ title: "Added to cart!", description: `${product.title} has been added to your cart.` });
-  };
+<Alert>
+    <Terminal className="w-4 h-4" />
+    <AlertTitle>{product.title} added to cart</AlertTitle>
+    
+  </Alert>  };
 
   // Handle removing product from the cart
   const removeCart = () => {
@@ -52,8 +56,11 @@ const Price = ({ product }: { product: ProductType }) => {
     if (productInCart) {
       removeFromCart(productInCart);
       setMessage(false);
-      toast({ title: "Removed from cart!", description: `${product.title} has been removed from your cart.` });
-    }
+<Alert>
+    <Terminal className="w-4 h-4" />
+    <AlertTitle>{product.title} removed from cart</AlertTitle>
+    
+  </Alert>     }
   };
 
   return (
