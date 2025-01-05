@@ -63,28 +63,15 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           <div className="flex justify-between">
           
 
-          <div>
-          <Label>
-            Email
-          </Label>
-          <div className="relative loginInput">
-            <EmailRounded className="absolute transform -translate-y-1/2 left-3 top-1/2" />
-            <Input 
-              className="h-16 pl-10 bg-gray-200 border-gray-200 w-60" 
-              name="email" 
-              type="email" 
-              onChange={() => handleChange} 
-            />
+          
 
             
           
           
           
-          </div>
-
-          </div>
-          <Button type="submit" onClick={()=>signIn(`email`)} className="p-8 mt-6 mr-24">
-            Login
+         
+          <Button type="submit" onClick={()=>signIn()} className="p-8 mt-6 mr-24">
+          <EmailRounded className="absolute transform -translate-y-1/2 left-3 top-1/2" /> Login with email
           </Button>
           
 
@@ -121,7 +108,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
               className="object-contain"
               
             />
-            <span className="text-sm">Sign in with Google</span>
+            <span className="lg:text-sm md:text-xs sm:text-xs">Sign in with Google</span>
           </button>
           
           </div>
