@@ -46,9 +46,8 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
       {/* BOX */}
       <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row w-[80%] backdrop-blur-lg bg-white/70">
           <Link href="/">
-            <div className="w-[350px] h-[250px] mt-6 px-5 font-sans text-3xl font-bold">
-              <Image src="/logo-bg.png" width={500} height={770} alt="logo" className="object-contain" />
-              <h1 className="p-12">Login Here</h1>
+            <div className="w-[350px] h-[250px] mt-6 px-5 font-sans text-3xl font-bold loginImage">
+              <Image src="/logo-bg.png" width={300} height={570} alt="logo" className="object-contain" />
             </div>
           </Link>
         {/* IMAGE CONTAINER */}
@@ -58,7 +57,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           
         </div> */}
         {/* FORM CONTAINER */}
-        <div className="p-10 m-auto flex flex-col gap-10 w-[100%] md:w-1/2 h-[100%] backdrop-blur-md bg-white/30 rounded-md">
+        <div className="p-10 m-auto flex flex-col gap-10 w-[100%] md:w-1/2 h-[100%] backdrop-blur-md bg-white/30 rounded-md loginForm">
         <h2>Login with email</h2>
         
           <div className="flex justify-between">
@@ -68,7 +67,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           <Label>
             Email
           </Label>
-          <div className="relative">
+          <div className="relative loginInput">
             <EmailRounded className="absolute transform -translate-y-1/2 left-3 top-1/2" />
             <Input 
               className="h-16 pl-10 bg-gray-200 border-gray-200 w-60" 

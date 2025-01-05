@@ -170,6 +170,23 @@
   .userlink{
     margin-left:110px;
   }
+  .loginDiv{
+    width: 90%;
+  }
+  .loginImage{
+    width: 150px;
+    height:150px;
+  }
+  .loginTitle{
+    font-size: 15px;
+  }
+  .loginForm{
+    display: flex;
+    flex-direction: column;
+  }
+  .loginInput{
+    width:70%;
+  }
   .allCats{
     width:170px;
     height:112px;
