@@ -92,15 +92,15 @@ export default function CartIcon() {
         ) : (
           products.map((item) => (
             <ListItem key={item._id} className="flex items-center justify-between mb-4">
-              {item.img && <Image src={item.img} alt="" width={80} height={80} className="cartImage" />}
+              {item.img && <Image src={item.img} alt="" width={80} height={80} className="cartsImage" />}
               <div className="ml-8">
-                <h1 className="text-sm font-thin uppercase cartTitle">{item.title}</h1>
+                <h1 className="text-sm font-thin uppercase cartsFont">{item.title}</h1>
                 <span className="font-thin text-gray-400">{item.quantity}</span>
                 <span className="font-thin text-gray-400">{item.optionTitle}</span>
               </div>
               <h2 className="ml-8 font-bold">${item.price}</h2>
               <span
-                className="cursor-pointer ml-3"
+                className="ml-3 cursor-pointer"
                 onClick={() => removeFromCart(item)}
               >
                 <DeleteSweepSharp sx={{ color: "red" }} />
@@ -135,7 +135,7 @@ export default function CartIcon() {
               <Button
                 onClick={handleCheckout}
                 disabled={totalItems <= 0}
-                className="bg-teal-700 hover:bg-teal-600 text-white py-2 px-4 rounded disabled:opacity-50"
+                className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-600 disabled:opacity-50"
               >
                 Checkout
               </Button>
@@ -143,7 +143,7 @@ export default function CartIcon() {
               <Link href={totalItems > 0 ? "/login" : "#"}>
                 <Button
                   disabled={totalItems <= 0}
-                  className="bg-teal-700 hover:bg-teal-600  hover:text-white py-2 px-4 rounded disabled:opacity-50"
+                  className="px-4 py-2 bg-teal-700 rounded hover:bg-teal-600 hover:text-white disabled:opacity-50"
                 >
                   {totalPrice > 0 ? "Login to Checkout" : "Add at least one product"}
                 </Button>
@@ -162,7 +162,7 @@ export default function CartIcon() {
           <Button onClick={toggleDrawer(anchor, true)} className="shadow-none">
             <div className="relative flex items-center justify-center p-3 bg-[#042D29] rounded-full shadow-md hover:shadow-none">
               <CheckoutIcon className="text-white" />
-              {totalItems > 0 && <span className="absolute text-xs text-white ml-8">{totalItems}</span>}
+              {totalItems > 0 && <span className="absolute ml-8 text-xs text-white">{totalItems}</span>}
             </div>
           </Button>
           <SwipeableDrawer

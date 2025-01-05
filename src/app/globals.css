@@ -149,6 +149,12 @@
     padding-right:20px;
 
   }
+  .cartsImage{
+    margin-left: 20px;
+  }
+  .cartsFont{
+    font-size: 13px;
+  }
   
   .cartSize{
     padding: 3.5px;
