@@ -62,12 +62,9 @@ const Price = ({ product }: { product: ProductType }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-      <div className="flex flex-col md:flex-row gap-8 w-full">
+      <div className="flex flex-col w-full gap-8 md:flex-row">
         {/* Product Image */}
-        <div className="flex justify-center md:w-1/2">
-          <Image src={product.img || "/placeholder.jpg"} alt={product.title} width={300} height={300} className="rounded-md" />
-        </div>
-
+       
         {/* Price and Options */}
         <div className="flex flex-col justify-between flex-1 gap-6">
           {/* Total Price */}
@@ -99,7 +96,7 @@ const Price = ({ product }: { product: ProductType }) => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-md"
+                className="flex items-center justify-center w-10 h-10 text-white bg-gray-800 rounded-md"
                 aria-label="Decrease quantity"
               >
                 -
@@ -107,7 +104,7 @@ const Price = ({ product }: { product: ProductType }) => {
               <span className="text-lg font-medium text-[#741102]">{quantity}</span>
               <button
                 onClick={() => setQuantity((prev) => Math.min(9, prev + 1))}
-                className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-md"
+                className="flex items-center justify-center w-10 h-10 text-white bg-gray-800 rounded-md"
                 aria-label="Increase quantity"
               >
                 +

@@ -96,7 +96,7 @@ const Menu = () => {
 
           {/* SHORTCUT */}
           <Link
-            href={userName ? "/orders" : "/login"}
+            href={status === 'authenticated' ? "/orders" : "/login"}
             onClick={() => setOpen(false)}
           >
             {userName ? "Orders" : "Login"}
@@ -108,7 +108,7 @@ const Menu = () => {
             <CartIcon />
             </div>
 
-          {userName && 
+          {status === 'authenticated' && 
           
           <span className="cursor-pointer  text-black font-bold hover:bg-[#f9cc0b] hover:text-black p-2  hover:w-full" onClick={()=>signOut()}>Logout</span>
     
