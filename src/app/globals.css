@@ -199,11 +199,13 @@
   }
   .addForm{
     width: 85%;
+    padding: 5%;
   }
 
   .catsheader{
-    margin:40px 12px;
+    padding-top:80px 5px;
   }
+
   .catAddTitle{
     font-size: 12px;
     margin-left: 5px;
