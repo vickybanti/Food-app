@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,forwardRef } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { Favorite, FavoriteBorderOutlined, TimerRounded } from "@mui/icons-mater
 import { Skeleton } from "./ui/skeleton";
 import { userCartStore } from "@/lib/utils/store";
 import { motion } from "framer-motion";
+
 
 type Restaurant = {
   _id: string;
@@ -29,7 +30,7 @@ type Product = {
   price: number;
 };
 
-const Restaurants = () => {
+const Restaurants = forwardRef<HTMLDivElement>((_, ref) => {
   const [hasMore, setHasMore] = useState(true);
   const limit = 6;
   const [page, setPage] = useState(1);
@@ -109,7 +110,7 @@ const Restaurants = () => {
   return (
     <>
       {/* Admin Link */}
-      <div className="flex justify-between px-4 sm:px-6 lg:px-10 font-thin">
+      <div className="flex justify-between px-4 font-thin sm:px-6 lg:px-10" ref={ref}>
         {session && session?.user.isAdmin && (
           <Link href="/add/restaurants" className="text-blue-600">
             Add new restaurants
@@ -124,14 +125,15 @@ const Restaurants = () => {
         transition={{ ease: "easeInOut", duration: 1.5 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
-        className="grid md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-10 my-10"
+        className="grid gap-6 px-4 my-10 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 sm:px-6 lg:px-10"
       >
         {allRestaurants.map((restaurant) => (
           <div
             className="sm:w-[250px] lg:w-[390px] hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none px-3"
             key={restaurant._id}
+            ref={ref}
           >
-            <div className="relative w-full h-40 lg:h-48 rounded-lg shadow-lg mb-5">
+            <div className="relative w-full h-40 mb-5 rounded-lg shadow-lg lg:h-48">
               {loading ? (
                 <Skeleton className="w-full h-full" />
               ) : (
@@ -166,7 +168,7 @@ const Restaurants = () => {
                     <span className="ml-1">11-12 mins</span>
                   </div>
                   <div className="flex gap-2 mt-1 text-sm">
-                    <span className="uppercase text-green-500">
+                    <span className="text-green-500 uppercase">
                       {restaurant.products[0].catSlug}
                     </span>
                     {restaurant.products[0].options?.map((option) => (
@@ -196,6 +198,6 @@ const Restaurants = () => {
       </motion.div>
     </>
   );
-};
+});
 
 export default Restaurants;

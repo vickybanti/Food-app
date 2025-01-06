@@ -168,9 +168,11 @@ const Page = ({ params }: { params: { id: string } }) => {
 
             </button>
           ))}
+          {session?.user.isAdmin &&
            <Link href={`/add/${id}`}>
               Add new product
             </Link>
+}
         </div>
 
         {/* Product Grid */}

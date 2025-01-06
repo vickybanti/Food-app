@@ -14,7 +14,7 @@ const Offer = () => {
     <div className="bg-black lg:mx-5 lg:rounded-2xl h-full flex flex-col md:gap-2  md:bg-[url('/offerBg.png')] ">
       {/* TEXT CONTAINER */}
       <div className="flex flex-col items-center justify-center flex-1 lg:gap-8 md:gap-3 p-6 text-center md:w-[30%] lg:w-full ">
-        <h1 className="lg:text-xl md:text-sm font-bold text-white">Delicious Burger & French Fry</h1>
+        <h1 className="font-bold text-white lg:text-xl md:text-sm">Delicious Burger & French Fry</h1>
         <p className="text-gray-400 lg:text-xs md:text-xs">
           Enjoy <span className="text-green-300">20%</span> discount on burger orders this festive period
         </p>
@@ -36,9 +36,9 @@ const Offer = () => {
       {/* IMAGE CONTAINER */}
       <div className="relative flex-col flex-1 lg:w-full md:w-[20%] md:h-full">
         
-        <Image src="/offerproduct.png" alt="offer" fill className="object-contain" />
+        <Image src="/temporary/p9.png" alt="offer" fill className="object-contain" />
 
-        <div className="absolute bottom-0 mb-10 count">
+        <div className="absolute bottom-0 mb-10 ml-4 count">
           <CountDown />
        </div>
         

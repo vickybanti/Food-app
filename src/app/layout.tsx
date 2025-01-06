@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
 import QueryProvider from "@/components/QueryProvider";
-import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
 import './styles.css'
 import { Fjalla_One, Paytone_One, Poppins, Roboto, Tenor_Sans } from 'next/font/google'
@@ -44,7 +43,6 @@ export default function RootLayout({
           {children}
 
           <div className="z-50">
-          <Toaster />
           </div>
           <Footer />
         </div>
