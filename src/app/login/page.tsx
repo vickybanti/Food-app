@@ -46,7 +46,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
       {/* BOX */}
       <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row w-[80%] backdrop-blur-lg bg-white/70">
           <Link href="/">
-            <div className="w-[350px] h-[250px] mt-6 px-5 font-sans text-3xl font-bold loginImage">
+            <div className="w-[350px] h-[250px] px-5 font-sans text-3xl font-bold loginImage">
               <Image src="/logo-bg.png" width={300} height={570} alt="logo" className="object-contain" />
             </div>
           </Link>
@@ -58,9 +58,9 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
         </div> */}
         {/* FORM CONTAINER */}
         <div className="p-10 m-auto flex flex-col gap-10 w-[100%] md:w-1/2 h-[100%] backdrop-blur-md bg-white/30 rounded-md loginForm">
-        <h2>Login with email</h2>
+        <h2 className="font-semibold">Login here</h2>
         
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
           
 
           
@@ -70,8 +70,20 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
           
           
          
-          <Button type="submit" onClick={()=>signIn()} className="p-8 mt-6 mr-24">
-          <EmailRounded className="absolute transform -translate-y-1/2 left-3 top-1/2" /> Login with email
+          <Button type="submit" onClick={()=>signIn()} className="p-6 mr-24">
+          <EmailRounded className=" text-white" sx={{color:"white"}}/> Login with email
+          </Button>
+
+          <Button className="flex gap-4 p-6 rounded-md ring-1 ring-orange-100" onClick={()=>signIn("google")}>
+            <Image
+              src="/google.png"
+              alt=""
+              width={20}
+              height={20}
+              className="object-contain"
+              
+            />
+            <span className="lg:text-sm md:text-xs sm:text-xs">Sign in with Google</span>
           </Button>
           
 
@@ -93,28 +105,11 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
          
 
           
-        <div className="flex">
-        <Divider />
-        <span className="mt-[-20px] mx-auto">or</span>
-        <Divider />
-        </div>
-        <div className="flex gap-3 mt-[-20px] mx-auto">
-          <button className="flex gap-4 p-4 rounded-md ring-1 ring-orange-100" onClick={()=>signIn("google")}>
-            <Image
-              src="/google.png"
-              alt=""
-              width={20}
-              height={20}
-              className="object-contain"
-              
-            />
-            <span className="lg:text-sm md:text-xs sm:text-xs">Sign in with Google</span>
-          </button>
+       
+       
           
-          </div>
-          <p className="text-sm mt-[-30px]">
-            <Link className="text-lg hover:underline text-green" href="/"> Sign up</Link>
-          </p>
+          
+          
         </div>
       </div>
     </div>

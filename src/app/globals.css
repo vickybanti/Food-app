@@ -198,6 +198,14 @@
     height:112px;
   }
 
+  .catsHeader{
+    margin:20px;
+  }
+  .catAddTitle{
+    font-size: 12px;
+    padding-left: 3px;
+  }
+
   .count{
     margin-left: 20px;
     font-size:17px;

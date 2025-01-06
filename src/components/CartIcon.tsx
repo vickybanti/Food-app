@@ -55,8 +55,10 @@ export default function CartIcon() {
         }),
       });
       const getData = await res.json();
+      console.log(getData)
+      console.log("orderIdpay", getData._id)
       setLoading(false);
-      router.push(`/pay/${getData._id}`);
+      router.push(`/pay/${getData._id}`); 
     } catch (error) {
       console.error("Checkout Error:", error);
       setLoading(false);

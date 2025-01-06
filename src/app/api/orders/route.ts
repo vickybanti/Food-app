@@ -1,6 +1,7 @@
 import Order from "@/lib/database/models/order.model";
 import { getAuthSession } from "@/lib/utils/auth";
 import { connectToDb } from "@/lib/utils/connect";
+import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -55,11 +56,12 @@ export const POST = async(req: NextRequest) => {
     try {
         await connectToDb();
         const body = await req.json()
-        console.log(body)
+        console.log("orderBody=",body)
         
         // Create the order directly with the products array
         const order = await Order.create({
             ...body,
+            _id: new mongoose.Types.ObjectId(),
             userEmail: session?.user?.email
         })
         return new NextResponse(JSON.stringify(order), { status: 201 })
