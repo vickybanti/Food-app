@@ -197,11 +197,15 @@
     width:170px;
     height:112px;
   }
-  .addForm{
-    width: 65%;
+  .addRes{
+    width: 100%;
     padding:40px ;
     margin: 40px;
     
+  }
+  .addForm{
+    padding: 40px;
+    margin: 30px;
   }
 
   .catsheader{
