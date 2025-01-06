@@ -23,6 +23,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   const userEmail = session?.user?.email;
 
+
   const handleCheckout = async () => {
     setLoading(true);
     try {

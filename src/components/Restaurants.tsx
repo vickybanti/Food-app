@@ -30,7 +30,7 @@ type Product = {
   price: number;
 };
 
-const Restaurants = forwardRef<HTMLDivElement>((_, ref) => {
+const Restaurants = () => {
   const [hasMore, setHasMore] = useState(true);
   const limit = 6;
   const [page, setPage] = useState(1);
@@ -198,6 +198,6 @@ const Restaurants = forwardRef<HTMLDivElement>((_, ref) => {
       </motion.div>
     </>
   );
-});
+};
 
 export default Restaurants;
