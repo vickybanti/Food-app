@@ -230,10 +230,10 @@ const Page = ({
              
     }
   return (
-    <div className="px-48 py-20 ">
+    <div className="px-48 py-20 addForm">
               <h1>Add new product</h1>
 
-    <form className={cn("grid items-start gap-4 addForm") } onSubmit={handleSubmit}>
+    <form className={cn("grid items-start gap-4 proForm") } onSubmit={handleSubmit}>
         <div className={`${!isDesktop && `flex flex-col gap-10`}grid gap-2 `}>
           <Label>Title</Label>
           <Input onChange={handleChange} type="text" name="title" className='p-2 rounded-sm ring-1 ring-black-200'/>
