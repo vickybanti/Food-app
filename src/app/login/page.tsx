@@ -60,7 +60,7 @@ const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => 
         <div className="p-10 m-auto flex flex-col gap-10 w-[100%] md:w-1/2 h-[100%] backdrop-blur-md bg-white/30 rounded-md loginForm">
         <h2 className="font-semibold">Login here</h2>
         
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between loginForm">
           
 
           

@@ -197,13 +197,17 @@
     width:170px;
     height:112px;
   }
+  .addForm{
+    width: 85%;
+  }
 
-  .catsHeader{
-    margin:50px 12px;
+  .catsheader{
+    margin:40px 12px;
   }
   .catAddTitle{
     font-size: 12px;
-    padding-left: 5px;
+    margin-left: 5px;
+    
   }
 
   .count{
