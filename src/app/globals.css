@@ -205,8 +205,8 @@
     
   }
   .addForm{
-    padding: 40px;
-    margin: 50px 1px;
+    padding: 20px;
+    margin: 50px auto;
     overflow: hidden;
     width: 100%;
   }
@@ -214,7 +214,8 @@
     width:98%;
   }
   .proForm{
-    width:70%;
+    width:60%;
+    background-color: white;
   }
 
   .catsheader{
