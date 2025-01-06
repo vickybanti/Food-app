@@ -110,7 +110,7 @@ const Restaurants = () => {
   return (
     <>
       {/* Admin Link */}
-      <div className="flex justify-between px-4 font-thin sm:px-6 lg:px-10" ref={ref}>
+      <div className="flex justify-between px-4 font-thin sm:px-6 lg:px-10">
         {session && session?.user.isAdmin && (
           <Link href="/add/restaurants" className="text-blue-600">
             Add new restaurants
@@ -131,7 +131,7 @@ const Restaurants = () => {
           <div
             className="sm:w-[250px] lg:w-[390px] hover:shadow-lg cursor-pointer hover:rounded-md shadow-none border-none px-3"
             key={restaurant._id}
-            ref={ref}
+          
           >
             <div className="relative w-full h-40 mb-5 rounded-lg shadow-lg lg:h-48">
               {loading ? (
