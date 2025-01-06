@@ -114,7 +114,7 @@ const ProductsPage = () => {
             <CardHeader className="cardHeader lg:w-full lg:h-[250px] ">
               {item.img && (
                 <div className="relative h-60 lg:w-full cardImage">
-                  {loading ? (<Skeleton className="w-full h-full rounded-full"/>):
+                  {loading ? (<Skeleton className="w-full h-full rounded-sm"/>):
                   <Link href={`/product/${item._id}`}>
                   
                   <Image 

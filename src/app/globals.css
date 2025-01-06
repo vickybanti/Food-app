@@ -199,11 +199,11 @@
   }
 
   .catsHeader{
-    margin:20px;
+    margin:50px 12px;
   }
   .catAddTitle{
     font-size: 12px;
-    padding-left: 3px;
+    padding-left: 5px;
   }
 
   .count{
