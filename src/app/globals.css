@@ -200,18 +200,18 @@
   .addRes{
     width: 100%;
     padding:40px ;
-    margin: 40px;
+    margin: 40px 2px;
     overflow: hidden;
     
   }
   .addForm{
     padding: 40px;
-    margin: 50px 5px;
+    margin: 50px 1px;
     overflow: hidden;
     width: 100%;
   }
   .resForm{
-    width:95%;
+    width:98%;
   }
   .proForm{
     width:70%;
