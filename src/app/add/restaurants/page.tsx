@@ -380,7 +380,7 @@ console.log("allProduct=", allProduct)
     }
   return (
     <div className="p-32 mx-10 addForm">
-      <form className='flex flex-wrap gap-4 p-8 shadow-lg w-[75%] m-auto bg-white' onSubmit={handleSubmit}>
+      <form className='flex flex-wrap gap-4 p-8 shadow-lg w-[75%] m-auto bg-white addForm' onSubmit={handleSubmit}>
         <h1>Add new Restaurant</h1>
         <div className='flex flex-col w-full gap-2'>
           <Label>Restaurant name</Label>

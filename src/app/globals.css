@@ -198,14 +198,15 @@
     height:112px;
   }
   .addForm{
-    width: 85%;
-    padding:70px ;
+    width: 65%;
+    padding:40px ;
     margin: 40px;
     
   }
 
   .catsheader{
-    padding:80px 5px;
+    padding-top:80px;
+    margin:0 12px
   }
 
   .catAddTitle{
