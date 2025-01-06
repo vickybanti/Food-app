@@ -206,15 +206,15 @@
   }
   .addForm{
     padding: 40px;
-    margin: 30px 5;
+    margin: 50px 5px;
     overflow: hidden;
     width: 100%;
   }
   .resForm{
-    width:80%;
+    width:95%;
   }
   .proForm{
-    width:75%;
+    width:70%;
   }
 
   .catsheader{
