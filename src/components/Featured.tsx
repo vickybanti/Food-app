@@ -67,9 +67,9 @@ const Featured = () => {
   }
 
   return (
-    <section className="relative flex flex-col h-full py-5 overflow-x-auto lg:w-full md:w-1/2 mt-16">
-      <div className="flex justify-between px-5 mb-5 md:px-20">
-        <h2 className="font-sans text-xl font-semibold text-gray-900 md:text-3xl">
+    <section className="relative flex flex-col h-full py-5 mx-20 mt-16 overflow-x-auto lg:w-full md:w-1/2">
+      <div className="flex justify-between px-5 mb-5">
+        <h2 className="font-sans text-2xl font-semibold text-gray-900 md:text-2xl">
           Featured Restaurant Orders
         </h2>
       </div>
@@ -106,7 +106,7 @@ const Featured = () => {
           </div>
         ))}
       </div>
-      <p className="text-[12px]">Add more restaurants to favorites to see their featured products</p>
+      <p className="text-[12px] text-center">Add more restaurants to favorites to see their featured products</p>
     </section>
   );
 };
