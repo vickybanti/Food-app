@@ -67,7 +67,7 @@ const Featured = () => {
   }
 
   return (
-    <section className="relative flex flex-col h-full px-24 py-5 mt-16 overflow-x-auto lg:w-full md:w-1/2">
+    <section className="relative flex flex-col h-full px-24 py-5 mt-16 overflow-x-hidden lg:w-full md:w-1/2">
       <div className="flex justify-between pl-20 mb-5">
         <h2 className="font-sans text-2xl font-semibold text-gray-900 md:text-2xl">
           Featured Restaurant Orders
