@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className='flexCenter border-t-2 mx-15 bg-[#B78C56] font-sans font-medium text-white' style={{borderTopColor: '#741102', backgroundImage: 'url(/offerBg.png)'}}>
-      <div className='flex flex-col w-full gap-10 p-10 max-container'>
+      <div className='flex flex-col w-full gap-10 px-24 py-10 max-container'>
         <div className='flex flex-col items-start justify-center gap-[10%] md:flex-row'>
        
         <Link href="/">

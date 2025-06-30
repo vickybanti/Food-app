@@ -67,14 +67,14 @@ const Featured = () => {
   }
 
   return (
-    <section className="relative flex flex-col h-full py-5 mx-20 mt-16 overflow-x-auto lg:w-full md:w-1/2">
-      <div className="flex justify-between px-5 mb-5">
+    <section className="relative flex flex-col h-full px-24 py-5 mt-16 overflow-x-auto lg:w-full md:w-1/2">
+      <div className="flex justify-between pl-20 mb-5">
         <h2 className="font-sans text-2xl font-semibold text-gray-900 md:text-2xl">
           Featured Restaurant Orders
         </h2>
       </div>
 
-      <div className="flex items-start justify-start w-full gap-4 px-5 overflow-x-auto md:px-20 mt-7 no-scrollbar">
+      <div className="flex items-start justify-start w-full gap-4 overflow-x-auto mt-7 no-scrollbar">
         {featuredProducts.map((item) => (
          
           <div

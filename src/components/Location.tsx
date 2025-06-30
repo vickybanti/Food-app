@@ -73,8 +73,8 @@ const Location = () => {
 
   return (
     <>
-      <div className="mx-20 mt-20 font-extralight">
-        <h1 className="text-2xl">Best Restaurants</h1>
+      <div className="mt-20 ml-20 font-extralight">
+        <h1 className="pl-4 text-2xl">Best Restaurants</h1>
       </div>
       <div className="flex w-full p-10 mt-4 overflow-x-auto no-scrollbar">
         <div className="mx-20 lg:py-2 md:px-2 md:py-1">
