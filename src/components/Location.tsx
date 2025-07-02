@@ -73,10 +73,10 @@ const Location = () => {
 
   return (
     <>
-      <div className="mt-20 ml-20 font-extralight">
+      <div className="mt-20 lg:ml-20 xl:ml-20 sm:px-6 md:px-6 font-extralight">
         <h1 className="pl-4 text-2xl">Best Restaurants</h1>
       </div>
-      <div className="flex w-full p-10 mt-4 overflow-x-auto no-scrollbar">
+      <div className="flex w-full lg:p-10 xl:p-10 md:p-5 sm:p-5 mt-4 overflow-x-auto no-scrollbar">
         <div className="mx-20 lg:py-2 md:px-2 md:py-1">
           <p className="text-xs text-gray-500">By Location</p>
         </div>

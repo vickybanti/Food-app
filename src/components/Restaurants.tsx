@@ -110,7 +110,7 @@ const Restaurants = () => {
   return (
     <>
       {/* Admin Link */}
-      <div className="flex justify-between mx-20 font-thin sm:px-6 lg:px-10">
+      <div className="flex justify-between lg:mx-20 xl:mx-20 font-thin md:px-6 sm:px-6 lg:px-10">
         {session && session?.user.isAdmin && (
           <Link href="/add/restaurants" className="text-blue-600">
             Add new restaurants
