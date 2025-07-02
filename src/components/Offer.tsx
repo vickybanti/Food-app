@@ -10,8 +10,8 @@ const Offer = () => {
   const dates = new Date();
   return (
     <div className="lg:flex md:flex md:overflow-x-auto justify-between lg:w-full md:w-[40%] gap-2 pt-10 mt-0">
-      <div className="lg:w-[100%] md:w-[30%] rounded-lg lg:h-80 md:h-32 lg:mx-6">
-    <div className="bg-black lg:mx-5 lg:rounded-2xl h-full flex flex-col md:gap-2  md:bg-[url('/offerBg.png')] ">
+      <div className="lg:w-[100%] md:w-[30%] rounded-lg lg:h-80 md:h-32 xl:mx-6 lg:mx-6 md:mx-2 sm:mx-2">
+    <div className="bg-black lg:mx-5 md:mx-2 sm:mx-2 lg:rounded-2xl h-full flex flex-col md:gap-2  md:bg-[url('/offerBg.png')] ">
       {/* TEXT CONTAINER */}
       <div className="flex flex-col items-center justify-center flex-1 lg:gap-8 md:gap-3 p-6 text-center md:w-[30%] lg:w-full ">
         <h1 className="font-bold text-white lg:text-xl md:text-sm">Delicious Burger & French Fry</h1>
