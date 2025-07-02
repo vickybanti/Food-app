@@ -54,13 +54,13 @@ const Categories = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className='mx-20  border-t-2 border-t-[#ccc] mt-12 catsheader flex justify-between'>
+    <div className='mx-24  border-t-2 border-t-[#ccc] mt-12 catsheader flex justify-between'>
       <h2 className="mb-4 font-sans text-2xl font-semibold text-gray-900 ">Categories</h2>
       { session?.user.isAdmin &&
         <Link href="/add/categories" className='catAddTitle'>Add new category</Link>
         }
     </div>
-    <div className="flex flex-wrap cats px-52 mx-auto mt-4 py-7">
+    <div className="flex flex-wrap pl-20 mx-auto mt-4 cats py-7">
 
 
         {allCategories.map((category:any) => (

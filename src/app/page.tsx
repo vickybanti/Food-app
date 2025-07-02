@@ -14,7 +14,7 @@ export default function Home() {
    
     <main className='md:relative mobile'>
       <Slider/>
-      <Featured/>
+      {/* <Featured/> */}
       <Offer/>
       <Products />
       <Location />

@@ -90,14 +90,14 @@ const Products = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className='relative flex flex-col py-5 px-10  2xl:max-container lg:mb-10 lg:py-20 xl:mb-20 mt-5'>
-      <div className="flex justify-between md:px-10 sm:px-10">
-        <h2 className="mb-4 font-sans lg:text-xl md:text-sm sm:text-sm font-semibold text-gray-900 pl-6">Newly cooked</h2>
+    <div className='relative flex flex-col py-5 mx-20 mt-5 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
+      <div className="flex justify-between ">
+        <h2 className="pl-6 mb-4 font-sans font-semibold text-gray-900 lg:text-xl md:text-sm sm:text-sm">Newly cooked</h2>
         
       </div>
     {
        isDesktop ?
-      <div className='grid grid-cols-3 gap-8 w-full h-full'>
+      <div className='grid w-full h-full grid-cols-3 gap-8'>
       
         {products.map((pro: ProductType) => (
           
@@ -117,7 +117,7 @@ const Products = () => {
        
 
           :
-          <div className="w-full gap-4 flex flex-1 overflow-x-auto no-scrollbar">
+          <div className="flex flex-1 w-full gap-4 overflow-x-auto no-scrollbar">
   {products.map((pro: ProductType) => (
     <NewCooked
       key={pro._id}
