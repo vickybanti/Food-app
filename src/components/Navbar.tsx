@@ -57,7 +57,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Icon */}
         {!isDesktop && (
-          <div className={`md:hidden`}>
+          <div className={`md:hidden ml-8`}>
             <Menu />
           </div>
         )}
