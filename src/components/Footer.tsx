@@ -5,15 +5,15 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='flexCenter border-t-2 lg:mx-15 xl:mx-15 bg-[#B78C56] font-sans font-medium text-white' style={{borderTopColor: '#741102', backgroundImage: 'url(/offerBg.png)'}}>
+    <footer className='border-t-2 lg:mx-15 xl:mx-15 bg-[#B78C56] font-sans font-medium text-white' style={{borderTopColor: '#741102', backgroundImage: 'url(/offerBg.png)'}}>
       <div className='flex flex-col w-full gap-10 lg:px-24 xl:px-24 py-10 max-container'>
-        <div className='flex flex-col items-start justify-center gap-[10%] md:flex-row'>
+        <div className='flex flex-col items-start md:pl-10 sm:pl-10 lg:pl-0 xl:pl-0 justify-center gap-[10%] md:flex-row'>
        
         <Link href="/">
           <Image src="/logo-bg.png" width={150} height={400} alt="logo"/>
         </Link>
 
-          <div className='flex flex-wrap gap-10 sm:justify-between md:flex-1 md:pl-10 sm:pl-10'>
+          <div className='flex flex-wrap gap-10 sm:justify-between md:flex-1'>
             {FOOTER_LINKS.map((columns) => (
                 <FooterColumn title={columns.title} key={columns.title}>
                 <ul className='flex flex-col gap-4 text-gray-500 regular-14'>
@@ -26,7 +26,7 @@ const Footer = () => {
 
               </FooterColumn>
             ))}
-            <div className='flex flex-col gap-5 md:pl-10 sm:pl-10'>
+            <div className='flex flex-col gap-5'>
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
                 {FOOTER_CONTACT_INFO.links.map((link) => (
                   <Link href="/" key={link.label} className='flex gap-4 md:flex-col lg:flex-row'>
@@ -44,7 +44,7 @@ const Footer = () => {
               </FooterColumn>
             </div>
 
-            <div className='flex flex-col gap-5 md:pl-10 sm:pl-10'>
+            <div className='flex flex-col gap-5'>
               <FooterColumn title={SOCIALS.title}>
                 <ul className='flex gap-4 regular-14'>
                   {SOCIALS.links.map((link) => (
