@@ -39,11 +39,11 @@ const Navbar = () => {
         isDesktop && isScrolled ? "backdrop-blur-lg bg-white/70" : "bg-inherit"
       } transition-colors duration-300 ease-in-out`}
     >
-      <div className="flex items-center justify-between h-16 sm:px-4 md:px-4 lg:mx-10 xl:mx-10 lg:px-10">
+      <div className="flex items-center justify-between h-16 lg:mx-10 xl:mx-10 lg:px-10">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/">
-            <div className="w-[150px] lg:h-[90px] md:h-[45px] lg:px-2 xl:px-2 md:px-4 sm:px-4 font-sans text-3xl font-bold md:py-3">
+            <div className="w-[150px] lg:h-[90px] md:h-[45px] md:ml-6 sm:ml-6 px-2 font-sans text-3xl font-bold md:py-3">
               <Image
                 src="/logo-bg.png"
                 width={60}
