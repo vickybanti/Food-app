@@ -90,7 +90,7 @@ const Products = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
     >
-    <div className='relative flex flex-col py-5 mx-20 mt-5 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
+    <div className='relative flex flex-col py-5 lg:mx-20 xl:mx-20 mt-5 2xl:max-container lg:mb-10 lg:py-20 xl:mb-20'>
       <div className="flex justify-between ">
         <h2 className="pl-6 mb-4 font-sans font-semibold text-gray-900 lg:text-xl md:text-sm sm:text-sm">Newly cooked</h2>
         

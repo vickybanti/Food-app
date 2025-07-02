@@ -9,8 +9,8 @@ const Offer = () => {
   const router = useRouter()
   const dates = new Date();
   return (
-    <div className="lg:flex md:flex md:overflow-x-auto justify-between lg:w-full md:w-[40%] gap-2 pt-10 mt-0 px-14">
-      <div className="lg:w-[100%] md:w-[30%] rounded-lg lg:h-80 md:h-32 lg:mx-6">
+    <div className="lg:flex md:flex md:overflow-x-auto justify-between lg:w-full md:w-[40%] gap-2 pt-10 mt-0 lg:px-14 xl:px-14">
+      <div className="lg:w-[100%] md:w-[30%] rounded-lg lg:h-80 md:h-32 lg:mx-6 ">
     <div className="bg-black lg:mx-5 lg:rounded-2xl h-full flex flex-col md:gap-2  md:bg-[url('/offerBg.png')] ">
       {/* TEXT CONTAINER */}
       <div className="flex flex-col items-center justify-center flex-1 lg:gap-8 md:gap-3 p-6 text-center md:w-[30%] lg:w-full ">
