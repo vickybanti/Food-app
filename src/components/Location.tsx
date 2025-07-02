@@ -96,7 +96,7 @@ const Location = () => {
           ) : uniqueCategories.length > 0 ? (
             uniqueCategories.map((location) => (
               <Button
-                className="mr-6 text-white rounded-2xl hover:text-white hover:bg-black"
+                className="lg:mr-6 xl:mr-6 md:pl-0 sm:pl-0 text-white rounded-2xl hover:text-white hover:bg-black"
                 key={location}
                 onClick={() => router.push(`/location/${location}`)}
               >
