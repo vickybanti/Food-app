@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/">
-            <div className="w-[150px] lg:h-[90px] md:h-[45px] md:ml-12 sm:ml-12 px-2 font-sans text-3xl font-bold md:py-3">
+            <div className="w-[150px] lg:h-[90px] md:h-[45px] md:ml-14 sm:ml-14 px-2 font-sans text-3xl font-bold md:py-3">
               <Image
                 src="/logo-bg.png"
                 width={60}

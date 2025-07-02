@@ -7,9 +7,9 @@ const Footer = () => {
   return (
     <footer className='border-t-2 lg:mx-15 xl:mx-15 bg-[#B78C56] font-sans font-medium text-white' style={{borderTopColor: '#741102', backgroundImage: 'url(/offerBg.png)'}}>
       <div className='flex flex-col w-full gap-10 lg:px-24 xl:px-24 py-10 max-container'>
-        <div className='flex flex-col items-start md:pl-10 sm:pl-10 lg:pl-0 xl:pl-0 justify-center gap-[10%] md:flex-row'>
+        <div className='flex flex-col items-start justify-center gap-[10%] md:flex-row'>
        
-        <Link href="/">
+        <Link href="/" className='md:pl-6'>
           <Image src="/logo-bg.png" width={150} height={400} alt="logo"/>
         </Link>
 
@@ -44,7 +44,7 @@ const Footer = () => {
               </FooterColumn>
             </div>
 
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5 '>
               <FooterColumn title={SOCIALS.title}>
                 <ul className='flex gap-4 regular-14'>
                   {SOCIALS.links.map((link) => (
@@ -85,7 +85,7 @@ type FooterColumnProps = {
 
 const FooterColumn = ({title, children}:FooterColumnProps) => {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-2 pl-6'>
       <h4 className='bold-18 whitespace-nowrap'>{title}</h4>
     {children}
     </div>
