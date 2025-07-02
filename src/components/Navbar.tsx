@@ -39,11 +39,11 @@ const Navbar = () => {
         isDesktop && isScrolled ? "backdrop-blur-lg bg-white/70" : "bg-inherit"
       } transition-colors duration-300 ease-in-out`}
     >
-      <div className="flex items-center justify-between h-16 lg:mx-10 xl:mx-10 lg:px-10">
+      <div className="flex items-center justify-between h-16 lg:mx-10 xl:mx-10 lg:px-10 md:px-0 sm:px-10 md:mx-0 sm:mx-0">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/">
-            <div className="w-[150px] lg:h-[90px] md:h-[45px] md:ml-14 sm:ml-14 px-2 font-sans text-3xl font-bold md:py-3">
+            <div className="w-[150px] lg:h-[90px] md:h-[45px] md:pl-14 sm:pl-14 px-2 font-sans text-3xl font-bold md:py-3">
               <Image
                 src="/logo-bg.png"
                 width={60}
@@ -66,7 +66,7 @@ const Navbar = () => {
         {isDesktop && (
           <div className="flex items-center gap-6">
             <NavAddress />
-            <div className="flex gap-4">
+            <div className="flex gap-4 md:px-6 sm:px-6 overflow-hidden  ">
               {NAV_LINKS.map((link) => (
                 <Link
                   href={link.href}
