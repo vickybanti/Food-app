@@ -89,7 +89,7 @@ const ProductsPage = () => {
   }, [page, category]);
 
   return (
-    <section className='relative flex flex-col py-5 mt-20 overflow-hidden border-t-2 2xl:max-container lg:mb-10 lg:py-20 lg:px-10 xl:mb-20 md:w-full sm:w-full md:mx-0 md:px-0'>
+    <section className='relative flex flex-col py-5 mt-20 overflow-hidden border-t-2 2xl:max-container lg:mb-10 lg:py-20 lg:px-20 xl:px-20 xl:mb-20 md:w-full sm:w-full md:mx-0 md:px-0'>
       <div className="proHeader flex justify-between">
                 <h2 className="mb-4 font-sans text-3xl font-semibold text-gray-900 ">{category ? category : 'All Products'}</h2>
                 {category && (
