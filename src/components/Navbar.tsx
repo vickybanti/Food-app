@@ -66,7 +66,7 @@ const Navbar = () => {
         {isDesktop && (
           <div className="flex items-center gap-6">
             <NavAddress />
-            <div className="flex gap-4 overflow-hidden  ">
+            <div className="flex w-full gap-4 md:px-6 sm:px-6 ">
               {NAV_LINKS.map((link) => (
                 <Link
                   href={link.href}
