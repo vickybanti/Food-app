@@ -1,7 +1,6 @@
         export const NAV_LINKS = [
                 { href: '/', key: 'home', label: 'Home' },
                 { href: '/products', key: 'menu', label: 'Food' },
-                { href: '/restaurant', key: 'contact', label: 'Restaurants' },
               ];
               
  // FOOTER SECTION
