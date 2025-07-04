@@ -85,7 +85,7 @@ const Location = () => {
           initial={{ x: -30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ ease: "easeInOut", duration: 1.5 }}
-          className="flex gap-5"
+          className="flex gap-5 ml-2"
         >
           {loading ? (
             Array.from({ length: limit }).map((_, index) => (
@@ -96,7 +96,7 @@ const Location = () => {
           ) : uniqueCategories.length > 0 ? (
             uniqueCategories.map((location) => (
               <Button
-                className="lg:mr-6 xl:mr-6 md:pl-0 sm:pl-0 text-white rounded-2xl hover:text-white hover:bg-black"
+                className="text-white rounded-2xl hover:text-white hover:bg-black "
                 key={location}
                 onClick={() => router.push(`/location/${location}`)}
               >
