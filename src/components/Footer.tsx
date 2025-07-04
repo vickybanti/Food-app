@@ -9,7 +9,7 @@ const Footer = () => {
       <div className='flex flex-col w-full gap-10 lg:px-24 xl:px-24 py-10 max-container'>
         <div className='flex flex-col items-start justify-center gap-[10%] md:flex-row'>
        
-        <Link href="/" className='md:pl-6'>
+        <Link href="/" className='md:pl-6 lg:pl-0 xl:pl-0'>
           <Image src="/logo-bg.png" width={150} height={400} alt="logo"/>
         </Link>
 
